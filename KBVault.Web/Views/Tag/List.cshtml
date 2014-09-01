@@ -1,0 +1,56 @@
+﻿@model MvcPaging.IPagedList<KBVault.Dal.Tag>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section ContentHeader{
+     <h1>
+        @UIResources.TagListHeader   
+    </h1>
+   
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body">
+                @foreach( var item in Model )
+                {
+                    <div class="btn btn-default">
+                        <a class="editable pull-left" data-pk="@item.Id" data-type="text" data-url='@Url.Action("Edit","Tag")'>
+                           @item.Name
+                        </a>                 
+                        <span  class="pull-right btn-grp">
+                            <a data-confirm-message="@UIResources.TagListRemoveTagConfirmMessage" data-action-url='@Url.Action("remove", "Tag", new { id = item.Id })' class="remove-tag" href="javascript:void(0)">
+                                &nbsp;&nbsp;<i class="fa fa-times"></i>
+                            </a>
+                        </span>
+                    </div>                                        
+                }
+            </div>        
+            <div class="pager">
+                @Html.Raw(Html.Pager(
+                    new Options
+                    {
+                        PageSize = Model.PageSize,
+                        TotalItemCount = Model.TotalItemCount,
+                        CurrentPage = Model.PageNumber,
+                        ItemTexts = new ItemTexts() { Next = @CommonResources.PagingNext, Previous = @CommonResources.PagingPrevious },
+                        ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
+                        TooltipTitles = new TooltipTitles() {   Next = @CommonResources.PagingNextTooltip, 
+                                                                Previous = @CommonResources.PagingPreviousTooltip, 
+                                                                Page = @CommonResources.PagingGoToPageTooltip 
+                                                            },
+                        Size = Size.normal,
+                        Alignment = Alignment.centered,
+                        IsShowControls = true,
+                        IsShowFirstLast = true,
+                        IsShowPages = true
+                    }, new {})) @*, new { employee_name = ViewData["employee_name"] }))*@
+            </div>
+        </div>
+    </div>
+</div>
+

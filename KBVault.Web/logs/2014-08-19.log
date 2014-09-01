@@ -1,0 +1,20 @@
+2014-08-19 09:34:48.1155 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Controllers.HomeController.Detail(String id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\HomeController.cs içinde: satýr 100
+2014-08-19 09:35:16.3373 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Controllers.HomeController.Detail(String id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\HomeController.cs içinde: satýr 100
+2014-08-19 09:36:32.2242 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Controllers.HomeController.Detail(String id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\HomeController.cs içinde: satýr 100
+2014-08-19 09:37:03.5972 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Controllers.HomeController.Detail(String id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\HomeController.cs içinde: satýr 100
+2014-08-19 16:38:09.9175 ERROR Query parser exception
+2014-08-19 16:38:12.2087 ERROR Query parser exception
+2014-08-19 16:38:12.6008 ERROR Query parser exception
+2014-08-19 16:38:14.0599 ERROR Query parser exception
+2014-08-19 17:06:40.1195 ERROR System.InvalidOperationException: Sýra hiçbir öðe içermiyor
+   konum: System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   konum: System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   konum: System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   konum: System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   konum: System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   konum: System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   konum: KBVault.Web.Controllers.ArticleController.Edit(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 103

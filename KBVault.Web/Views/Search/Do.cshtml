@@ -1,0 +1,30 @@
+﻿@model KBVault.Web.Models.Public.SearchFormViewModel
+
+@{
+    ViewBag.SearchTerm = Model.SearchKeyword;
+    ViewBag.Title = String.Format(UIResources.SearchResultTitle,  Model.SearchKeyword);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="col-lg-12" id="SearchResultContainer">
+    @foreach (var result in Model.Results)
+    {
+        <div class="col-lg-12">
+            <i class="fa fa-arrow-circle-o-right"></i>&nbsp;<a href="@Url.Action("Detail", "Home", new { id = @result.ArticleSefName })">@result.ArticleTitle</a>            
+        </div>
+    }
+    @using (Html.BeginForm("Do", "Search", FormMethod.Post, new { id = "SearchForm" }))
+    {
+        <input type="hidden" name="CurrentPage" id="CurrentPage" value="@Model.CurrentPage" />        
+        <input type="hidden" name="SearchKeyword" id="SearchKeyword" value="@Model.SearchKeyword" />
+    }
+</div>
+<div class="col-lg-12">
+    <a class="btn btn-default col-lg-12" data-href="@Url.Action("More","Search")" id="BtnLoadMore">@UIResources.SearchResultsPageLoadMore</a>
+</div>
+
+
+
+
+

@@ -1,0 +1,204 @@
+﻿@model KBVault.Web.Models.ArticleViewModel
+
+@{
+    if( Model.Category.Name != "-" )
+    {
+        if( Model.Id > 0 )
+        {
+            ViewBag.Title = String.Format(UIResources.ArticleEditPageTitle, Model.Title);    
+        }
+        else
+        {
+            ViewBag.Title = String.Format(UIResources.ArticleCreatePageTitle, Model.Category.Name);
+        }
+    }
+    else
+    {
+        ViewBag.Title = UIResources.ArticleCreatePageTitleNoCategory;
+    }
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section ContentHeader{
+    <h1>
+        @ViewBag.Title        
+    </h1>
+    @*
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+    *@
+}
+
+@section Scripts{
+    $.datepicker.setDefaults({        
+        showAnim: "clip",        
+        dateFormat: "@Html.ConvertDateFormat()"
+    });
+    $(".datepicker").each(function(i,e){ $(e).datepicker(); });
+    $(".datepicker-trigger").click( function(){
+        var parent = $(this).parent("div").parent("div");
+        var datepicker = $(parent).children(".datepicker").first();
+        $(datepicker).datepicker("show");
+    });
+        
+        $("#FileUploader").uploadFile({
+            url:'@Url.Action("Upload","File")',
+            fileName:"AttachmentFile",        
+            formData: {"ArticleId":@Model.Id},
+            returnType : 'json',
+            dragDropStr: '@UIResources.ArticleCreatePageAttachmentDragDropText',
+            abortStr : '@UIResources.ArticleCreatePageAttachmentAbortText',
+            cancelStr: '@UIResources.ArticleCreatePageAttachmentCancelText',
+            deletelStr: '@UIResources.ArticleCreatePageAttachmentDeleteText',
+            doneStr: '@UIResources.ArticleCreatePageAttachmentDoneText',
+            multiple:false,
+            allowedTypes:"png,gif,jpg,jpeg,pdf,zip,rar,bmp"     ,
+            onSuccess:function(files,data,xhr)
+            {
+                if( data.Successful )
+                {
+                    var parentDiv = $("#article-attachment").children(".box").first().children(".box-body").first();                            
+                    var fileBox = '<span class="btn btn-app">';
+                    fileBox += '<span class="badge bg-aqua">';
+                    fileBox += '<a href="javascript:void(0)" class="remove-attachment"';
+                    fileBox += 'data-confirm-message="'+data.Data.RemoveConfirmMessage+'" ';
+                    fileBox += 'data-url="'+data.Data.RemoveLink+'">';
+                    fileBox += '<i class="fa fa-times"></i>';
+                    fileBox += '</a>';
+                    fileBox += '</span>';
+                    fileBox += '<i class="fa fa-download"></i>';
+                    fileBox += '<a target="_blank" href="'+data.Data.DownloadLink+'">'+data.Data.FileName+'</a></span>';
+                    $(parentDiv).append(fileBox);
+                    BindRemoveAttachmentEvents();
+                }    
+                else{
+                    alert(data.ErrorMessage);
+                }	                    
+            }       
+        });
+    
+
+    CKEDITOR.replace(".ckeditor");
+
+    
+    
+        
+}
+
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#article-info">@UIResources.ArticleCreatePageArticleTabTitle</a>
+        </li>        
+        @if (Model.Id > 0)
+        {
+            <li>
+                <a data-toggle="tab" href="#article-attachment">@UIResources.ArticleCreatePageAttachmentTabTitle</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#article-attachment-upload">@UIResources.ArticleCreatePageAttachmentUploadText</a>
+            </li>
+            <li class="pull-right">
+                <a target="_blank" href='@Url.Action("Detail","Home",new{id=Model.SefName})'>@UIResources.ArticleCreatePagePreviewArticle</a>
+            </li>
+        }
+    </ul>    
+</div>
+<div class="tab-content">
+    <div id="article-info" class="tab-pane active">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <br />            
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Category.Name)
+            @Html.HiddenFor(m => m.Category.SefName)
+            <div class="form-group">
+                <label for="Name">@UIResources.ArticleCreatePageCategoryLabel</label>
+                @Html.DropDownListFor(m => Model.Category.Id, KBVaultHelperFunctions.CategoryTreeForSelectList(Model.Category.Id,false), new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="Title">@UIResources.ArticleCreatePageTitleLabel</label>
+                @Html.TextBoxFor( m=> m.Title , new {@class="form-control"})
+            </div>
+            <div class="form-group">
+                <label for="SefName">@UIResources.ArticleCreatePageSefNameLabel</label>
+                @Html.TextBoxFor( m=> m.SefName, new {@class="form-control"})
+            </div>
+            <div class="form-group">        
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="IsDraft" value="true" />@UIResources.ArticleCreatePageIsDraftLabel
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="PublishStartDate">@UIResources.ArticleCreatePagePublishStartLabel</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <a href="javascript:void(0)" class="datepicker-trigger"><i class="fa fa-calendar"></i></a>
+                            </div>
+                            @Html.TextBoxFor( m=> m.PublishStartDate, new {@class="form-control datepicker pull-right", @readonly="readonly", @Value = Model.PublishStartDate.ToString(ViewBag.ThreadShortDateFormat)})
+                        </div>                
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="PublishEndDate">@UIResources.ArticleCreatePagePublishEndLabel</label>                
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <a href="javascript:void(0)" class="datepicker-trigger"><i class="fa fa-calendar"></i></a>
+                            </div>
+                            @Html.TextBoxFor( m=> m.PublishEndDate, new {@class="form-control datepicker", @readonly="readonly", @Value=Model.PublishEndDate.ToString(ViewBag.ThreadShortDateFormat)})
+                        </div>            
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Tag">@UIResources.ArticleCreatePageTagsLabel</label>
+                @Html.TextBoxFor(m => m.Tags, new { @class = "form-control tag-it" , tagsourceurl=Url.Action("Suggest","Tag") })
+            </div>
+            <div class="form-group">
+                <label for="Content">@UIResources.ArticleCreatePageContentLabel</label>
+                <textarea name="Content" id="Content" class="form-control ckeditor">
+                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
+                </textarea>
+                @* Html.TextAreaFor( m=> m.Content , new {@class="form-control ckeditor"}) *@
+            </div>    
+    
+    
+            <input type="submit" value="@CommonResources.ButtonSave" class="btn btn-default" />
+        }
+    </div>            
+    @if( Model.Id > 0 )
+    {
+        <div class="tab-pane" id="article-attachment">
+            <div class="box">
+                <div class="box-header"><!-- @UIResources.ArticleCreatePageAttachmentsHeader--></div>
+                <div class="box-body">
+                    @foreach (var attachment in Model.Attachments)
+                    {
+                        <span class="btn btn-app">
+                            <span class="badge bg-aqua">
+                                <a  href="javascript:void(0)" 
+                                    class="remove-attachment" 
+                                    data-confirm-message="@attachment.RemoveConfirmMessage" 
+                                    data-url='@attachment.RemoveLink'
+                                >
+                                    <i class="fa fa-times"></i>
+                                </a>                                
+                            </span>
+                            <i class="fa fa-download"></i>
+                            <a target="_blank" href='@attachment.DownloadLink'>@attachment.FileName</a>
+                        </span>
+                    }
+                </div>                
+            </div>
+        </div>
+        <div class="tab-pane" id="article-attachment-upload">
+            <div id="FileUploader">@UIResources.ArticleCreatePageAttachmentUploadText</div>
+        </div>
+    }
+</div>

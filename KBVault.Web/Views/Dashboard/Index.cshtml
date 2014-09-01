@@ -1,0 +1,74 @@
+﻿@model KBVault.Web.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Welcome to KBVault";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section ContentHeader{
+    <h1>
+        @ViewBag.Title
+    </h1>
+}
+
+<div class="col-xs-12">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h2>@Model.TotalArticleCount</h2>
+                    <p>@UIResources.DashboardTotalArticleCountHeader</p>                                        
+                </div>                
+                <div class="icon"><i class="ion ion-android-note"></i></div>
+                <a href="#" class="small-box-footer">&nbsp;</a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h2>@UIResources.DashboardMostLikedArticleHeader</h2>
+                    @if( Model.MostLikedArticle != null )
+                    {
+                        <p>@Model.MostLikedArticle.Title</p>                    
+                    }
+                </div>
+                <div class="icon"><i class="ion ion-thumbsup"></i></div>
+                @if( Model.MostLikedArticle != null )
+                {
+                    <a href='@Url.Action("Edit","Article",new {id=Model.MostLikedArticle.Id})' class="small-box-footer">
+                        @UIResources.DashboardEditArticleText <i class="fa fa-arrow-circle-right"></i>
+                    </a>    
+                }
+                else
+                {
+                    <a href="javascript:void(0)" class="small-box-footer">
+                        -
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h2>@UIResources.DashboardMostViewedArticleHeader</h2>
+                    @if( Model.MostViewedArticle != null )
+                    {
+                        <p>@Model.MostViewedArticle.Title</p>
+                    }
+                </div>
+                <div class="icon"><i class="ion ion-eye"></i></div>
+                @if( Model.MostViewedArticle != null )
+                {
+                    <a href='@Url.Action("Edit","Article",new {id=Model.MostViewedArticle.Id})' class="small-box-footer">
+                        @UIResources.DashboardEditArticleText <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                }
+                else
+                {
+                    <a href="javascript:void(0)" class="small-box-footer">
+                        -
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

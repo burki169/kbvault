@@ -1,0 +1,52 @@
+﻿@model KBVault.Web.Models.SettingsViewModel
+
+@{
+    ViewBag.Title = @UIResources.SettingsPageTitle;
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section ContentHeader{
+     <h1>
+        @ViewBag.Title
+    </h1>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <br />
+    <div class="form-group">
+        <label for="CompanyName">@UIResources.SettingsPageCompanyNameLabel</label>
+        <input type="text" class="form-control" name="CompanyName" value="@Model.CompanyName" />
+    </div>
+    <div class="form-group">
+        <label for="TagLine">@UIResources.SettingsPageTagLineLabel</label>
+        <input type="text" class="form-control" name="TagLine" value="@Model.TagLine"/>
+    </div>
+    <div class="form-group">
+        <label for="JumbotronText">@UIResources.SettingsPageJumbotronTextLabel</label>
+        <input type="text" class="form-control" name="JumbotronText" value="@Model.JumbotronText"/>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="ArticleCountPerCategoryOnHomePage">@UIResources.SettingsPageArticlePerCatLabel</label>
+                <input type="text" class="form-control" name="ArticleCountPerCategoryOnHomePage" value="@Model.ArticleCountPerCategoryOnHomePage" />
+            </div>
+            <div class="col-xs-4">
+                <label for="ShareThisPublicKey">@UIResources.SettingsPageShareThisKeyLabel</label>
+                <input type="text" class="form-control" name="ShareThisPublicKey" value="@Model.ShareThisPublicKey" />
+            </div>
+            <div class="col-xs-4">
+                <label for="DisqusShortName">@UIResources.SettingsPageDisqusShortNameLabel</label>
+                <input type="text" class="form-control" name="DisqusShortName" value="@Model.DisqusShortName"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="IndexFileExtensions">@UIResources.SettingsPageIndexFileExtensionsLabel</label>
+        <input type="text" class="form-control" name="IndexFileExtensions" value="@Model.IndexFileExtensions"/>
+    </div>
+    <input type="submit" class="btn btn-default" value="@CommonResources.ButtonSave" />
+}

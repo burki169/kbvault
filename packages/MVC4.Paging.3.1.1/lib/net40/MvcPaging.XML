@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MvcPaging</name>
+    </assembly>
+    <members>
+        <member name="T:MvcPaging.Options">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MvcPaging.Options.CurrentPage">
+            <summary>
+            Set curent page value
+            </summary>
+        </member>
+        <member name="F:MvcPaging.Options.PageSize">
+            <summary>
+            Set page size
+            </summary>
+        </member>
+        <member name="F:MvcPaging.Options.TotalItemCount">
+            <summary>
+            Set total item count
+            </summary>
+        </member>
+        <member name="F:MvcPaging.Options.ActionName">
+            <summary>
+            Set action name
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.Size">
+            <summary>
+            Set font size normal, mini, small, large
+            <para>Size = Size.normal</para>
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.Alignment">
+            <summary>
+            Set Alignment left, centered right
+            <para>Alignment = Alignment.centered</para>
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.ItemTexts">
+            <summary>
+            Set Paging Next, Previous, Page value
+            <example>
+            <code><para>ItemTexts = new ItemTexts() { Next = "»", Previous = "«", Page = "" }</para></code>
+            </example>
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.ItemIcon">
+            <summary>
+            Set Paging Next, Previous, Page icon class
+            <example>
+            <code><para>ItemIcon = new ItemIcon() { Next = "icon-chevron-right", Previous = "icon-chevron-left" }</para></code>
+            </example>
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.TooltipTitles">
+            <summary>
+            Set title tooltip for next, previous and page link
+            <para>TooltipTitles = new TooltipTitles() { Next = "Next page", Previous = "Previous page", Page = "Page" }</para>
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.IsShowControls">
+            <summary>
+            Set bool value for next and previous button
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.IsShowFirstLast">
+            <summary>
+            Set bool value for first and last button
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.IsShowPages">
+            <summary>
+            Set bool value for 1,2,3,4,5 Paging list, Default value is true
+            </summary>
+        </member>
+        <member name="P:MvcPaging.Options.CssClass">
+            <summary>
+            Set css class for custom design
+            </summary>
+        </member>
+        <member name="T:MvcPaging.ItemTexts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemTexts.Next">
+            <summary>
+            Default value "»"
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemTexts.Previous">
+            <summary>
+            Default value "«"
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemTexts.Page">
+            <summary>
+            Default value null
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemTexts.First">
+            <summary>
+            Default value First
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemTexts.Last">
+            <summary>
+            Default value Last
+            </summary>
+        </member>
+        <member name="T:MvcPaging.ItemIcon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemIcon.Next">
+            <summary>
+            Default value string.Empty
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemIcon.Previous">
+            <summary>
+            Default value string.Empty
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemIcon.Page">
+            <summary>
+            Default value string.Empty
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemIcon.First">
+            <summary>
+            Default value string.Empty
+            </summary>
+        </member>
+        <member name="P:MvcPaging.ItemIcon.Last">
+            <summary>
+            Default value string.Empty
+            </summary>
+        </member>
+        <member name="T:MvcPaging.TooltipTitles">
+            <summary>
+            Title tooltip
+            </summary>
+        </member>
+        <member name="P:MvcPaging.TooltipTitles.Next">
+            <summary>
+            Default value "Go to next page"
+            </summary>
+        </member>
+        <member name="P:MvcPaging.TooltipTitles.Previous">
+            <summary>
+            Default value "Go to previous page"
+            </summary>
+        </member>
+        <member name="P:MvcPaging.TooltipTitles.First">
+            <summary>
+            Default value "Go to first page"
+            </summary>
+        </member>
+        <member name="P:MvcPaging.TooltipTitles.Last">
+            <summary>
+            Default value "Go to last page"
+            </summary>
+        </member>
+        <member name="T:MvcPaging.PagingExtensions">
+            <summary>
+            Set page options and values
+            </summary>
+        </member>
+        <member name="M:MvcPaging.PagingExtensions.Pager(System.Web.Mvc.HtmlHelper,MvcPaging.Options,System.Object)">
+            <summary>
+            Create Pager with different type of options like custom page title, tooltip, font size, controls option.
+            <example>
+            <code>
+            <para>new Options {</para>
+            <para>    PageSize = Model.PageSize,</para>
+            <para>    TotalItemCount = Model.TotalItemCount,</para>
+            <para>    CurrentPage = Model.PageNumber,</para>
+            <para>    ItemTexts = new ItemTexts() { Next = "Next", Previous = "Previous", Page = "P" },</para>
+            <para>    TooltipTitles = new TooltipTitles() { Next = "Next page", Previous = "Previous page", Page = "Page" },</para>
+            <para>    Size = Size.normal,</para>
+            <para>    Alignment = Alignment.centered,</para>
+            <para>    IsShowControls = true</para>
+            <para>}, new { filterParameter = ViewData["foo"] })</para>
+            </code> 
+            </example>
+            </summary>
+            <param name="htmlHelper"></param>
+            <param name="options"></param>
+            <param name="values">
+            Set your fileter parameter
+            <code>
+            new { parameterName = ViewData["foo"] }
+            </code>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:MvcPaging.AjaxPagingExtensions.Pager(System.Web.Mvc.AjaxHelper,MvcPaging.Options,System.Web.Mvc.Ajax.AjaxOptions,System.Object)">
+            <summary>
+            Create Pager with different type of options like custom page title, tooltip, font size, controls option.
+            <example>
+            <code>
+            <para>new Options {</para>
+            <para>    PageSize = Model.PageSize,</para>
+            <para>    TotalItemCount = Model.TotalItemCount,</para>
+            <para>    CurrentPage = Model.PageNumber,</para>
+            <para>    ItemTexts = new ItemTexts() { Next = "Next", Previous = "Previous", Page = "P" },</para>
+            <para>    TooltipTitles = new TooltipTitles() { Next = "Next page", Previous = "Previous page", Page = "Page" },</para>
+            <para>    Size = Size.normal,</para>
+            <para>    Alignment = Alignment.centered,</para>
+            <para>    IsShowControls = true },</para>
+            <para>new AjaxOptions {</para>
+            <para>    UpdateTargetId = "grid-list",</para>
+            <para>    OnBegin = "beginPaging",</para>
+            <para>    OnSuccess = "successPaging",</para>
+            <para>    OnFailure = "failurePaging" },</para>
+            <para>new { filterParameter = ViewData["foo"] })</para>
+            </code> 
+            </example>
+            </summary>
+            <param name="htmlHelper"></param>
+            <param name="options"></param>
+            /// <param name="ajaxOptions"></param>
+            <param name="values">
+            Set your fileter parameter
+            <code>
+            new { parameterName = ViewData["foo"] }
+            </code>
+            </param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

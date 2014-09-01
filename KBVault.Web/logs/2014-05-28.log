@@ -1,0 +1,9 @@
+2014-05-28 14:50:13.8634 ERROR System.InvalidCastException: '<UnionIterator>d__88`1[KBVault.Web.Models.CategoryViewModel]' türündeki nesne 'System.Collections.Generic.List`1[KBVault.Web.Models.CategoryViewModel]' türüne atýlamadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategories(Int32 parentCategoryId, Int32 depth) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 51
+2014-05-28 14:50:13.8894 ERROR System.InvalidCastException: '<UnionIterator>d__88`1[KBVault.Web.Models.CategoryViewModel]' türündeki nesne 'System.Collections.Generic.List`1[KBVault.Web.Models.CategoryViewModel]' türüne atýlamadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategories(Int32 parentCategoryId, Int32 depth) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 59
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategories(Int32 parentCategoryId, Int32 depth) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 51
+2014-05-28 14:50:13.8894 ERROR System.InvalidCastException: '<UnionIterator>d__88`1[KBVault.Web.Models.CategoryViewModel]' türündeki nesne 'System.Collections.Generic.List`1[KBVault.Web.Models.CategoryViewModel]' türüne atýlamadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategories(Int32 parentCategoryId, Int32 depth) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 59
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategories(Int32 parentCategoryId, Int32 depth) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 59
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.CategoryTree(Int64 selectedCategoryId) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 66

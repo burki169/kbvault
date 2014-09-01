@@ -1,0 +1,61 @@
+﻿@model KBVault.Web.Models.KbUserViewModel
+
+@{
+    ViewBag.Title = String.Format(UIResources.UserListEditUserHeader,Model.UserName);
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section ContentHeader{
+    <h1>
+        @ViewBag.Title
+    </h1>
+}
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ValidationSummary()    
+    @Html.HiddenFor(m => m.Id);
+    <div class="form-group">
+        <label for="UserName">@UIResources.UserListEditUserUsernameLabel</label>        
+        <input type="text" class="form-control" name="UserName"  aria-readonly="true" readonly="readonly" value="@Model.UserName"/>
+    </div>
+    <div class="form-group">
+        <label for="Email">@UIResources.UserListEditUserEmailLabel</label>
+        <input type="text" class="form-control" name="Email" value="@Model.Email"/>
+    </div>
+    <div class="row">        
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="Name">@UIResources.UserListEditUserNameLabel</label>
+                    <input type="text" class="form-control" name="Name" value="@Model.Name"/>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="LastName">@UIResources.UserListEditUserLastNameLabel</label>
+                    <input type="text" class="form-control" name="LastName" value="@Model.LastName"/>
+                </div>
+            </div>                        
+    </div>
+        
+    <div class="form-group">
+        <label for="OldPassword">@UIResources.UserListEditUserOldPasswordLabel</label>
+        <input type="password" class="form-control" name="OldPassword"/>
+    </div>
+    <div class="form-group">
+        <label for="NewPassword">@UIResources.UserListEditUserNewPasswordLabel</label>
+        <input type="password" class="form-control" name="NewPassword"/>
+    </div>
+    <div class="form-group">
+        <label for="NewPasswordAgain">@UIResources.UserListEditUserNewPasswordAgainLabel</label>
+        <input type="password" class="form-control" name="NewPasswordAgain"/>
+    </div>
+    <div class="form-group">
+        <label for="Role">@UIResources.UserListEditUserRoleLabel</label>
+        @Html.DropDownList("Role", KBVaultHelperFunctions.CreateRolesDropdown(Model.Role))
+    </div>
+    <input type="submit" value="@CommonResources.ButtonSave" class="btn btn-default" />
+}
+
+

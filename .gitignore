@@ -1,0 +1,10 @@
+KBVault.Web/obj/*
+KBVault.Web/obj/debug/*
+KBVault.Web/bin/*
+KBVault.Dal/obj/*
+KBVault.Dal/obj/debug/*
+KBVault.Dal/bin/*
+KBVault.Core/obj/*
+KBVault.Core/obj/*/*
+KBVault.Core/bin/*
+KBVault.Web/Lucene/*

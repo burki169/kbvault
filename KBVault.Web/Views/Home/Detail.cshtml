@@ -1,0 +1,108 @@
+﻿@model KBVault.Dal.Article
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <h2 class="section-title clearfix">
+        <span class="line"></span> @Model.Title        
+    </h2>    
+</div>
+<div class="col-xs-9">
+    <div class="row">       
+        <span>
+            <i class="fa fa-folder-open-o fa-fw text-muted"></i>        
+            <a href='@Url.Action("Categories", "Home", new { id = Model.Category.SefName })'>@Model.Category.Name</a>
+        </span>
+        &nbsp;
+        @if( Context.Request.IsAuthenticated )
+        {
+            <a href='@Url.Action("Edit","Article",new {id=Model.Id})'><span class="fa fa-edit fa-fw"></span>@UIResources.PublicArticleDetailPageEditArticleLabel</a>
+        }
+        <a class="pull-right"><i class="fa fa-fw fa-file"></i>Printer Friendly View</a>
+        <div class="margin-10">
+            <div runat="server" id="articleContent" class="col-lg-12">
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
+            </div>            
+        </div>
+        <div class="clearfix">&nbsp;</div>
+    </div>
+    <div class="row">
+        @foreach (var attachment in Model.Attachments)
+        {
+            <div class="pull-left">
+                <a href='@Url.Content(attachment.Path+attachment.FileName)' target="_blank">
+                    <span class="glyphicon glyphicon-paperclip"></span>
+                    @attachment.FileName
+                </a>
+                &nbsp;
+            </div>
+        }
+        
+    </div>
+    <div class="clearfix">&nbsp;</div>
+    <!-- DISQUS -->
+    <div class="row">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = '@ViewBag.DisqusShortName';
+            var disqus_title = '@Model.Title';
+            var disqus_identifier = 'KB-@Model.Id';
+
+
+            (function () {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <!-- END OF DISQUS SECTION-->
+</div>    
+<div class="col-xs-1">&nbsp;</div>
+<!-- 
+    RIGHT SIDEBAR 
+-->
+<div class="col-xs-2">  
+    <div class="row clearfix"> 
+        @Html.AntiForgeryToken()
+        <a href="javascript:void(0)" data-id="@Model.Id" data-action="@Url.Action("Like")" class="btn-like-action btn btn-default"><i class="fa fa-fw fa-thumbs-o-up"></i>@UIResources.PublicILikeThis</a>
+    </div>
+    <!-- SHARE THIS -->
+    <div class="clearfix margin-10">
+        <script type="text/javascript">    var switchTo5x = false;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">
+            stLight.options({ publisher: "@ViewBag.ShareThisPublicKey", doNotHash: false, doNotCopy: false, hashAddressBar: true });
+        </script>
+        <div class="">
+            <h4 class="section-title">
+                <span class="line"></span>@UIResources.PublicShareThisTitle
+
+            </h4>
+        <span class='st_sharethis_large' displayText='ShareThis'></span>
+        <span class='st_facebook_large' displayText='Facebook'></span>
+        <span class='st_twitter_large' displayText='Tweet'></span>
+        <span class='st_linkedin_large' displayText='LinkedIn'></span>
+        <span class='st_pinterest_large' displayText='Pinterest'></span>
+        <span class='st_email_large' displayText='Email'></span>
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix margin-10">
+        <h4 class="section-title "><span class="line"></span>Tags</h4> 
+        @foreach (var tag in Model.ArticleTags)
+        {
+             <a class="btn-xs btn btn-primary" href='@Url.Action("Tags","Home",new{id=tag.Tag.Name})'>
+                @tag.Tag.Name
+             </a> 
+        }
+    </div>
+    
+</div>
+    
+
+

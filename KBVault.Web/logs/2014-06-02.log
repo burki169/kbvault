@@ -1,0 +1,106 @@
+2014-06-02 15:13:26.7714 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 64
+2014-06-02 15:13:43.0701 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 64
+2014-06-02 15:14:25.1103 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 64
+2014-06-02 15:15:03.1361 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 64
+2014-06-02 15:16:03.4681 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 64
+2014-06-02 15:16:27.7045 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 66
+2014-06-02 15:16:27.7205 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 83
+2014-06-02 15:16:27.7205 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 83
+2014-06-02 15:16:27.7205 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 83
+2014-06-02 15:18:04.8042 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.Load()
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 66
+2014-06-02 15:18:04.8343 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.Load()
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 83
+2014-06-02 15:18:04.8503 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.Load()
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 83
+2014-06-02 15:18:04.8673 ERROR System.ObjectDisposedException: The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.get_Connection()
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.Load()
+   konum: System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   konum: System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass7`2.<GetInterceptorDelegate>b__2(TProxy proxy, TItem item)
+   konum: System.Data.Entity.DynamicProxies.Category_04E9653072579A1E78BE1FB53A6CCC30F6238C4FF6C9AA01716E4CF66C2021A3.get_ParentCategory()
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 94
+   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId, Int64 activeCategory) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 83

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<KBVault.Dal.KbUser>
+
+@{
+    ViewBag.Title = @UIResources.UserListHeader;
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section ContentHeader{
+     <h1>
+        @ViewBag.Title
+    
+        <small class="pull-right">
+            <a href='@Url.Action("Create", "Account")' class="btn btn-default">
+                <i class="fa fa-user"></i>&nbsp;@UIResources.UserListAddNewUser
+            </a>
+        </small>
+    </h1>
+}
+
+@section Scripts{
+
+    
+
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name & Last Name</th>
+                            <th>Email</th>
+                            <th>Role</th>                            
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td width="20%">@user.UserName</td>
+                                <td width="25%">@user.Name @user.LastName</td>
+                                <td width="25%">@user.Email</td>
+                                <td width="15%">@user.Role</td>
+                                <td width="15%">                                    
+                                    <a  href='@Url.Action("UserInfo", "Account", new { id = user.Id })' class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                    <a data-confirm-message="@UIResources.UserListRemoveUserConfirmMessage" data-action-url='@Url.Action("Remove","Account",new {id=user.Id})' class="btn btn-default remove-user-action" href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

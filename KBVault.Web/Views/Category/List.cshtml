@@ -1,0 +1,117 @@
+﻿@using MvcPaging
+@model IPagedList<KBVault.Dal.Article>
+
+@{
+    ViewBag.Title = String.Format(@UIResources.CategoryArticlesListPageTitle.ToString(),ViewBag.CategoryName);
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section Scripts{
+    $(document).ready(function(){
+        
+        $(".post-url-action").click( function(){
+            var actionUrl = $(this).attr("action-url");
+            var confirmMessage = $(this).attr("data-confirm-message");
+            if( confirmMessage.length > 0)
+            {
+                if( !confirm(confirmMessage))
+                    return;
+            }
+            $.ajax({
+                url : actionUrl,
+                type: 'POST',
+                contentType: 'application/json',
+            }).done( function(data){
+                alert(data.ErrorMessage);
+                window.location = data.Data;
+            });
+        });
+
+    });
+}
+
+@section ContentHeader{
+    <h1>
+        @ViewBag.Title
+        <small class="pull-right">
+            <a href='@Url.Action("Create", "Article", new { id = @ViewBag.CategoryId })' class="btn btn-default">
+                <i class="fa fa-plus"></i>&nbsp;@UIResources.CategoryArticlesListNewArticleTitle
+            </a>
+            @if( KBVaultHelperFunctions.IsAdmin(Context.User) || KBVaultHelperFunctions.IsManager(Context.User) )
+            {
+            <a href='@Url.Action("Edit", "Category", new { id = @ViewBag.CategoryId })' class="btn btn-default">
+                <i class="fa fa-pencil"></i>&nbsp;@UIResources.CategoryArticlesListEditCatTitle
+            </a>
+            <a data-confirm-message="@UIResources.CategoryArticleListRemoveCategoryConfirmMessage" action-url='@Url.Action("Remove", "Category", new { id = @ViewBag.CategoryId })' class="btn btn-default post-url-action">
+                <i class="fa fa-times"></i>&nbsp;@UIResources.CategoryArticlesListRemoveCatTitle
+            </a>
+            }
+        </small>
+    </h1>
+   
+    
+    @*
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+    *@
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Article ID </th>
+                            <th>Title</th>
+                            <th>Views</th>
+                            <th>Likes</th>                            
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td width="8%">@item.Id</td>
+                                <td>@item.Title</td>
+                                <td width="8%">@item.Views</td>
+                                <td width="8%">@item.Likes</td>                                
+                                <td width="10%">
+                                    <a href='@Url.Action("Edit","Article",new {id=item.Id})' class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                    <a data-confirm-message="@UIResources.CategoryArticlesListRemoveArticleConfirmMessage" data-action-url='@Url.Action("remove","Article",new {id=item.Id})' class="btn btn-default remove-article" href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="pager">
+                @Html.Raw(Html.Pager(
+                    new Options
+                    {
+                        PageSize = Model.PageSize,
+                        TotalItemCount = Model.TotalItemCount,
+                        CurrentPage = Model.PageNumber,
+                        ItemTexts = new ItemTexts() { Next = @CommonResources.PagingNext, Previous = @CommonResources.PagingPrevious },
+                        ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
+                        TooltipTitles = new TooltipTitles() {   Next = @CommonResources.PagingNextTooltip, 
+                                                                Previous = @CommonResources.PagingPreviousTooltip, 
+                                                                Page = @CommonResources.PagingGoToPageTooltip 
+                                                            },
+                        Size = Size.normal,
+                        Alignment = Alignment.centered,
+                        IsShowControls = true,
+                        IsShowFirstLast = true,
+                        IsShowPages = true
+                    }, new {})) @*, new { employee_name = ViewData["employee_name"] }))*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,44 @@
+﻿@model KBVault.Web.Models.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html class="bg-black">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@UIResources.LoginFormPageTitle</title>
+    @Styles.Render("~/admin/css")
+    
+</head>
+<body class="bg-black">
+    <div class="form-box" id="login-box">
+        <div class="header">@UIResources.LoginFormHeader</div>
+            @using(Html.BeginForm())
+            {
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <input type="text" name="UserName" class="form-control" placeholder="@UIResources.LoginFormUserName"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" class="form-control" placeholder="@UIResources.LoginFormPassword"/>
+                    </div>          
+                    <div class="form-group">
+                        <input type="checkbox" name="RememberMe"/> @UIResources.LoginFormRememberMe
+                    </div>
+                </div>
+                <div class="footer">                                                               
+                    <button type="submit" class="btn bg-olive btn-block">@UIResources.LoginFormSubmitButton</button>          
+                    <p align="center">Powered By KbVault-I</p>            
+                    <p align="center">Theme By <a href="https://github.com/almasaeed2010/AdminLTE/" target="_blank">AdminLTE</a></p>
+                </div>
+            }
+
+           <div class="margin"></div>
+        </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

@@ -1,0 +1,78 @@
+2014-08-25 13:56:44.4405 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 91
+2014-08-25 13:56:44.4525 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 112
+   konum: KBVault.Web.Controllers.SearchController.Do(SearchFormViewModel model) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\SearchController.cs içinde: satýr 33
+2014-08-25 13:57:23.2744 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 91
+2014-08-25 13:57:23.2944 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 112
+   konum: KBVault.Web.Controllers.SearchController.Do(SearchFormViewModel model) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\SearchController.cs içinde: satýr 33
+2014-08-25 13:58:31.4032 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 91
+2014-08-25 13:58:31.4132 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 112
+   konum: KBVault.Web.Controllers.SearchController.Do(SearchFormViewModel model) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\SearchController.cs içinde: satýr 33
+2014-08-25 13:58:38.0898 ERROR Query parser exception
+2014-08-25 13:58:39.7520 ERROR Query parser exception
+2014-08-25 13:59:09.8820 ERROR Query parser exception
+2014-08-25 13:59:18.8249 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 91
+2014-08-25 13:59:18.8339 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 112
+   konum: KBVault.Web.Controllers.SearchController.Do(SearchFormViewModel model) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\SearchController.cs içinde: satýr 33
+2014-08-25 14:00:21.9942 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 91
+2014-08-25 14:00:22.0042 ERROR System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.ParseQuery(String searchQuery, QueryParser parser) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 67
+   konum: KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultLuceneHelper.cs içinde: satýr 112
+   konum: KBVault.Web.Controllers.SearchController.Do(SearchFormViewModel model) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\SearchController.cs içinde: satýr 33
+2014-08-25 17:00:50.6060 ERROR System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of UNIQUE KEY constraint 'UNQ_ARTICLE_SEFNAME'. Cannot insert duplicate key in object 'dbo.Article'. The duplicate key value is (modelbinder-test).
+The statement has been terminated.
+   konum: System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   konum: System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   konum: System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   konum: System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   konum: System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   konum: System.Data.SqlClient.SqlDataReader.get_MetaData()
+   konum: System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   konum: System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   konum: System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   konum: System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   konum: System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   konum: System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   konum: System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   konum: System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   konum: System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   konum: System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   konum: System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- Ýç özel durum yýðýný izlemesinin sonu ---
+   konum: System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   konum: System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   konum: System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   konum: System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   konum: System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   konum: System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Ýç özel durum yýðýný izlemesinin sonu ---
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   konum: System.Data.Entity.DbContext.SaveChanges()
+   konum: KBVault.Web.Controllers.ArticleController.Create(ArticleViewModel model) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 149

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBVault.Web", "KBVault.Web\KBVault.Web.csproj", "{71944D1B-15A8-4942-A85E-4FDD756FF20E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBVault.Core", "KBVault.Core\KBVault.Core.csproj", "{9A05B0A7-0B0D-451D-BFB1-58417F14FC2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBVault.Dal", "KBVault.Dal\KBVault.Dal.csproj", "{B2FFBB76-713E-40DB-B134-40DA57357797}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71944D1B-15A8-4942-A85E-4FDD756FF20E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71944D1B-15A8-4942-A85E-4FDD756FF20E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71944D1B-15A8-4942-A85E-4FDD756FF20E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71944D1B-15A8-4942-A85E-4FDD756FF20E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A05B0A7-0B0D-451D-BFB1-58417F14FC2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A05B0A7-0B0D-451D-BFB1-58417F14FC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A05B0A7-0B0D-451D-BFB1-58417F14FC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A05B0A7-0B0D-451D-BFB1-58417F14FC2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2FFBB76-713E-40DB-B134-40DA57357797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2FFBB76-713E-40DB-B134-40DA57357797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2FFBB76-713E-40DB-B134-40DA57357797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2FFBB76-713E-40DB-B134-40DA57357797}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

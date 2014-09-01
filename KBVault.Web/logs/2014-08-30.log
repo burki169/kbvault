@@ -1,0 +1,15 @@
+2014-08-30 09:14:11.3547 ERROR System.IO.FileNotFoundException: no segments* file found in Lucene.Net.Store.SimpleFSDirectory@E:\MyWorks\2B-Projevi\Kiln\OpenSource\KBVault-I\KBVault.Web\Lucene lockFactory=Lucene.Net.Store.NativeFSLockFactory: files:
+   at Lucene.Net.Index.SegmentInfos.FindSegmentsFile.Run(IndexCommit commit) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\SegmentInfos.cs:line 701
+   at Lucene.Net.Index.DirectoryReader.Open(Directory directory, IndexDeletionPolicy deletionPolicy, IndexCommit commit, Boolean readOnly, Int32 termInfosIndexDivisor) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\DirectoryReader.cs:line 117
+   at Lucene.Net.Index.IndexReader.Open(Directory directory, IndexDeletionPolicy deletionPolicy, IndexCommit commit, Boolean readOnly, Int32 termInfosIndexDivisor) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\IndexReader.cs:line 358
+   at Lucene.Net.Index.IndexReader.Open(Directory directory, Boolean readOnly) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\IndexReader.cs:line 220
+   at Lucene.Net.Search.IndexSearcher..ctor(Directory path) in d:\Lucene.Net\FullRepo\trunk\src\core\Search\IndexSearcher.cs:line 62
+   at KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) in e:\MyWorks\2B-Projevi\Kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KbVaultLuceneHelper.cs:line 88
+2014-08-30 09:14:11.4047 ERROR System.IO.FileNotFoundException: no segments* file found in Lucene.Net.Store.SimpleFSDirectory@E:\MyWorks\2B-Projevi\Kiln\OpenSource\KBVault-I\KBVault.Web\Lucene lockFactory=Lucene.Net.Store.NativeFSLockFactory: files:
+   at Lucene.Net.Index.SegmentInfos.FindSegmentsFile.Run(IndexCommit commit) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\SegmentInfos.cs:line 701
+   at Lucene.Net.Index.DirectoryReader.Open(Directory directory, IndexDeletionPolicy deletionPolicy, IndexCommit commit, Boolean readOnly, Int32 termInfosIndexDivisor) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\DirectoryReader.cs:line 117
+   at Lucene.Net.Index.IndexReader.Open(Directory directory, IndexDeletionPolicy deletionPolicy, IndexCommit commit, Boolean readOnly, Int32 termInfosIndexDivisor) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\IndexReader.cs:line 358
+   at Lucene.Net.Index.IndexReader.Open(Directory directory, Boolean readOnly) in d:\Lucene.Net\FullRepo\trunk\src\core\Index\IndexReader.cs:line 220
+   at Lucene.Net.Search.IndexSearcher..ctor(Directory path) in d:\Lucene.Net\FullRepo\trunk\src\core\Search\IndexSearcher.cs:line 62
+   at KBVault.Web.Helpers.KbVaultLuceneHelper.DoSearch(String text, Int32 page, Int32 resultCount) in e:\MyWorks\2B-Projevi\Kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KbVaultLuceneHelper.cs:line 112
+   at KBVault.Web.Controllers.SearchController.Ajax(String id) in e:\MyWorks\2B-Projevi\Kiln\OpenSource\KBVault-I\KBVault.Web\Controllers\SearchController.cs:line 72

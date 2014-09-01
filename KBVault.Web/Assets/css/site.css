@@ -1,0 +1,131 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+
+body   
+{
+    height: 100%;
+    background:  #FFF;    
+    margin: 0px;
+    padding: 0px;    
+    font-family: 'Open Sans', sans-serif;    
+}
+
+h1,h2,h3,h4,h5,h6
+{   
+    font-family: 'Open Sans', sans-serif;     
+    color:#777;
+}
+
+
+.section-title {
+	margin-top: 0;
+	margin-bottom: 0.4em;
+	padding-bottom: 0.25em;	
+	font-weight:600;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+
+.section-title > .line {
+    float: left;
+    width: 30%;
+    border-bottom: 1px solid #509090;
+    position: absolute;
+    bottom: -1px;
+}
+
+.tiny
+{
+    font-size:12px;
+}
+
+.subhead
+{
+    background: url(../img/bg.png) repeat;/*linear-gradient(45deg, rgb(210, 210, 250) 0%, rgb(50, 90, 100) 90%) repeat scroll 0% 0% transparent;*/
+     color : #EEE;
+}
+
+header h1 a{color:rgb(51, 51, 51);}
+header h1 a:hover{color:rgb(51, 51, 51);}
+h1 small{color:rgb(51, 51, 51) ;}
+
+header.subhead h1 a{color:#DED;}
+header.subhead h1 a:hover{color:#DED;}
+header.subhead h1 small{color:#EEE}
+
+#footer
+{
+    border-top :1px solid #d9d9d9;
+    padding:10px 0 0 0;
+    text-align:center;
+    margin:30px auto 0;
+    font-size:1.1em;
+}
+
+.margin-10{ margin-top:10px;}
+
+
+
+#tagCloud {   
+	width:100%; 	
+	text-align:center; padding:5px;  
+	overflow:auto; font-size:90%;  
+}  
+ 
+#tagList { margin:0; padding:0; }  
+#tagList li {  
+	list-style-type:none; float:left; margin:0 10px; height:35px;  
+	}  
+#tagList li a { text-decoration:none; }  
+#tagList li a:hover{ text-decoration:underline; }
+
+
+
+/* Mult Level Drop Down*/
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: -20px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}

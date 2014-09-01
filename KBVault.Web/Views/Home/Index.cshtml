@@ -1,0 +1,146 @@
+﻿@model KBVault.Web.Models.Public.LandingPageViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css' />    
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css">
+    @Styles.Render("~/public/css")         
+
+     <script type="text/javascript">
+         var KB_SearchUrl = "@Url.Action("Ajax","Search")";
+    </script>
+</head>
+<body>
+
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">            
+            <h1>
+                <a href="/"><span>@ViewBag.CompanyName</span></a> 
+                <small>@ViewBag.TagLine</small>
+            </h1>
+            <p runat="server" id="htmlJumbotronText" class="lead"></p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 input-group input-group-lg">
+                @using (Html.BeginForm("Do", "Search", FormMethod.Post, new { id = "SearchForm" }))
+                {
+                    <input type="hidden" name="ArticleId" id="ArticleId" value="" />
+                    <input type="text" class="form-control search-control" placeholder="Enter search text" ID="txtSearch" name="SearchKeyword" />
+                    <span class="input-group-btn">
+                        <input type="submit"  id="btnDoSearch" class="btn btn-default" value="@CommonResources.ButtonSearch" />
+                    </span>
+                }
+            </div>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+        <div class="row">
+            <div class="col-lg-9">
+                <h4 class="section-title clearfix">
+                    <span class="line"></span><i class="fa fa-folder-open-o fa-fw text-muted"></i>@UIResources.LandingHotCategoryHeader                    
+                </h4>
+                <div class="row">
+                    @foreach (var category in Model.HotCategories)
+                    {
+                        <div class="col-lg-6">
+                            <span class="row">
+                                <i class="fa fa-folder-open-o fa-fw text-muted"></i>
+                                @category.Name
+                                <span class="badge">@category.Articles.Count</span> 
+                            </span>
+                            <span class="row">
+                                <ul class="fa-ul">
+                                @foreach (var article in category.Articles.Take((int)ViewBag.ArticleDisplayCount))
+                                {
+                                    <li>
+                                        <i class="fa-li fa fa-list-alt fa-fw text-muted"></i>
+                                        <a href='@Url.Action("Detail","Home",new {id=article.SefName})'>@article.Title</a>
+                                    </li>
+                                }                 
+                                </ul>                            
+                            </span>
+                        </div>
+                    }
+                </div>
+                <div class="clearfix">&nbsp;</div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4 class="section-title clearfix">
+                            <span class="line"></span>Latest Articles
+                        </h4>
+                        <div class="row">
+                            <ul class="fa-ul">
+                                @foreach (var article in Model.LatestArticles)
+                                {
+                                    <li>
+                                        <i class="fa-li fa fa-list-alt fa-fw text-muted"></i>
+                                        <a href='@Url.Action("Detail", "Home", new { id = article.SefName })'>@article.Title</a>
+                                    </li>
+                                }
+                            </ul>                        
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 class="section-title clearfix">
+                            <span class="line"></span>Popular Articles
+                        </h4>
+                        <div class="row">
+                            <ul class="fa-ul">
+                            @foreach (var article in Model.LatestArticles)
+                            {
+                                <li>
+                                    <i class="fa-li fa fa-list-alt fa-fw text-muted"></i>
+                                    <a href='@Url.Action("Detail", "Home", new { id = article.SefName })'>@article.Title</a>
+                                </li>
+                            }
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h4 class="section-title">@UIResources.LandingSidebarCategoryListTitle</h4>
+                <div>
+                    @foreach (KBVault.Dal.Category category in Model.FirstLevelCategories)
+                    {                        
+                        <div class="row">
+                            <i class="fa fa-arrow-circle-o-right text-muted"></i>
+                            <a href="@Url.Action("Categories","Home",new { id=category.SefName})">@category.Name</a>
+                            @* <span class="badge">@category.Articles.Count</span> *@
+                            
+                        </div>                        
+                    }
+                </div>
+                <div class="col-lg-12">&nbsp;</div>
+                
+                @if (Model.PopularTags.Count > 0)
+                {
+                    <h4 class="section-title">@UIResources.LandingSidebarTagCloudListTitle</h4>
+                    <div>
+                        @foreach (var tag in Model.PopularTags)
+                        {
+                            <a class="btn-xs btn btn-primary" style="font-size:@tag.FontSize%; margin:2px" href='@Url.Action("Tags","Home",new{id=tag.Name})'>
+                                @tag.Name
+                             </a> 
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    @Scripts.Render("~/public/js")    
+</body>
+</html>

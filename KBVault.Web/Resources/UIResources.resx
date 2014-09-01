@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoryArticlesListPageTitle" xml:space="preserve">
+    <value>Articles in {0}</value>
+  </data>
+  <data name="CategoryCreateFormLabelCategory" xml:space="preserve">
+    <value>Category Name</value>
+  </data>
+  <data name="CategoryCreateFormLabelIsHot" xml:space="preserve">
+    <value>Hot Category</value>
+  </data>
+  <data name="CategoryCreateFormLabelParent" xml:space="preserve">
+    <value>Place Category Under</value>
+  </data>
+  <data name="CategoryCreateFormPageTitle" xml:space="preserve">
+    <value>Create category</value>
+  </data>
+  <data name="LeftSidebarCategoryListTitle" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="LeftSidebarCreateArticle" xml:space="preserve">
+    <value>New Article</value>
+  </data>
+  <data name="LeftSidebarCreateCategory" xml:space="preserve">
+    <value>New Category</value>
+  </data>
+  <data name="LeftSideBarTagsTitle" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="LeftSidebarUserMenuTitle" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="LoginFormHeader" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginFormPageTitle" xml:space="preserve">
+    <value>Login To KbVault</value>
+  </data>
+  <data name="LoginFormPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LoginFormRememberMe" xml:space="preserve">
+    <value>RememberMe</value>
+  </data>
+  <data name="LoginFormSubmitButton" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginFormUserName" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="TagListHeader" xml:space="preserve">
+    <value>Manage Tags in Vault</value>
+  </data>
+  <data name="CategoryArticlesListEditCatTitle" xml:space="preserve">
+    <value>Edit Category</value>
+  </data>
+  <data name="CategoryEditFormPageTitle" xml:space="preserve">
+    <value>Edit category: {0}</value>
+  </data>
+  <data name="CategoryArticlesListRemoveCatTitle" xml:space="preserve">
+    <value>Delete Category</value>
+  </data>
+  <data name="CategoryArticlesListNewArticleTitle" xml:space="preserve">
+    <value>Add Article</value>
+  </data>
+  <data name="ArticleCreatePageArticleTabTitle" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentsAfterSaveMessage" xml:space="preserve">
+    <value>Attachments are available after saving article.</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentTabTitle" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="ArticleCreatePageCategoryLabel" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ArticleCreatePageContentLabel" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="ArticleCreatePageIsDraftLabel" xml:space="preserve">
+    <value>Keep as Draft</value>
+  </data>
+  <data name="ArticleCreatePagePublishEndLabel" xml:space="preserve">
+    <value>Publish End</value>
+  </data>
+  <data name="ArticleCreatePagePublishEndRequiredMessage" xml:space="preserve">
+    <value>Publish End Date is required</value>
+  </data>
+  <data name="ArticleCreatePagePublishStartLabel" xml:space="preserve">
+    <value>Publish Start</value>
+  </data>
+  <data name="ArticleCreatePagePublishStartRequiredMessage" xml:space="preserve">
+    <value>Publish Start Date is required</value>
+  </data>
+  <data name="ArticleCreatePageTagsLabel" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="ArticleCreatePageTitle" xml:space="preserve">
+    <value>Add new article to {0}</value>
+  </data>
+  <data name="ArticleCreatePageTitleLabel" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="CategoryArticlesListRemoveArticleConfirmMessage" xml:space="preserve">
+    <value>Remove Article and attachments?</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentAbortText" xml:space="preserve">
+    <value>Abort Upload</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentCancelText" xml:space="preserve">
+    <value>Cancel Upload</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentDeleteText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentDoneText" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentDragDropText" xml:space="preserve">
+    <value>Drag Files Here</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentUploadText" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentsHeader" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="ArticleAttachmentRemoveConfirmation" xml:space="preserve">
+    <value>Remove Attachment?</value>
+  </data>
+  <data name="ArticleCreatePageTitleNoCategory" xml:space="preserve">
+    <value>Add article to vault</value>
+  </data>
+  <data name="ArticleEditPageTitle" xml:space="preserve">
+    <value>Edit article {0}</value>
+  </data>
+  <data name="CategoryArticleListRemoveCategoryConfirmMessage" xml:space="preserve">
+    <value>Remove Category?</value>
+  </data>
+  <data name="LeftSideBarSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsCompanyNameRequiredMessage" xml:space="preserve">
+    <value>Company Name is required</value>
+  </data>
+  <data name="SettingsPageCompanyNameLabel" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="TagListRemoveSuccessful" xml:space="preserve">
+    <value>Tag has been removed  successfully.</value>
+  </data>
+  <data name="TagListRemoveTagConfirmMessage" xml:space="preserve">
+    <value>Remove Tag?</value>
+  </data>
+  <data name="SettingsPageSaveSuccessfull" xml:space="preserve">
+    <value>Settings Saved Successfully.</value>
+  </data>
+  <data name="SettingsPageArticleCountNumericErrorMessage" xml:space="preserve">
+    <value>Article Count must be numeric</value>
+  </data>
+  <data name="SettingsPageArticlePerCatLabel" xml:space="preserve">
+    <value>Article Count Per Category On Landing Page</value>
+  </data>
+  <data name="SettingsPageDisqusShortNameLabel" xml:space="preserve">
+    <value>Disqus Short Name</value>
+  </data>
+  <data name="SettingsPageJumbotronTextLabel" xml:space="preserve">
+    <value>Jumbotron Text</value>
+  </data>
+  <data name="SettingsPageShareThisKeyLabel" xml:space="preserve">
+    <value>ShareThis public key</value>
+  </data>
+  <data name="SettingsPageTagLineLabel" xml:space="preserve">
+    <value>Tag line</value>
+  </data>
+  <data name="ArticleCreatePageCreateSuccessMessage" xml:space="preserve">
+    <value>Article added successfully.</value>
+  </data>
+  <data name="ArticleCreatePageEditSuccessMessage" xml:space="preserve">
+    <value>Article updated successfully.</value>
+  </data>
+  <data name="CategoryPageCreateSuccessMessage" xml:space="preserve">
+    <value>Category added successfully.</value>
+  </data>
+  <data name="CategoryPageEditSuccessMessage" xml:space="preserve">
+    <value>Category updated successfully.</value>
+  </data>
+  <data name="UserListHeader" xml:space="preserve">
+    <value>System Users</value>
+  </data>
+  <data name="UserListEditUserEmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="UserListEditUserHeader" xml:space="preserve">
+    <value>Edit User "{0}"</value>
+  </data>
+  <data name="UserListEditUserLastNameLabel" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="UserListEditUserNameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="UserListEditUserNewPasswordAgainLabel" xml:space="preserve">
+    <value>New Password (Again)</value>
+  </data>
+  <data name="UserListEditUserNewPasswordLabel" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="UserListEditUserOldPasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="UserListEditUserRoleLabel" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="UserListEditUserUsernameLabel" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="UserListAddNewUser" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="UserListAddUserHeader" xml:space="preserve">
+    <value>Add New User</value>
+  </data>
+  <data name="UserListRemoveUserConfirmMessage" xml:space="preserve">
+    <value>Remove User?</value>
+  </data>
+  <data name="UserListUserEditSuccessful" xml:space="preserve">
+    <value>User information updated successfully</value>
+  </data>
+  <data name="UserListUserOldPasswordRequired" xml:space="preserve">
+    <value>Current password is required</value>
+  </data>
+  <data name="DashboardEditArticleText" xml:space="preserve">
+    <value>Edit article</value>
+  </data>
+  <data name="DashboardMostLikedArticleHeader" xml:space="preserve">
+    <value>Most Liked Article</value>
+  </data>
+  <data name="DashboardMostViewedArticleHeader" xml:space="preserve">
+    <value>Most Viewed Article</value>
+  </data>
+  <data name="DashboardTotalArticleCountHeader" xml:space="preserve">
+    <value>Total Article Count</value>
+  </data>
+  <data name="DashboardViewArticleText" xml:space="preserve">
+    <value>View article</value>
+  </data>
+  <data name="LandingHotCategoryHeader" xml:space="preserve">
+    <value>Hot</value>
+  </data>
+  <data name="UserProfilePageTitle" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="UserProfileUpdateFail" xml:space="preserve">
+    <value>Profile can't be updated</value>
+  </data>
+  <data name="UserProfileUpdateSuccessful" xml:space="preserve">
+    <value>Profile updated successfully</value>
+  </data>
+  <data name="ArticleCreatePageSefNameLabel" xml:space="preserve">
+    <value>Search Engine Friendly Name</value>
+  </data>
+  <data name="ArticleSefNameIsRequired" xml:space="preserve">
+    <value>Article search engine friendly name is required</value>
+  </data>
+  <data name="CategoryCreateFormSefNameLabel" xml:space="preserve">
+    <value>Search Engine Friendly Name</value>
+  </data>
+  <data name="CategorySefNameIsRequired" xml:space="preserve">
+    <value>Category search engine friendly name is required</value>
+  </data>
+  <data name="PublicCategoryListPageTitle" xml:space="preserve">
+    <value>Articles in {0}</value>
+  </data>
+  <data name="PublicILikeThis" xml:space="preserve">
+    <value>I like this.</value>
+  </data>
+  <data name="PublicShareThisTitle" xml:space="preserve">
+    <value>Share this article</value>
+  </data>
+  <data name="PublicTagListPageTitle" xml:space="preserve">
+    <value>Articles tagged with {0}</value>
+  </data>
+  <data name="ArticleCreatePagePreviewArticle" xml:space="preserve">
+    <value>View Article</value>
+  </data>
+  <data name="PublicArticleDetailPageEditArticleLabel" xml:space="preserve">
+    <value>Edit Article</value>
+  </data>
+  <data name="SettingsPageIndexFileExtensionsLabel" xml:space="preserve">
+    <value>File extensions to be included in indexing (pdf,dox,docx...)</value>
+  </data>
+  <data name="ArticleLikeSuccess" xml:space="preserve">
+    <value>Article liked.</value>
+  </data>
+  <data name="SearchResultTitle" xml:space="preserve">
+    <value>Results for [ {0} ]</value>
+  </data>
+  <data name="SearchResultsPageLoadMore" xml:space="preserve">
+    <value>Load more...</value>
+  </data>
+  <data name="CategoryListSubCategoryTitle" xml:space="preserve">
+    <value>Subcategories</value>
+  </data>
+  <data name="LandingSidebarCategoryListTitle" xml:space="preserve">
+    <value>Top Level Categories</value>
+  </data>
+  <data name="LandingSidebarTagCloudListTitle" xml:space="preserve">
+    <value>Popular Tags</value>
+  </data>
+</root>
