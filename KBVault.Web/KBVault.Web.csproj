@@ -488,6 +488,7 @@
     <Content Include="Assets\css\min\ionicons.min.css" />
     <Content Include="Assets\css\min\uploadfile.min.css" />
     <Content Include="Assets\css\morris\morris.css" />
+    <Content Include="Assets\css\jquery.smartmenus.bootstrap.css" />
     <Content Include="Assets\css\tagit.ui-zendesk.css" />
     <Content Include="Assets\css\uploadfile.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
@@ -528,6 +529,9 @@
     <Content Include="Assets\js\AdminLTE\demo.js" />
     <Content Include="Assets\js\frontend.js" />
     <Content Include="Assets\js\jquery.cookie.js" />
+    <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />
+    <Content Include="Assets\js\smartmenus\jquery.smartmenus.js" />
+    <Content Include="Assets\js\smartmenus\jquery.smartmenus.keyboard.js" />
     <Content Include="Assets\js\kbvault.js" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\jquery.uploadfile.js" />

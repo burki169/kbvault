@@ -26,6 +26,7 @@ namespace KBVault.Web.Controllers
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             ViewBag.CompanyName = Settings.CompanyName;
+            ViewBag.JumbotronText = Settings.JumbotronText;
             ViewBag.TagLine = Settings.TagLine;
             ViewBag.DisqusShortName = Settings.DisqusShortName;
             ViewBag.ShareThisPublicKey = Settings.ShareThisPublicKey;

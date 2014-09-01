@@ -429,4 +429,13 @@
   <data name="LandingSidebarTagCloudListTitle" xml:space="preserve">
     <value>Popular Tags</value>
   </data>
+  <data name="LandingLatestArticlesTitle" xml:space="preserve">
+    <value>Latest Articles</value>
+  </data>
+  <data name="LandingPopularArticlesTitle" xml:space="preserve">
+    <value>Popular Articles</value>
+  </data>
+  <data name="MainMenuBootstrapToogleTitle" xml:space="preserve">
+    <value>Toggle navigation</value>
+  </data>
 </root>

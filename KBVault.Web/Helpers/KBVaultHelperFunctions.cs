@@ -119,14 +119,15 @@ namespace KBVault.Web.Helpers
                 string html = "";
                 UrlHelper linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
                 List<CategoryViewModel> categoryTree = GetCategories(parentCategoryId, 0, false);                
+                /*
                 if( parentCategoryId == -1 )
                     html = "<ul class=\"dropdown-menu multi-level\" role=\"menu\" aria-labelledby=\"dropdownMenu\">";
-
+                */
                 foreach (CategoryViewModel model in categoryTree)
                 {
                     if( model.Children.Count > 0 )
                         html += "<li class=\"dropdown-submenu pull-left\">" + Environment.NewLine.ToString();
-                    else 
+                    else                          
                         html += "<li>"+ Environment.NewLine.ToString();
 
                     string categoryListLink = linkHelper.Action("Categories", "Home", new { id = model.SefName});
@@ -140,8 +141,10 @@ namespace KBVault.Web.Helpers
                     }
                     html += "</li>" + Environment.NewLine.ToString();
                 }
+                /*
                 if( parentCategoryId == -1 )
                     html += "</ul>";
+                */
 
                 return html;
             }

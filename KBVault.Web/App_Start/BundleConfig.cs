@@ -11,14 +11,18 @@ namespace KBVault.Web
             bundles.Add(new ScriptBundle("~/public/js").Include(
             "~/Assets/js/bootstrap.js",
             "~/Assets/js/jquery.cookie.js",
-            "~/Assets/js/frontend.js"
+            "~/Assets/js/frontend.js",
+            "~/Assets/js/smartmenus/jquery.smartmenus.keyboard.js",
+            "~/Assets/js/smartmenus/jquery.smartmenus.bootstrap.js",
+            "~/Assets/js/smartmenus/jquery.smartmenus.js"
                 ));
 
             bundles.Add( new StyleBundle("~/public/css").Include(
                 "~/Assets/css/bootstrap.css",
                 "~/Assets/css/font-awesome.css",
                 "~/Assets/css/ionicons.css",
-                "~/Assets/css/site.css"
+                "~/Assets/css/site.css",
+                "~/Assets/css/jquery.smartmenus.bootstrap.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
@@ -40,17 +44,6 @@ namespace KBVault.Web
                 "~/Assets/css/uploadfile.css"
                 ));
 
-            /*
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
-            */
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             /*

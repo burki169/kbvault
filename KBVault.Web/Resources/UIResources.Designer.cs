@@ -520,6 +520,24 @@ namespace KBVault.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latest Articles.
+        /// </summary>
+        public static string LandingLatestArticlesTitle {
+            get {
+                return ResourceManager.GetString("LandingLatestArticlesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Popular Articles.
+        /// </summary>
+        public static string LandingPopularArticlesTitle {
+            get {
+                return ResourceManager.GetString("LandingPopularArticlesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Top Level Categories.
         /// </summary>
         public static string LandingSidebarCategoryListTitle {
@@ -642,6 +660,15 @@ namespace KBVault.Web.Resources {
         public static string LoginFormUserName {
             get {
                 return ResourceManager.GetString("LoginFormUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle navigation.
+        /// </summary>
+        public static string MainMenuBootstrapToogleTitle {
+            get {
+                return ResourceManager.GetString("MainMenuBootstrapToogleTitle", resourceCulture);
             }
         }
         

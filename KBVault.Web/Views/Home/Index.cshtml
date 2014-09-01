@@ -27,7 +27,7 @@
                 <a href="/"><span>@ViewBag.CompanyName</span></a> 
                 <small>@ViewBag.TagLine</small>
             </h1>
-            <p runat="server" id="htmlJumbotronText" class="lead"></p>
+            <p runat="server" id="htmlJumbotronText" class="lead">@ViewBag.JumbotronText</p>
         </div>
     </header>
     <div class="container">
@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <h4 class="section-title clearfix">
-                            <span class="line"></span>Latest Articles
+                            <span class="line"></span>@UIResources.LandingLatestArticlesTitle
                         </h4>
                         <div class="row">
                             <ul class="fa-ul">
@@ -92,7 +92,7 @@
                     </div>
                     <div class="col-lg-6">
                         <h4 class="section-title clearfix">
-                            <span class="line"></span>Popular Articles
+                            <span class="line"></span>@UIResources.LandingPopularArticlesTitle
                         </h4>
                         <div class="row">
                             <ul class="fa-ul">
