@@ -830,6 +830,7 @@
     <Content Include="Assets\js\tag-it.js" />
     <Content Include="Assets\css\site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Install\default_kbvault.sql" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
