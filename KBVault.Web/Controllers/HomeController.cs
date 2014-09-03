@@ -101,6 +101,13 @@ namespace KBVault.Web.Controllers
                     {
                         article.Views++;
                         db.SaveChanges();
+                        DateTime today = DateTime.Now.Date;
+                        ViewBag.SimilarArticles = db.GetSimilarArticles((int)article.Id)
+                                                    .Where( a => a.PublishStartDate <= today &&
+                                                                a.PublishEndDate >= today &&
+                                                                a.IsDraft == 0
+                                                                )
+                                                    .ToList();
                         return View(article);
                     }
                     else

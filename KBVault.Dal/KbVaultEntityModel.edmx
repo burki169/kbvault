@@ -195,6 +195,9 @@
           <Parameter Name="ArticleId" Type="bigint" Mode="In" />
           <Parameter Name="Tags" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetSimilarArticles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleId" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetTopTags" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="RemoveTagFromArticles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TagId" Type="bigint" Mode="In" />
@@ -243,6 +246,9 @@
           </AssociationSet>
           <EntitySet Name="Settings" EntityType="KbVaultModel.Setting" />
           <FunctionImport Name="GetTopTags" ReturnType="Collection(KbVaultModel.TopTagItem)" />
+          <FunctionImport Name="GetSimilarArticles" ReturnType="Collection(KbVaultModel.SimilarArticle)">
+            <Parameter Name="ArticleId" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="ArticleTag">
           <Key>
@@ -415,6 +421,15 @@
           <Property Type="Int64" Name="Id" Nullable="true" />
           <Property Type="Int32" Name="FontSize" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="SimilarArticle">
+          <Property Type="Int64" Name="Id" Nullable="true" />
+          <Property Type="String" Name="SefName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="PublishEndDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="PublishStartDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IsDraft" Nullable="true" />
+          <Property Type="Int32" Name="Relevance" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -518,6 +533,19 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSimilarArticles" FunctionName="KbVaultModel.Store.GetSimilarArticles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KbVaultModel.SimilarArticle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SefName" ColumnName="SefName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PublishEndDate" ColumnName="PublishEndDate" />
+                <ScalarProperty Name="PublishStartDate" ColumnName="PublishStartDate" />
+                <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+                <ScalarProperty Name="Relevance" ColumnName="Relevance" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

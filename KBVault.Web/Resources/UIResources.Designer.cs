@@ -709,6 +709,15 @@ namespace KBVault.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Similar Articles.
+        /// </summary>
+        public static string PublicSimilarArticlesTitle {
+            get {
+                return ResourceManager.GetString("PublicSimilarArticlesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Articles tagged with {0}.
         /// </summary>
         public static string PublicTagListPageTitle {

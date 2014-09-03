@@ -62,5 +62,14 @@ namespace KBVault.Dal
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TopTagItem>("GetTopTags");
         }
+    
+        public virtual ObjectResult<SimilarArticle> GetSimilarArticles(Nullable<int> articleId)
+        {
+            var articleIdParameter = articleId.HasValue ?
+                new ObjectParameter("ArticleId", articleId) :
+                new ObjectParameter("ArticleId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SimilarArticle>("GetSimilarArticles", articleIdParameter);
+        }
     }
 }

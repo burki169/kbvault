@@ -438,4 +438,7 @@
   <data name="MainMenuBootstrapToogleTitle" xml:space="preserve">
     <value>Toggle navigation</value>
   </data>
+  <data name="PublicSimilarArticlesTitle" xml:space="preserve">
+    <value>Similar Articles</value>
+  </data>
 </root>

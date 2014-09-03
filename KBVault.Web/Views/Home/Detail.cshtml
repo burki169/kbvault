@@ -73,6 +73,21 @@
         @Html.AntiForgeryToken()
         <a href="javascript:void(0)" data-id="@Model.Id" data-action="@Url.Action("Like")" class="btn-like-action btn btn-default"><i class="fa fa-fw fa-thumbs-o-up"></i>@UIResources.PublicILikeThis</a>
     </div>
+   
+    
+    @if( ViewBag.SimilarArticles != null )
+    { 
+        <div>
+            <h4 class="section-title"><span class="line"></span>@UIResources.PublicSimilarArticlesTitle</h4>
+            <!-- SIMILAR ARTICLES -->
+            @foreach (var article in ViewBag.SimilarArticles)
+            {
+                <a class="btn-similar-article"  href='@Url.Action("Detail","Home",new{id=article.SefName})'>
+                    @article.Title
+                </a>
+            }
+        </div>
+    }
     <!-- SHARE THIS -->
     <div class="clearfix margin-10">
         <script type="text/javascript">    var switchTo5x = false;</script>

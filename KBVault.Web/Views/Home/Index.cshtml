@@ -129,7 +129,7 @@
                     <div>
                         @foreach (var tag in Model.PopularTags)
                         {
-                            <a class="btn-xs btn btn-primary" style="font-size:@tag.FontSize%; margin:2px" href='@Url.Action("Tags","Home",new{id=tag.Name})'>
+                            <a class="btn-xs btn btn-primary"  href='@Url.Action("Detail","Home",new{id=tag.Name})'>
                                 @tag.Name
                              </a> 
                         }

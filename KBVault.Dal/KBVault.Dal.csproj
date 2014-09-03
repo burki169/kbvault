@@ -85,6 +85,9 @@
     <Compile Include="Setting.cs">
       <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SimilarArticle.cs">
+      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tag.cs">
       <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
     </Compile>
