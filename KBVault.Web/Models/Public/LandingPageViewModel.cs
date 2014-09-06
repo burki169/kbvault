@@ -16,10 +16,9 @@ namespace KBVault.Web.Models.Public
         public int MaxTagRatio
         {
             get
-            {
-                int? maxAmount = PopularTags.Max(t => t.Ratio).Value;
-                if (maxAmount.HasValue)
-                    return Convert.ToInt32(maxAmount);
+            {                
+                if (PopularTags.Max(t => t.Ratio).HasValue)
+                    return Convert.ToInt32(PopularTags.Max(t => t.Ratio).Value);
                 else
                     return -1;
             }
@@ -28,10 +27,9 @@ namespace KBVault.Web.Models.Public
         public int MinTagRatio
         {
             get
-            {
-                int? minAmount = PopularTags.Min(t => t.Ratio).Value;
-                if (minAmount.HasValue)
-                    return Convert.ToInt32(minAmount);
+            {                
+                if (PopularTags.Min(t => t.Ratio).HasValue)
+                    return Convert.ToInt32(PopularTags.Min(t => t.Ratio).Value);
                 else
                     return -1;
             }
