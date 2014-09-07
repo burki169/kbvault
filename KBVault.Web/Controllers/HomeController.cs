@@ -24,7 +24,7 @@ namespace KBVault.Web.Controllers
             if (Request.IsAjaxRequest() )
             {
                 using (var db = new KbVaultEntities())
-                {
+                {                    
                     var article = db.Articles.FirstOrDefault(a => a.Id == articleId);
                     if (article == null)
                     {

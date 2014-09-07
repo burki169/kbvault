@@ -17,6 +17,12 @@ namespace KBVault.Web.Controllers
         {
             try
             {
+                string articlePrefix = Settings.ArticlePrefix;
+                if (model.SearchKeyword.Substring(0, articlePrefix.Length + 1) == articlePrefix + "-")
+                {
+                    string articleId = model.SearchKeyword.Substring(articlePrefix.Length + 1);
+                    model.ArticleId = Convert.ToInt32(articleId);
+                }
                 if (model.ArticleId > 0)
                 {
                     Article article = null;
@@ -26,7 +32,7 @@ namespace KBVault.Web.Controllers
                     }
                     if (article != null) 
                         return RedirectToRoute("Default", new { controller = "Home", action = "Detail", id = article.SefName});
-                }
+                }                
                 if (model.CurrentPage == 0)
                     model.CurrentPage++;
                 
