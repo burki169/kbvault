@@ -745,6 +745,24 @@ namespace KBVault.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Article Prefix.
+        /// </summary>
+        public static string SettingsArticlePrefixLabel {
+            get {
+                return ResourceManager.GetString("SettingsArticlePrefixLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Article Prefix Is Required.
+        /// </summary>
+        public static string SettingsArticlePrefixRequiredMessage {
+            get {
+                return ResourceManager.GetString("SettingsArticlePrefixRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Name is required.
         /// </summary>
         public static string SettingsCompanyNameRequiredMessage {

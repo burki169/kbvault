@@ -38,6 +38,7 @@ namespace KBVault.Web.Controllers
                         set.ShareThisPublicKey = model.ShareThisPublicKey;
                         set.TagLine = model.TagLine;
                         set.IndexFileExtensions = model.IndexFileExtensions;
+                        set.ArticlePrefix = model.ArticlePrefix;
                         db.Settings.Add(set);
                         db.SaveChanges();
                         ShowOperationMessage(UIResources.SettingsPageSaveSuccessfull);

@@ -441,4 +441,10 @@
   <data name="PublicSimilarArticlesTitle" xml:space="preserve">
     <value>Similar Articles</value>
   </data>
+  <data name="SettingsArticlePrefixRequiredMessage" xml:space="preserve">
+    <value>Article Prefix Is Required</value>
+  </data>
+  <data name="SettingsArticlePrefixLabel" xml:space="preserve">
+    <value>Article Prefix</value>
+  </data>
 </root>
