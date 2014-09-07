@@ -31,6 +31,7 @@ namespace KBVault.Web.Controllers
             ViewBag.DisqusShortName = Settings.DisqusShortName;
             ViewBag.ShareThisPublicKey = Settings.ShareThisPublicKey;
             ViewBag.ArticleDisplayCount = Settings.ArticleCountPerCategoryOnHomePage;
+            ViewBag.ArticlePrefix = Settings.ArticlePrefix;
 
             base.OnActionExecuted(filterContext);
         }

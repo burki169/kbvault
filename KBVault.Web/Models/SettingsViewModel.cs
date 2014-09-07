@@ -25,6 +25,7 @@ namespace KBVault.Web.Models
                 this.ShareThisPublicKey = set.ShareThisPublicKey;
                 this.TagLine = set.TagLine;
                 this.IndexFileExtensions = set.IndexFileExtensions;
+                this.ArticlePrefix = set.ArticlePrefix;
             }
         }
 
@@ -37,5 +38,7 @@ namespace KBVault.Web.Models
         public string ShareThisPublicKey { get; set; }
         public string DisqusShortName { get; set; }
         public string IndexFileExtensions { get; set; }
+        [Required(ErrorMessageResourceType = typeof(UIResources), ErrorMessageResourceName = "SettingsArticlePrefixRequiredMessage")]
+        public string ArticlePrefix { get; set; }
     }
 }

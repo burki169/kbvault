@@ -30,17 +30,21 @@
     </div>
     <div class="form-group">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <label for="ArticleCountPerCategoryOnHomePage">@UIResources.SettingsPageArticlePerCatLabel</label>
                 <input type="text" class="form-control" name="ArticleCountPerCategoryOnHomePage" value="@Model.ArticleCountPerCategoryOnHomePage" />
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <label for="ShareThisPublicKey">@UIResources.SettingsPageShareThisKeyLabel</label>
                 <input type="text" class="form-control" name="ShareThisPublicKey" value="@Model.ShareThisPublicKey" />
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <label for="DisqusShortName">@UIResources.SettingsPageDisqusShortNameLabel</label>
                 <input type="text" class="form-control" name="DisqusShortName" value="@Model.DisqusShortName"/>
+            </div>
+            <div class="col-xs-3">
+                <label for="ArticlePrefix">@UIResources.SettingsArticlePrefixLabel</label>
+                <input type="text" class="form-control" name="ArticlePrefix" value="@Model.ArticlePrefix"/>
             </div>
         </div>
     </div>
