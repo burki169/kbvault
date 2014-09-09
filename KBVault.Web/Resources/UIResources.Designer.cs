@@ -61,6 +61,15 @@ namespace KBVault.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analytics.
+        /// </summary>
+        public static string AnalyticsPageTitle {
+            get {
+                return ResourceManager.GetString("AnalyticsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Attachment?.
         /// </summary>
         public static string ArticleAttachmentRemoveConfirmation {
@@ -552,6 +561,15 @@ namespace KBVault.Web.Resources {
         public static string LandingSidebarTagCloudListTitle {
             get {
                 return ResourceManager.GetString("LandingSidebarTagCloudListTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analytics.
+        /// </summary>
+        public static string LeftSideBarAnalyticsTitle {
+            get {
+                return ResourceManager.GetString("LeftSideBarAnalyticsTitle", resourceCulture);
             }
         }
         
