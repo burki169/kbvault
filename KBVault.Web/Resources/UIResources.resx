@@ -447,4 +447,10 @@
   <data name="SettingsArticlePrefixLabel" xml:space="preserve">
     <value>Article Prefix</value>
   </data>
+  <data name="AnalyticsPageTitle" xml:space="preserve">
+    <value>Analytics</value>
+  </data>
+  <data name="LeftSideBarAnalyticsTitle" xml:space="preserve">
+    <value>Analytics</value>
+  </data>
 </root>
