@@ -453,4 +453,7 @@
   <data name="LeftSideBarAnalyticsTitle" xml:space="preserve">
     <value>Analytics</value>
   </data>
+  <data name="SettingsPageBingKeyLabel" xml:space="preserve">
+    <value>Bing API Key</value>
+  </data>
 </root>

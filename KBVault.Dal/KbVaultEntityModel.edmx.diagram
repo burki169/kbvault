@@ -17,7 +17,7 @@
         <AssociationConnector Association="KbVaultModel.FK_Article_Category" />
         <AssociationConnector Association="KbVaultModel.FK_ArticleTag_Article" />
         <AssociationConnector Association="KbVaultModel.FK_Attachment_Article" />
-        <EntityTypeShape EntityType="KbVaultModel.Setting" Width="1.5" PointX="4.4342209214503976" PointY="6.762758675386551" />
+        <EntityTypeShape EntityType="KbVaultModel.Setting" Width="1.5" PointX="11" PointY="3.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

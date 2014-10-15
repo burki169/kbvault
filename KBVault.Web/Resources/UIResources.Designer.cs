@@ -808,6 +808,15 @@ namespace KBVault.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bing API Key.
+        /// </summary>
+        public static string SettingsPageBingKeyLabel {
+            get {
+                return ResourceManager.GetString("SettingsPageBingKeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Name.
         /// </summary>
         public static string SettingsPageCompanyNameLabel {

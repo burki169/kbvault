@@ -112,6 +112,7 @@
           <Property Name="DisqusShortName" Type="nvarchar" MaxLength="150" />
           <Property Name="IndexFileExtensions" Type="varchar" MaxLength="2000" />
           <Property Name="ArticlePrefix" Type="nvarchar" MaxLength="50" />
+          <Property Name="BingApiKey" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -431,6 +432,7 @@
           <Property Type="String" Name="DisqusShortName" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="IndexFileExtensions" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ArticlePrefix" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BingApiKey" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -541,6 +543,7 @@
           <EntitySetMapping Name="Settings">
             <EntityTypeMapping TypeName="KbVaultModel.Setting">
               <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="BingApiKey" ColumnName="BingApiKey" />
                 <ScalarProperty Name="ArticlePrefix" ColumnName="ArticlePrefix" />
                 <ScalarProperty Name="IndexFileExtensions" ColumnName="IndexFileExtensions" />
                 <ScalarProperty Name="DisqusShortName" ColumnName="DisqusShortName" />
