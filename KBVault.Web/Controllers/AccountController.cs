@@ -138,7 +138,7 @@ namespace KBVault.Web.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("MyProfile");
         }
 
         [HttpPost]
