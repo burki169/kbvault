@@ -39,6 +39,7 @@ namespace KBVault.Web.Controllers
                         set.TagLine = model.TagLine;
                         set.IndexFileExtensions = model.IndexFileExtensions;
                         set.ArticlePrefix = model.ArticlePrefix;
+                        set.AnalyticsAccount = model.AnalyticsAccount;
                         db.Settings.Add(set);
                         db.SaveChanges();
                         ShowOperationMessage(UIResources.SettingsPageSaveSuccessfull);

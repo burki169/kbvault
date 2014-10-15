@@ -22,5 +22,6 @@ namespace KBVault.Dal
         public string DisqusShortName { get; set; }
         public string IndexFileExtensions { get; set; }
         public string ArticlePrefix { get; set; }
+        public string AnalyticsAccount { get; set; }
     }
 }

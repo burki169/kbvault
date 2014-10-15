@@ -15,7 +15,7 @@
     <AssemblyName>KBVault.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -63,6 +63,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -528,6 +530,7 @@
     <Content Include="Assets\js\AdminLTE\app.js" />
     <Content Include="Assets\js\AdminLTE\dashboard.js" />
     <Content Include="Assets\js\AdminLTE\demo.js" />
+    <Content Include="Assets\js\analytics\kbtracker.js" />
     <Content Include="Assets\js\frontend.js" />
     <Content Include="Assets\js\jquery.cookie.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />
@@ -837,6 +840,7 @@
     <Content Include="Global.asax" />
     <Content Include="Install\default_kbvault.sql" />
     <Content Include="Install\update-version-0.31.sql" />
+    <Content Include="Install\update-version-0.40.sql" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -986,11 +990,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54607</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51349/</IISUrl>
+          <IISUrl>http://localhost/KBVault.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
