@@ -790,6 +790,24 @@ namespace KBVault.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Google Analytics Account Name.
+        /// </summary>
+        public static string SettingsPageAnalyticsAccount {
+            get {
+                return ResourceManager.GetString("SettingsPageAnalyticsAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analytics API Key.
+        /// </summary>
+        public static string SettingsPageAnalyticsKeyLabel {
+            get {
+                return ResourceManager.GetString("SettingsPageAnalyticsKeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Article Count must be numeric.
         /// </summary>
         public static string SettingsPageArticleCountNumericErrorMessage {
@@ -804,15 +822,6 @@ namespace KBVault.Web.Resources {
         public static string SettingsPageArticlePerCatLabel {
             get {
                 return ResourceManager.GetString("SettingsPageArticlePerCatLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bing API Key.
-        /// </summary>
-        public static string SettingsPageBingKeyLabel {
-            get {
-                return ResourceManager.GetString("SettingsPageBingKeyLabel", resourceCulture);
             }
         }
         

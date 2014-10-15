@@ -63,6 +63,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -528,6 +530,7 @@
     <Content Include="Assets\js\AdminLTE\app.js" />
     <Content Include="Assets\js\AdminLTE\dashboard.js" />
     <Content Include="Assets\js\AdminLTE\demo.js" />
+    <Content Include="Assets\js\analytics\kbtracker.js" />
     <Content Include="Assets\js\frontend.js" />
     <Content Include="Assets\js\jquery.cookie.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />

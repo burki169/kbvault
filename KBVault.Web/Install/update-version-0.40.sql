@@ -1,3 +1,3 @@
 ﻿ALTER TABLE dbo.Settings ADD
-	BingApiKey nvarchar(100) NULL
+	AnalyticsAccount nvarchar(50) NULL
 GO

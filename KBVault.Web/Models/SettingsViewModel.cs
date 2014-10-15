@@ -26,7 +26,8 @@ namespace KBVault.Web.Models
                 this.TagLine = set.TagLine;
                 this.IndexFileExtensions = set.IndexFileExtensions;
                 this.ArticlePrefix = set.ArticlePrefix;
-                this.BingApiKey = set.BingApiKey;
+                this.AnalyticsAccount = set.AnalyticsAccount;
+                
             }
         }
 
@@ -41,6 +42,6 @@ namespace KBVault.Web.Models
         public string IndexFileExtensions { get; set; }
         [Required(ErrorMessageResourceType = typeof(UIResources), ErrorMessageResourceName = "SettingsArticlePrefixRequiredMessage")]
         public string ArticlePrefix { get; set; }
-        public string BingApiKey { get; set; }
+        public string AnalyticsAccount { get; set; }
     }
 }
