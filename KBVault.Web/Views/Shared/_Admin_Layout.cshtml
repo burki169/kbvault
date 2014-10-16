@@ -7,14 +7,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - KBVault</title>
-     
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>    
+    @if (Request.Browser.Browser.Contains("InternetExplorer"))
+     {
+        <meta http-equiv="x-ua-compatible" content="IE=11" >
+     }
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css">    
     @Styles.Render("~/admin/css")       
 </head>
  <body class="skin-blue">
+     
     <header class="header">
-        <a href='@Url.Action("Index","Dashboard")' class="logo">        
+        <a href='@Url.Action("Index", "Dashboard")' class="logo">        
             <img src='@Url.Content("~/Assets/img/vault.png")' width="48" /> KBVault
         </a>
         <nav class="navbar navbar-static-top" role="navigation">
@@ -28,10 +32,10 @@
                         <ul class="dropdown-menu">
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="@Url.Action("MyProfile","Account")" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="@Url.Action("MyProfile", "Account")" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href='@Url.Action("Logout","Account")' class="btn btn-default btn-flat">Sign out</a>
+                                    <a href='@Url.Action("Logout", "Account")' class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -49,7 +53,7 @@
                     {
                     <li>
                         <div>
-                            <a href='@Url.Action("Index","Settings")'>
+                            <a href='@Url.Action("Index", "Settings")'>
                                 <i class="fa fa-gear"></i> <span>@UIResources.LeftSideBarSettings</span>
                             </a>
                         </div>
@@ -57,7 +61,7 @@
                     }
                     <li>
                         <div>
-                            <a href='@Url.Action("Create","Article")'>
+                            <a href='@Url.Action("Create", "Article")'>
                                 <i class="fa fa-pencil"></i> <span>@UIResources.LeftSidebarCreateArticle</span>
                             </a>
                         </div>
@@ -66,7 +70,7 @@
                     {
                     <li>     
                         <div>
-                            <a href='@Url.Action("Create","Category")'>
+                            <a href='@Url.Action("Create", "Category")'>
                                 <i class="fa fa-plus"></i> <span>@UIResources.LeftSidebarCreateCategory</span>
                             </a>
                         </div>                       
@@ -83,11 +87,11 @@
                         @KBVaultHelperFunctions.CreateCategoryMenu()
                         
                     </li>
-                    @if( KBVaultHelperFunctions.IsAdmin(Context.User) )
+                    @if (KBVaultHelperFunctions.IsAdmin(Context.User))
                     {
                     <li>
                         <div>
-                            <a href='@Url.Action("Users","Account")'>
+                            <a href='@Url.Action("Users", "Account")'>
                                 <i class="fa fa-user"></i>
                                 @UIResources.LeftSidebarUserMenuTitle
                             </a>
@@ -98,7 +102,7 @@
                     {
                     <li>
                         <div>
-                            <a href='@Url.Action("List","Tag")'>
+                            <a href='@Url.Action("List", "Tag")'>
                                 <i class="fa fa-tag"></i>
                                 @UIResources.LeftSideBarTagsTitle
                             </a>
@@ -109,7 +113,7 @@
                     {
                     <li>
                         <div>
-                            <a href='@Url.Action("Index","Analytics")'>
+                            <a href='@Url.Action("Index", "Analytics")'>
                                 <i class="fa fa-bar-chart-o"></i>
                                 @UIResources.LeftSideBarAnalyticsTitle
                             </a>
@@ -136,24 +140,19 @@
                     </div>
                 }
                  @if (ViewBag.ShowErrorMessage != null && ViewBag.ShowErrorMessage)
-                {
+                 {
                     <div class="alert alert-danger alert-dismissable">
                         <i class="fa fa-check"></i>
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         @ViewBag.ErrorMessage
                     </div>
-                }
+                 }
                 @RenderBody()
             </section>
         </aside>
     </div>
-
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>     
-    @Scripts.Render("~/bundles/bootstrap")
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-     
+        
+    @Scripts.Render("~/bundles/bootstrap")     
         <script>
             $(document).ready(function () {                
                 @RenderSection("Scripts", required: false)
