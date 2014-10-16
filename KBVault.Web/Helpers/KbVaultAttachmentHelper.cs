@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using KBVault.Dal;
-using KBVault.Web.Resources;
 using NLog;
+using Resources;
 
 namespace KBVault.Web.Helpers
 {

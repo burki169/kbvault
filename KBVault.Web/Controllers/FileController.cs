@@ -7,8 +7,8 @@ using System.Web.Mvc;
 using KBVault.Dal;
 using KBVault.Web.Helpers;
 using KBVault.Web.Models;
-using KBVault.Web.Resources;
 using NLog;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {

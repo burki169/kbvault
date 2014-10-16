@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using KBVault.Dal;
-using KBVault.Web.Resources;
+
+using Resources;
 
 namespace KBVault.Web.Models
 {

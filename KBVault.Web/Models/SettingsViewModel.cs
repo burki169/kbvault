@@ -1,10 +1,11 @@
-﻿using KBVault.Web.Resources;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using KBVault.Dal;
+using Resources;
 
 namespace KBVault.Web.Models
 {
