@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using System.Web.Security;
 using KBVault.Core.MVC.Authorization;
 using KBVault.Web.Models;
-using KBVault.Web.Resources;
+
 using NLog;
 using KBVault.Dal;
 using System.Collections;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {       

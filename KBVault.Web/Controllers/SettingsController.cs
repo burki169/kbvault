@@ -6,7 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using KBVault.Web.Models;
 using KBVault.Dal;
-using KBVault.Web.Resources;
+
+using Resources;
 
 namespace KBVault.Web.Controllers
 {

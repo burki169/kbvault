@@ -9,6 +9,8 @@ namespace KBVault.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/public/js").Include(
+            "~/Assets/js/jquery-2-0-2.js",
+            "~/Assets/js/jquery-ui-1-10-4.js",
             "~/Assets/js/bootstrap.js",
             "~/Assets/js/jquery.cookie.js",
             "~/Assets/js/frontend.js",

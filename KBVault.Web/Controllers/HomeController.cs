@@ -9,7 +9,7 @@ using KBVault.Dal;
 using KBVault.Web.Models;
 using MvcPaging;
 using KBVault.Web.Helpers;
-using KBVault.Web.Resources;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {

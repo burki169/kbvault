@@ -7,7 +7,7 @@ using KBVault.Dal;
 using KBVault.Web.Models;
 using NLog;
 using MvcPaging;
-using KBVault.Web.Resources;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {
