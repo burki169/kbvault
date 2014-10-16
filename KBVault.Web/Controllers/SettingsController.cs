@@ -8,6 +8,7 @@ using KBVault.Web.Models;
 using KBVault.Dal;
 
 using Resources;
+using KBVault.Web.Helpers;
 
 namespace KBVault.Web.Controllers
 {
@@ -41,6 +42,7 @@ namespace KBVault.Web.Controllers
                         set.IndexFileExtensions = model.IndexFileExtensions;
                         set.ArticlePrefix = model.ArticlePrefix;
                         set.AnalyticsAccount = model.AnalyticsAccount;
+                        set.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                         db.Settings.Add(set);
                         db.SaveChanges();
                         ShowOperationMessage(UIResources.SettingsPageSaveSuccessfull);

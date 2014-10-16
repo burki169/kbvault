@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9264489962bb4b3ebc8494dc7aff2d66" Name="Diagram1" ZoomLevel="18">
+      <Diagram DiagramId="9264489962bb4b3ebc8494dc7aff2d66" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="KbVaultModel.ArticleTag" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KbVaultModel.Tag" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="KbVaultModel.FK_ArticleTag_Tag" ManuallyRouted="false" />
@@ -18,6 +18,14 @@
         <AssociationConnector Association="KbVaultModel.FK_ArticleTag_Article" />
         <AssociationConnector Association="KbVaultModel.FK_Attachment_Article" />
         <EntityTypeShape EntityType="KbVaultModel.Setting" Width="1.5" PointX="1.4318013328275649" PointY="10.124910106009295" />
+        <EntityTypeShape EntityType="KbVaultModel.Activity" Width="1.5" PointX="12.25" PointY="5.5" />
+        <AssociationConnector Association="KbVaultModel.FK_Activities_KbUser" />
+        <AssociationConnector Association="KbVaultModel.FK_ArticleTag_KbUser" />
+        <AssociationConnector Association="KbVaultModel.FK_Attachment_KbUser" />
+        <AssociationConnector Association="KbVaultModel.FK_Category_KbUser" />
+        <AssociationConnector Association="KbVaultModel.FK_KbUser_KbUser" />
+        <AssociationConnector Association="KbVaultModel.FK_Settings_KbUser" />
+        <AssociationConnector Association="KbVaultModel.FK_Tag_KbUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -109,17 +109,7 @@
                         </div>
                     </li>
                     }
-                    @if (KBVaultHelperFunctions.IsAdmin(Context.User) || KBVaultHelperFunctions.IsManager(Context.User))
-                    {
-                    <li>
-                        <div>
-                            <a href='@Url.Action("Index", "Analytics")'>
-                                <i class="fa fa-bar-chart-o"></i>
-                                @UIResources.LeftSideBarAnalyticsTitle
-                            </a>
-                        </div>
-                    </li>
-                    }
+                    
                 </ul>
             </section>
         </aside>

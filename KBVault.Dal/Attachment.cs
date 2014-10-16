@@ -23,7 +23,9 @@ namespace KBVault.Dal
         public string Hash { get; set; }
         public Nullable<System.DateTime> HashTime { get; set; }
         public string MimeType { get; set; }
+        public long Author { get; set; }
     
         public virtual Article Article { get; set; }
+        public virtual KbUser KbUser { get; set; }
     }
 }

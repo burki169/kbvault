@@ -12,18 +12,14 @@ namespace KBVault.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class Activity
     {
-        public Tag()
-        {
-            this.ArticleTags = new HashSet<ArticleTag>();
-        }
-    
         public long Id { get; set; }
-        public string Name { get; set; }
-        public long Author { get; set; }
+        public long UserId { get; set; }
+        public System.DateTime ActivityDate { get; set; }
+        public string Operation { get; set; }
+        public string Information { get; set; }
     
-        public virtual ICollection<ArticleTag> ArticleTags { get; set; }
         public virtual KbUser KbUser { get; set; }
     }
 }

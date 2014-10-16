@@ -13,7 +13,7 @@ namespace KBVault.Web.Helpers
     {
         private static Logger Log = LogManager.GetCurrentClassLogger();
 
-        public static void RemoveAttachment(string hash)
+        public static void RemoveAttachment(string hash,long currentUserId)
         {
             try
             {
@@ -23,6 +23,7 @@ namespace KBVault.Web.Helpers
                     if (attachment == null)
                         throw new ArgumentNullException(ErrorMessages.AttachmentNotFound);
                     string localPath = Path.Combine( HttpContext.Current.Server.MapPath(attachment.Path), attachment.FileName);
+                    attachment.Author = currentUserId;
                     db.Attachments.Remove(attachment);
                     db.SaveChanges();
                     System.IO.File.Delete(localPath);

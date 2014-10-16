@@ -35,6 +35,7 @@ namespace KBVault.Dal
         public DbSet<Attachment> Attachments { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<Activity> Activities { get; set; }
     
         public virtual int AssignTagsToArticle(Nullable<long> articleId, string tags)
         {
