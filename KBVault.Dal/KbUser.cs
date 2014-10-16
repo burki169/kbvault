@@ -17,6 +17,13 @@ namespace KBVault.Dal
         public KbUser()
         {
             this.Articles = new HashSet<Article>();
+            this.Activities = new HashSet<Activity>();
+            this.ArticleTags = new HashSet<ArticleTag>();
+            this.Attachments = new HashSet<Attachment>();
+            this.Categories = new HashSet<Category>();
+            this.KbUser1 = new HashSet<KbUser>();
+            this.Settings = new HashSet<Setting>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public long Id { get; set; }
@@ -26,7 +33,16 @@ namespace KBVault.Dal
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Role { get; set; }
+        public long Author { get; set; }
     
         public virtual ICollection<Article> Articles { get; set; }
+        public virtual ICollection<Activity> Activities { get; set; }
+        public virtual ICollection<ArticleTag> ArticleTags { get; set; }
+        public virtual ICollection<Attachment> Attachments { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<KbUser> KbUser1 { get; set; }
+        public virtual KbUser KbUser2 { get; set; }
+        public virtual ICollection<Setting> Settings { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

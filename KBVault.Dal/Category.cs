@@ -25,9 +25,11 @@ namespace KBVault.Dal
         public bool IsHot { get; set; }
         public Nullable<int> Parent { get; set; }
         public string SefName { get; set; }
+        public long Author { get; set; }
     
         public virtual ICollection<Category> ChildCategories { get; set; }
         public virtual Category ParentCategory { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
+        public virtual KbUser KbUser { get; set; }
     }
 }

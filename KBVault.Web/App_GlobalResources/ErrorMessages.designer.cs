@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ArticleNotFound.
+        ///   Looks up a localized string similar to Sorry but article is not here anymore :(.
         /// </summary>
         internal static string ArticleNotFound {
             get {
