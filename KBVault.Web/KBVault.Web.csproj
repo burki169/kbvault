@@ -494,6 +494,7 @@
     <Content Include="Assets\css\jquery.smartmenus.bootstrap.css" />
     <Content Include="Assets\css\tagit.ui-zendesk.css" />
     <Content Include="Assets\css\uploadfile.css" />
+    <Content Include="Assets\css\xeditable.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\fonts\ionicons.svg" />
@@ -532,6 +533,8 @@
     <Content Include="Assets\js\AdminLTE\demo.js" />
     <Content Include="Assets\js\analytics\kbtracker.js" />
     <Content Include="Assets\js\frontend.js" />
+    <Content Include="Assets\js\jquery-2-0-2.js" />
+    <Content Include="Assets\js\jquery-ui-1-10-4.js" />
     <Content Include="Assets\js\jquery.cookie.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.js" />
@@ -837,6 +840,7 @@
     <Content Include="Assets\js\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Assets\js\tag-it.js" />
     <Content Include="Assets\css\site.css" />
+    <Content Include="Assets\js\xeditable.js" />
     <Content Include="Global.asax" />
     <Content Include="Install\default_kbvault.sql" />
     <Content Include="Install\update-version-0.31.sql" />
