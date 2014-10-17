@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = UIResources.ActivitiesPageTitle;
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section ContentHeader{
+    <h1>
+        @ViewBag.Title        
+    </h1>    
+}
+
+@section Scripts{
+    $(document).ready(function() {
+        $('#activity-list').dataTable( {
+            "processing": true,
+            "serverSide": true,      
+            "sDom": '<"top"r>t<"bottom"ip><"clear">',
+            "searching" : false,
+            "ordering":false,
+            "dataSrc": "Data",
+            "ajax": "@Url.Action("Get")",            
+            "language": {                    
+                "zeroRecords": "@UIResources.ActivitiesPageZeroRecords",
+                "info": "@String.Format(UIResources.ActivitiesPageInfoText,"_PAGE_","_PAGES_")",
+                "infoEmpty": "@UIResources.ActivitiesPageInfoEmptyText",
+                "paginate" : {
+                    "first" :"@UIResources.ActivitiesPagePaginateFirst",
+                    "last" :"@UIResources.ActivitiesPagePaginateLast",
+                    "next" :"@UIResources.ActivitiesPagePaginateNext",
+                    "previous" :"@UIResources.ActivitiesPagePaginatePrevious"
+                }
+            }       
+        } );
+    } );
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body table-responsive">
+                <table class="table table-striped table-bordered" width="100%" cellspacing="0" id="activity-list">
+                <thead>
+                    <tr>
+                        <th>@UIResources.ActivitiesPageDateColumnTitle</th>
+                        <th>@UIResources.ActivitiesPageOperationColumnTitle</th>
+                        <th>@UIResources.ActivitiesPageInformationColumnTitle</th>
+                        <th>@UIResources.ActivitiesPageUserColumnTitle</th>
+                    </tr>
+                </thead> 
+                
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -168,6 +168,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Binders\DatetimeModelBinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Helpers\KBVaultHelperFunctions.cs" />
     <Compile Include="Helpers\KbVaultHtmlHelperExtensions.cs" />
     <Compile Include="Helpers\KbVaultLuceneHelper.cs" />
+    <Compile Include="Models\ActivityViewModel.cs" />
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\AttachmentViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
@@ -509,6 +511,23 @@
     <Content Include="Assets\css\tagit.ui-zendesk.css" />
     <Content Include="Assets\css\uploadfile.css" />
     <Content Include="Assets\css\xeditable.css" />
+    <Content Include="Assets\datatables\css\jquery.datatables.bootstrap.css" />
+    <Content Include="Assets\datatables\css\jquery.dataTables.css" />
+    <Content Include="Assets\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Assets\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Assets\datatables\images\back_disabled.png" />
+    <Content Include="Assets\datatables\images\back_enabled.png" />
+    <Content Include="Assets\datatables\images\back_enabled_hover.png" />
+    <Content Include="Assets\datatables\images\favicon.ico" />
+    <Content Include="Assets\datatables\images\forward_disabled.png" />
+    <Content Include="Assets\datatables\images\forward_enabled.png" />
+    <Content Include="Assets\datatables\images\forward_enabled_hover.png" />
+    <Content Include="Assets\datatables\images\sort_asc.png" />
+    <Content Include="Assets\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Assets\datatables\images\sort_both.png" />
+    <Content Include="Assets\datatables\images\sort_desc.png" />
+    <Content Include="Assets\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Assets\datatables\js\jquery.dataTables.js" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\fonts\ionicons.svg" />
@@ -924,6 +943,7 @@
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_config.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
+    <Content Include="Assets\datatables\images\Sorting icons.psd" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -962,8 +982,8 @@
     <Content Include="Views\Home\Tags.cshtml" />
     <Content Include="Views\Search\Do.cshtml" />
     <None Include="Properties\PublishProfiles\LocalIIS-Deployment.pubxml" />
-    <Content Include="Views\Analytics\Index.cshtml" />
     <Content Include="Views\Home\ArticleNotFound.cshtml" />
+    <Content Include="Views\Activity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

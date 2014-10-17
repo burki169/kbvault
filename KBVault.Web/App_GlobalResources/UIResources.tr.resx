@@ -450,4 +450,40 @@
   <data name="SettingsPageAnalyticsAccount" xml:space="preserve">
     <value>Google Analytics Hesap İsmi</value>
   </data>
+  <data name="ActivitiesPageTitle" xml:space="preserve">
+    <value>Kullanıcı işlemleri</value>
+  </data>
+  <data name="ActivitiesPageDateColumnTitle" xml:space="preserve">
+    <value>İşlem Tarihi</value>
+  </data>
+  <data name="ActivitiesPageInformationColumnTitle" xml:space="preserve">
+    <value>Bilgi Mesajı</value>
+  </data>
+  <data name="ActivitiesPageOperationColumnTitle" xml:space="preserve">
+    <value>İşlem</value>
+  </data>
+  <data name="ActivitiesPageUserColumnTitle" xml:space="preserve">
+    <value>Kullanıcı</value>
+  </data>
+  <data name="ActivitiesPageInfoEmptyText" xml:space="preserve">
+    <value>Kayıt bulunamadı.</value>
+  </data>
+  <data name="ActivitiesPageInfoText" xml:space="preserve">
+    <value>Sayfa : {0} /{1}</value>
+  </data>
+  <data name="ActivitiesPagePaginateFirst" xml:space="preserve">
+    <value>İlk</value>
+  </data>
+  <data name="ActivitiesPagePaginateLast" xml:space="preserve">
+    <value>Son</value>
+  </data>
+  <data name="ActivitiesPagePaginateNext" xml:space="preserve">
+    <value>Sonraki</value>
+  </data>
+  <data name="ActivitiesPagePaginatePrevious" xml:space="preserve">
+    <value>Önceki</value>
+  </data>
+  <data name="ActivitiesPageZeroRecords" xml:space="preserve">
+    <value>Hiçbirşey bulamadık :(</value>
+  </data>
 </root>

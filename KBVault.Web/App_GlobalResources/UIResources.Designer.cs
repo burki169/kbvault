@@ -61,6 +61,114 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activity Date.
+        /// </summary>
+        internal static string ActivitiesPageDateColumnTitle {
+            get {
+                return ResourceManager.GetString("ActivitiesPageDateColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No records available.
+        /// </summary>
+        internal static string ActivitiesPageInfoEmptyText {
+            get {
+                return ResourceManager.GetString("ActivitiesPageInfoEmptyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string ActivitiesPageInformationColumnTitle {
+            get {
+                return ResourceManager.GetString("ActivitiesPageInformationColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Showing page {0} of {1}.
+        /// </summary>
+        internal static string ActivitiesPageInfoText {
+            get {
+                return ResourceManager.GetString("ActivitiesPageInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation.
+        /// </summary>
+        internal static string ActivitiesPageOperationColumnTitle {
+            get {
+                return ResourceManager.GetString("ActivitiesPageOperationColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First.
+        /// </summary>
+        internal static string ActivitiesPagePaginateFirst {
+            get {
+                return ResourceManager.GetString("ActivitiesPagePaginateFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last.
+        /// </summary>
+        internal static string ActivitiesPagePaginateLast {
+            get {
+                return ResourceManager.GetString("ActivitiesPagePaginateLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        internal static string ActivitiesPagePaginateNext {
+            get {
+                return ResourceManager.GetString("ActivitiesPagePaginateNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous.
+        /// </summary>
+        internal static string ActivitiesPagePaginatePrevious {
+            get {
+                return ResourceManager.GetString("ActivitiesPagePaginatePrevious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        internal static string ActivitiesPageTitle {
+            get {
+                return ResourceManager.GetString("ActivitiesPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        internal static string ActivitiesPageUserColumnTitle {
+            get {
+                return ResourceManager.GetString("ActivitiesPageUserColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nothing found sorry :(.
+        /// </summary>
+        internal static string ActivitiesPageZeroRecords {
+            get {
+                return ResourceManager.GetString("ActivitiesPageZeroRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Attachment?.
         /// </summary>
         internal static string ArticleAttachmentRemoveConfirmation {
