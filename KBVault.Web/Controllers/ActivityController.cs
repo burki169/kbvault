@@ -20,13 +20,13 @@ namespace KBVault.Web.Controllers
         }
 
         [Authorize(Roles = "Admin,Manager")]
-        //[HttpPost]
-        public JsonResult Get(int id = 1)
+        [HttpPost]
+        public JsonResult Get(ActivityDataTablesPostModel model)
         {
             try
             {
-                int length = Convert.ToInt32(Request.Params["length"]);
-                int page = Convert.ToInt32(Request.Params["start"]) / length;                                
+                int length = model.length;
+                int page = model.start / length;                                
                 JsonOperationResponse result = new JsonOperationResponse();
                 int recordCount = 0;
                 using (var db = new KbVaultEntities())
@@ -39,14 +39,14 @@ namespace KBVault.Web.Controllers
                                     .Take(length).AsEnumerable()
                                     .Select(a => new ActivityViewModel
                                     {
-                                        ActivityDate = a.ActivityDate.ToString("dd/MM/yyyy hh:mm"),
+                                        ActivityDate = a.ActivityDate.ToString("dd/MM/yyyy H:mm"),
                                         Operation = a.Operation,
                                         Text =  a.Information,
                                         User = a.KbUser.Name + " " + a.KbUser.LastName
                                     }).ToList();                                    
                     result.Successful = true;
                     result.Data = activities;
-                    return Json(new { recordsFiltered = recordCount,recordsTotal = recordCount, Successfull = result.Successful, ErrorMessage = result.ErrorMessage, data = ((List<ActivityViewModel>)result.Data).Select(aw => new[] { aw.ActivityDate, aw.Operation, aw.Text, aw.User }) }, JsonRequestBehavior.AllowGet);
+                    return Json(new { recordsFiltered = recordCount,recordsTotal = recordCount, Successfull = result.Successful, ErrorMessage = result.ErrorMessage, data = ((List<ActivityViewModel>)result.Data).Select(aw => new[] { aw.ActivityDate, aw.Operation, aw.Text, aw.User }) }, JsonRequestBehavior.DenyGet);
                 }
             }
             catch (Exception ex)

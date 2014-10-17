@@ -17,8 +17,10 @@
             "sDom": '<"top"r>t<"bottom"ip><"clear">',
             "searching" : false,
             "ordering":false,
+            "iDisplayLength": 20,
+            "lengthChange": false,
             "dataSrc": "Data",
-            "ajax": "@Url.Action("Get")",            
+            "ajax": { url: "@Url.Action("Get")", type: 'POST' },
             "language": {                    
                 "zeroRecords": "@UIResources.ActivitiesPageZeroRecords",
                 "info": "@String.Format(UIResources.ActivitiesPageInfoText,"_PAGE_","_PAGES_")",

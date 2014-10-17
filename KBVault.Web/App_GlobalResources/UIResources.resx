@@ -489,4 +489,7 @@
   <data name="ActivitiesPageZeroRecords" xml:space="preserve">
     <value>Nothing found sorry :(</value>
   </data>
+  <data name="LeftSideBarActivitiesTitle" xml:space="preserve">
+    <value>User Activities</value>
+  </data>
 </root>

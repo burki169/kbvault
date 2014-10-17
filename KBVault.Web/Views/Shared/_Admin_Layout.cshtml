@@ -4,15 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>@ViewBag.Title - KBVault</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - KBVault</title>
+    
     @if (Request.Browser.Browser.Contains("InternetExplorer"))
      {
         <meta http-equiv="x-ua-compatible" content="IE=11" >
      }
-    
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css">    
+        
+    @{ Html.RenderPartial("GoogleFonts"); }     
     @Styles.Render("~/admin/css")       
 </head>
  <body class="skin-blue">
@@ -105,6 +106,17 @@
                             <a href='@Url.Action("List", "Tag")'>
                                 <i class="fa fa-tag"></i>
                                 @UIResources.LeftSideBarTagsTitle
+                            </a>
+                        </div>
+                    </li>
+                    }
+                    @if (KBVaultHelperFunctions.IsAdmin(Context.User))
+                    {
+                    <li>
+                        <div>
+                            <a href='@Url.Action("Index", "Activity")'>
+                                <i class="fa fa-desktop"></i>
+                                @UIResources.LeftSideBarActivitiesTitle
                             </a>
                         </div>
                     </li>

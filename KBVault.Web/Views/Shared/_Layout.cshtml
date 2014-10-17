@@ -15,8 +15,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
      
-    @Styles.Render("~/public/css") 
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css">
+    @{ Html.RenderPartial("GoogleFonts"); }
+    @Styles.Render("~/public/css")     
     @RenderSection("CssHeader", required: false)
     
     <script type="text/javascript">

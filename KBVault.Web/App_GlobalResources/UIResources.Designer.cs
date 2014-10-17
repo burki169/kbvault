@@ -664,6 +664,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User Activities.
+        /// </summary>
+        internal static string LeftSideBarActivitiesTitle {
+            get {
+                return ResourceManager.GetString("LeftSideBarActivitiesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Categories.
         /// </summary>
         internal static string LeftSidebarCategoryListTitle {

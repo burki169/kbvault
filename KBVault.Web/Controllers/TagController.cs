@@ -16,7 +16,7 @@ namespace KBVault.Web.Controllers
     [Authorize(Roles="Admin,Manager")]
     public class TagController : KbVaultAdminController
     {
-        private Logger Log = LogManager.GetCurrentClassLogger();
+        
         private int PageSize = 45;
 
         [HttpPost]

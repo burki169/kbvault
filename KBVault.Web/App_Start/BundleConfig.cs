@@ -19,14 +19,16 @@ namespace KBVault.Web
             "~/Assets/js/smartmenus/jquery.smartmenus.js"
                 ));
 
+            
+
             bundles.Add( new StyleBundle("~/public/css").Include(
                 "~/Assets/css/bootstrap.css",
                 "~/Assets/css/font-awesome.css",
                 "~/Assets/css/ionicons.css",
                 "~/Assets/css/site.css",
-                "~/Assets/css/jquery.smartmenus.bootstrap.css"
-                ));
-            
+                "~/Assets/css/jquery.smartmenus.bootstrap.css",
+                "~/Assets/css/jquery-ui-redmond.css"
+                ));                                               
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Assets/js/jquery-2-0-2.js",
@@ -44,6 +46,7 @@ namespace KBVault.Web
             
             bundles.Add(new StyleBundle("~/admin/css").Include(
                 "~/Assets/css/bootstrap.css",
+                "~/Assets/css/jquery-ui-redmond.css",
                 "~/Assets/css/font-awesome.css",
                 "~/Assets/css/AdminLTE.css",
                 "~/Assets/css/ionicons.css",

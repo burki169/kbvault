@@ -486,4 +486,7 @@
   <data name="ActivitiesPageZeroRecords" xml:space="preserve">
     <value>Hiçbirşey bulamadık :(</value>
   </data>
+  <data name="LeftSideBarActivitiesTitle" xml:space="preserve">
+    <value>Kullanıcı İşlemleri</value>
+  </data>
 </root>

@@ -133,10 +133,11 @@ namespace KBVault.Web.Helpers
                 Term term = new Term("Id", "KB-" + article.Id.ToString());
                 TermQuery q = new TermQuery(term);
                 TopDocs docs = searcher.Search(q, 10);
+                /*
                 if (docs.ScoreDocs.Count() == 1)
                 {
-                    int i = 0;
-                }
+                    
+                }*/
                 writer.DeleteDocuments(term);
                 writer.Optimize();
                 writer.Commit();
