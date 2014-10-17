@@ -7,8 +7,8 @@ using System.Web.Mvc;
 using KBVault.Dal;
 using KBVault.Web.Helpers;
 using KBVault.Web.Models;
-using KBVault.Web.Resources;
 using NLog;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {
@@ -25,8 +25,9 @@ namespace KBVault.Web.Controllers
             result.Successful = false;
             try
             {
-                Attachment at = new Attachment() { Id = Convert.ToInt64(id) };                
-                KbVaultAttachmentHelper.RemoveAttachment(id);
+                Attachment at = new Attachment() { Id = Convert.ToInt64(id) };  
+                at.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                KbVaultAttachmentHelper.RemoveAttachment(id,KBVaultHelperFunctions.UserAsKbUser(User).Id);
                 KbVaultLuceneHelper.RemoveAttachmentFromIndex(at);
                 result.Successful = true;
                 return Json(result);
@@ -55,6 +56,7 @@ namespace KBVault.Web.Controllers
                     long articleId = Convert.ToInt64(Request.Params["ArticleId"]);
                     HttpPostedFileBase attachedFile = Request.Files[0];
                     Attachment attachment = KbVaultAttachmentHelper.SaveAttachment(articleId, attachedFile);
+                    attachment.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                     result.Successful = true;
                     result.Data = new AttachmentViewModel(attachment);
                     using (KbVaultEntities db = new KbVaultEntities())

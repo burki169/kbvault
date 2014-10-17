@@ -137,13 +137,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\CommonResources.Designer.cs">
+      <DependentUpon>CommonResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\CommonResources.tr.designer.cs">
+      <DependentUpon>CommonResources.tr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\ErrorMessages.tr.designer.cs">
+      <DependentUpon>ErrorMessages.tr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\ErrorMessages.designer.cs">
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\UIResources.Designer.cs">
+      <DependentUpon>UIResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Binders\DatetimeModelBinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AnalyticsController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -162,6 +187,7 @@
     <Compile Include="Helpers\KBVaultHelperFunctions.cs" />
     <Compile Include="Helpers\KbVaultHtmlHelperExtensions.cs" />
     <Compile Include="Helpers\KbVaultLuceneHelper.cs" />
+    <Compile Include="Models\ActivityViewModel.cs" />
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\AttachmentViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
@@ -174,20 +200,10 @@
     <Compile Include="Models\Public\SearchFormViewModel.cs" />
     <Compile Include="Models\SettingsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\CommonResources.Designer.cs">
+    <Compile Include="App_GlobalResources\UIResources.tr.Designer.cs">
+      <DependentUpon>UIResources.tr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CommonResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\ErrorMessages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ErrorMessages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\UIResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UIResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -495,6 +511,23 @@
     <Content Include="Assets\css\tagit.ui-zendesk.css" />
     <Content Include="Assets\css\uploadfile.css" />
     <Content Include="Assets\css\xeditable.css" />
+    <Content Include="Assets\datatables\css\jquery.datatables.bootstrap.css" />
+    <Content Include="Assets\datatables\css\jquery.dataTables.css" />
+    <Content Include="Assets\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Assets\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Assets\datatables\images\back_disabled.png" />
+    <Content Include="Assets\datatables\images\back_enabled.png" />
+    <Content Include="Assets\datatables\images\back_enabled_hover.png" />
+    <Content Include="Assets\datatables\images\favicon.ico" />
+    <Content Include="Assets\datatables\images\forward_disabled.png" />
+    <Content Include="Assets\datatables\images\forward_enabled.png" />
+    <Content Include="Assets\datatables\images\forward_enabled_hover.png" />
+    <Content Include="Assets\datatables\images\sort_asc.png" />
+    <Content Include="Assets\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Assets\datatables\images\sort_both.png" />
+    <Content Include="Assets\datatables\images\sort_desc.png" />
+    <Content Include="Assets\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Assets\datatables\js\jquery.dataTables.js" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\fonts\ionicons.svg" />
@@ -910,6 +943,7 @@
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_config.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
+    <Content Include="Assets\datatables\images\Sorting icons.psd" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -948,7 +982,8 @@
     <Content Include="Views\Home\Tags.cshtml" />
     <Content Include="Views\Search\Do.cshtml" />
     <None Include="Properties\PublishProfiles\LocalIIS-Deployment.pubxml" />
-    <Content Include="Views\Analytics\Index.cshtml" />
+    <Content Include="Views\Home\ArticleNotFound.cshtml" />
+    <Content Include="Views\Activity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -969,17 +1004,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\CommonResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ErrorMessages.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\UIResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+    <Content Include="App_GlobalResources\UIResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>UIResources.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\CommonResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ErrorMessages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\CommonResources.tr.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CommonResources.tr.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ErrorMessages.tr.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages.tr.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="App_GlobalResources\UIResources.tr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UIResources.tr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

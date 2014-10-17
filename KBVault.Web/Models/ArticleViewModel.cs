@@ -5,7 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
-using KBVault.Web.Resources;
+
+using Resources;
 
 namespace KBVault.Web.Models
 {
@@ -24,9 +25,9 @@ namespace KBVault.Web.Models
         public DateTime Edited { get; set; }
         public bool IsDraft { get; set; }
         public string Tags { get; set; }
-        [Required(ErrorMessageResourceType = typeof(KBVault.Web.Resources.UIResources), ErrorMessageResourceName = "ArticleCreatePagePublishStartRequiredMessage")]
+        [Required(ErrorMessageResourceType = typeof(UIResources), ErrorMessageResourceName = "ArticleCreatePagePublishStartRequiredMessage")]
         public DateTime PublishStartDate { get; set; }
-        [Required(ErrorMessageResourceType = typeof(KBVault.Web.Resources.UIResources), ErrorMessageResourceName = "ArticleCreatePagePublishEndRequiredMessage")]
+        [Required(ErrorMessageResourceType = typeof(UIResources), ErrorMessageResourceName = "ArticleCreatePagePublishEndRequiredMessage")]
         public DateTime PublishEndDate { get; set; }
         [Required(ErrorMessageResourceType = typeof(UIResources), ErrorMessageResourceName = "ArticleSefNameIsRequired")]
         public string SefName { get; set; }

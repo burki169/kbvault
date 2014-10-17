@@ -7,7 +7,9 @@ using KBVault.Dal;
 using NLog;
 using MvcPaging;
 using KBVault.Web.Models;
-using KBVault.Web.Resources;
+
+using Resources;
+using KBVault.Web.Helpers;
 
 namespace KBVault.Web.Controllers
 {
@@ -29,6 +31,7 @@ namespace KBVault.Web.Controllers
                     Tag tag = db.Tags.First(t => t.Id == tagId);
                     if (tag != null)
                     {
+                        tag.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                         tag.Name = value;
                         db.SaveChanges();
                         result.Successful = true;
@@ -59,6 +62,7 @@ namespace KBVault.Web.Controllers
                     Tag tag = db.Tags.First(t => t.Id == id);
                     if (tag != null)
                     {
+                        tag.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                         db.Tags.Remove(tag);
                         db.RemoveTagFromArticles(id);
                         db.SaveChanges();

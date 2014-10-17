@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArticleNotFound" xml:space="preserve">
-    <value>ArticleNotFound</value>
+    <value>Makale bulunamadı</value>
   </data>
   <data name="AttachmentNotFound" xml:space="preserve">
-    <value>Attachment not found.</value>
+    <value>Ek bulunamadı</value>
   </data>
   <data name="CategoryIsNotEmpty" xml:space="preserve">
-    <value>Category Is Not Empty! Remove or move articles before deleting a category</value>
+    <value>Kategori boş değil. Kategori silmek için, kategoride makale olmadığından emin olun. articles before deleting a category</value>
   </data>
   <data name="CategoryNameIsRequired" xml:space="preserve">
-    <value>Category Name Is Required.</value>
+    <value>Kategori ismi gereklidir</value>
   </data>
   <data name="CategoryNotFound" xml:space="preserve">
-    <value>Category Not Found!</value>
+    <value>Kategori bulunamadı</value>
   </data>
   <data name="CategoryRemovedSuccessfully" xml:space="preserve">
-    <value>{0} removed successfully.</value>
+    <value>{0} kategorisi başarıyla silindi</value>
   </data>
   <data name="FileUploadArticleNotFound" xml:space="preserve">
-    <value>Article Not Found</value>
+    <value>Makale bulunamadı</value>
   </data>
   <data name="FileUploadTooManyFiles" xml:space="preserve">
-    <value>Only one file can be uploaded</value>
+    <value>Eş zamanlı olarak sadece bir dosya gönderilebilir.</value>
   </data>
   <data name="LoginFailed" xml:space="preserve">
-    <value>Invalid username or password.</value>
+    <value>Hatalı parola ya da geçersiz kullanıcı adı</value>
   </data>
   <data name="PasswordsDoNotMatch" xml:space="preserve">
-    <value>New Passwords must be equal</value>
+    <value>Yeni parolalar aynı olmalıdır.</value>
   </data>
   <data name="TagNotFound" xml:space="preserve">
-    <value>Tag Not Found!</value>
+    <value>Etiket bulunamadı</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
-    <value>User Not Found!</value>
+    <value>Kullanıcı bulunamadı</value>
   </data>
   <data name="WrongPassword" xml:space="preserve">
-    <value>Password is not valid.</value>
+    <value>Parola geçerli değil</value>
   </data>
 </root>

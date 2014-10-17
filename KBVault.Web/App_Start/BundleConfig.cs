@@ -9,6 +9,8 @@ namespace KBVault.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/public/js").Include(
+            "~/Assets/js/jquery-2-0-2.js",
+            "~/Assets/js/jquery-ui-1-10-4.js",
             "~/Assets/js/bootstrap.js",
             "~/Assets/js/jquery.cookie.js",
             "~/Assets/js/frontend.js",
@@ -34,6 +36,7 @@ namespace KBVault.Web
                 "~/Assets/js/AdminLTE/app.js",
                 "~/Assets/ckeditor/ckeditor.js",
                 "~/Assets/js/tag-it.js",
+                "~/Assets/datatables/js/jquery.dataTables.js",
                 "~/Assets/js/jquery.uploadfile.js",
                 "~/Assets/js/kbvault.js"
                 ));
@@ -47,7 +50,10 @@ namespace KBVault.Web
                 "~/Assets/css/jquery.tagit.css",
                 "~/Assets/css/tagit.ui-zendesk.css",
                 "~/Assets/css/uploadfile.css",
-                "~/Assets/css/xeditable.css"                
+                "~/Assets/css/xeditable.css",
+                "~/Assets/datatables/css/jquery.dataTables.css",
+                "~/Assets/datatables/css/jquery.dataTables_themeroller.css",
+                "~/Assets/datatables/css/jquery.datatables.bootstrap.css"
                 ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

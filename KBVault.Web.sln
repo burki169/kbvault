@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBVault.Dal", "KBVault.Dal\KBVault.Dal.csproj", "{B2FFBB76-713E-40DB-B134-40DA57357797}"
 EndProject
 Global
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = 3f04992c-50f7-4b54-bd28-9eb23e5c0f1f
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

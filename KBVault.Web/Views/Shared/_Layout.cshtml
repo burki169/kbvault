@@ -73,9 +73,7 @@
     <div id="footer">
         Built by KbVault
     </div>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        
     @Scripts.Render("~/public/js")
     @RenderSection("scripts", required: false)
     
@@ -93,13 +91,6 @@
             ga('send', 'pageview');
         </script>
     }
-
-    <script>
-        $(function () {
-            $("a").bind("click", function () { alert("hello 1"); });
-            $("a").bind("click", function () { alert("hello 2"); });
-            });
-
-    </script>
+    
 </body>
 </html>

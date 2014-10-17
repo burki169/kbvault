@@ -7,8 +7,9 @@ using System.Web.Mvc;
 using KBVault.Dal;
 using KBVault.Web.Helpers;
 using KBVault.Web.Models;
-using KBVault.Web.Resources;
+
 using NLog;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {
@@ -31,8 +32,9 @@ namespace KBVault.Web.Controllers
                         throw new Exception(ErrorMessages.ArticleNotFound);
                     foreach (Attachment attach in article.Attachments)
                     {
-                        KbVaultAttachmentHelper.RemoveAttachment(attach.Hash);                        
+                        KbVaultAttachmentHelper.RemoveAttachment(attach.Hash,KBVaultHelperFunctions.UserAsKbUser(User).Id);                        
                     }
+                    article.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                     db.Articles.Remove(article);
                     db.SaveChanges();
                     result.Data = id;
