@@ -27,7 +27,11 @@ namespace KBVault.Dal
 
             foreach (ObjectStateEntry entry in objectStateEntryList)
             {
-                if (!entry.IsRelationship)
+                var props = entry.GetModifiedProperties();
+                string modifiedProperty = props.FirstOrDefault();
+                bool isUserViewAction = props.Count() == 1 && modifiedProperty == "Views";
+                // if only 
+                if (!entry.IsRelationship && !isUserViewAction)
                 {
                     string operationDescription = "";
 
@@ -89,7 +93,7 @@ namespace KBVault.Dal
                     procParams.Add( new SqlParameter("2",act.ActivityDate) );
                     procParams.Add( new SqlParameter("3",act.Operation ) );
                     procParams.Add( new SqlParameter("4",act.Information ) );
-
+                    
                     this.Database.ExecuteSqlCommand( 
                         "Insert Into Activities(UserId,ActivityDate,Operation,Information) " +
                         "Values(@1,@2,@3,@4 )", 

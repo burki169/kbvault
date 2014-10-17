@@ -99,7 +99,7 @@ namespace KBVault.Web.Controllers
                     Article article = db.PublishedArticles().FirstOrDefault(a => a.SefName == id);                                  
                     if (article != null)
                     {
-                        article.Views++;
+                        article.Views++;                        
                         db.SaveChanges();
                         DateTime today = DateTime.Now.Date;
                         ViewBag.SimilarArticles = db.GetSimilarArticles((int)article.Id)
