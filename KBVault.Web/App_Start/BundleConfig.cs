@@ -8,28 +8,31 @@ namespace KBVault.Web
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            
-            bundles.Add(new ScriptBundle("~/public/js").Include(
-            "~/Assets/js/jquery/jquery-2-0-2.js",
-            "~/Assets/js/jquery/jquery-ui-1-10-4.js",
-            "~/Assets/js/bootstrap/bootstrap.js",
-            "~/Assets/js/plugins/cookie/jquery.cookie.js",
-            "~/Assets/js/frontend.js",
-            "~/Assets/js/smartmenus/jquery.smartmenus.keyboard.js",
-            "~/Assets/js/smartmenus/jquery.smartmenus.bootstrap.js",
-            "~/Assets/js/smartmenus/jquery.smartmenus.js"
-                ));
+
+            CssRewriteUrlTransform relativeCssTrans = new CssRewriteUrlTransform();
+
+            bundles.Add(new ScriptBundle("~/public/js")
+                .Include("~/Assets/js/jquery/jquery-2-0-2.js",relativeCssTrans )
+                .Include("~/Assets/js/jquery/jquery-ui-1-10-4.js",relativeCssTrans)
+                .Include("~/Assets/js/bootstrap/bootstrap.js",relativeCssTrans)
+                .Include("~/Assets/js/plugins/cookie/jquery.cookie.js",relativeCssTrans)
+                .Include("~/Assets/js/frontend.js", relativeCssTrans)
+                .Include("~/Assets/js/smartmenus/jquery.smartmenus.bootstrap.js",relativeCssTrans)
+                .Include("~/Assets/js/smartmenus/jquery.smartmenus.js", relativeCssTrans )
+                .Include("~/Assets/js/smartmenus/jquery.smartmenus.keyboard.js", relativeCssTrans )
+            );
 
            
             
+
             bundles.Add( new StyleBundle("~/public/css").Include(
-                "~/Assets/css/plugins/bootstrap/css/bootstrap.css",
-                "~/Assets/css/plugins/fontawesome/css/font-awesome.css",
-                "~/Assets/css/plugins/ionicons/css/ionicons.css",
-                "~/Assets/css/site.css",
-                "~/Assets/css/plugins/smartmenus/jquery.smartmenus.bootstrap.css",
-                "~/Assets/css/plugins/jquery-ui/jquery-ui-redmond.css"
-                ));                                               
+                "~/Assets/css/plugins/bootstrap/css/bootstrap.css", relativeCssTrans)
+                .Include("~/Assets/css/plugins/fontawesome/css/font-awesome.css", relativeCssTrans)
+                .Include("~/Assets/css/plugins/ionicons/css/ionicons.css", relativeCssTrans)
+                .Include("~/Assets/css/site.css", relativeCssTrans)
+                .Include("~/Assets/css/plugins/smartmenus/jquery.smartmenus.bootstrap.css", relativeCssTrans)
+                .Include("~/Assets/css/plugins/jquery-ui/jquery-ui-redmond.css", relativeCssTrans)                
+                );                                               
 
             bundles.Add(new ScriptBundle("~/admin/js").Include(
                 "~/Assets/js/jquery/jquery-2-0-2.js",
@@ -43,22 +46,21 @@ namespace KBVault.Web
                 "~/Assets/js/plugins/uploader/jquery.uploadfile.js",
                 "~/Assets/js/kbvault.js"
                 ));
-
             
-            bundles.Add(new StyleBundle("~/admin/css").Include(
-                "~/Assets/css//plugins/bootstrap/css/bootstrap.css",
-                "~/Assets/css/jquery-ui-redmond.css",
-                "~/Assets/css/plugins/fontawesome/css/font-awesome.css",
-                "~/Assets/css/AdminLTE.css",
-                "~/Assets/css/plugins/ionicons/css/ionicons.css",
-                "~/Assets/css/plugins/tagit/jquery.tagit.css",
-                "~/Assets/css/plugins/tagit/tagit.ui-zendesk.css",
-                "~/Assets/css/uploadfile.css",
-                "~/Assets/css/plugins/xeditable/xeditable.css",
-                "~/Assets/datatables/css/jquery.dataTables.css",
-                "~/Assets/datatables/css/jquery.dataTables_themeroller.css",
-                "~/Assets/datatables/css/jquery.datatables.bootstrap.css"
-                ));
+            bundles.Add(new StyleBundle("~/admin/css")
+                .Include("~/Assets/css//plugins/bootstrap/css/bootstrap.css", relativeCssTrans)
+                .Include("~/Assets/css/jquery-ui-redmond.css", relativeCssTrans)
+                .Include("~/Assets/css/plugins/fontawesome/css/font-awesome.css", relativeCssTrans)
+                .Include("~/Assets/css/plugins/ionicons/css/ionicons.css", relativeCssTrans)
+                .Include("~/Assets/css/AdminLTE.css")
+                .Include("~/Assets/css/plugins/tagit/jquery.tagit.css",relativeCssTrans )
+                .Include("~/Assets/css/plugins/tagit/tagit.ui-zendesk.css", relativeCssTrans)
+                .Include("~/Assets/css/uploadfile.css",relativeCssTrans)
+                .Include("~/Assets/css/plugins/xeditable/xeditable.css",relativeCssTrans)
+                .Include("~/Assets/datatables/css/jquery.dataTables.css",relativeCssTrans)
+                .Include("~/Assets/datatables/css/jquery.dataTables_themeroller.css",relativeCssTrans)
+                .Include("~/Assets/datatables/css/jquery.datatables.bootstrap.css",relativeCssTrans)
+                );
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
