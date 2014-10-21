@@ -130,7 +130,7 @@ namespace KBVault.Web.Controllers
                 LandingPageViewModel model = new LandingPageViewModel();
                 model.HotCategories = db.Categories.Include("Articles").Where(c => c.IsHot).ToList();
                 DateTime dateRangeToday = DateTime.Now.Date;
-
+                ViewBag.Title = Settings.CompanyName;
                 model.FirstLevelCategories = db.Categories.Include("Articles").Where(c => c.Parent == null).OrderBy(c => c.Name).ToList();
                 model.LatestArticles = db.PublishedArticles()                                       
                                         .OrderByDescending(a => a.Edited)

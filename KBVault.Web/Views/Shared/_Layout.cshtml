@@ -53,17 +53,18 @@
                 <p runat="server" id="htmlJumbotronText" class="lead">@ViewBag.JumbotronText</p>            
             </div>        
             *@
-            <div class="input-group input-group-lg col-lg-10">
+            
             @using (Html.BeginForm("Do", "Search", FormMethod.Post, new { id = "SearchForm" }))
-            {       
-                <input type="hidden" name="ArticleId" id="ArticleId" value="" />
-                <input type="text" class="form-control search-control" name="SearchKeyword" placeholder="Enter search text" ID="txtSearch" value="@searchTerm" />
-                    <span class="input-group-btn">
-                        <input type="submit" id="btnDoSearch" class="btn btn-default" value="Search" />
-                    </span>
-                 
+            {
+                <div class="input-group">       
+                    <input type="hidden" name="ArticleId" id="ArticleId" value="" />
+                    <input type="text" class="form-control search-control" name="SearchKeyword" placeholder="Enter search text" ID="txtSearch" value="@searchTerm" />
+                        <span class="input-group-btn">
+                            <input type="submit" id="btnDoSearch" class="btn btn-default" value="Search" />
+                        </span>
+                </div>             
             }    
-            </div>        
+            
         </div>
 
         <br />
