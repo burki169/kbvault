@@ -772,6 +772,7 @@
     <Content Include="Assets\js\jquery\jquery-2-0-2.js" />
     <Content Include="Assets\js\jquery\jquery-ui-1-10-4.js" />
     <Content Include="Assets\js\plugins\cookie\jquery.cookie.js" />
+    <Content Include="Assets\js\plugins\slug-it\jquery.slugit.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.keyboard.js" />

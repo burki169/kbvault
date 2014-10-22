@@ -32,6 +32,7 @@
 }
 
 @section Scripts{
+    
     $.datepicker.setDefaults({        
         showAnim: "clip",        
         dateFormat: "@Html.ConvertDateFormat()"
@@ -42,6 +43,8 @@
         var datepicker = $(parent).children(".datepicker").first();
         $(datepicker).datepicker("show");
     });
+
+    $("#Title").slugIt({output:"#SefName",events:"blur"});
         
         $("#FileUploader").uploadFile({
             url:'@Url.Action("Upload","File")',
