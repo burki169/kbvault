@@ -2109,6 +2109,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Assets/css/plugins/xeditable/xeditable.css">
       <publishTime>10/20/2014 09:35:22</publishTime>
     </File>
+    <File Include="Assets/css/publicplugins.css">
+      <publishTime>10/22/2014 15:32:57</publishTime>
+    </File>
     <File Include="Assets/css/site.css">
       <publishTime>09/03/2014 13:17:13</publishTime>
     </File>
@@ -2260,10 +2263,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2014 14:24:22</publishTime>
     </File>
     <File Include="Assets/img/bg.png">
-      <publishTime>08/12/2014 14:24:22</publishTime>
+      <publishTime>10/22/2014 15:12:58</publishTime>
     </File>
     <File Include="Assets/img/BigFile-Vault.png">
-      <publishTime>09/09/2014 09:10:18</publishTime>
+      <publishTime>10/22/2014 15:13:39</publishTime>
     </File>
     <File Include="Assets/img/blur-background04.jpg">
       <publishTime>08/12/2014 14:24:22</publishTime>
@@ -2371,7 +2374,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2014 09:35:22</publishTime>
     </File>
     <File Include="Assets/js/kbvault.js">
-      <publishTime>08/12/2014 14:24:22</publishTime>
+      <publishTime>10/22/2014 11:49:06</publishTime>
     </File>
     <File Include="Assets/js/min/bootstrap.min.js">
       <publishTime>08/12/2014 14:24:22</publishTime>
@@ -3291,6 +3294,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Assets/js/plugins/slimScroll/slimScroll.jquery.json">
       <publishTime>08/12/2014 14:24:23</publishTime>
     </File>
+    <File Include="Assets/js/plugins/slug-it/jquery.slugit.js">
+      <publishTime>10/22/2014 11:47:47</publishTime>
+    </File>
     <File Include="Assets/js/plugins/sparkline/jquery.sparkline.js">
       <publishTime>08/12/2014 14:24:23</publishTime>
     </File>
@@ -3331,16 +3337,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2014 14:50:03</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>10/21/2014 15:13:04</publishTime>
+      <publishTime>10/22/2014 15:33:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>10/21/2014 15:13:04</publishTime>
+      <publishTime>10/22/2014 15:33:42</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.compiled">
-      <publishTime>10/21/2014 15:13:04</publishTime>
+      <publishTime>10/22/2014 15:33:41</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.dll">
-      <publishTime>10/21/2014 15:13:04</publishTime>
+      <publishTime>10/22/2014 15:33:41</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>08/12/2014 14:24:25</publishTime>
@@ -3364,7 +3370,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2014 15:42:22</publishTime>
     </File>
     <File Include="bin/KBVault.Web.dll">
-      <publishTime>10/21/2014 15:11:38</publishTime>
+      <publishTime>10/22/2014 15:33:24</publishTime>
     </File>
     <File Include="bin/KBVault.Web.pdb">
       <publishTime>10/17/2014 15:45:41</publishTime>
@@ -3421,10 +3427,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2014 14:24:25</publishTime>
     </File>
     <File Include="bin/tr/App_GlobalResources.resources.dll">
-      <publishTime>10/21/2014 15:13:03</publishTime>
+      <publishTime>10/22/2014 15:33:41</publishTime>
     </File>
     <File Include="bin/tr/KBVault.Web.resources.dll">
-      <publishTime>10/21/2014 15:11:38</publishTime>
+      <publishTime>10/22/2014 15:33:24</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>10/20/2014 14:50:03</publishTime>
@@ -3445,7 +3451,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2014 14:52:14</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/21/2014 15:12:59</publishTime>
+      <publishTime>10/22/2014 15:33:35</publishTime>
     </File>
     <File Include="Views/Account/Create.cshtml">
       <publishTime>08/12/2014 14:24:23</publishTime>
@@ -3466,7 +3472,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2014 16:56:19</publishTime>
     </File>
     <File Include="Views/Article/Create.cshtml">
-      <publishTime>10/21/2014 14:16:26</publishTime>
+      <publishTime>10/22/2014 11:52:25</publishTime>
     </File>
     <File Include="Views/Category/Create.cshtml">
       <publishTime>08/12/2014 14:24:23</publishTime>
@@ -3490,7 +3496,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/01/2014 10:29:22</publishTime>
     </File>
     <File Include="Views/Home/Detail.cshtml">
-      <publishTime>09/09/2014 09:10:18</publishTime>
+      <publishTime>10/22/2014 09:47:18</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>10/21/2014 15:10:40</publishTime>

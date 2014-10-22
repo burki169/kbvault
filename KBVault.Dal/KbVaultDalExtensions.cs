@@ -87,6 +87,13 @@ namespace KBVault.Dal
                         act.Information = "ArticleId: " + a.ArticleId+ " Id:" + a.Id.ToString();
                         act.UserId = a.Author;
                     }
+                    else if (entry.Entity is Setting)
+                    {
+                        Setting s = ((Setting)entry.Entity);
+                        operationDescription += " Settings ";
+                        act.Information = "Settings updated";
+                        act.UserId = s.Author;
+                    }
                     act.Operation = operationDescription;
                     List<SqlParameter> procParams = new List<SqlParameter>();
                     procParams.Add( new SqlParameter("1",act.UserId ) );

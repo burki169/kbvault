@@ -692,6 +692,7 @@
     <Content Include="Assets\css\iCheck\square\yellow.png" />
     <Content Include="Assets\css\iCheck\square\_all.css" />
     <Content Include="Assets\css\plugins.css" />
+    <Content Include="Assets\css\publicplugins.css" />
     <Content Include="Assets\css\uncompressed.plugins\ionicons.css" />
     <Content Include="Assets\css\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Assets\css\jquery-ui\images\ui-bg_flat_55_fbec88_40x100.png" />

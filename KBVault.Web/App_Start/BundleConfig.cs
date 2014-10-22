@@ -23,7 +23,7 @@ namespace KBVault.Web
             ));
                        
             bundles.Add( new StyleBundle("~/public/css").Include(
-                "~/Assets/css/plugins.css", 
+                "~/Assets/css/publicplugins.css", 
                 "~/Assets/css/site.css",                 
                 "~/Assets/css/jquery-ui/jquery-ui-redmond.css"              
                 ));                                               
