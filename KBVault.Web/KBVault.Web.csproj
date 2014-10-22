@@ -738,11 +738,6 @@
     <Content Include="Assets\fonts\ionicons.svg" />
     <Content Include="Assets\img\ajax-loader.gif" />
     <Content Include="Assets\img\ajax-loader1.gif" />
-    <Content Include="Assets\img\avatar.png" />
-    <Content Include="Assets\img\avatar04.png" />
-    <Content Include="Assets\img\avatar2.png" />
-    <Content Include="Assets\img\avatar3.png" />
-    <Content Include="Assets\img\avatar5.png" />
     <Content Include="Assets\img\bg.png" />
     <Content Include="Assets\img\BigFile-Vault.png" />
     <Content Include="Assets\img\blur-background04.jpg" />
@@ -764,14 +759,13 @@
     <Content Include="Assets\img\sprite-skin-flat.png" />
     <Content Include="Assets\img\sprite-skin-nice.png" />
     <Content Include="Assets\img\user-bg.png" />
-    <Content Include="Assets\img\user.jpg" />
-    <Content Include="Assets\img\user2.jpg" />
     <Content Include="Assets\img\vault.png" />
     <Content Include="Assets\js\AdminLTE\app.js" />
     <Content Include="Assets\js\frontend.js" />
     <Content Include="Assets\js\jquery\jquery-2-0-2.js" />
     <Content Include="Assets\js\jquery\jquery-ui-1-10-4.js" />
     <Content Include="Assets\js\plugins\cookie\jquery.cookie.js" />
+    <Content Include="Assets\js\plugins\slug-it\jquery.slugit.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.keyboard.js" />

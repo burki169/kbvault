@@ -21,14 +21,11 @@
         {
             <a href='@Url.Action("Edit","Article",new {id=Model.Id})'><span class="fa fa-edit fa-fw"></span>@UIResources.PublicArticleDetailPageEditArticleLabel</a>
         }
-        @*
-        <a class="pull-right"><i class="fa fa-fw fa-file"></i>Printer Friendly View</a>
-        *@
-        <div class="margin-10">
-           
+       
+        <div class="margin-10">           
             <div runat="server" id="articleContent" class="col-lg-12">
                 @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
-            </div>            
+            </div>                        
         </div>
         <div class="clearfix">&nbsp;</div>
     </div>
@@ -79,7 +76,7 @@
     
     @if( ViewBag.SimilarArticles != null )
     { 
-        <div>
+        <div class="row margin-10 clearfix">
             <h4 class="section-title"><span class="line"></span>@UIResources.PublicSimilarArticlesTitle</h4>
             <!-- SIMILAR ARTICLES -->
             @foreach (var article in ViewBag.SimilarArticles)
