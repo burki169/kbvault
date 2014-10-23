@@ -49,3 +49,184 @@ The statement has been terminated.
    konum: KBVault.Web.Helpers.KbVaultAttachmentHelper.SaveAttachment(Int64 articleId, HttpPostedFileBase attachedFile) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KbVaultAttachmentHelper.cs içinde: satýr 83
    konum: KBVault.Web.Controllers.FileController.Upload() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\FileController.cs içinde: satýr 58
 ClientConnectionId:62fb0dae-6db5-43b9-9adc-fb1dd4fbc147
+2014-10-23 11:53:52.0403 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 39
+2014-10-23 11:54:10.7171 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 39
+2014-10-23 11:55:36.0887 ERROR System.Data.Entity.Core.EntityException: The underlying provider failed on Open. ---> System.Runtime.InteropServices.COMException: Ýþleyici geçersiz. (HRESULT özel durum döndürdü: 0x80070006 (E_HANDLE))
+   konum: System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   konum: System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   konum: System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   konum: System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   konum: System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   konum: System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   konum: System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   konum: System.Data.SqlClient.SqlConnection.Open()
+   konum: System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   konum: System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   konum: System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   --- Ýç özel durum yýðýný izlemesinin sonu ---
+   konum: System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   konum: System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   konum: System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   konum: System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   konum: System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   konum: System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 30
+2014-10-23 11:56:40.7171 ERROR System.InvalidOperationException: Koleksiyon deðiþtirildi; sabit listesi iþlemi yürütülemeyebilir.
+   konum: System.Collections.Generic.HashSet`1.Enumerator.MoveNext()
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 37
+2014-10-23 11:58:03.7464 ERROR System.InvalidOperationException: Koleksiyon deðiþtirildi; sabit listesi iþlemi yürütülemeyebilir.
+   konum: System.Collections.Generic.HashSet`1.Enumerator.MoveNext()
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 38
+2014-10-23 12:00:55.9787 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 44
+2014-10-23 13:18:04.9055 ERROR System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@1".
+   konum: System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   konum: System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   konum: System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   konum: System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   konum: System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   konum: System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass59.<ExecuteStoreCommand>b__57()
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 31
+ClientConnectionId:5952ca10-3767-4550-addd-3fea149ab6bc
+2014-10-23 13:18:51.3441 ERROR System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ArticleTags'.
+   konum: System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   konum: System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   konum: System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   konum: System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   konum: System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   konum: System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass59.<ExecuteStoreCommand>b__57()
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 31
+ClientConnectionId:88fa8736-4af4-4213-9183-521d78a53d3d
+2014-10-23 13:21:54.9155 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   konum: System.Data.Entity.DbContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 44
+2014-10-23 13:25:15.9146 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 43
+2014-10-23 13:33:43.4023 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 46
+2014-10-23 13:34:28.1848 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 46
+2014-10-23 13:39:27.4697 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 45
+2014-10-23 13:41:19.3019 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 45
+2014-10-23 13:44:59.3449 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 45
+2014-10-23 13:46:38.5909 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   konum: System.Data.Entity.DbContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 45
+2014-10-23 13:51:33.9054 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 45
+2014-10-23 13:54:43.7944 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 46
+2014-10-23 13:57:36.0566 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 46
+2014-10-23 14:06:39.8000 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   konum: System.Data.Entity.DbContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 45
+2014-10-23 14:25:10.1000 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 49
+2014-10-23 14:29:30.8911 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 48
+2014-10-23 14:31:44.2014 ERROR System.InvalidOperationException: The operation failed: The relationship could not be changed because one or more of the foreign-key properties is non-nullable. When a change is made to a relationship, the related foreign-key property is set to a null value. If the foreign-key does not support null values, a new relationship must be defined, the foreign-key property must be assigned another non-null value, or the unrelated object must be deleted.
+   konum: System.Data.Entity.Core.Objects.ObjectContext.PrepareToSaveChanges(SaveOptions options)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
+   konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 49
