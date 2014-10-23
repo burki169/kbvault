@@ -42,7 +42,7 @@ namespace KBVault.Web.Controllers
                                         ActivityDate = a.ActivityDate.ToString("dd/MM/yyyy H:mm"),
                                         Operation = a.Operation,
                                         Text =  a.Information,
-                                        User = a.KbUser.Name + " " + a.KbUser.LastName
+                                        User = a.KbUser.Name + " " + a.KbUser.LastName                                        
                                     }).ToList();                                    
                     result.Successful = true;
                     result.Data = activities;

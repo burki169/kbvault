@@ -6,10 +6,13 @@ using System.Web;
 using KBVault.Dal;
 using Resources;
 
+
 namespace KBVault.Web.Models
 {
     public class KbUserViewModel
     {
+        
+
         public KbUserViewModel()
         {
         }
@@ -23,6 +26,8 @@ namespace KBVault.Web.Models
             this.Email = usr.Email;
             this.Role = usr.Role;
         }
+
+       
 
         public string UserName { get; set; }
         public long Id { get; set; }

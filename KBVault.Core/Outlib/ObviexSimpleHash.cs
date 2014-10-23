@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace KBVault.Core.Outlib
 {
-    class ObviexSimpleHash
+    public class ObviexSimpleHash
     {
         /// <summary>
         /// Generates a hash for the given plain text value and returns a

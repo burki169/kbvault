@@ -44,13 +44,13 @@ namespace KBVault.Web
                 ));
             
             bundles.Add(new StyleBundle("~/admin/css").Include(
-                "~/Assets/css//plugins.css", 
-                "~/Assets/css/jquery-ui/jquery-ui-redmond.css", 
-                "~/Assets/css/AdminLTE.css",
-                "~/Assets/css/uploadfile.css",                
+                "~/Assets/css/plugins.css",                 
+                "~/Assets/css/jquery-ui/jquery-ui-redmond.css",                 
+                "~/Assets/css/uploadfile.css",                                
                 "~/Assets/datatables/css/jquery.dataTables.css",
                 "~/Assets/datatables/css/jquery.dataTables_themeroller.css",
-                "~/Assets/datatables/css/jquery.datatables.bootstrap.css"
+                "~/Assets/datatables/css/jquery.datatables.bootstrap.css",
+                "~/Assets/css/AdminLTE.css"
                 ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

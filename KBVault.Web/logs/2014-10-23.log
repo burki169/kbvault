@@ -230,3 +230,44 @@ ClientConnectionId:88fa8736-4af4-4213-9183-521d78a53d3d
    konum: System.Data.Entity.Internal.InternalContext.SaveChanges()
    konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 146
    konum: KBVault.Web.Controllers.ArticleController.Remove(Int32 id) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\ArticleController.cs içinde: satýr 49
+2014-10-23 23:46:30.2097 ERROR System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@1 bigint,@2 datetime,@3 nvarchar(9),@4 nvarchar(4000))Insert I' expects the parameter '@4', which was not supplied.
+   konum: System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   konum: System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   konum: System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   konum: System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   konum: System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   konum: System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass59.<ExecuteStoreCommand>b__57()
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\2B-Storage\Software\KBVault-I\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 104
+   konum: KBVault.Web.Controllers.AccountController.MyProfile(KbUserViewModel model) e:\2B-Storage\Software\KBVault-I\KBVault.Web\Controllers\AccountController.cs içinde: satýr 98
+ClientConnectionId:5303fc7b-5061-42e0-b024-54a40c1545af
+2014-10-23 23:47:57.6527 ERROR System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@1 bigint,@2 datetime,@3 nvarchar(9),@4 nvarchar(4000))Insert I' expects the parameter '@4', which was not supplied.
+   konum: System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   konum: System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   konum: System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   konum: System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   konum: System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   konum: System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<NonQuery>b__0(DbCommand t, DbCommandInterceptionContext`1 c)
+   konum: System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   konum: System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   konum: System.Data.Entity.Internal.InterceptableDbCommand.ExecuteNonQuery()
+   konum: System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass59.<ExecuteStoreCommand>b__58()
+   konum: System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass59.<ExecuteStoreCommand>b__57()
+   konum: System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   konum: System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreCommand(TransactionalBehavior transactionalBehavior, String commandText, Object[] parameters)
+   konum: System.Data.Entity.Internal.InternalContext.ExecuteSqlCommand(TransactionalBehavior transactionalBehavior, String sql, Object[] parameters)
+   konum: System.Data.Entity.Database.ExecuteSqlCommand(TransactionalBehavior transactionalBehavior, String sql, Object[] parameters)
+   konum: System.Data.Entity.Database.ExecuteSqlCommand(String sql, Object[] parameters)
+   konum: KBVault.Dal.KbVaultEntities.SaveChanges() e:\2B-Storage\Software\KBVault-I\KBVault.Dal\KbVaultDalExtensions.cs içinde: satýr 104
+   konum: KBVault.Web.Controllers.AccountController.MyProfile(KbUserViewModel model) e:\2B-Storage\Software\KBVault-I\KBVault.Web\Controllers\AccountController.cs içinde: satýr 98
+ClientConnectionId:ebc387d1-fb61-4e80-9f39-604e942eff2c

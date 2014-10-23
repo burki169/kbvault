@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace KBVault.Dal
 {
@@ -30,8 +32,9 @@ namespace KBVault.Dal
                 var props = entry.GetModifiedProperties();
                 string modifiedProperty = props.FirstOrDefault();
                 bool isUserViewAction = props.Count() == 1 && modifiedProperty == "Views";
+                bool isProfileUpdateAction = (entry.Entity is KbUser);
                 // if only 
-                if (!entry.IsRelationship && !isUserViewAction)
+                if (!entry.IsRelationship && !isUserViewAction && !isProfileUpdateAction)
                 {
                     string operationDescription = "";
 
@@ -144,6 +147,40 @@ namespace KBVault.Dal
             }
 
             return base.SaveChanges();
+        }
+    }
+
+    public partial class KbUser
+    {
+        private string GetMd5Hash(string input)
+        {
+            MD5 md5Hash = MD5.Create();
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes 
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data  
+            // and format each one as a hexadecimal string. 
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string. 
+            return sBuilder.ToString();
+        }
+
+        public string GravatarImageUrl
+        {
+            get
+            {
+                string gravatarUrl = "http://www.gravatar.com/avatar/";
+                gravatarUrl += GetMd5Hash(Email);
+                gravatarUrl += "?s=160&r=g";
+                return gravatarUrl;
+            }
         }
     }
 
