@@ -766,6 +766,7 @@
     <Content Include="Assets\js\jquery\jquery-2-0-2.js" />
     <Content Include="Assets\js\jquery\jquery-ui-1-10-4.js" />
     <Content Include="Assets\js\plugins\cookie\jquery.cookie.js" />
+    <Content Include="Assets\js\plugins\jqueryForm\jquery.form.js" />
     <Content Include="Assets\js\plugins\slug-it\jquery.slugit.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />
     <Content Include="Assets\js\smartmenus\jquery.smartmenus.js" />
@@ -840,6 +841,7 @@
     <Content Include="Install\default_kbvault.sql" />
     <Content Include="Install\update-version-0.31.sql" />
     <Content Include="Install\update-version-0.40.sql" />
+    <Content Include="Lucene\Readme.txt" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -914,6 +916,7 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Uploads\Readme.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -955,8 +958,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Lucene\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

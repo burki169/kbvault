@@ -55,7 +55,7 @@ namespace KBVault.Web.Controllers
                 {
                     long articleId = Convert.ToInt64(Request.Params["ArticleId"]);
                     HttpPostedFileBase attachedFile = Request.Files[0];
-                    Attachment attachment = KbVaultAttachmentHelper.SaveAttachment(articleId, attachedFile);
+                    Attachment attachment = KbVaultAttachmentHelper.SaveAttachment(articleId, attachedFile, KBVaultHelperFunctions.UserAsKbUser(User).Id);
                     attachment.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                     result.Successful = true;
                     result.Data = new AttachmentViewModel(attachment);
