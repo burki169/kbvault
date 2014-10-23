@@ -13,12 +13,26 @@ namespace KBVault.Web.Helpers
     {
         private static Logger Log = LogManager.GetCurrentClassLogger();
 
+        public static void RemoveLocalAttachmentFile(Attachment at)
+        {
+            try
+            {
+              string localPath = Path.Combine(HttpContext.Current.Server.MapPath(at.Path), at.FileName);
+              System.IO.File.Delete(localPath);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+        }
+
         public static void RemoveAttachment(string hash,long currentUserId)
         {
             try
             {
                 using( KbVaultEntities db = new KbVaultEntities())
-                {                    
+                {                                        
                     Attachment attachment = db.Attachments.First(a => a.Hash == hash);
                     if (attachment == null)
                         throw new ArgumentNullException(ErrorMessages.AttachmentNotFound);
@@ -27,6 +41,7 @@ namespace KBVault.Web.Helpers
                     db.Attachments.Remove(attachment);
                     db.SaveChanges();
                     System.IO.File.Delete(localPath);
+                                        
                 }
             }
             catch (Exception ex)

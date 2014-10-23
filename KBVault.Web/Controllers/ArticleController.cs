@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -7,7 +10,6 @@ using System.Web.Mvc;
 using KBVault.Dal;
 using KBVault.Web.Helpers;
 using KBVault.Web.Models;
-
 using NLog;
 using Resources;
 
@@ -26,15 +28,36 @@ namespace KBVault.Web.Controllers
             {
                 using (KbVaultEntities db = new KbVaultEntities())
                 {
-                    //Remove article and attachments
-                    Article article = db.Articles.First(a => a.Id == id);
+                    //Remove article and attachments                    
+                    long CurrentUserId = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                    SqlParameter[] queryParams = new SqlParameter[] { new SqlParameter("ArticleId", id) };
+                    db.Database.ExecuteSqlCommand("Delete from ArticleTag Where ArticleId = @ArticleId", queryParams);
+                    Article article = db.Articles.Single(a => a.Id == id);
                     if (article == null)
                         throw new Exception(ErrorMessages.ArticleNotFound);
-                    foreach (Attachment attach in article.Attachments)
+                    
+                    while( article.Attachments.Count > 0 ) 
                     {
-                        KbVaultAttachmentHelper.RemoveAttachment(attach.Hash,KBVaultHelperFunctions.UserAsKbUser(User).Id);                        
-                    }
-                    article.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                        Attachment a = article.Attachments.First();
+                        KbVaultAttachmentHelper.RemoveLocalAttachmentFile(a);
+                        KbVaultLuceneHelper.RemoveAttachmentFromIndex(a);
+                        article.Attachments.Remove(a);
+                        /* 
+                         * Also remove the attachment from db.attachments collection
+                         * 
+                         * http://stackoverflow.com/questions/17723626/entity-framework-remove-vs-deleteobject                        
+                         * 
+                         * If the relationship is required (the FK doesn't allow NULL values) and the relationship is not 
+                         * identifying (which means that the foreign key is not part of the child's (composite) primary key) 
+                         * you have to either add the child to another parent or you have to explicitly delete the child 
+                         * (with DeleteObject then). If you don't do any of these a referential constraint is 
+                         * violated and EF will throw an exception when you call SaveChanges - 
+                         * the infamous "The relationship could not be changed because one or more of the foreign-key properties 
+                         * is non-nullable" exception or similar.
+                         */
+                        db.Attachments.Remove(a);
+                    }                      
+                    article.Author = CurrentUserId;
                     db.Articles.Remove(article);
                     db.SaveChanges();
                     result.Data = id;

@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
 
+@section Scripts{
+    $("#Name").slugIt({output:"#SefName",events:"blur"});
+}
 @section ContentHeader{
     <h1>
         @UIResources.CategoryCreateFormPageTitle
@@ -19,11 +22,11 @@
     <br />
     <div class="form-group">
         <label for="Name">@UIResources.CategoryCreateFormLabelCategory</label>
-        <input type="text" class="form-control" name="Name" />
+        <input type="text" class="form-control" name="Name" id="Name" />
     </div>
     <div class="form-group">
         <label for="SefName">@UIResources.CategoryCreateFormSefNameLabel</label>
-        <input type="text" class="form-control" name="SefName" />
+        <input type="text" class="form-control" name="SefName" id="SefName" />
     </div>
     <div class="form-group">        
         <div class="checkbox">
