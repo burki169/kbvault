@@ -44,7 +44,7 @@
         $(datepicker).datepicker("show");
     });
 
-    $("#Title").slugIt({output:"#SefName",events:"blur"});
+    
         
         $("#FileUploader").uploadFile({
             url:'@Url.Action("Upload","File")',
@@ -81,6 +81,8 @@
                 }	                    
             }       
         });
+
+                        $("#Title").slugIt({output:"#SefName",events:"blur"});
     
 
     /* CKEDITOR.replace("Content");*/

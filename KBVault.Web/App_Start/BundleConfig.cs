@@ -33,6 +33,7 @@ namespace KBVault.Web
                 "~/Assets/js/jquery/jquery-ui-1-10-4.js",
                 "~/Assets/js/bootstrap/bootstrap.js",
                 "~/Assets/js/plugins/x-editable/xeditable.js",
+                "~/Assets/js/plugins/jqueryForm/jquery.form.js",
                 "~/Assets/js/plugins/slug-it/jquery.slugit.js",                                
                 "~/Assets/js/plugins/tag-it/tag-it.js",
                 "~/Assets/datatables/js/jquery.dataTables.js",

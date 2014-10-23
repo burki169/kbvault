@@ -36,7 +36,7 @@ namespace KBVault.Web.Helpers
             }
         }
 
-        public static Attachment SaveAttachment(long articleId, HttpPostedFileBase attachedFile)
+        public static Attachment SaveAttachment(long articleId, HttpPostedFileBase attachedFile, long userId)
         {
             try
             {
@@ -57,6 +57,7 @@ namespace KBVault.Web.Helpers
                         attachment.ArticleId = articleId;
                         attachment.MimeType = attachedFile.ContentType;
                         attachment.Hash = Guid.NewGuid().ToString().Replace("-", "");
+                        attachment.Author = userId;
                         db.Attachments.Add(attachment);
                         article.Attachments.Add(attachment);
 
