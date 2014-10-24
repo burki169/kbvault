@@ -1,4 +1,0 @@
-2014-05-29 14:44:24.2911 ERROR System.ArgumentNullException: Deðer null olamaz.
-Parametre adý: routeCollection
-   konum: System.Web.Mvc.UrlHelper.GenerateUrl(String routeName, String actionName, String controllerName, RouteValueDictionary routeValues, RouteCollection routeCollection, RequestContext requestContext, Boolean includeImplicitMvcValues)
-   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.GetCategoryMenu(Int64 parentCategoryId) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 50

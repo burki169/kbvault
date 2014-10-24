@@ -1,4 +1,0 @@
-2014-06-06 10:45:52.9832 ERROR System.Exception: User Not Found!
-   konum: KBVault.Web.Controllers.AccountController.UserInfo(Int32 id) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Controllers\AccountController.cs içinde: satýr 82
-2014-06-06 10:46:04.8284 ERROR System.Exception: User Not Found!
-   konum: KBVault.Web.Controllers.AccountController.UserInfo(Int32 id) e:\src\GitRepo\kiln\OpenSource\KBVault-I\KBVault.Web\Controllers\AccountController.cs içinde: satýr 82

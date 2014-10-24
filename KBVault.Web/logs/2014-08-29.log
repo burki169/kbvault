@@ -1,8 +1,0 @@
-2014-08-29 11:08:41.8540 ERROR System.InvalidOperationException: Sýra hiçbir öðe içermiyor
-   konum: System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
-   konum: System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
-   konum: System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
-   konum: System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
-   konum: System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
-   konum: System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
-   konum: KBVault.Web.Controllers.HomeController.Categories(String id, Int32 page) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Controllers\HomeController.cs içinde: satýr 76
