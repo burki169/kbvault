@@ -7,10 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBVault.Core", "KBVault.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBVault.Dal", "KBVault.Dal\KBVault.Dal.csproj", "{B2FFBB76-713E-40DB-B134-40DA57357797}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBVault.Backup", "KBVault.Backup\KBVault.Backup.csproj", "{11C03037-761D-474A-97AC-C2902BB6EC3E}"
+EndProject
 Global
-	GlobalSection(CodealikeProperties) = postSolution
-		SolutionGuid = 3f04992c-50f7-4b54-bd28-9eb23e5c0f1f
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -28,8 +27,15 @@ Global
 		{B2FFBB76-713E-40DB-B134-40DA57357797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2FFBB76-713E-40DB-B134-40DA57357797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2FFBB76-713E-40DB-B134-40DA57357797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11C03037-761D-474A-97AC-C2902BB6EC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11C03037-761D-474A-97AC-C2902BB6EC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11C03037-761D-474A-97AC-C2902BB6EC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11C03037-761D-474A-97AC-C2902BB6EC3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = 3f04992c-50f7-4b54-bd28-9eb23e5c0f1f
 	EndGlobalSection
 EndGlobal
