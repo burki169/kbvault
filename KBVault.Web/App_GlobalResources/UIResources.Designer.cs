@@ -430,6 +430,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backup Now!.
+        /// </summary>
+        internal static string BackupPageNewBackup {
+            get {
+                return ResourceManager.GetString("BackupPageNewBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backup / Restore .
+        /// </summary>
+        internal static string BackupPageTitle {
+            get {
+                return ResourceManager.GetString("BackupPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Category?.
         /// </summary>
         internal static string CategoryArticleListRemoveCategoryConfirmMessage {
@@ -669,6 +687,15 @@ namespace Resources {
         internal static string LeftSideBarActivitiesTitle {
             get {
                 return ResourceManager.GetString("LeftSideBarActivitiesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backup.
+        /// </summary>
+        internal static string LeftSideBarBackupTitle {
+            get {
+                return ResourceManager.GetString("LeftSideBarBackupTitle", resourceCulture);
             }
         }
         

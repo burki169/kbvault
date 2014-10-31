@@ -1,0 +1,8 @@
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\bin\Debug\BackupTestApplication.exe.config
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\bin\Debug\BackupTestApplication.exe
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\bin\Debug\BackupTestApplication.pdb
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\bin\Debug\KBVault.Backup.dll
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\bin\Debug\KBVault.Backup.pdb
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\obj\Debug\BackupTestApplication.csprojResolveAssemblyReference.cache
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\obj\Debug\BackupTestApplication.exe
+E:\src\GitRepo\kiln\OpenSource\kbvault\BackupTestApplication\obj\Debug\BackupTestApplication.pdb

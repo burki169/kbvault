@@ -109,12 +109,29 @@ function BindRemoveTagEvents() {
     });
 }
 
+function BindBackupEvent() {
+    $("#create-backup").click(function(){
+        var actionUrl = $(this).attr("data-action-url");
+        alert("Backup has begun. You'll be notified when backup is over");
+        $.ajax({
+            url: actionUrl,
+            type: 'POST'
+        }).done(function (data) {
+            if (data.Successful)
+                alert("Backup successful");
+            else
+                alert("Backup failed");
+        });
+    });
+}
+
 $(function () {
     "use strict";
     BindRemoveAttachmentEvents();
     BindRemoveArticleEvents();
     BindRemoveUserEvents();
     BindRemoveTagEvents();
+    BindBackupEvent();
     //
     // Editable mode
     //

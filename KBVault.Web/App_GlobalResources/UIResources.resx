@@ -492,4 +492,13 @@
   <data name="LeftSideBarActivitiesTitle" xml:space="preserve">
     <value>User Activities</value>
   </data>
+  <data name="LeftSideBarBackupTitle" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="BackupPageTitle" xml:space="preserve">
+    <value>Backup / Restore </value>
+  </data>
+  <data name="BackupPageNewBackup" xml:space="preserve">
+    <value>Backup Now!</value>
+  </data>
 </root>

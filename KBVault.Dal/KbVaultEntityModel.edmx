@@ -157,6 +157,7 @@
           <Property Name="ArticlePrefix" Type="nvarchar" MaxLength="50" />
           <Property Name="AnalyticsAccount" Type="nvarchar" MaxLength="50" />
           <Property Name="Author" Type="bigint" Nullable="false" />
+          <Property Name="BackupLocation" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>

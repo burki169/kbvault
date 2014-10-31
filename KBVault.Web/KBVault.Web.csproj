@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\BackupController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -837,6 +838,7 @@
     <Content Include="Assets\js\plugins\tag-it\tag-it.js" />
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\js\plugins\x-editable\xeditable.js" />
+    <Content Include="Backup\index.html" />
     <Content Include="Global.asax" />
     <Content Include="Install\default_kbvault.sql" />
     <Content Include="Install\update-version-0.31.sql" />
@@ -913,6 +915,7 @@
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_config.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
+    <Content Include="Install\update-version-0.45.sql" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -955,6 +958,7 @@
     <Content Include="Views\Home\ArticleNotFound.cshtml" />
     <Content Include="Views\Activity\Index.cshtml" />
     <Content Include="Views\Shared\GoogleFonts.cshtml" />
+    <Content Include="Views\Backup\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -963,6 +967,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KBVault.Backup\KBVault.Backup.csproj">
+      <Project>{11c03037-761d-474a-97ac-c2902bb6ec3e}</Project>
+      <Name>KBVault.Backup</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KBVault.Core\KBVault.Core.csproj">
       <Project>{9a05b0a7-0b0d-451d-bfb1-58417f14fc2c}</Project>
       <Name>KBVault.Core</Name>

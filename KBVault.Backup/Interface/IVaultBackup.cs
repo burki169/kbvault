@@ -12,6 +12,7 @@ namespace KBVault.Backup.Interface
     {
         void ConnectToNamedInstance(string instanceName, string userName, string password, bool useWindowsAuthentication);
         void ConnectToRemoteInstance(string instanceName, string userName, string password, bool useWindowsAuthentication);
-        void BackupTo(string databaseName, string physicalPath, VaultBackupProgress progressFunction );
+        Task<bool> Backup(string databaseName, string physicalPath, VaultBackupProgress progressFunction);
+        Task<bool> Restore(string databaseName, string physicalPath, VaultBackupProgress progressFunction);
     }
 }

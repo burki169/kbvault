@@ -489,4 +489,13 @@
   <data name="LeftSideBarActivitiesTitle" xml:space="preserve">
     <value>Kullanıcı İşlemleri</value>
   </data>
+  <data name="LeftSideBarBackupTitle" xml:space="preserve">
+    <value>Yedekleme</value>
+  </data>
+  <data name="BackupPageNewBackup" xml:space="preserve">
+    <value>Şimdi Yedekle</value>
+  </data>
+  <data name="BackupPageTitle" xml:space="preserve">
+    <value>Yedekle / Geri Yükle</value>
+  </data>
 </root>
