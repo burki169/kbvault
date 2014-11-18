@@ -1,83 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KBVault.Backup.Interface;
-using Microsoft.SqlServer.Management.Common;
-using Microsoft.SqlServer.Management.Smo;
-using SmoBackup = Microsoft.SqlServer.Management.Smo.Backup;
 
 namespace KBVault.Backup.Classes
 {
     public class VaultMsSqlBackup: IVaultBackup
     {
-        private string ServerName;
-        private string UserName;
-        private string Password;
-        private bool UseWindowsAuthentication;
-        private Server SqlServer = null;
-        private VaultBackupProgress ClientProgressFunction;
+        private string ConnectionString;          
 
-        private void BackupProgressEvent(object sender, PercentCompleteEventArgs e)
+        public void Connect(string connectionString)
         {
-            ClientProgressFunction(e.Percent);
-        }
+            ConnectionString = connectionString;
+        }        
 
-        private void Connect(string instanceName, string userName, string password, bool useWindowsAuthentication)
+        public bool Backup(string databaseName, string physicalPath)
         {
-            ServerName = instanceName;
-            UserName = userName;
-            Password = password;
-            UseWindowsAuthentication = useWindowsAuthentication;
-            ServerConnection srvConn = new ServerConnection();
-            srvConn.ServerInstance = ServerName;
-            srvConn.LoginSecure = UseWindowsAuthentication;
-            if (!srvConn.LoginSecure)
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
-                srvConn.Login = UserName;
-                srvConn.Password = Password;
-            }
-            SqlServer = new Server(srvConn);
-            SqlServer.ConnectionContext.ConnectTimeout = 5;
-            SqlServer.ConnectionContext.StatementTimeout = 5;
-        }
-
-        public void ConnectToRemoteInstance(string instanceName, string userName, string password, bool useWindowsAuthentication)
-        {
-            Connect(instanceName, userName, password, useWindowsAuthentication);
-        }
-
-        public void ConnectToNamedInstance(string instanceName, string userName, string password, bool useWindowsAuthentication)
-        {            
-            Connect(instanceName, userName, password, useWindowsAuthentication);
-        }
-
-        public async Task<bool> Backup(string databaseName, string physicalPath, VaultBackupProgress progressFunction)
-        {
-            if (SqlServer == null)
-                throw new ArgumentNullException("Sql Server Object is null. Call connect first");
-            ClientProgressFunction = progressFunction;
-            SmoBackup backup = new SmoBackup();
-            backup.Action = BackupActionType.Database;
-            backup.Database = databaseName;
-            
-            backup.Devices.AddDevice(physicalPath, DeviceType.File);
-            backup.PercentCompleteNotification = 10;
-            backup.PercentComplete += new PercentCompleteEventHandler(BackupProgressEvent);
-            backup.SqlBackup(SqlServer);
+                conn.Open();
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("BACKUP DATABASE " + databaseName+" ");
+                sb.AppendLine("TO DISK='" + physicalPath + "'");
+                //sb.AppendLine("GO");
+                cmd.CommandText = sb.ToString();
+                cmd.ExecuteNonQuery();
+            }                
             return true;
         }
 
-        public async Task<bool> Restore(string databaseName, string physicalPath, VaultBackupProgress progressFunction)
+        public bool Restore(string databaseName, string physicalPath)
         {
-            Restore restore = new Restore();
-            restore.Action = RestoreActionType.Database;
-            restore.Devices.AddDevice(physicalPath, DeviceType.File);
-            restore.Database = databaseName;
-            restore.PercentCompleteNotification = 10;
-            restore.PercentComplete += new PercentCompleteEventHandler(BackupProgressEvent);
-            restore.SqlRestore(SqlServer);
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.Text;                
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("USE [master]");
+                sb.AppendLine("ALTER DATABASE " + databaseName + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
+                //sb.AppendLine("GO");
+                sb.AppendLine("RESTORE DATABASE " + databaseName + " FROM DISK='" + physicalPath + "'");
+                //sb.AppendLine("GO");                
+                sb.AppendLine("WAITFOR DELAY '00:00:02'");
+                //sb.AppendLine("GO");
+                sb.AppendLine("ALTER DATABASE " + databaseName + " SET MULTI_USER");
+                //sb.AppendLine("GO");
+                cmd.CommandText = sb.ToString();
+                cmd.ExecuteNonQuery();
+            }
             return true;
         }
     }

@@ -448,6 +448,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Database successfully restored..
+        /// </summary>
+        internal static string BackupRestoreSuccessfull {
+            get {
+                return ResourceManager.GetString("BackupRestoreSuccessfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string BackupTableDateColHeader {
+            get {
+                return ResourceManager.GetString("BackupTableDateColHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore.
+        /// </summary>
+        internal static string BackupTableRestoreButtonLabel {
+            get {
+                return ResourceManager.GetString("BackupTableRestoreButtonLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Category?.
         /// </summary>
         internal static string CategoryArticleListRemoveCategoryConfirmMessage {
@@ -633,6 +660,24 @@ namespace Resources {
         internal static string DashboardViewArticleText {
             get {
                 return ResourceManager.GetString("DashboardViewArticleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error has occured.
+        /// </summary>
+        internal static string ErrorPageHeader {
+            get {
+                return ResourceManager.GetString("ErrorPageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ErrorPageTitle {
+            get {
+                return ResourceManager.GetString("ErrorPageTitle", resourceCulture);
             }
         }
         

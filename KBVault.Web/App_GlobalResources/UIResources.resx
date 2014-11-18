@@ -501,4 +501,19 @@
   <data name="BackupPageNewBackup" xml:space="preserve">
     <value>Backup Now!</value>
   </data>
+  <data name="ErrorPageHeader" xml:space="preserve">
+    <value>An error has occured</value>
+  </data>
+  <data name="ErrorPageTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="BackupRestoreSuccessfull" xml:space="preserve">
+    <value>Database successfully restored.</value>
+  </data>
+  <data name="BackupTableDateColHeader" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="BackupTableRestoreButtonLabel" xml:space="preserve">
+    <value>Restore</value>
+  </data>
 </root>

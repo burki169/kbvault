@@ -12,15 +12,28 @@ namespace KBVault.Web.Controllers
     public class KbVaultAdminController : Controller
     {
         protected Logger Log = LogManager.GetCurrentClassLogger();
-
+        private const string ExceptionObjectKey = "TEMPDATA_EXCEPTION_KEY";
         private string OperationMessageKey = "KBVAULT_OPERATION_MSG_KEY";
         private string ErrorMessageKey = "KBVAULT_ERROR_MSG_KEY";  
-              
+               
 
         public KbVaultAdminController()
         {            
         }
 
+        protected void AddGlobalException( Exception ex)
+        {
+            TempData[ExceptionObjectKey] = ex;
+        }
+
+        protected Exception GetGlobalException()
+        {
+            if (TempData[ExceptionObjectKey] != null)
+            {
+                return (TempData[ExceptionObjectKey] as Exception);
+            }
+            return null;
+        }
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             ViewBag.ShowOperationMessage = false;

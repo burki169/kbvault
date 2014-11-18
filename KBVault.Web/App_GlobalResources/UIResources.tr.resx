@@ -498,4 +498,19 @@
   <data name="BackupPageTitle" xml:space="preserve">
     <value>Yedekle / Geri Yükle</value>
   </data>
+  <data name="BackupRestoreSuccessfull" xml:space="preserve">
+    <value>Geri yükleme başarıyla tamamlandı.</value>
+  </data>
+  <data name="BackupTableDateColHeader" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
+  <data name="BackupTableRestoreButtonLabel" xml:space="preserve">
+    <value>Geri Yükle</value>
+  </data>
+  <data name="ErrorPageHeader" xml:space="preserve">
+    <value>Bir hata oluştu.</value>
+  </data>
+  <data name="ErrorPageTitle" xml:space="preserve">
+    <value>Hata</value>
+  </data>
 </root>

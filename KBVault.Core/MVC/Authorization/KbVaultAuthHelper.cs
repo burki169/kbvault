@@ -28,7 +28,7 @@ namespace KBVault.Core.MVC.Authorization
 
         }
 
-        public static KbUser CreateUser(string username, string password, string email,string role)
+        public static KbUser CreateUser(string username, string password, string email,string role, long author)
         {
             try
             {
@@ -39,6 +39,7 @@ namespace KBVault.Core.MVC.Authorization
                     usr.UserName = username;
                     usr.Email = email;
                     usr.Role = role;
+                    usr.Author = author;
                     db.KbUsers.Add(usr);
                     db.SaveChanges();
                     return usr;

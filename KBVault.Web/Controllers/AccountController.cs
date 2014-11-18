@@ -11,6 +11,7 @@ using NLog;
 using KBVault.Dal;
 using System.Collections;
 using Resources;
+using KBVault.Web.Helpers;
 
 namespace KBVault.Web.Controllers
 {       
@@ -258,7 +259,7 @@ namespace KBVault.Web.Controllers
         {
             using (KbVaultEntities db = new KbVaultEntities())
             {
-                KbUser usr = KbVaultAuthHelper.CreateUser("admin", "admin", "admin@kbvault.comx", "admin");
+                KbUser usr = KbVaultAuthHelper.CreateUser("admin", "admin", "admin@kbvault.comx", "admin" ,1);
                 usr = db.KbUsers.FirstOrDefault(u => u.Id == usr.Id);
                 if (usr != null)
                 {
@@ -278,7 +279,7 @@ namespace KBVault.Web.Controllers
                 {
                     using (KbVaultEntities db = new KbVaultEntities())
                     {
-                        KbUser usr = KbVaultAuthHelper.CreateUser(model.UserName, model.OldPassword, model.Email, model.Role);
+                        KbUser usr = KbVaultAuthHelper.CreateUser(model.UserName, model.OldPassword, model.Email, model.Role,KBVaultHelperFunctions.UserAsKbUser(User).Id);
                         usr = db.KbUsers.FirstOrDefault(u => u.Id == usr.Id);
                         if (usr != null)
                         {
@@ -294,7 +295,7 @@ namespace KBVault.Web.Controllers
             catch (Exception ex)
             {
                 Log.Error(ex);
-                ShowOperationMessage(ex.Message);
+                AddGlobalException(ex);
                 return RedirectToAction("Index", "Error");
             }
         }

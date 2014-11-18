@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<KBVault.Web.Models.BackupListViewModel>
+
+@{
     ViewBag.Title = UIResources.BackupPageTitle;
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
@@ -6,7 +8,8 @@
 @section ContentHeader{
      <h1>
         @ViewBag.Title
-         <small class="pull-right">
+         <small class="pull-right">            
+            <img style="display:none" id="backup-progress-bar" src="@Url.Content("~/Assets/img/bar-ajax-loader.gif")" />
             <a href='javascript:void' data-action-url="@Url.Action("BackupNow","Backup")" id="create-backup" class="btn btn-default">
                 <i class="fa fa-plus"></i>&nbsp;@UIResources.BackupPageNewBackup
             </a>
@@ -14,9 +17,27 @@
     </h1>
 }
 
-
 <div class="col-xs-12">
-    <div class="row">
-
+    <div class="box">
+        <div class="box-body table-responsive">        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@UIResources.BackupTableDateColHeader</th>
+                        <th></th>
+                    </tr>
+                </thead>               
+                @foreach (var f in Model)
+                {
+                    <tr>
+                        <td>@f.FileDate.ToString("dd/M/yyyy H:m")</td>
+                        <td>
+                            <img style="display:none" id="restore-progress-bar-@f.Id" src="@Url.Content("~/Assets/img/bar-ajax-loader.gif")" />
+                            <a id="restore-@f.Id" data-order="@f.Id" data-file="@f.FileName" data-url="@Url.Action("Restore")" href="javascript:void(0)" class="btn btn-primary btn-small btn-restore">@UIResources.BackupTableRestoreButtonLabel</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>                    
     </div>
 </div>
