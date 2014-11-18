@@ -42,7 +42,14 @@ namespace KBVault.Web.Controllers
                         set.IndexFileExtensions = model.IndexFileExtensions;
                         set.ArticlePrefix = model.ArticlePrefix;
                         set.AnalyticsAccount = model.AnalyticsAccount;
-                        set.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                        set.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;                        
+                        set.BackupPath = model.BackupPath;
+                        if (!set.BackupPath.EndsWith("\\") && !set.BackupPath.StartsWith("~"))
+                            set.BackupPath += "\\";
+                        if (!set.BackupPath.EndsWith("/") && set.BackupPath.StartsWith("~"))
+                            set.BackupPath += "/";
+
+
                         db.Settings.Add(set);
                         db.SaveChanges();
                         ShowOperationMessage(UIResources.SettingsPageSaveSuccessfull);

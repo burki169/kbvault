@@ -516,4 +516,10 @@
   <data name="BackupTableRestoreButtonLabel" xml:space="preserve">
     <value>Restore</value>
   </data>
+  <data name="SettingsBackupPath" xml:space="preserve">
+    <value>Backup Path</value>
+  </data>
+  <data name="SettingsBackupPathWarning" xml:space="preserve">
+    <value>Folder must be writable by MsSQL Service User</value>
+  </data>
 </root>

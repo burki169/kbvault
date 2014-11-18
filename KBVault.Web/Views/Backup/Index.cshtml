@@ -30,7 +30,7 @@
                 @foreach (var f in Model)
                 {
                     <tr>
-                        <td>@f.FileDate.ToString("dd/M/yyyy H:m")</td>
+                        <td>@f.FileDate.ToString("dd/M/yyyy H:mm")</td>
                         <td>
                             <img style="display:none" id="restore-progress-bar-@f.Id" src="@Url.Content("~/Assets/img/bar-ajax-loader.gif")" />
                             <a id="restore-@f.Id" data-order="@f.Id" data-file="@f.FileName" data-url="@Url.Action("Restore")" href="javascript:void(0)" class="btn btn-primary btn-small btn-restore">@UIResources.BackupTableRestoreButtonLabel</a>

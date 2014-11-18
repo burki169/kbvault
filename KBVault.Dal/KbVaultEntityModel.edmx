@@ -157,7 +157,7 @@
           <Property Name="ArticlePrefix" Type="nvarchar" MaxLength="50" />
           <Property Name="AnalyticsAccount" Type="nvarchar" MaxLength="50" />
           <Property Name="Author" Type="bigint" Nullable="false" />
-          <Property Name="BackupLocation" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BackupPath" Type="nvarchar" MaxLength="2000" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -611,6 +611,7 @@
           <Property Type="String" Name="AnalyticsAccount" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="Author" Nullable="false" />
           <NavigationProperty Name="KbUser" Relationship="KbVaultModel.FK_Settings_KbUser" FromRole="Setting" ToRole="KbUser" />
+          <Property Type="String" Name="BackupPath" MaxLength="2000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Activity">
           <Key>
@@ -821,6 +822,7 @@
           <EntitySetMapping Name="Settings">
             <EntityTypeMapping TypeName="KbVaultModel.Setting">
               <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="BackupPath" ColumnName="BackupPath" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="AnalyticsAccount" ColumnName="AnalyticsAccount" />
                 <ScalarProperty Name="ArticlePrefix" ColumnName="ArticlePrefix" />

@@ -131,6 +131,11 @@ function BindRestoreEvent() {
                 alert(data.ErrorMessage);
             $("#restore-progress-bar-"+id).hide();
             $("#restore-"+id).show();
+        }).fail(function (data) {
+            var id = this.Id;
+            $("#restore-progress-bar-" + id).hide();
+            $("#restore-" + id).show();
+            alert(data.statusText);
         });
     });
 }
@@ -152,7 +157,11 @@ function BindBackupEvent() {
                 alert("Backup failed");
             $("#backup-progress-bar").hide();
             $("#create-backup").show();
-        });
+        }).fail(function (data) {
+            alert(data.statusText);
+            $("#backup-progress-bar").hide();
+            $("#create-backup").show();
+        });;
     });
 }
 

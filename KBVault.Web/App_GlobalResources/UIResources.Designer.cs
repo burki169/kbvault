@@ -952,6 +952,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backup Path.
+        /// </summary>
+        internal static string SettingsBackupPath {
+            get {
+                return ResourceManager.GetString("SettingsBackupPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder must be writable by MsSQL Service User.
+        /// </summary>
+        internal static string SettingsBackupPathWarning {
+            get {
+                return ResourceManager.GetString("SettingsBackupPathWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Name is required.
         /// </summary>
         internal static string SettingsCompanyNameRequiredMessage {

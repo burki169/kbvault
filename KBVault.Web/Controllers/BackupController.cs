@@ -16,13 +16,20 @@ using Resources;
 namespace KBVault.Web.Controllers
 {
     public class BackupController : KbVaultAdminController
-    {
-        private const string BackupPath = "~/BackupArchives/";
+    {        
 
         public ActionResult Index()
         {
-            List<BackupListViewModel> model = new List<BackupListViewModel>();
-            string BackupDirectory = Server.MapPath(BackupPath);
+            string BackupDirectory = "";
+            if (Settings.BackupPath.StartsWith("~"))
+            {
+                BackupDirectory = Server.MapPath(Settings.BackupPath);
+            }
+            else
+            {
+                BackupDirectory = Settings.BackupPath;
+            }
+            List<BackupListViewModel> model = new List<BackupListViewModel>();            
             int i = 0;
             foreach (var filePath in Directory.GetFiles(BackupDirectory, "*.bak"))
             {
@@ -42,56 +49,89 @@ namespace KBVault.Web.Controllers
         [HttpPost]
         public JsonResult Restore(string file)
         {
-            JsonOperationResponse result = new JsonOperationResponse();            
             try
             {
-                string backupFile = Server.MapPath(BackupPath + file);
-                if( System.IO.File.Exists(backupFile) )
+                JsonOperationResponse result = new JsonOperationResponse();
+                try
                 {
-                    string connectionString = ConfigurationManager.ConnectionStrings["KbVaultEntities"].ConnectionString;
-                    EntityConnectionStringBuilder entityConnectionString = new EntityConnectionStringBuilder(connectionString);
-                    System.Data.SqlClient.SqlConnectionStringBuilder builder = new System.Data.SqlClient.SqlConnectionStringBuilder(entityConnectionString.ProviderConnectionString);
+                    string backupFile = "";
+                    if (Settings.BackupPath.StartsWith("~"))
+                    {
+                        backupFile = Server.MapPath(Settings.BackupPath + file);
+                    }
+                    else
+                    {
+                        backupFile = Settings.BackupPath + file;
+                    }
+                    if (System.IO.File.Exists(backupFile))
+                    {
+                        string connectionString = ConfigurationManager.ConnectionStrings["KbVaultEntities"].ConnectionString;
+                        EntityConnectionStringBuilder entityConnectionString = new EntityConnectionStringBuilder(connectionString);
+                        System.Data.SqlClient.SqlConnectionStringBuilder builder = new System.Data.SqlClient.SqlConnectionStringBuilder(entityConnectionString.ProviderConnectionString);
 
-                    IVaultBackup backup = new VaultMsSqlBackup();
-                    backup.Connect(entityConnectionString.ProviderConnectionString);
-                    result.Successful = backup.Restore(builder.InitialCatalog, backupFile);
-                    if (result.Successful)
-                        result.ErrorMessage = UIResources.BackupRestoreSuccessfull;
+                        IVaultBackup backup = new VaultMsSqlBackup();
+                        backup.Connect(entityConnectionString.ProviderConnectionString);
+                        result.Successful = backup.Restore(builder.InitialCatalog, backupFile);
+                        if (result.Successful)
+                            result.ErrorMessage = UIResources.BackupRestoreSuccessfull;
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException(file);
+                    }
                 }
-                else{
-                    throw new FileNotFoundException(file);
+                catch (Exception ex)
+                {
+                    Log.Error(ex);
+                    result.ErrorMessage = ex.Message;
                 }
+                return Json(result, JsonRequestBehavior.DenyGet);
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
-                result.ErrorMessage = ex.Message;                
+                throw;
             }
-            return Json(result, JsonRequestBehavior.DenyGet);
         }
 
         [HttpPost]
         public JsonResult BackupNow()
         {
-            JsonOperationResponse result = new JsonOperationResponse();            
-            
-            string connectionString =  ConfigurationManager.ConnectionStrings["KbVaultEntities"].ConnectionString;
-            EntityConnectionStringBuilder entityConnectionString = new EntityConnectionStringBuilder(connectionString);
-            System.Data.SqlClient.SqlConnectionStringBuilder builder = new System.Data.SqlClient.SqlConnectionStringBuilder(entityConnectionString.ProviderConnectionString);             
-
-            IVaultBackup backup = new VaultMsSqlBackup();
-            backup.Connect(entityConnectionString.ProviderConnectionString);
-            string backupFile = String.Format("{0:yyyyMddhhmm}.bak", DateTime.Now);
-            bool b = backup.Backup(builder.InitialCatalog, Server.MapPath(BackupPath + backupFile));
-            if (b)
+            try
             {
-                if (!String.IsNullOrEmpty(backupFile))
+                JsonOperationResponse result = new JsonOperationResponse();
+
+                string connectionString = ConfigurationManager.ConnectionStrings["KbVaultEntities"].ConnectionString;
+                EntityConnectionStringBuilder entityConnectionString = new EntityConnectionStringBuilder(connectionString);
+                System.Data.SqlClient.SqlConnectionStringBuilder builder = new System.Data.SqlClient.SqlConnectionStringBuilder(entityConnectionString.ProviderConnectionString);
+
+                IVaultBackup backup = new VaultMsSqlBackup();
+                backup.Connect(entityConnectionString.ProviderConnectionString);
+                string backupFile = String.Format("{0:yyyyMddhhmm}.bak", DateTime.Now);
+                if (Settings.BackupPath.StartsWith("~"))
                 {
-                    result.Data = backupFile;
-                    result.Successful = true;
+                    backupFile = Server.MapPath(Settings.BackupPath + backupFile);
                 }
+                else
+                {
+                    backupFile = Settings.BackupPath + backupFile;
+                }
+                bool b = backup.Backup(builder.InitialCatalog, backupFile);
+                if (b)
+                {
+                    if (!String.IsNullOrEmpty(backupFile))
+                    {
+                        result.Data = backupFile;
+                        result.Successful = true;
+                    }
+                }
+                return Json(result, JsonRequestBehavior.DenyGet);
             }
-            return Json(result,JsonRequestBehavior.DenyGet);
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
         }
 
     }

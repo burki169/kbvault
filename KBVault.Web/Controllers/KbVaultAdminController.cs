@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using KBVault.Dal;
 using NLog;
 
 namespace KBVault.Web.Controllers
@@ -14,11 +15,18 @@ namespace KBVault.Web.Controllers
         protected Logger Log = LogManager.GetCurrentClassLogger();
         private const string ExceptionObjectKey = "TEMPDATA_EXCEPTION_KEY";
         private string OperationMessageKey = "KBVAULT_OPERATION_MSG_KEY";
-        private string ErrorMessageKey = "KBVAULT_ERROR_MSG_KEY";  
-               
+        private string ErrorMessageKey = "KBVAULT_ERROR_MSG_KEY";
+
+        protected Setting Settings;
 
         public KbVaultAdminController()
-        {            
+        {
+            using (KbVaultEntities db = new KbVaultEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.Configuration.LazyLoadingEnabled = false;
+                Settings = db.Settings.FirstOrDefault(s => true);
+            }
         }
 
         protected void AddGlobalException( Exception ex)

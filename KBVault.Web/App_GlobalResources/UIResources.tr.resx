@@ -513,4 +513,10 @@
   <data name="ErrorPageTitle" xml:space="preserve">
     <value>Hata</value>
   </data>
+  <data name="SettingsBackupPath" xml:space="preserve">
+    <value>Yedekleme Dizini</value>
+  </data>
+  <data name="SettingsBackupPathWarning" xml:space="preserve">
+    <value>Dizine MSSQL servis kullanıcısının yazma hakkı olmalıdır.</value>
+  </data>
 </root>

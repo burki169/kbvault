@@ -69,5 +69,10 @@
         <label for="IndexFileExtensions">@UIResources.SettingsPageIndexFileExtensionsLabel</label>
         <input type="text" class="form-control" name="IndexFileExtensions" value="@Model.IndexFileExtensions"/>
     </div>
+    <div class="form-group">
+        <label for="BackupPath">@UIResources.SettingsBackupPath</label>
+        <input type="text" class="form-control" name="BackupPath" value="@Model.BackupPath"/>
+        <p class="danger">@UIResources.SettingsBackupPathWarning</p>
+    </div>
     <input type="submit" class="btn btn-default" value="@CommonResources.ButtonSave" />
 }

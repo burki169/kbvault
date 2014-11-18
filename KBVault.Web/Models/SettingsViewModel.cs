@@ -28,6 +28,7 @@ namespace KBVault.Web.Models
                 this.IndexFileExtensions = set.IndexFileExtensions;
                 this.ArticlePrefix = set.ArticlePrefix;
                 this.AnalyticsAccount = set.AnalyticsAccount;
+                this.BackupPath = set.BackupPath;
                 
             }
         }
@@ -44,5 +45,6 @@ namespace KBVault.Web.Models
         [Required(ErrorMessageResourceType = typeof(UIResources), ErrorMessageResourceName = "SettingsArticlePrefixRequiredMessage")]
         public string ArticlePrefix { get; set; }
         public string AnalyticsAccount { get; set; }
+        public string BackupPath { get; set; }
     }
 }
