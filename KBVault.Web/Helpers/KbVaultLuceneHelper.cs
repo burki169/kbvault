@@ -83,6 +83,10 @@ namespace KBVault.Web.Helpers
         {
             try
             {
+                if (string.IsNullOrEmpty(text))
+                {
+                    throw new ArgumentNullException("Search Text");
+                }
                 List<KbSearchResultItemViewModel> results = new List<KbSearchResultItemViewModel>();
                 StandardAnalyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
                 IndexSearcher searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));

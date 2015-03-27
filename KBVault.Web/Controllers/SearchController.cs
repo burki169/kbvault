@@ -17,12 +17,18 @@ namespace KBVault.Web.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(model.SearchKeyword))
+                {
+                    return RedirectToAction("Index","Home");
+                }
                 string articlePrefix = Settings.ArticlePrefix;
-                if (model.SearchKeyword.Substring(0, articlePrefix.Length + 1) == articlePrefix + "-")
+
+                if (model.SearchKeyword.Length > articlePrefix.Length+1 && model.SearchKeyword.Substring(0, articlePrefix.Length + 1) == articlePrefix + "-") 
                 {
                     string articleId = model.SearchKeyword.Substring(articlePrefix.Length + 1);
                     model.ArticleId = Convert.ToInt32(articleId);
                 }
+               
                 if (model.ArticleId > 0)
                 {
                     Article article = null;

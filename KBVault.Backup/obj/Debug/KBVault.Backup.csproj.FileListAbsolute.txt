@@ -1,4 +1,0 @@
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\bin\Debug\KBVault.Backup.dll
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\bin\Debug\KBVault.Backup.pdb
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\obj\Debug\KBVault.Backup.dll
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\obj\Debug\KBVault.Backup.pdb

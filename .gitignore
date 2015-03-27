@@ -10,3 +10,6 @@ KBVault.Core/bin/*
 KBVault.Web/Lucene/*
 KBVault.Web/Uploads/*
 KBVault.Web/logs/*
+KBVault.Backup/obj/*
+KBVault.Backup/obj/debug/*
+*.pdb

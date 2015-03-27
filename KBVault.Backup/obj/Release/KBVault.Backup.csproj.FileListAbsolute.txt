@@ -1,5 +1,0 @@
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\bin\Release\KBVault.Backup.dll
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\bin\Release\KBVault.Backup.pdb
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\obj\Release\KBVault.Backup.csprojResolveAssemblyReference.cache
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\obj\Release\KBVault.Backup.dll
-E:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Backup\obj\Release\KBVault.Backup.pdb

@@ -17,9 +17,16 @@ namespace KBVault.Web.Controllers
         {
             using (KbVaultEntities db = new KbVaultEntities())
             {
-                db.Configuration.ProxyCreationEnabled = false;
-                db.Configuration.LazyLoadingEnabled = false;
-                Settings = db.Settings.FirstOrDefault( s => true);
+                try
+                {
+                    db.Configuration.ProxyCreationEnabled = false;
+                    db.Configuration.LazyLoadingEnabled = false;
+                    Settings = db.Settings.FirstOrDefault( s => true);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex);
+                }
             }
         }
 
