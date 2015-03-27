@@ -58,6 +58,7 @@ namespace KBVault.Web.Controllers
                         db.Attachments.Remove(a);
                     }                      
                     article.Author = CurrentUserId;
+                    KbVaultLuceneHelper.RemoveArticleFromIndex(article);
                     db.Articles.Remove(article);
                     db.SaveChanges();
                     result.Data = id;
