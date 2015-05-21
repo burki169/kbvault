@@ -6,8 +6,6 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Text;
 using System.Security.Cryptography;
 
 namespace KBVault.Dal

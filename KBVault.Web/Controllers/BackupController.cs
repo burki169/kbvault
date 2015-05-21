@@ -21,7 +21,7 @@ namespace KBVault.Web.Controllers
         public ActionResult Index()
         {
             string BackupDirectory = "";
-            if (Settings.BackupPath.StartsWith("~"))
+            if (!string.IsNullOrEmpty(Settings.BackupPath) && Settings.BackupPath.StartsWith("~"))
             {
                 BackupDirectory = Server.MapPath(Settings.BackupPath);
             }
@@ -31,16 +31,19 @@ namespace KBVault.Web.Controllers
             }
             List<BackupListViewModel> model = new List<BackupListViewModel>();            
             int i = 0;
-            foreach (var filePath in Directory.GetFiles(BackupDirectory, "*.bak"))
+            if (!string.IsNullOrEmpty(BackupDirectory))
             {
-                FileInfo fo = new FileInfo(filePath);
-                model.Add(new BackupListViewModel()
+                foreach (var filePath in Directory.GetFiles(BackupDirectory, "*.bak"))
                 {
-                    Id = i,
-                    FileName = Path.GetFileName(filePath),
-                    FileDate = fo.CreationTime
-                });
-                i++;
+                    FileInfo fo = new FileInfo(filePath);
+                    model.Add(new BackupListViewModel()
+                    {
+                        Id = i,
+                        FileName = Path.GetFileName(filePath),
+                        FileDate = fo.CreationTime
+                    });
+                    i++;
+                }
             }
             return View(model.OrderByDescending( f => f.FileDate));
         }
