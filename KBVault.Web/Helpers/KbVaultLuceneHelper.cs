@@ -83,6 +83,10 @@ namespace KBVault.Web.Helpers
         {
             try
             {
+                if (page < 1)
+                {
+                    throw new ArgumentException("Page");
+                }
                 if (string.IsNullOrEmpty(text))
                 {
                     throw new ArgumentNullException("Search Text");

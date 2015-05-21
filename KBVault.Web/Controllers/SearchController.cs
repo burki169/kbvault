@@ -22,27 +22,32 @@ namespace KBVault.Web.Controllers
                     return RedirectToAction("Index","Home");
                 }
                 string articlePrefix = Settings.ArticlePrefix;
+                if (!string.IsNullOrEmpty(articlePrefix))
+                {
 
-                if (model.SearchKeyword.Length > articlePrefix.Length+1 && model.SearchKeyword.Substring(0, articlePrefix.Length + 1) == articlePrefix + "-") 
-                {
-                    string articleId = model.SearchKeyword.Substring(articlePrefix.Length + 1);
-                    model.ArticleId = Convert.ToInt32(articleId);
-                }
-               
-                if (model.ArticleId > 0)
-                {
-                    Article article = null;
-                    using (KbVaultEntities db = new KbVaultEntities())
+                    if (model.SearchKeyword.Length > articlePrefix.Length + 1 &&
+                        model.SearchKeyword.Substring(0, articlePrefix.Length + 1) == articlePrefix + "-")
                     {
-                        article = db.PublishedArticles().FirstOrDefault(a => a.Id == model.ArticleId);                                                    
+                        string articleId = model.SearchKeyword.Substring(articlePrefix.Length + 1);
+                        model.ArticleId = Convert.ToInt32(articleId);
                     }
-                    if (article != null) 
-                        return RedirectToRoute("Default", new { controller = "Home", action = "Detail", id = article.SefName});
-                }                
+
+                    if (model.ArticleId > 0)
+                    {
+                        Article article = null;
+                        using (KbVaultEntities db = new KbVaultEntities())
+                        {
+                            article = db.PublishedArticles().FirstOrDefault(a => a.Id == model.ArticleId);
+                        }
+                        if (article != null)
+                            return RedirectToRoute("Default",
+                                new {controller = "Home", action = "Detail", id = article.SefName});
+                    }                    
+                }
                 if (model.CurrentPage == 0)
                     model.CurrentPage++;
-                
-                model.Results = KbVaultLuceneHelper.DoSearch(model.SearchKeyword, model.CurrentPage,1);
+                //TODO: Make result count configurable
+                model.Results = KbVaultLuceneHelper.DoSearch(model.SearchKeyword, model.CurrentPage,10);
                 
                 return View(model);
             }catch(Exception ex)
