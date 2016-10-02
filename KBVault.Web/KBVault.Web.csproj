@@ -933,6 +933,8 @@
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
     <Content Include="Install\update-version-0.45.sql" />
+    <Content Include="AppConfig\ConnectionStrings.config" />
+    <Content Include="AppConfig\AppSettings.config" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
