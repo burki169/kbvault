@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoryArticlesListPageTitle" xml:space="preserve">
+    <value>Artigos em {0}</value>
+  </data>
+  <data name="CategoryCreateFormLabelCategory" xml:space="preserve">
+    <value>Nome da Categoria</value>
+  </data>
+  <data name="CategoryCreateFormLabelIsHot" xml:space="preserve">
+    <value>Hot Category</value>
+  </data>
+  <data name="CategoryCreateFormLabelParent" xml:space="preserve">
+    <value>Colocar Categoria abaixo</value>
+  </data>
+  <data name="CategoryCreateFormPageTitle" xml:space="preserve">
+    <value>Criar categoria</value>
+  </data>
+  <data name="LeftSidebarCategoryListTitle" xml:space="preserve">
+    <value>Categorias</value>
+  </data>
+  <data name="LeftSidebarCreateArticle" xml:space="preserve">
+    <value>Novo Artigo</value>
+  </data>
+  <data name="LeftSidebarCreateCategory" xml:space="preserve">
+    <value>Nova categoria</value>
+  </data>
+  <data name="LeftSideBarTagsTitle" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="LeftSidebarUserMenuTitle" xml:space="preserve">
+    <value>Usuários</value>
+  </data>
+  <data name="LoginFormHeader" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginFormPageTitle" xml:space="preserve">
+    <value>Login To KbVault</value>
+  </data>
+  <data name="LoginFormPassword" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="LoginFormRememberMe" xml:space="preserve">
+    <value>Me lembre</value>
+  </data>
+  <data name="LoginFormSubmitButton" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginFormUserName" xml:space="preserve">
+    <value>Usuário</value>
+  </data>
+  <data name="TagListHeader" xml:space="preserve">
+    <value>Gerenciar Tags na Base</value>
+  </data>
+  <data name="CategoryArticlesListEditCatTitle" xml:space="preserve">
+    <value>Editar Categoria</value>
+  </data>
+  <data name="CategoryEditFormPageTitle" xml:space="preserve">
+    <value>Editar categoria: {0}</value>
+  </data>
+  <data name="CategoryArticlesListRemoveCatTitle" xml:space="preserve">
+    <value>Deletar categoria</value>
+  </data>
+  <data name="CategoryArticlesListNewArticleTitle" xml:space="preserve">
+    <value>Adicionar Artigo</value>
+  </data>
+  <data name="ArticleCreatePageArticleTabTitle" xml:space="preserve">
+    <value>Artigo</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentsAfterSaveMessage" xml:space="preserve">
+    <value>Anexos estão disponiveis após salvar o artigo.</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentTabTitle" xml:space="preserve">
+    <value>Anexos</value>
+  </data>
+  <data name="ArticleCreatePageCategoryLabel" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="ArticleCreatePageContentLabel" xml:space="preserve">
+    <value>Conteúdo</value>
+  </data>
+  <data name="ArticleCreatePageIsDraftLabel" xml:space="preserve">
+    <value>Manter como rascunho</value>
+  </data>
+  <data name="ArticleCreatePagePublishEndLabel" xml:space="preserve">
+    <value>Fim da publicação</value>
+  </data>
+  <data name="ArticleCreatePagePublishEndRequiredMessage" xml:space="preserve">
+    <value>Data de fim da publicação é obrigatório</value>
+  </data>
+  <data name="ArticleCreatePagePublishStartLabel" xml:space="preserve">
+    <value>Início da publicação</value>
+  </data>
+  <data name="ArticleCreatePagePublishStartRequiredMessage" xml:space="preserve">
+    <value>Data de Início da publicação é obrigatório</value>
+  </data>
+  <data name="ArticleCreatePageTagsLabel" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="ArticleCreatePageTitle" xml:space="preserve">
+    <value>Adicionar novo artigo para {0}</value>
+  </data>
+  <data name="ArticleCreatePageTitleLabel" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="CategoryArticlesListRemoveArticleConfirmMessage" xml:space="preserve">
+    <value>Remover artigo e anexos?</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentAbortText" xml:space="preserve">
+    <value>Abortar envio</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentCancelText" xml:space="preserve">
+    <value>Cancelar envio</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentDeleteText" xml:space="preserve">
+    <value>Deletar</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentDoneText" xml:space="preserve">
+    <value>Completado</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentDragDropText" xml:space="preserve">
+    <value>Arraste arquivos aqui</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentUploadText" xml:space="preserve">
+    <value>Envio</value>
+  </data>
+  <data name="ArticleCreatePageAttachmentsHeader" xml:space="preserve">
+    <value>Anexos</value>
+  </data>
+  <data name="ArticleAttachmentRemoveConfirmation" xml:space="preserve">
+    <value>Remover anexo?</value>
+  </data>
+  <data name="ArticleCreatePageTitleNoCategory" xml:space="preserve">
+    <value>Adicionar artigo a base</value>
+  </data>
+  <data name="ArticleEditPageTitle" xml:space="preserve">
+    <value>Editar artigo {0}</value>
+  </data>
+  <data name="CategoryArticleListRemoveCategoryConfirmMessage" xml:space="preserve">
+    <value>Remover categoria?</value>
+  </data>
+  <data name="LeftSideBarSettings" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="SettingsCompanyNameRequiredMessage" xml:space="preserve">
+    <value>Nome da companhia é obrigatório</value>
+  </data>
+  <data name="SettingsPageCompanyNameLabel" xml:space="preserve">
+    <value>Nome da companhia</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>Configurções do sistema</value>
+  </data>
+  <data name="TagListRemoveSuccessful" xml:space="preserve">
+    <value>Tag excluida com sucesso.</value>
+  </data>
+  <data name="TagListRemoveTagConfirmMessage" xml:space="preserve">
+    <value>Remover tag?</value>
+  </data>
+  <data name="SettingsPageSaveSuccessfull" xml:space="preserve">
+    <value>Configurações salvas com sucesso</value>
+  </data>
+  <data name="SettingsPageArticleCountNumericErrorMessage" xml:space="preserve">
+    <value>Contagem dos artigos deve ser numérica</value>
+  </data>
+  <data name="SettingsPageArticlePerCatLabel" xml:space="preserve">
+    <value>Contagem de artigos por categoria na página inicial</value>
+  </data>
+  <data name="SettingsPageDisqusShortNameLabel" xml:space="preserve">
+    <value>Disqus Short Name</value>
+  </data>
+  <data name="SettingsPageJumbotronTextLabel" xml:space="preserve">
+    <value>Jumbotron Texto</value>
+  </data>
+  <data name="SettingsPageShareThisKeyLabel" xml:space="preserve">
+    <value>Chve pública ShareThis</value>
+  </data>
+  <data name="SettingsPageTagLineLabel" xml:space="preserve">
+    <value>Linha de Tag</value>
+  </data>
+  <data name="ArticleCreatePageCreateSuccessMessage" xml:space="preserve">
+    <value>Artigo adicionado com sucesso. :)</value>
+  </data>
+  <data name="ArticleCreatePageEditSuccessMessage" xml:space="preserve">
+    <value>Artigo atualizado com sucesso. :)</value>
+  </data>
+  <data name="CategoryPageCreateSuccessMessage" xml:space="preserve">
+    <value>Categoria adicionada com sucesso.</value>
+  </data>
+  <data name="CategoryPageEditSuccessMessage" xml:space="preserve">
+    <value>Categoria atualizada com sucesso.</value>
+  </data>
+  <data name="UserListHeader" xml:space="preserve">
+    <value>Usuários do sistema</value>
+  </data>
+  <data name="UserListEditUserEmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="UserListEditUserHeader" xml:space="preserve">
+    <value>Editar usuário "{0}"</value>
+  </data>
+  <data name="UserListEditUserLastNameLabel" xml:space="preserve">
+    <value>Sobrenome</value>
+  </data>
+  <data name="UserListEditUserNameLabel" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="UserListEditUserNewPasswordAgainLabel" xml:space="preserve">
+    <value>Nova senha (novamente)</value>
+  </data>
+  <data name="UserListEditUserNewPasswordLabel" xml:space="preserve">
+    <value>Nova senha</value>
+  </data>
+  <data name="UserListEditUserOldPasswordLabel" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="UserListEditUserRoleLabel" xml:space="preserve">
+    <value>Regra</value>
+  </data>
+  <data name="UserListEditUserUsernameLabel" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="UserListAddNewUser" xml:space="preserve">
+    <value>Criar usuário</value>
+  </data>
+  <data name="UserListAddUserHeader" xml:space="preserve">
+    <value>Adicionar novo usuário</value>
+  </data>
+  <data name="UserListRemoveUserConfirmMessage" xml:space="preserve">
+    <value>Remover usuário</value>
+  </data>
+  <data name="UserListUserEditSuccessful" xml:space="preserve">
+    <value>Informações do usuário editadas com sucesso</value>
+  </data>
+  <data name="UserListUserOldPasswordRequired" xml:space="preserve">
+    <value>Senha atual é obrigatória</value>
+  </data>
+  <data name="DashboardEditArticleText" xml:space="preserve">
+    <value>Editar artigo</value>
+  </data>
+  <data name="DashboardMostLikedArticleHeader" xml:space="preserve">
+    <value>Artigos mais curtidos</value>
+  </data>
+  <data name="DashboardMostViewedArticleHeader" xml:space="preserve">
+    <value>Artigos mais lidos</value>
+  </data>
+  <data name="DashboardTotalArticleCountHeader" xml:space="preserve">
+    <value>Contagem total de artigos</value>
+  </data>
+  <data name="DashboardViewArticleText" xml:space="preserve">
+    <value>Ver artigo</value>
+  </data>
+  <data name="LandingHotCategoryHeader" xml:space="preserve">
+    <value>Hot</value>
+  </data>
+  <data name="UserProfilePageTitle" xml:space="preserve">
+    <value>Editar perfil</value>
+  </data>
+  <data name="UserProfileUpdateFail" xml:space="preserve">
+    <value>Perfil não pode ser atualizado.</value>
+  </data>
+  <data name="UserProfileUpdateSuccessful" xml:space="preserve">
+    <value>Perfil atualizado com sucesso.</value>
+  </data>
+  <data name="ArticleCreatePageSefNameLabel" xml:space="preserve">
+    <value>Nome amigavel para engine de busca</value>
+  </data>
+  <data name="ArticleSefNameIsRequired" xml:space="preserve">
+    <value>Nome amigavel para engine de busca é origatório</value>
+  </data>
+  <data name="CategoryCreateFormSefNameLabel" xml:space="preserve">
+    <value>Nome amigavel para engine de busca</value>
+  </data>
+  <data name="CategorySefNameIsRequired" xml:space="preserve">
+    <value>Nome amigavel para engine de busca da categoria é obrigatório</value>
+  </data>
+  <data name="PublicCategoryListPageTitle" xml:space="preserve">
+    <value>Artigos em {0}</value>
+  </data>
+  <data name="PublicILikeThis" xml:space="preserve">
+    <value>Curtir</value>
+  </data>
+  <data name="PublicShareThisTitle" xml:space="preserve">
+    <value>Compartilhar esse artigo</value>
+  </data>
+  <data name="PublicTagListPageTitle" xml:space="preserve">
+    <value>Artigos com a tag {0}</value>
+  </data>
+  <data name="ArticleCreatePagePreviewArticle" xml:space="preserve">
+    <value>Ver Artigo</value>
+  </data>
+  <data name="PublicArticleDetailPageEditArticleLabel" xml:space="preserve">
+    <value>Editar artigo</value>
+  </data>
+  <data name="SettingsPageIndexFileExtensionsLabel" xml:space="preserve">
+    <value>Extensoes de arquivo para ser incluidos na indexação (pdf,dox,docx...)</value>
+  </data>
+  <data name="ArticleLikeSuccess" xml:space="preserve">
+    <value>Artigo curtido.</value>
+  </data>
+  <data name="SearchResultTitle" xml:space="preserve">
+    <value>Resultados para [ {0} ]</value>
+  </data>
+  <data name="SearchResultsPageLoadMore" xml:space="preserve">
+    <value>Carregar mais...</value>
+  </data>
+  <data name="CategoryListSubCategoryTitle" xml:space="preserve">
+    <value>Subcategorias</value>
+  </data>
+  <data name="LandingSidebarCategoryListTitle" xml:space="preserve">
+    <value>Categorias</value>
+  </data>
+  <data name="LandingSidebarTagCloudListTitle" xml:space="preserve">
+    <value>Tags populares</value>
+  </data>
+  <data name="LandingLatestArticlesTitle" xml:space="preserve">
+    <value>Últimos artigos</value>
+  </data>
+  <data name="LandingPopularArticlesTitle" xml:space="preserve">
+    <value>Artigos populares</value>
+  </data>
+  <data name="MainMenuBootstrapToogleTitle" xml:space="preserve">
+    <value>Ativar/desativar navegação</value>
+  </data>
+  <data name="PublicSimilarArticlesTitle" xml:space="preserve">
+    <value>Artigos Similates</value>
+  </data>
+  <data name="SettingsArticlePrefixRequiredMessage" xml:space="preserve">
+    <value>Prefixo do artigo é obrigatório</value>
+  </data>
+  <data name="SettingsArticlePrefixLabel" xml:space="preserve">
+    <value>Prefixo do artigo</value>
+  </data>
+  <data name="SettingsPageAnalyticsKeyLabel" xml:space="preserve">
+    <value>Analytics API Key</value>
+  </data>
+  <data name="SettingsPageAnalyticsAccount" xml:space="preserve">
+    <value>Nome da conta Google Analytics</value>
+  </data>
+  <data name="ActivitiesPageTitle" xml:space="preserve">
+    <value>Atividades</value>
+  </data>
+  <data name="ActivitiesPageDateColumnTitle" xml:space="preserve">
+    <value>Data da Atividade</value>
+  </data>
+  <data name="ActivitiesPageInfoEmptyText" xml:space="preserve">
+    <value>Nenhum registo disponivel</value>
+  </data>
+  <data name="ActivitiesPageInformationColumnTitle" xml:space="preserve">
+    <value>Informação</value>
+  </data>
+  <data name="ActivitiesPageInfoText" xml:space="preserve">
+    <value>Exibindo página {0} de {1}</value>
+  </data>
+  <data name="ActivitiesPageOperationColumnTitle" xml:space="preserve">
+    <value>Operação</value>
+  </data>
+  <data name="ActivitiesPagePaginateFirst" xml:space="preserve">
+    <value>Primeiro</value>
+  </data>
+  <data name="ActivitiesPagePaginateLast" xml:space="preserve">
+    <value>Último</value>
+  </data>
+  <data name="ActivitiesPagePaginateNext" xml:space="preserve">
+    <value>Próximo</value>
+  </data>
+  <data name="ActivitiesPagePaginatePrevious" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="ActivitiesPageUserColumnTitle" xml:space="preserve">
+    <value>Usuário</value>
+  </data>
+  <data name="ActivitiesPageZeroRecords" xml:space="preserve">
+    <value>Desculpe, nenhum registro encontrado :(</value>
+  </data>
+  <data name="LeftSideBarActivitiesTitle" xml:space="preserve">
+    <value>Atividade de usuários</value>
+  </data>
+  <data name="LeftSideBarBackupTitle" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="BackupPageTitle" xml:space="preserve">
+    <value>Backup / Restaurar</value>
+  </data>
+  <data name="BackupPageNewBackup" xml:space="preserve">
+    <value>Efetuar backup agora!</value>
+  </data>
+  <data name="ErrorPageHeader" xml:space="preserve">
+    <value>Um erro foi encontrado :(</value>
+  </data>
+  <data name="ErrorPageTitle" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="BackupRestoreSuccessfull" xml:space="preserve">
+    <value>Base de dados restaurada com sucesso!</value>
+  </data>
+  <data name="BackupTableDateColHeader" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="BackupTableRestoreButtonLabel" xml:space="preserve">
+    <value>Restaurar</value>
+  </data>
+  <data name="SettingsBackupPath" xml:space="preserve">
+    <value>Pasta de backup</value>
+  </data>
+  <data name="SettingsBackupPathWarning" xml:space="preserve">
+    <value>Folder must be writable by MsSQL Service User</value>
+  </data>
+</root>

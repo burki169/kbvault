@@ -15,11 +15,12 @@
     <AssemblyName>KBVault.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -139,6 +140,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\CommonResources.pt-BR.designer.cs">
+      <DependentUpon>CommonResources.pt-BR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\CommonResources.Designer.cs">
       <DependentUpon>CommonResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -149,6 +155,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="App_GlobalResources\ErrorMessages.pt-BR.designer.cs">
+      <DependentUpon>ErrorMessages.pt-BR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\ErrorMessages.tr.designer.cs">
       <DependentUpon>ErrorMessages.tr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -156,6 +167,11 @@
     </Compile>
     <Compile Include="App_GlobalResources\ErrorMessages.designer.cs">
       <DependentUpon>ErrorMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\UIResources.pt-BR.designer.cs">
+      <DependentUpon>UIResources.pt-BR.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1002,6 +1018,19 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>ErrorMessages.tr.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\CommonResources.pt-BR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CommonResources.pt-BR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ErrorMessages.pt-BR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages.pt-BR.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\UIResources.pt-BR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>UIResources.pt-BR.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <EmbeddedResource Include="App_GlobalResources\UIResources.tr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UIResources.tr.Designer.cs</LastGenOutput>
@@ -1025,7 +1054,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54607</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/KBVault.Web</IISUrl>
+          <IISUrl>http://localhost:54607/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
