@@ -1,6 +1,7 @@
 KBVault.Web/obj/*
 KBVault.Web/obj/debug/*
 KBVault.Web/bin/*
+KBVault.Web/Properties/PublishProfiles/*.user
 KBVault.Dal/obj/*
 KBVault.Dal/obj/debug/*
 KBVault.Dal/bin/*
@@ -12,6 +13,7 @@ KBVault.Web/Uploads/*
 KBVault.Web/logs/*
 KBVault.Backup/obj/*
 KBVault.Backup/obj/debug/*
+KBVault.Backup/bin/*
 *.pdb
 .vs/KBVault.Web/v14/.suo
 .vs/config/applicationhost.config
