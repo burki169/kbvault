@@ -32,14 +32,21 @@ namespace KBVault.Web.Controllers
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            ViewBag.CompanyName = Settings.CompanyName;
-            ViewBag.JumbotronText = Settings.JumbotronText;
-            ViewBag.TagLine = Settings.TagLine;
-            ViewBag.DisqusShortName = Settings.DisqusShortName;
-            ViewBag.ShareThisPublicKey = Settings.ShareThisPublicKey;
-            ViewBag.ArticleDisplayCount = Settings.ArticleCountPerCategoryOnHomePage;
-            ViewBag.ArticlePrefix = Settings.ArticlePrefix;
-            ViewBag.AnalyticsAccount = Settings.AnalyticsAccount;
+            if (Settings != null)
+            {
+                ViewBag.CompanyName = Settings.CompanyName;
+                ViewBag.JumbotronText = Settings.JumbotronText;
+                ViewBag.TagLine = Settings.TagLine;
+                ViewBag.DisqusShortName = Settings.DisqusShortName;
+                ViewBag.ShareThisPublicKey = Settings.ShareThisPublicKey;
+                ViewBag.ArticleDisplayCount = Settings.ArticleCountPerCategoryOnHomePage;
+                ViewBag.ArticlePrefix = Settings.ArticlePrefix;
+                ViewBag.AnalyticsAccount = Settings.AnalyticsAccount;
+            }
+            else
+            {
+                ViewBag.CompanyName = "Login as admin and set your configuration parameters";
+            }
 
             base.OnActionExecuted(filterContext);
         }
