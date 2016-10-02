@@ -13,3 +13,5 @@ KBVault.Web/logs/*
 KBVault.Backup/obj/*
 KBVault.Backup/obj/debug/*
 *.pdb
+.vs/KBVault.Web/v14/.suo
+.vs/config/applicationhost.config
