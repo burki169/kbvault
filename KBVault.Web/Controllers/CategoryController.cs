@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
 using KBVault.Web.Models;
@@ -9,12 +8,22 @@ using NLog;
 using MvcPaging;
 using Resources;
 using KBVault.Web.Helpers;
+using ICategoryFactory = KBVault.Web.Business.Categories.ICategoryFactory;
 
 namespace KBVault.Web.Controllers
 {
     [Authorize]
     public class CategoryController : KbVaultAdminController
     {        
+        public ICategoryRepository CategoryRepository { get; set; }
+        public IArticleRepository ArticleRepository { get; set; }
+        public ICategoryFactory CategoryFactory { get; set; }
+
+        [Authorize(Roles = "Admin,Manager")]
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
         [Authorize(Roles = "Admin,Manager")]
@@ -24,22 +33,13 @@ namespace KBVault.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (KbVaultEntities db = new KbVaultEntities())
-                    {
-                        Category cat = new Category();
-                        cat.Name = model.Name;
-                        if( model.ParentId > 0 )
-                            cat.Parent = model.ParentId;
-                        cat.IsHot = model.IsHot;
-                        cat.SefName = model.SefName;
-                        cat.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                        db.Categories.Add(cat);                        
-                        db.SaveChanges();
-                        ShowOperationMessage(@UIResources.CategoryPageCreateSuccessMessage);
-                        return RedirectToAction("List", new { id = cat.Id, page = 1 });
-                    }
-                    
+                    var parentId = model.ParentId > 0 ? model.ParentId : (int?) null;
+                    var category = CategoryFactory.CreateCategory(model.Name, model.IsHot, model.SefName,KBVaultHelperFunctions.UserAsKbUser(User).Id, parentId);
+                    var catId = CategoryRepository.Add(category);
+                    ShowOperationMessage(@UIResources.CategoryPageCreateSuccessMessage);
+                    return RedirectToAction("List", new { id = catId, page = 1 });                                        
                 }
+
                 return View(model);
             }
             catch (Exception ex)
@@ -48,11 +48,7 @@ namespace KBVault.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
-        [Authorize(Roles = "Admin,Manager")]
-        public ActionResult Create()
-        {
-            return View();
-        }
+        
 
         [HttpPost]
         [Authorize(Roles = "Admin,Manager")]
@@ -104,6 +100,21 @@ namespace KBVault.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Manager")]
+        public ActionResult Edit(int id = -1)
+        {
+            try
+            {
+                return View(CategoryFactory.CreateCategoryViewModel(CategoryRepository.Get(id)));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                ShowOperationMessage(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
         [HttpPost]
         [Authorize(Roles = "Admin,Manager")]
         public ActionResult Edit(CategoryViewModel model)
@@ -112,27 +123,22 @@ namespace KBVault.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (KbVaultEntities db = new KbVaultEntities())
+                    try
                     {
-                        Category cat = db.Categories.First(c => c.Id == model.Id);
-                        if (cat != null)
-                        {
-                            cat.Name = model.Name;
-                            cat.IsHot = model.IsHot;
-                            cat.SefName = model.SefName;
-                            cat.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                            if (model.ParentId > 0)
-                                cat.Parent = model.ParentId;
-                            else
-                                cat.Parent = (int?)null;
-                            db.SaveChanges();
-                            ShowOperationMessage(UIResources.CategoryPageEditSuccessMessage);
-                            return RedirectToAction("List", new { id= model.Id, page=1});
-                        }
-                        
-                        ModelState.AddModelError("Category Not Found", ErrorMessages.CategoryNotFound);                        
+                        var parentId = model.ParentId > 0 ? model.ParentId : (int?) null;
+                        var author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                        var category = CategoryFactory.CreateCategory(model.Name, model.IsHot, model.SefName,author, parentId);
+                        category.Id = model.Id;
+                        CategoryRepository.Update(category);
+                        ShowOperationMessage(UIResources.CategoryPageEditSuccessMessage);
+                        return RedirectToAction("List", new {id = model.Id, page = 1});
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        ModelState.AddModelError("Category Not Found", ErrorMessages.CategoryNotFound);
                     }
                 }
+
                 return View(model);
             }
             catch (Exception ex)
@@ -142,34 +148,7 @@ namespace KBVault.Web.Controllers
                 return View(model);
             }
         }
-        [Authorize(Roles = "Admin,Manager")]
-        public ActionResult Edit(int id = -1)
-        {
-            try
-            {
-                using (KbVaultEntities db = new KbVaultEntities())
-                {
-                    CategoryViewModel categoryModel = new CategoryViewModel();
-                    Category category = db.Categories.First(ca => ca.Id == id);
-                    if (category == null)
-                    {
-                        throw new ArgumentNullException("Category not found");
-                    }
-                    categoryModel.Id = category.Id;
-                    categoryModel.IsHot = category.IsHot;
-                    categoryModel.ParentId = category.Parent.HasValue ? (int)category.Parent : -1;
-                    categoryModel.Name = category.Name;
-                    categoryModel.SefName = category.SefName;
-                    return View(categoryModel);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex);
-                ShowOperationMessage(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
+        
         //List articles in category
         public ActionResult List(int id,int page)
         {

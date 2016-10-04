@@ -3390,38 +3390,44 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/App_GlobalResources.dll">
       <publishTime>05/21/2015 21:28:46</publishTime>
     </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>03/18/2016 15:39:27</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.Mvc.dll">
+      <publishTime>09/04/2014 14:26:24</publishTime>
+    </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>10/02/2016 21:39:24</publishTime>
+      <publishTime>01/19/2016 11:30:54</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>10/02/2016 21:39:24</publishTime>
+      <publishTime>01/19/2016 11:30:54</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>10/02/2016 21:39:26</publishTime>
     </File>
     <File Include="bin/KBVault.Backup.dll">
-      <publishTime>10/02/2016 22:25:29</publishTime>
+      <publishTime>10/04/2016 23:59:56</publishTime>
     </File>
     <File Include="bin/KBVault.Backup.pdb">
-      <publishTime>10/02/2016 22:25:29</publishTime>
+      <publishTime>10/04/2016 23:59:56</publishTime>
     </File>
     <File Include="bin/KBVault.Core.dll">
-      <publishTime>10/02/2016 22:25:29</publishTime>
+      <publishTime>10/04/2016 23:59:56</publishTime>
     </File>
     <File Include="bin/KBVault.Core.pdb">
-      <publishTime>10/02/2016 22:25:29</publishTime>
+      <publishTime>10/04/2016 23:59:56</publishTime>
     </File>
     <File Include="bin/KBVault.Dal.dll">
-      <publishTime>10/02/2016 22:25:29</publishTime>
+      <publishTime>10/04/2016 23:59:56</publishTime>
     </File>
     <File Include="bin/KBVault.Dal.pdb">
-      <publishTime>10/02/2016 22:25:29</publishTime>
+      <publishTime>10/04/2016 23:59:56</publishTime>
     </File>
     <File Include="bin/KBVault.Web.dll">
-      <publishTime>10/02/2016 22:28:42</publishTime>
+      <publishTime>10/05/2016 00:11:25</publishTime>
     </File>
     <File Include="bin/KBVault.Web.pdb">
-      <publishTime>10/02/2016 22:28:42</publishTime>
+      <publishTime>10/05/2016 00:11:25</publishTime>
     </File>
     <File Include="bin/Lucene.Net.dll">
       <publishTime>10/02/2016 21:39:25</publishTime>
@@ -3439,46 +3445,55 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/02/2016 21:39:25</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>10/02/2016 21:39:26</publishTime>
+      <publishTime>06/13/2016 23:06:14</publishTime>
     </File>
     <File Include="bin/NLog.config">
       <publishTime>10/02/2016 21:39:24</publishTime>
     </File>
     <File Include="bin/NLog.dll">
-      <publishTime>10/02/2016 21:39:26</publishTime>
+      <publishTime>09/18/2016 17:22:56</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Extensions.dll">
+      <publishTime>02/19/2015 20:10:46</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>01/19/2016 11:30:43</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Primitives.dll">
+      <publishTime>02/19/2015 20:10:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/19/2016 11:30:38</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>01/19/2016 11:30:43</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>01/19/2016 11:30:43</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>03/16/2016 09:12:44</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>10/02/2016 21:39:25</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>01/19/2016 11:30:38</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>01/19/2016 11:30:38</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>01/19/2016 11:30:38</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>10/02/2016 21:39:25</publishTime>
+      <publishTime>01/19/2016 11:30:38</publishTime>
     </File>
     <File Include="bin/tr/App_GlobalResources.resources.dll">
       <publishTime>05/21/2015 21:28:46</publishTime>
     </File>
     <File Include="bin/tr/KBVault.Web.resources.dll">
-      <publishTime>10/02/2016 22:28:42</publishTime>
+      <publishTime>10/05/2016 00:11:25</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>10/02/2016 21:39:26</publishTime>
@@ -3505,7 +3520,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/02/2016 21:39:24</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>10/02/2016 21:39:24</publishTime>
+      <publishTime>10/04/2016 23:54:31</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
       <publishTime>05/21/2015 21:28:43</publishTime>
@@ -3589,13 +3604,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/02/2016 21:39:24</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>10/02/2016 21:39:24</publishTime>
+      <publishTime>04/10/2016 23:42:54</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>10/02/2016 21:39:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/02/2016 22:28:07</publishTime>
+      <publishTime>10/05/2016 00:02:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

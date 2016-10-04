@@ -1,4 +1,5 @@
 KBVault.Web/obj/*
+packages/*
 KBVault.Web/obj/debug/*
 KBVault.Web/bin/*
 KBVault.Web/Properties/PublishProfiles/*.user
