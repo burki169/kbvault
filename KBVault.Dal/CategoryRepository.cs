@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace KBVault.Dal
@@ -47,6 +48,49 @@ namespace KBVault.Dal
                 }
 
                 return category;
+            }
+        }
+
+        public bool HasArticleInCategory(int categoryId)
+        {
+            using (KbVaultEntities db = new KbVaultEntities())
+            {
+                return db.Articles.Any(a => a.CategoryId == categoryId);
+            }
+        }
+
+        public IList<Article> GetArticles(int categoryId)
+        {
+            using (KbVaultEntities db = new KbVaultEntities())
+            {
+                return db.Articles.Where(a => a.CategoryId == categoryId).OrderBy(c => c.Title).ToList();
+            }
+        }
+
+        public bool Remove(Category category)
+        {            
+            using (KbVaultEntities db = new KbVaultEntities())
+            {
+                var cat = db.Categories.FirstOrDefault(c => c.Id == category.Id);
+                if (cat != null)
+                {
+                    cat.Author = category.Author;
+                    db.Categories.Remove(cat);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }            
+        }
+
+        public Category GetFirstCategory()
+        {
+            using (KbVaultEntities db = new KbVaultEntities())
+            {
+                return db.Categories.FirstOrDefault();
             }
         }
     }

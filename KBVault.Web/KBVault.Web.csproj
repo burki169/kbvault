@@ -233,6 +233,7 @@
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\AttachmentViewModel.cs" />
     <Compile Include="Models\BackupListViewModel.cs" />
+    <Compile Include="Models\CategoryListViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Models\JsonOperationResponse.cs" />

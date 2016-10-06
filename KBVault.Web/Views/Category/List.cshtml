@@ -1,8 +1,10 @@
-﻿@using MvcPaging
-@model IPagedList<KBVault.Dal.Article>
+﻿@using MvcPaging    
+@model KBVault.Web.Models.CategoryListViewModel
+
+@*IPagedList<KBVault.Dal.Article>*@
 
 @{
-    ViewBag.Title = String.Format(@UIResources.CategoryArticlesListPageTitle.ToString(),ViewBag.CategoryName);
+    ViewBag.Title = String.Format(@UIResources.CategoryArticlesListPageTitle.ToString(),Model.CategoryName);
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
 
@@ -23,7 +25,9 @@
                 contentType: 'application/json',
             }).done( function(data){
                 alert(data.ErrorMessage);
-                window.location = data.Data;
+                if(data.Successful){
+                     window.location = data.Data;
+                }
             });
         });
 
@@ -34,15 +38,15 @@
     <h1>
         @ViewBag.Title
         <small class="pull-right">
-            <a href='@Url.Action("Create", "Article", new { id = @ViewBag.CategoryId })' class="btn btn-default">
+            <a href='@Url.Action("Create", "Article", new { id = @Model.CategoryId })' class="btn btn-default">
                 <i class="fa fa-plus"></i>&nbsp;@UIResources.CategoryArticlesListNewArticleTitle
             </a>
             @if( KBVaultHelperFunctions.IsAdmin(Context.User) || KBVaultHelperFunctions.IsManager(Context.User) )
             {
-            <a href='@Url.Action("Edit", "Category", new { id = @ViewBag.CategoryId })' class="btn btn-default">
+            <a href='@Url.Action("Edit", "Category", new { id = @Model.CategoryId })' class="btn btn-default">
                 <i class="fa fa-pencil"></i>&nbsp;@UIResources.CategoryArticlesListEditCatTitle
             </a>
-            <a data-confirm-message="@UIResources.CategoryArticleListRemoveCategoryConfirmMessage" action-url='@Url.Action("Remove", "Category", new { id = @ViewBag.CategoryId })' class="btn btn-default post-url-action">
+            <a data-confirm-message="@UIResources.CategoryArticleListRemoveCategoryConfirmMessage" action-url='@Url.Action("Remove", "Category", new { id = @Model.CategoryId })' class="btn btn-default post-url-action">
                 <i class="fa fa-times"></i>&nbsp;@UIResources.CategoryArticlesListRemoveCatTitle
             </a>
             }
@@ -74,7 +78,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Articles)
                         {
                             <tr>
                                 <td width="8%">@item.Id</td>
@@ -94,9 +98,9 @@
                 @Html.Raw(Html.Pager(
                     new Options
                     {
-                        PageSize = Model.PageSize,
-                        TotalItemCount = Model.TotalItemCount,
-                        CurrentPage = Model.PageNumber,
+                        PageSize = Model.Articles.PageSize,
+                        TotalItemCount = Model.Articles.TotalItemCount,
+                        CurrentPage = Model.Articles.PageNumber,
                         ItemTexts = new ItemTexts() { Next = @CommonResources.PagingNext, Previous = @CommonResources.PagingPrevious },
                         ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
                         TooltipTitles = new TooltipTitles() {   Next = @CommonResources.PagingNextTooltip, 

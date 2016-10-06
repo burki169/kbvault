@@ -57,38 +57,40 @@ namespace KBVault.Web.Controllers
             JsonOperationResponse result = new JsonOperationResponse();
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                if (CategoryRepository.Get(id) != null)
                 {
-                    Category cat = db.Categories.First(c => c.Id == id);
-                    if (cat != null)
+                    if (!CategoryRepository.HasArticleInCategory(id))
                     {
-                        if (cat.Articles.Count() == 0)
+                        var cat = new Category()
                         {
-                            cat.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                            db.Categories.Remove(cat);
-                            db.SaveChanges();
-                            result.Successful = true;                            
+                            Author = KBVaultHelperFunctions.UserAsKbUser(User).Id,
+                            Id = id
+                        };
+                        if (CategoryRepository.Remove(cat))
+                        {
+                            result.Successful = true;
                             result.ErrorMessage = String.Format(ErrorMessages.CategoryRemovedSuccessfully, cat.Name);
-                            
+
                             UrlHelper url = new UrlHelper(Request.RequestContext);
-                            cat = db.Categories.First();
-                            if (cat == null)
-                                result.Data = url.Action("Index", "Dashboard");
-                            else
-                                result.Data = url.Action("List", "Category", new { id = cat.Id, page = 1 });
-                        }
-                        else
-                        {
-                            result.Successful = false;
-                            result.ErrorMessage = ErrorMessages.CategoryIsNotEmpty;
+                            cat = CategoryRepository.GetFirstCategory();
+                            result.Data = cat == null
+                                ? url.Action("Index", "Dashboard")
+                                : url.Action("List", "Category", new {id = cat.Id, page = 1});
                         }
                     }
                     else
                     {
                         result.Successful = false;
-                        result.ErrorMessage = @ErrorMessages.CategoryNotFound;
+                        result.ErrorMessage = ErrorMessages.CategoryIsNotEmpty;
                     }
                 }
+                else
+                {                    
+                    result.Successful = false;
+                    result.ErrorMessage = ErrorMessages.CategoryNotFound;
+                }
+
+
                 return Json(result);
             }
             catch (Exception ex)
@@ -154,14 +156,21 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                
+                Category cat = CategoryRepository.Get(id);
+                if (cat != null)
                 {
-                    Category cat = db.Categories.First(a => a.Id == id);
-                    ViewBag.CategoryName = cat.Name;
-                    ViewBag.CategoryId = cat.Id;
-                    IList<Article> articles = db.Articles.Where(a => a.CategoryId == id).OrderBy(a => a.Title).ToPagedList(page, 20);
-                    return View(articles);
+                    var model = new CategoryListViewModel()
+                    {
+                        CategoryName = cat.Name,
+                        CategoryId = cat.Id
+                    };
+                    model.Articles = CategoryRepository.GetArticles(id).ToPagedList(page, 20);
+                    return View(model);
                 }
+
+                ShowOperationMessage(ErrorMessages.CategoryNotFound);
+                return RedirectToAction("Index", "Error");                
                 
             }
             catch (Exception ex)
