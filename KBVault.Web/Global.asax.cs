@@ -23,6 +23,10 @@ namespace KBVault.Web
             var builder = new ContainerBuilder();            
             builder.RegisterType<CategoryFactory>().As<ICategoryFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            builder.RegisterType<ArticleRepository>().As<IArticleRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            builder.RegisterType<ArticleFactory>().As<IArticleFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

@@ -205,7 +205,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Binders\DatetimeModelBinder.cs" />
+    <Compile Include="Business\Categories\ArticleFactory.cs" />
     <Compile Include="Business\Categories\CategoryFactory.cs" />
+    <Compile Include="Business\Categories\IArticleFactory.cs" />
     <Compile Include="Business\Categories\ICategoryFactory.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />

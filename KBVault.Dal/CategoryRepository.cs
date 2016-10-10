@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace KBVault.Dal
@@ -63,7 +64,7 @@ namespace KBVault.Dal
         {
             using (KbVaultEntities db = new KbVaultEntities())
             {
-                return db.Articles.Where(a => a.CategoryId == categoryId).OrderBy(c => c.Title).ToList();
+                return db.Articles.Include(a => a.KbUser).Where(a => a.CategoryId == categoryId).OrderBy(c => c.Title).ToList();
             }
         }
 

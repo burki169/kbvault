@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
+using KBVault.Web.Business.Categories;
 using KBVault.Web.Helpers;
 using KBVault.Web.Models;
 using NLog;
@@ -18,7 +19,9 @@ namespace KBVault.Web.Controllers
     [Authorize]
     public class ArticleController : KbVaultAdminController
     {        
-
+        public IArticleRepository ArticleRepository { get; set; }
+        public IArticleFactory ArticleFactory { get; set; }
+        public ICategoryRepository CategoryRepository{ get; set; }
       
         [HttpPost]
         public JsonResult Remove(int id)
@@ -123,26 +126,7 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
-                {
-                    ArticleViewModel model = new ArticleViewModel();
-                    Article article = db.Articles.First(a => a.Id == id);
-                    model.Author = db.KbUsers.First(u => u.Id == article.Author);
-                    model.Category = new CategoryViewModel(article.Category);
-                    model.Content = article.Content;
-                    model.Created = article.Created.HasValue?(DateTime) article.Created:DateTime.Now;
-                    model.Edited = article.Edited.HasValue?(DateTime)article.Edited:DateTime.Now;
-                    model.Id = article.Id;
-                    model.IsDraft = article.IsDraft==1?true:false;
-                    model.Likes = article.Likes;
-                    model.PublishEndDate = article.PublishEndDate.HasValue ? (DateTime)article.PublishEndDate : DateTime.Now;
-                    model.PublishStartDate = article.PublishStartDate.HasValue ? (DateTime)article.PublishStartDate : DateTime.Now.AddYears(5);
-                    model.Title = article.Title;
-                    model.Tags = String.Join(",", article.ArticleTags.Select(at => at.Tag.Name).ToArray());
-                    model.Attachments = article.Attachments.Select(t => new AttachmentViewModel(t)).ToList();
-                    model.SefName = article.SefName;
-                    return View("Create",model);
-                }
+                return View("Create", ArticleFactory.CreateArticleViewModel(ArticleRepository.Get(id)));
             }
             catch (Exception ex)
             {
@@ -159,23 +143,9 @@ namespace KBVault.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     using (KbVaultEntities db = new KbVaultEntities())
-                    {                        
-                        Article article = new Article();
-                        article.CategoryId = model.Category.Id;
-                        article.IsDraft = model.IsDraft?1:0;
-                        article.PublishEndDate = model.PublishEndDate;
-                        article.PublishStartDate = model.PublishStartDate;
-                        article.Created = DateTime.Now;
-                        article.Edited = DateTime.Now;
-                        article.Title = model.Title;
-                        article.Content = model.Content;
-                        article.SefName = model.SefName;
-                        article.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                        db.Articles.Add(article);
-                        db.SaveChanges();
-                        if( !String.IsNullOrEmpty(model.Tags) )
-                            db.AssignTagsToArticle(article.Id, model.Tags);
-                        db.SaveChanges();
+                    {
+                        Article article = ArticleFactory.CreateArticleFromViewModel(model, KBVaultHelperFunctions.UserAsKbUser(User).Id);
+                        var id = ArticleRepository.Add(article, model.Tags);                        
                         if( article.IsDraft == 0 )
                             KbVaultLuceneHelper.AddArticleToIndex(article);
                         ShowOperationMessage(UIResources.ArticleCreatePageCreateSuccessMessage);
@@ -195,27 +165,16 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using( KbVaultEntities db = new KbVaultEntities())
+                Category category = null;
+                try
                 {
-                    ArticleViewModel model = new ArticleViewModel();
-                    model.Category = new CategoryViewModel();
-                    if (id > 1)
-                    {
-                        Category cat = db.Categories.First(c => c.Id == id);
-                        model.Category.Id = cat.Id;
-                        model.Category.Name = cat.Name;
-                        model.Category.SefName = cat.SefName;
-                    }
-                    else
-                    {
-                        model.Category.Name = "-";
-                        model.Category.SefName= "-";
-                    }
-                    model.PublishStartDate = DateTime.Now.Date;
-                    model.PublishEndDate = DateTime.Now.AddYears(5).Date;
-                    
-                    return View(model);
+                    category = CategoryRepository.Get(id);
                 }
+                catch (ArgumentNullException)
+                {                    
+                }
+                var model = ArticleFactory.CreateArticleViewModelWithDefValues(category);
+                return View(model);
             }
             catch (Exception ex)
             {

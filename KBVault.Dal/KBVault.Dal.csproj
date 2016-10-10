@@ -56,6 +56,7 @@
     <Compile Include="Article.cs">
       <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArticleRepository.cs" />
     <Compile Include="ArticleTag.cs">
       <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
     </Compile>
@@ -68,6 +69,7 @@
     </Compile>
     <Compile Include="IArticleRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
     <Compile Include="KbUser.cs">
       <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
     </Compile>
@@ -100,6 +102,7 @@
     <Compile Include="TopTagItem.cs">
       <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
