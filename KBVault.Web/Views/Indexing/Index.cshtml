@@ -1,0 +1,46 @@
+﻿@model KBVault.Web.Models.CategoryViewModel
+
+@{
+    ViewBag.Title = UIResources.CategoryCreateFormPageTitle;
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section Scripts{
+    $("#Name").slugIt({output:"#SefName",events:"blur"});
+}
+@section ContentHeader{
+    <h1>
+        @UIResources.IndexingRebuildIndexTitle
+        <!-- <small>Control panel</small> -->
+    </h1>   
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <br />
+    <div class="form-group">
+        <label for="Name">@UIResources.CategoryCreateFormLabelCategory</label>
+        <input type="text" class="form-control" name="Name" id="Name" />
+    </div>
+    <div class="form-group">
+        <label for="SefName">@UIResources.CategoryCreateFormSefNameLabel</label>
+        <input type="text" class="form-control" name="SefName" id="SefName" />
+    </div>
+    <div class="form-group">        
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="IsHot" value="true" />@UIResources.CategoryCreateFormLabelIsHot
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ParentId">@UIResources.CategoryCreateFormLabelParent</label>
+        @Html.DropDownListFor(m => m.ParentId, KBVaultHelperFunctions.CategoryTreeForSelectList(-1), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="@CommonResources.ButtonSave" />
+    </div>
+    
+}

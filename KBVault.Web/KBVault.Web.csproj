@@ -218,6 +218,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndexingController.cs" />
     <Compile Include="Controllers\KbVaultAdminController.cs" />
     <Compile Include="Controllers\KbVaultPublicController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -1005,6 +1006,7 @@
     <Content Include="Views\Activity\Index.cshtml" />
     <Content Include="Views\Shared\GoogleFonts.cshtml" />
     <Content Include="Views\Backup\Index.cshtml" />
+    <Content Include="Views\Indexing\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

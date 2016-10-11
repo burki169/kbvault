@@ -522,4 +522,10 @@
   <data name="SettingsBackupPathWarning" xml:space="preserve">
     <value>Folder must be writable by MsSQL Service User</value>
   </data>
+  <data name="IndexingLeftMenuTitle" xml:space="preserve">
+    <value>Index Management</value>
+  </data>
+  <data name="IndexingRebuildIndexTitle" xml:space="preserve">
+    <value>Rebuild Lucene Indexes</value>
+  </data>
 </root>
