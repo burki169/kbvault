@@ -12,6 +12,7 @@ namespace KBVault.Dal
         bool Remove(Category category);
 
         Category GetFirstCategory();
+        IList<Category> GetAllCategories();
         bool HasArticleInCategory(int categoryId);
         IList<Article> GetArticles(int categoryId);
     }

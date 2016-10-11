@@ -174,9 +174,10 @@
             </section>
         </aside>
     </div>
-        
+    
     @Scripts.Render("~/admin/js")     
-        <script>
+     <script src="~/signalr/hubs"></script>
+    <script>
             $(document).ready(function () {                
                 @RenderSection("Scripts", required: false)
             });

@@ -6,7 +6,20 @@
 }
 
 @section Scripts{
-    $("#Name").slugIt({output:"#SefName",events:"blur"});
+      $(function () {
+            var indexer = $.connection.indexerHub;
+            indexer.client.updateProgress = function (currentCategoryIdx, totalCategoryCount, categoryname, articleName) {
+                $('#CategoryProgress').text(currentCategoryIdx + "/" + totalCategoryCount + " : " + categoryName);
+                $('#ArticleName').text("Article: " + articleName);
+            };
+
+            $.connection.hub.start().done(function () {
+                $('#StartIndexing').click(function () {
+                    // Call the Send method on the hub.
+                    indexer.server.rebuildIndexes();
+                });
+            });
+        });
 }
 @section ContentHeader{
     <h1>
@@ -15,32 +28,27 @@
     </h1>   
 }
 
-
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary()
-    <br />
-    <div class="form-group">
-        <label for="Name">@UIResources.CategoryCreateFormLabelCategory</label>
-        <input type="text" class="form-control" name="Name" id="Name" />
-    </div>
-    <div class="form-group">
-        <label for="SefName">@UIResources.CategoryCreateFormSefNameLabel</label>
-        <input type="text" class="form-control" name="SefName" id="SefName" />
-    </div>
-    <div class="form-group">        
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="IsHot" value="true" />@UIResources.CategoryCreateFormLabelIsHot
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="ParentId">@UIResources.CategoryCreateFormLabelParent</label>
-        @Html.DropDownListFor(m => m.ParentId, KBVaultHelperFunctions.CategoryTreeForSelectList(-1), new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <input type="submit" class="btn btn-default" value="@CommonResources.ButtonSave" />
-    </div>
-    
-}
+<div>
+    <button id="StartIndexing">StartIndexing</button>
+    <h1 id="CategoryProgress"></h1>
+    <h2 id="ArticleName"></h2>
+</div>
+@*
+<script>
+        $(function () {            
+            var indexer = $.connection.indexerHub;
+            indexer.client.updateProgress = function (currentCategoryIdx, totalCategoryCount, categoryname, articleName) {                
+                $('#CategoryProgress').text(currentCategoryIdx + "/" + totalCategoryCount + " : " + categoryName);
+                $('#ArticleName').text("Article: " + articleName);
+            };
+            
+            $.connection.hub.start().done(function () {
+                $('#StartIndexing').click(function () {
+                    // Call the Send method on the hub.
+                    indexer.server.rebuildIndexes();                                        
+                });
+            });
+        });
+        
+</script>
+*@

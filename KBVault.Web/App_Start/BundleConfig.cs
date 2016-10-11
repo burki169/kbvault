@@ -40,6 +40,7 @@ namespace KBVault.Web
                 "~/Assets/js/plugins/uploader/jquery.uploadfile.js",
                 "~/Assets/js/AdminLTE/app.js",
                 "~/Assets/ckeditor/ckeditor.js",
+                "~/Scripts/jquery.signalR-2.2.1.js",
                 "~/Assets/js/kbvault.js"
                 ));
             

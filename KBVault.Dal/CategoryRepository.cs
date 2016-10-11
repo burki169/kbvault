@@ -52,6 +52,14 @@ namespace KBVault.Dal
             }
         }
 
+        public IList<Category> GetAllCategories()
+        {
+            using (var db = new KbVaultEntities())
+            {
+                return db.Categories.OrderBy(c => c.Name).ToList();
+            }
+        }
+
         public bool HasArticleInCategory(int categoryId)
         {
             using (KbVaultEntities db = new KbVaultEntities())
@@ -64,7 +72,7 @@ namespace KBVault.Dal
         {
             using (KbVaultEntities db = new KbVaultEntities())
             {
-                return db.Articles.Include(a => a.KbUser).Where(a => a.CategoryId == categoryId).OrderBy(c => c.Title).ToList();
+                return db.Articles.Include(a => a.KbUser).Include(a => a.Attachments).Where(a => a.CategoryId == categoryId).OrderBy(c => c.Title).ToList();
             }
         }
 
