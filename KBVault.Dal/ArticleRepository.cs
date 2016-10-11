@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace KBVault.Dal
@@ -29,6 +30,18 @@ namespace KBVault.Dal
                     db.AssignTagsToArticle(article.Id, tags);
                 db.SaveChanges();
                 return article.Id;
+            }
+        }
+
+        public void Update(Article article, string tags)
+        {
+            using (var db = new KbVaultEntities())
+            {
+                db.Articles.AddOrUpdate(article);
+                db.SaveChanges();
+                if (!String.IsNullOrEmpty(tags))
+                    db.AssignTagsToArticle(article.Id, tags);
+                db.SaveChanges();                
             }
         }
     }

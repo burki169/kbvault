@@ -1,7 +1,7 @@
 ﻿using KBVault.Dal;
 using KBVault.Web.Models;
 
-namespace KBVault.Web.Business.Categories
+namespace KBVault.Web.Business.Articles
 {
     public interface IArticleFactory
     {

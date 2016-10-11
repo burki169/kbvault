@@ -2,8 +2,9 @@
 using System.Linq;
 using KBVault.Dal;
 using KBVault.Web.Models;
+using KBVault.Web.Business.Categories;
 
-namespace KBVault.Web.Business.Categories
+namespace KBVault.Web.Business.Articles
 {
     public class ArticleFactory : IArticleFactory
     {        

@@ -7,5 +7,6 @@ namespace KBVault.Dal
     {
         Article Get(long id);
         long Add(Article article,string tags);
+        void Update(Article article, string tags);
     }
 }

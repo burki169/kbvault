@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
+using KBVault.Web.Business.Articles;
 using KBVault.Web.Business.Categories;
 using KBVault.Web.Helpers;
 using KBVault.Web.Models;
@@ -87,28 +88,22 @@ namespace KBVault.Web.Controllers
                 ModelState.Remove("Category.Name");
                 ModelState.Remove("Category.SefName");
                 if (ModelState.IsValid)
-                {
-                    using (KbVaultEntities db = new KbVaultEntities())
-                    {
-                        Article article = db.Articles.FirstOrDefault(a => a.Id == model.Id);
-                        article.CategoryId = model.Category.Id;
-                        article.IsDraft = model.IsDraft ? 1 : 0;
-                        article.PublishEndDate = model.PublishEndDate;
-                        article.PublishStartDate = model.PublishStartDate;                        
-                        article.Edited = DateTime.Now;
-                        article.Title = model.Title;
-                        article.Content = model.Content;
-                        article.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                        article.SefName = model.SefName;
-                        if (!String.IsNullOrEmpty(model.Tags))
-                            db.AssignTagsToArticle(article.Id, model.Tags);
-                        db.SaveChanges();
-                        if (article.IsDraft == 0)
-                            KbVaultLuceneHelper.AddArticleToIndex(article);
-                        else
-                            KbVaultLuceneHelper.RemoveArticleFromIndex(article);
-                    }
-
+                {                                                
+                    Article article = ArticleRepository.Get(model.Id);
+                    article.CategoryId = model.Category.Id;
+                    article.IsDraft = model.IsDraft ? 1 : 0;
+                    article.PublishEndDate = model.PublishEndDate;
+                    article.PublishStartDate = model.PublishStartDate;                        
+                    article.Edited = DateTime.Now;
+                    article.Title = model.Title;
+                    article.Content = model.Content;
+                    article.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                    article.SefName = model.SefName;
+                    ArticleRepository.Update(article,model.Tags);                        
+                    if (article.IsDraft == 0)
+                        KbVaultLuceneHelper.AddArticleToIndex(article);
+                    else
+                        KbVaultLuceneHelper.RemoveArticleFromIndex(article);                    
                     ShowOperationMessage(UIResources.ArticleCreatePageEditSuccessMessage);                    
                 }
                 return View("Create",model);

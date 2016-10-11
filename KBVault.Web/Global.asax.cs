@@ -9,6 +9,7 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using KBVault.Dal;
+using KBVault.Web.Business.Articles;
 using KBVault.Web.Business.Categories;
 
 namespace KBVault.Web
