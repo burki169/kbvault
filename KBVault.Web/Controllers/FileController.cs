@@ -25,12 +25,20 @@ namespace KBVault.Web.Controllers
             result.Successful = false;
             try
             {
-                Attachment at = new Attachment() { Id = Convert.ToInt64(id) };  
-                at.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                KbVaultAttachmentHelper.RemoveAttachment(id,KBVaultHelperFunctions.UserAsKbUser(User).Id);
-                KbVaultLuceneHelper.RemoveAttachmentFromIndex(at);
-                result.Successful = true;
-                return Json(result);
+                var parts = id.Split(new[] {"|"}, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length == 2)
+                {
+                    var attachmentHash = parts[0];
+                    var attachmentId = parts[1];
+
+                    Attachment at = new Attachment() { Id = Convert.ToInt64(attachmentId) };
+                    at.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                    KbVaultAttachmentHelper.RemoveAttachment(attachmentHash, KBVaultHelperFunctions.UserAsKbUser(User).Id);
+                    KbVaultLuceneHelper.RemoveAttachmentFromIndex(at);
+                    result.Successful = true;
+                    return Json(result);
+                }
+                throw new ArgumentOutOfRangeException("Invalid file hash");
             }
             catch (Exception ex)
             {
