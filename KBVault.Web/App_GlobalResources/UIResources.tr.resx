@@ -525,4 +525,10 @@
   <data name="IndexingLeftMenuTitle" xml:space="preserve">
     <value>Indeks Yönetimi</value>
   </data>
+  <data name="IndexingRebuildButtonText" xml:space="preserve">
+    <value>Başlat</value>
+  </data>
+  <data name="IndexingRebuildPageTitle" xml:space="preserve">
+    <value>İndeks Yönetimi</value>
+  </data>
 </root>

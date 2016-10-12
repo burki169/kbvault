@@ -130,12 +130,14 @@ namespace KBVault.Web.Helpers
 
                 try
                 {
-                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
+                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false,
+                        IndexWriter.MaxFieldLength.UNLIMITED);
                 }
                 catch (System.IO.FileNotFoundException)
                 {
                     //Lucene directory is not there so create ie 
-                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, true, IndexWriter.MaxFieldLength.UNLIMITED);
+                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, true,
+                        IndexWriter.MaxFieldLength.UNLIMITED);
                 }
                 IndexSearcher searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));
                 Term term = new Term("Id", "KB-" + article.Id.ToString());
@@ -151,11 +153,15 @@ namespace KBVault.Web.Helpers
                 writer.Commit();
                 writer.Dispose();
             }
-            
+
             catch (Exception ex)
             {
                 Log.Error(ex);
                 throw;
+            }
+            finally
+            {
+                IndexWriter.Unlock(FSDirectory.Open(LuceneIndexDirectory));
             }
         }
 
@@ -163,24 +169,29 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                RemoveArticleFromIndex(article);  
+                RemoveArticleFromIndex(article);
                 StandardAnalyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
-                IndexWriter writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory),analyzer ,false,IndexWriter.MaxFieldLength.UNLIMITED);
-                Document doc = new Document();                
+                IndexWriter writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false,
+                    IndexWriter.MaxFieldLength.UNLIMITED);
+                Document doc = new Document();
                 string decodedHtml = HttpUtility.HtmlDecode(article.Content);
                 doc.Add(new Field("Id", "KB-" + article.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
                 doc.Add(new Field("Title", article.Title, Field.Store.YES, Field.Index.ANALYZED));
                 doc.Add(new Field("Content", StripTagsCharArray(decodedHtml), Field.Store.YES, Field.Index.ANALYZED));
-                
+
                 writer.AddDocument(doc);
-                writer.Optimize();  
-                writer.Commit();                              
+                writer.Optimize();
+                writer.Commit();
                 writer.Dispose();
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
                 throw;
+            }
+            finally
+            {
+                IndexWriter.Unlock(FSDirectory.Open(LuceneIndexDirectory));
             }
         }
 
@@ -201,6 +212,10 @@ namespace KBVault.Web.Helpers
                 Log.Error(ex);
                 throw;
             }
+            finally
+            {
+                IndexWriter.Unlock(FSDirectory.Open(LuceneIndexDirectory));
+            }
         }
 
         public static void AddAttachmentToIndex(Attachment attachment)
@@ -211,11 +226,15 @@ namespace KBVault.Web.Helpers
                 IndexWriter writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
                 Document doc = new Document();
                 string path = HttpContext.Current.Server.MapPath(attachment.Path);
-                StreamReader reader = new StreamReader( new FileStream( Path.Combine( path , attachment.FileName), FileMode.Open) );                                
-                doc.Add(new Field("Id", "AT-" + attachment.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                doc.Add(new Field("Title", attachment.FileName, Field.Store.YES, Field.Index.ANALYZED));
-                doc.Add(new Field("Content", reader, Field.TermVector.WITH_POSITIONS));
-                writer.AddDocument(doc);
+                var localFilePath = Path.Combine(path, attachment.FileName);
+                if (File.Exists(localFilePath))
+                {
+                    StreamReader reader = new StreamReader(new FileStream(Path.Combine(path, attachment.FileName), FileMode.Open));
+                    doc.Add(new Field("Id", "AT-" + attachment.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("Title", attachment.FileName, Field.Store.YES, Field.Index.ANALYZED));
+                    doc.Add(new Field("Content", reader, Field.TermVector.WITH_POSITIONS));
+                    writer.AddDocument(doc);
+                }                
                 writer.Optimize();
                 writer.Commit();
                 writer.Dispose();
@@ -224,6 +243,10 @@ namespace KBVault.Web.Helpers
             {
                 Log.Error(ex);
                 throw;
+            }
+            finally
+            {
+                IndexWriter.Unlock(FSDirectory.Open(LuceneIndexDirectory));
             }
         }
 

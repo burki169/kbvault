@@ -528,4 +528,10 @@
   <data name="IndexingRebuildIndexTitle" xml:space="preserve">
     <value>Rebuild Lucene Indexes</value>
   </data>
+  <data name="IndexingRebuildButtonText" xml:space="preserve">
+    <value>Rebuild Indexes</value>
+  </data>
+  <data name="IndexingRebuildPageTitle" xml:space="preserve">
+    <value>Index Management</value>
+  </data>
 </root>

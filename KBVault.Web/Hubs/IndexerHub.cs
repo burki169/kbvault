@@ -17,7 +17,7 @@ namespace KBVault.Web.Hubs
         {
             var categories = CategoryRepository.GetAllCategories();
             int totalCategories = categories.Count();
-            int indexingCategory = 0;
+            int indexingCategory = 1;
             foreach (var cat in categories)
             {
                 Clients.All.updateProgress(indexingCategory, totalCategories, cat.Name, "-");
@@ -27,13 +27,21 @@ namespace KBVault.Web.Hubs
                     Clients.All.updateProgress(indexingCategory, totalCategories, cat.Name, article.Title);
                     foreach (var attachment in article.Attachments)
                     {
-                        KbVaultLuceneHelper.RemoveAttachmentFromIndex(attachment);
-                        KbVaultLuceneHelper.AddAttachmentToIndex(attachment);
-                    }
-                    KbVaultLuceneHelper.RemoveArticleFromIndex(article);
+                        try
+                        {
+                            KbVaultLuceneHelper.RemoveAttachmentFromIndex(attachment);
+                            KbVaultLuceneHelper.AddAttachmentToIndex(attachment);
+                        }
+                        catch (Exception ex)
+                        {
+                            //Eat it :d
+                        }
+                    }                    
                     KbVaultLuceneHelper.AddArticleToIndex(article);                    
-                }                
+                }
+                indexingCategory++;
             }
+            Clients.All.updateProgress("", "", "", "Finished indexing");
         }
     }
 }

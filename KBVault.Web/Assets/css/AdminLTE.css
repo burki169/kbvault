@@ -3417,3 +3417,8 @@ fieldset[disabled] .btn-vk.active {
   color: #587ea3;
   background-color: #ffffff;
 }
+
+
+.bar-full-width {
+    width: 100%;
+}

@@ -691,11 +691,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rebuild Indexes.
+        /// </summary>
+        internal static string IndexingRebuildButtonText {
+            get {
+                return ResourceManager.GetString("IndexingRebuildButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rebuild Lucene Indexes.
         /// </summary>
         internal static string IndexingRebuildIndexTitle {
             get {
                 return ResourceManager.GetString("IndexingRebuildIndexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index Management.
+        /// </summary>
+        internal static string IndexingRebuildPageTitle {
+            get {
+                return ResourceManager.GetString("IndexingRebuildPageTitle", resourceCulture);
             }
         }
         
