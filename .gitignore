@@ -19,3 +19,4 @@ KBVault.Backup/bin/*
 .vs/KBVault.Web/v14/.suo
 .vs/config/applicationhost.config
 KBVault.Backup/bin/
+deploy/

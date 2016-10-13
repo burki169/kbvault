@@ -886,6 +886,7 @@
     <None Include="Install\default_kbvault.sql" />
     <None Include="Install\update-version-0.31.sql" />
     <None Include="Install\update-version-0.40.sql" />
+    <Content Include="Install\update-version-0.5.sql" />
     <Content Include="Lucene\Readme.txt" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1007,6 +1008,7 @@
     <Content Include="Views\Shared\GoogleFonts.cshtml" />
     <Content Include="Views\Backup\Index.cshtml" />
     <Content Include="Views\Indexing\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\ReleasePackage.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
