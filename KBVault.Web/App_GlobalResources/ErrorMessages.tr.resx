@@ -135,6 +135,9 @@
   <data name="CategoryRemovedSuccessfully" xml:space="preserve">
     <value>{0} kategorisi başarıyla silindi</value>
   </data>
+  <data name="EmailIsRequired" xml:space="preserve">
+    <value>Eposta gereklidir.</value>
+  </data>
   <data name="FileUploadArticleNotFound" xml:space="preserve">
     <value>Makale bulunamadı</value>
   </data>

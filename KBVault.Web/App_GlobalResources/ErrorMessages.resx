@@ -135,6 +135,9 @@
   <data name="CategoryRemovedSuccessfully" xml:space="preserve">
     <value>{0} removed successfully.</value>
   </data>
+  <data name="EmailIsRequired" xml:space="preserve">
+    <value>Email is required</value>
+  </data>
   <data name="FileUploadArticleNotFound" xml:space="preserve">
     <value>Article Not Found</value>
   </data>
