@@ -15,7 +15,7 @@ namespace KBVault.Dal
                     .Include(c => c.Category)
                     .Include(t => t.ArticleTags.Select(a => a.Tag))                    
                     .Include(a => a.Attachments)                    
-                    .First(a => a.Id == id);
+                    .FirstOrDefault(a => a.Id == id);
                 return model;
             }
         }
