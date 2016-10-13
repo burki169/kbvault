@@ -885,6 +885,7 @@
     <Content Include="Global.asax" />
     <Content Include="Install\default_kbvault.sql" />
     <Content Include="Install\update-version-0.45-to-0.5.sql" />
+    <Content Include="logs\readme.txt" />
     <Content Include="Lucene\Readme.txt" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -961,7 +962,6 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="readme.txt" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
     <Content Include="Uploads\Readme.txt" />
@@ -1009,6 +1009,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

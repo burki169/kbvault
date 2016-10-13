@@ -1,3 +1,0 @@
-2014-11-03 16:56:11.9327 ERROR System.ArgumentNullException: Deðer null olamaz.
-Parametre adý: Identity is null
-   konum: KBVault.Web.Helpers.KBVaultHelperFunctions.UserAsKbUser(IPrincipal user) e:\src\GitRepo\kiln\OpenSource\kbvault\KBVault.Web\Helpers\KBVaultHelperFunctions.cs içinde: satýr 28
