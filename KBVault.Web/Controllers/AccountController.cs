@@ -14,8 +14,8 @@ using Resources;
 using KBVault.Web.Helpers;
 
 namespace KBVault.Web.Controllers
-{       
-    [Authorize(Roles="Admin")]
+{
+    [Authorize]
     public class AccountController : KbVaultAdminController
     {
         //
@@ -71,6 +71,7 @@ namespace KBVault.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult MyProfile(KbUserViewModel model)
         {
             try
@@ -116,6 +117,7 @@ namespace KBVault.Web.Controllers
             }          
         }
 
+        [Authorize]
         public ActionResult MyProfile()
         {
             try
@@ -138,6 +140,7 @@ namespace KBVault.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+
         public ActionResult Index()
         {
             return RedirectToAction("MyProfile");
@@ -253,7 +256,7 @@ namespace KBVault.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
-
+        /*
         [AllowAnonymous]
         public void CreateAdmin()
         {
@@ -269,6 +272,7 @@ namespace KBVault.Web.Controllers
                 }
             }
         }
+        */
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "Id")]KbUserViewModel model)

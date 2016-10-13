@@ -33,7 +33,8 @@ namespace KBVault.Web.Models
         public long Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        [DataType(DataType.EmailAddress)]        
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessages), ErrorMessageResourceName = "EmailIsRequired")]
         public string Email { get; set; }
         [Required(ErrorMessageResourceType=typeof(UIResources), ErrorMessageResourceName="UserListUserOldPasswordRequired")]
         public string OldPassword { get; set; }
