@@ -884,9 +884,7 @@
     <Content Include="BackupArchives\index.html" />
     <Content Include="Global.asax" />
     <None Include="Install\default_kbvault.sql" />
-    <None Include="Install\update-version-0.31.sql" />
-    <None Include="Install\update-version-0.40.sql" />
-    <Content Include="Install\update-version-0.5.sql" />
+    <Content Include="Install\update-version-0.45-to-0.5.sql" />
     <Content Include="Lucene\Readme.txt" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -956,7 +954,6 @@
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_config.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
     <Content Include="Assets\ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
-    <None Include="Install\update-version-0.45.sql" />
     <Content Include="AppConfig\ConnectionStrings.config">
       <SubType>Designer</SubType>
     </Content>

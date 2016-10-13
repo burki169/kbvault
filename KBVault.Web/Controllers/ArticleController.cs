@@ -131,10 +131,12 @@ namespace KBVault.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(ArticleViewModel model)
+        public ActionResult Create([Bind(Exclude = "Category.Name,Category.SefName")]ArticleViewModel model)
         {
             try
             {
+                ModelState.Remove("Category.Name");
+                ModelState.Remove("Category.SefName");
                 if (ModelState.IsValid)
                 {
                     using (KbVaultEntities db = new KbVaultEntities())

@@ -21,7 +21,7 @@ namespace KBVault.Dal
         {
             using (KbVaultEntities db = new KbVaultEntities())
             {
-                Category cat = db.Categories.First(c => c.Id == category.Id);
+                Category cat = db.Categories.FirstOrDefault(c => c.Id == category.Id);
                 if (cat != null)
                 {
                     cat.Name = category.Name;
@@ -42,7 +42,7 @@ namespace KBVault.Dal
         {
             using (KbVaultEntities db = new KbVaultEntities())
             {                
-                var category = db.Categories.First(ca => ca.Id == categoryId);
+                var category = db.Categories.FirstOrDefault(ca => ca.Id == categoryId);
                 if (category == null)
                 {
                     throw new ArgumentNullException("Category not found");
