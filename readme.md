@@ -26,3 +26,5 @@
 - Built with ASP.NET MVC.
 
 As I'm new to github ecosystem, you can find documentation and issue tracking stuff on https://kbvault.codeplex.com.
+
+![Build status](https://travis-ci.org/burki209/kbvault.svg?branch=develop)
