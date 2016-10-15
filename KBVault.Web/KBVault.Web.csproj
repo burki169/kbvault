@@ -735,9 +735,8 @@
     <Content Include="Assets\css\iCheck\square\yellow.css" />
     <Content Include="Assets\css\iCheck\square\yellow.png" />
     <Content Include="Assets\css\iCheck\square\_all.css" />
-    <Content Include="Assets\css\plugins.css" />
     <Content Include="Assets\css\publicplugins.css" />
-    <Content Include="Assets\css\uncompressed.plugins\ionicons.css" />
+    <Content Include="Assets\css\plugins\ionicons.css" />
     <Content Include="Assets\css\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Assets\css\jquery-ui\images\ui-bg_flat_55_fbec88_40x100.png" />
     <Content Include="Assets\css\jquery-ui\images\ui-bg_glass_75_d0e5f5_1x400.png" />
@@ -754,13 +753,13 @@
     <Content Include="Assets\css\jquery-ui\images\ui-icons_d8e7f3_256x240.png" />
     <Content Include="Assets\css\jquery-ui\images\ui-icons_f9bd01_256x240.png" />
     <Content Include="Assets\css\jquery-ui\jquery-ui-redmond.css" />
-    <Content Include="Assets\css\uncompressed.plugins\tagit\jquery.tagit.css" />
-    <Content Include="Assets\css\uncompressed.plugins\bootstrap.css" />
-    <Content Include="Assets\css\uncompressed.plugins\font-awesome.css" />
-    <Content Include="Assets\css\uncompressed.plugins\smartmenus\jquery.smartmenus.bootstrap.css" />
-    <Content Include="Assets\css\uncompressed.plugins\tagit\tagit.ui-zendesk.css" />
+    <Content Include="Assets\css\plugins\tagit\jquery.tagit.css" />
+    <Content Include="Assets\css\plugins\bootstrap.css" />
+    <Content Include="Assets\css\plugins\font-awesome.css" />
+    <Content Include="Assets\css\plugins\smartmenus\jquery.smartmenus.bootstrap.css" />
+    <Content Include="Assets\css\plugins\tagit\tagit.ui-zendesk.css" />
     <Content Include="Assets\css\uploadfile.css" />
-    <Content Include="Assets\css\uncompressed.plugins\xeditable\xeditable.css" />
+    <Content Include="Assets\css\plugins\xeditable\xeditable.css" />
     <Content Include="Assets\datatables\css\jquery.datatables.bootstrap.css" />
     <Content Include="Assets\datatables\css\jquery.dataTables.css" />
     <Content Include="Assets\datatables\css\jquery.dataTables.min.css" />
@@ -959,6 +958,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="AppConfig\AppSettings.config" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1009,7 +1009,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

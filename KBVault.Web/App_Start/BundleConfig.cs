@@ -23,9 +23,12 @@ namespace KBVault.Web
             ));
                        
             bundles.Add( new StyleBundle("~/public/css").Include(
-                "~/Assets/css/publicplugins.css", 
-                "~/Assets/css/site.css",                 
-                "~/Assets/css/jquery-ui/jquery-ui-redmond.css"              
+                "~/Assets/css/plugins/bootstrap.css",
+                "~/Assets/css/plugins/font-awesome.css",
+                "~/Assets/css/plugins/smartmenus/jquery.smartmenus.bootstrap.css",
+                "~/Assets/css/jquery-ui/jquery-ui-redmond.css",
+                "~/Assets/css/plugins/ionicons.css",
+                "~/Assets/css/site.css"                
                 ));                                               
 
             bundles.Add(new ScriptBundle("~/admin/js").Include(
@@ -45,8 +48,13 @@ namespace KBVault.Web
                 ));
             
             bundles.Add(new StyleBundle("~/admin/css").Include(
-                "~/Assets/css/plugins.css",                 
-                "~/Assets/css/jquery-ui/jquery-ui-redmond.css",                 
+                "~/Assets/css/plugins/bootstrap.css",
+                "~/Assets/css/plugins/font-awesome.css",
+                "~/Assets/css/jquery-ui/jquery-ui-redmond.css",
+                "~/Assets/css/plugins/ionicons.css",
+                "~/Assets/css/plugins/xeditable/xeditable.css",
+                "~/Assets/css/plugins/tagit/jquery.tagit.css",
+                "~/Assets/css/plugins/tagit/tagit.ui-zendesk.css",               
                 "~/Assets/css/uploadfile.css",                                
                 "~/Assets/datatables/css/jquery.dataTables.css",
                 "~/Assets/datatables/css/jquery.dataTables_themeroller.css",
