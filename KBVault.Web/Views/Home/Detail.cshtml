@@ -46,25 +46,25 @@
     <!-- DISQUS -->
     <div class="row">
         <div id="disqus_thread"></div>
+@if (!string.IsNullOrEmpty(ViewBag.DisqusShortName))
+{
         <script type="text/javascript">
-            @if(!string.IsNullOrEmpty(ViewBag.DisqusShortName))
-            {
-                <text>
-                    var disqus_shortname = '@ViewBag.DisqusShortName';
-                    var disqus_title = '@Model.Title';
-                    var disqus_identifier = 'KB-@Model.Id';
+                            
+            var disqus_shortname = '@ViewBag.DisqusShortName';
+            var disqus_title = '@Model.Title';
+            var disqus_identifier = 'KB-@Model.Id';
 
 
-                    (function () {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </text>
-            }
+            (function () {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();                
+            
         </script>
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+}
     </div>
     <!-- END OF DISQUS SECTION-->
 </div>    
