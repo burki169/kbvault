@@ -1,4 +1,5 @@
 ﻿using KBVault.Dal;
+using KBVault.Dal.Entities;
 using KBVault.Web.Models;
 
 namespace KBVault.Web.Business.Categories

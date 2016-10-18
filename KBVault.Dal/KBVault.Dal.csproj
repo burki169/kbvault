@@ -50,83 +50,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activity.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
+    <Compile Include="Entities\Activities.cs" />
+    <Compile Include="Entities\Article.cs" />
+    <Compile Include="Types\SimilarArticle.cs" />
+    <Compile Include="Types\TopTagItem.cs" />
+    <Compile Include="Migrations\201610162001009_InitialDb.cs" />
+    <Compile Include="Migrations\201610162001009_InitialDb.Designer.cs">
+      <DependentUpon>201610162001009_InitialDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Article.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ArticleRepository.cs" />
-    <Compile Include="ArticleTag.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Attachment.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CategoryRepository.cs" />
-    <Compile Include="Category.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IArticleRepository.cs" />
-    <Compile Include="ICategoryRepository.cs" />
-    <Compile Include="IUserRepository.cs" />
-    <Compile Include="KbUser.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repository\ArticleRepository.cs" />
+    <Compile Include="Entities\ArticleTag.cs" />
+    <Compile Include="Entities\Attachment.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\IArticleRepository.cs" />
+    <Compile Include="Repository\ICategoryRepository.cs" />
+    <Compile Include="Repository\ITagRepository.cs" />
+    <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Entities\KbUser.cs" />
+    <Compile Include="KbVaultContext.cs" />
     <Compile Include="KbVaultDalExtensions.cs" />
-    <Compile Include="KbVaultEntityModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KbVaultEntityModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KbVaultEntityModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KbVaultEntityModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KbVaultEntityModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setting.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SimilarArticle.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tag.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TopTagItem.cs">
-      <DependentUpon>KbVaultEntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="Entities\Settings.cs" />
+    <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Repository\TagRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="KbVaultEntityModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KbVaultEntityModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="KbVaultEntityModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KbVaultEntityModel.edmx</DependentUpon>
-      <LastGenOutput>KbVaultEntityModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="KbVaultEntityModel.edmx.diagram">
-      <DependentUpon>KbVaultEntityModel.edmx</DependentUpon>
-    </None>
-    <None Include="KbVaultEntityModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KbVaultEntityModel.edmx</DependentUpon>
-      <LastGenOutput>KbVaultEntityModel.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610162001009_InitialDb.resx">
+      <DependentUpon>201610162001009_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

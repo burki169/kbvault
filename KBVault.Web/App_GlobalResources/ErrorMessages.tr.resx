@@ -123,6 +123,9 @@
   <data name="AttachmentNotFound" xml:space="preserve">
     <value>Ek bulunamadı</value>
   </data>
+  <data name="BackupPathIsNotSet" xml:space="preserve">
+    <value>Yedekleme yolu boş!</value>
+  </data>
   <data name="CategoryIsNotEmpty" xml:space="preserve">
     <value>Kategori boş değil. Kategori silmek için, kategoride makale olmadığından emin olun. articles before deleting a category</value>
   </data>

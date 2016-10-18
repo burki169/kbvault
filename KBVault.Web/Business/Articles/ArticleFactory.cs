@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
-using KBVault.Dal;
+using KBVault.Dal.Entities;
+using KBVault.Dal.Repository;
 using KBVault.Web.Models;
 using KBVault.Web.Business.Categories;
 

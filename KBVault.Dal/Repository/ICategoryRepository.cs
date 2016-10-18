@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using KBVault.Dal.Entities;
 
-namespace KBVault.Dal
+namespace KBVault.Dal.Repository
 {
     public interface ICategoryRepository
     {

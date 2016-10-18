@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
 using Resources;
 
 namespace KBVault.Web.Models
@@ -15,7 +16,7 @@ namespace KBVault.Web.Models
         {
         }
 
-        public SettingsViewModel(Setting set)
+        public SettingsViewModel(Settings set)
         {
             if (set != null)
             {

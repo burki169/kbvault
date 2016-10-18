@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 
-namespace KBVault.Dal
+namespace KBVault.Dal.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public KbUser Get(long id)
+        public Entities.KbUser Get(long id)
         {
-            using (var db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 return db.KbUsers.First(u => u.Id == id);
             }

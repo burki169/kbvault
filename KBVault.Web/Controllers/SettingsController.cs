@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using KBVault.Web.Models;
 using KBVault.Dal;
-
+using KBVault.Dal.Entities;
 using Resources;
 using KBVault.Web.Helpers;
 
@@ -25,14 +25,14 @@ namespace KBVault.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (KbVaultEntities db = new KbVaultEntities())
+                    using (var db = new KbVaultContext())
                     {
-                        Setting set = db.Settings.FirstOrDefault();
+                        Settings set = db.Settings.FirstOrDefault();
                         if (set != null)
                         {
                             db.Settings.Remove(set);
                         }
-                        set = new Setting();   
+                        set = new Settings();   
                         set.CompanyName = model.CompanyName;
                         set.ArticleCountPerCategoryOnHomePage = model.ArticleCountPerCategoryOnHomePage;
                         set.DisqusShortName = model.DisqusShortName;
@@ -71,10 +71,10 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using(KbVaultEntities db = new KbVaultEntities())
+                using(var db = new KbVaultContext())
                 {
                     ViewBag.UpdateSuccessfull = false;
-                    Setting set = db.Settings.FirstOrDefault();
+                    Settings set = db.Settings.FirstOrDefault();
                     SettingsViewModel model = new SettingsViewModel(set);                    
                     return View(model);
                 }

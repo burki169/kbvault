@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
+using KBVault.Dal.Repository;
 using KBVault.Web.Business.Articles;
 using KBVault.Web.Business.Categories;
 using KBVault.Web.Helpers;
@@ -30,7 +32,7 @@ namespace KBVault.Web.Controllers
             JsonOperationResponse result = new JsonOperationResponse();
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     //Remove article and attachments                    
                     long CurrentUserId = KBVaultHelperFunctions.UserAsKbUser(User).Id;
@@ -138,16 +140,13 @@ namespace KBVault.Web.Controllers
                 ModelState.Remove("Category.Name");
                 ModelState.Remove("Category.SefName");
                 if (ModelState.IsValid)
-                {
-                    using (KbVaultEntities db = new KbVaultEntities())
-                    {
-                        Article article = ArticleFactory.CreateArticleFromViewModel(model, KBVaultHelperFunctions.UserAsKbUser(User).Id);
-                        var id = ArticleRepository.Add(article, model.Tags);                        
-                        if( article.IsDraft == 0 )
-                            KbVaultLuceneHelper.AddArticleToIndex(article);
-                        ShowOperationMessage(UIResources.ArticleCreatePageCreateSuccessMessage);
-                        return RedirectToAction("Edit", "Article", new { id = article.Id});
-                    }
+                {                    
+                    Article article = ArticleFactory.CreateArticleFromViewModel(model, KBVaultHelperFunctions.UserAsKbUser(User).Id);
+                    var id = ArticleRepository.Add(article, model.Tags);                        
+                    if( article.IsDraft == 0 )
+                        KbVaultLuceneHelper.AddArticleToIndex(article);
+                    ShowOperationMessage(UIResources.ArticleCreatePageCreateSuccessMessage);
+                    return RedirectToAction("Edit", "Article", new { id = article.Id});                    
                 }                
                 return View(model);
             }

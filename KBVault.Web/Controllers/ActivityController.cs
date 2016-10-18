@@ -29,7 +29,7 @@ namespace KBVault.Web.Controllers
                 int page = model.start / length;                                
                 JsonOperationResponse result = new JsonOperationResponse();
                 int recordCount = 0;
-                using (var db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     recordCount = db.Activities.Count();
                     db.Configuration.LazyLoadingEnabled = false;

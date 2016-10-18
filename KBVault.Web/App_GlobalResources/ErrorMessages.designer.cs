@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backup path is empty.
+        /// </summary>
+        internal static string BackupPathIsNotSet {
+            get {
+                return ResourceManager.GetString("BackupPathIsNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category Is Not Empty! Remove or move articles before deleting a category.
         /// </summary>
         internal static string CategoryIsNotEmpty {

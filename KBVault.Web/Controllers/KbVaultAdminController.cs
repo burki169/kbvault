@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
 using NLog;
 
 namespace KBVault.Web.Controllers
@@ -17,11 +18,11 @@ namespace KBVault.Web.Controllers
         private string OperationMessageKey = "KBVAULT_OPERATION_MSG_KEY";
         private string ErrorMessageKey = "KBVAULT_ERROR_MSG_KEY";
 
-        protected Setting Settings;
+        protected Settings Settings;
 
         public KbVaultAdminController()
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 db.Configuration.ProxyCreationEnabled = false;
                 db.Configuration.LazyLoadingEnabled = false;

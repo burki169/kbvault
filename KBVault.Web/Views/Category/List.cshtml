@@ -85,6 +85,7 @@
                                 <td>@item.Title</td>
                                 <td width="8%">@item.Views</td>
                                 <td width="8%">@item.Likes</td>                                                                 
+                                <td width="10%">@item.KbUser.UserName</td>
                                 <td width="10%">
                                     <a href='@Url.Action("Edit","Article",new {id=item.Id})' class="btn btn-default"><i class="fa fa-pencil"></i></a>
                                     <a data-confirm-message="@UIResources.CategoryArticlesListRemoveArticleConfirmMessage" data-action-url='@Url.Action("remove","Article",new {id=item.Id})' class="btn btn-default remove-article" href="javascript:void(0)"><i class="fa fa-times"></i></a>

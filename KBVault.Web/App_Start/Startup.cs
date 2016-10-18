@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Integration.SignalR;
 using KBVault.Dal;
+using KBVault.Dal.Repository;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Owin;
@@ -15,6 +16,7 @@ namespace KBVault.Web
         public void Configuration(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
+            builder.RegisterType<TagRepository>().As<ITagRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<ArticleRepository>().As<IArticleRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             var config = new HubConfiguration();            

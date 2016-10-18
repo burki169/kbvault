@@ -7,8 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using KBVault.Core.MVC.Authorization;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
 using KBVault.Web.Models;
 using NLog;
+using KbUser = KBVault.Dal.Entities.KbUser;
 
 namespace KBVault.Web.Helpers
 {
@@ -76,7 +78,7 @@ namespace KBVault.Web.Helpers
             try
             {
                 List<CategoryViewModel> CategoryList = new List<CategoryViewModel>();
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     //db.Configuration.ProxyCreationEnabled = false;
                     List<Category> categories = db.Categories.Where(c => c.Parent == parentCategoryId || (parentCategoryId == -1 && c.Parent == null) ).ToList();

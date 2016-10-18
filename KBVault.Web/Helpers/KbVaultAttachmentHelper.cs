@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
 using NLog;
 using Resources;
 
@@ -31,7 +32,7 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                using( KbVaultEntities db = new KbVaultEntities())
+                using( var db = new KbVaultContext())
                 {                                        
                     Attachment attachment = db.Attachments.First(a => a.Hash == hash);
                     if (attachment == null)
@@ -55,7 +56,7 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     db.Configuration.ProxyCreationEnabled = false;
                     db.Configuration.LazyLoadingEnabled = false;

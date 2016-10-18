@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq; 
 using System.Text; 
 using System.Web.Security;
-using KBVault.Dal; 
+using KBVault.Dal;
+using KbUser = KBVault.Dal.Entities.KbUser;
 
 namespace KBVault.Core.MVC.Authorization { 
     

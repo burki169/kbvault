@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using KBVault.Web.Models.Public;
 using KBVault.Web.Helpers;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
 
 namespace KBVault.Web.Controllers
 {
@@ -35,7 +36,7 @@ namespace KBVault.Web.Controllers
                     if (model.ArticleId > 0)
                     {
                         Article article = null;
-                        using (KbVaultEntities db = new KbVaultEntities())
+                        using (var db = new KbVaultContext())
                         {
                             article = db.PublishedArticles().FirstOrDefault(a => a.Id == model.ArticleId);
                         }

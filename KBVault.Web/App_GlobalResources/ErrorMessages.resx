@@ -123,6 +123,9 @@
   <data name="AttachmentNotFound" xml:space="preserve">
     <value>Attachment not found.</value>
   </data>
+  <data name="BackupPathIsNotSet" xml:space="preserve">
+    <value>Backup path is empty</value>
+  </data>
   <data name="CategoryIsNotEmpty" xml:space="preserve">
     <value>Category Is Not Empty! Remove or move articles before deleting a category</value>
   </data>
