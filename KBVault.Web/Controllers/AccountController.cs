@@ -12,6 +12,7 @@ using KBVault.Dal;
 using System.Collections;
 using Resources;
 using KBVault.Web.Helpers;
+using KbUser = KBVault.Dal.Entities.KbUser;
 
 namespace KBVault.Web.Controllers
 {
@@ -79,7 +80,7 @@ namespace KBVault.Web.Controllers
                                 
                 if (ModelState.IsValid)
                 {
-                    using (KbVaultEntities db = new KbVaultEntities())
+                    using (var db = new KbVaultContext())
                     {
                         string username = ControllerContext.RequestContext.HttpContext.User.Identity.Name;
                         KbUser usr = db.KbUsers.FirstOrDefault(u => u.UserName == username);
@@ -122,7 +123,7 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     string username = ControllerContext.RequestContext.HttpContext.User.Identity.Name;
                     KbUser usr = db.KbUsers.FirstOrDefault(u => u.UserName == username);
@@ -156,7 +157,7 @@ namespace KBVault.Web.Controllers
             };
             try
             {
-                using(KbVaultEntities db = new KbVaultEntities())
+                using(var db = new KbVaultContext())
                 {
                     db.KbUsers.Remove(db.KbUsers.First(u => u.Id == id));
                     db.SaveChanges();
@@ -180,7 +181,7 @@ namespace KBVault.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (KbVaultEntities db = new KbVaultEntities())
+                    using (var db = new KbVaultContext())
                     {
                         KbUser usr = db.KbUsers.FirstOrDefault(u => u.Id == model.Id);
                         if (usr == null)
@@ -219,7 +220,7 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     KbUser usr = db.KbUsers.FirstOrDefault(u => u.Id == id);
                     if (usr == null)
@@ -243,7 +244,7 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     List<KbUser> Users = db.KbUsers.OrderBy(u => u.UserName).ToList();
                     return View(Users);
@@ -281,7 +282,7 @@ namespace KBVault.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (KbVaultEntities db = new KbVaultEntities())
+                    using (var db = new KbVaultContext())
                     {
                         KbUser usr = KbVaultAuthHelper.CreateUser(model.UserName, model.OldPassword, model.Email, model.Role,KBVaultHelperFunctions.UserAsKbUser(User).Id);
                         usr = db.KbUsers.FirstOrDefault(u => u.Id == usr.Id);

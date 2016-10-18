@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
+using KBVault.Dal.Repository;
 using NLog;
 using MvcPaging;
 using KBVault.Web.Models;
@@ -19,13 +21,15 @@ namespace KBVault.Web.Controllers
         
         private int PageSize = 45;
 
+        public ITagRepository TagRepository { get; set; }
+
         [HttpPost]
         public JsonResult Edit(string name, string pk, string value)
         {
             JsonOperationResponse result = new JsonOperationResponse();
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     long tagId = Convert.ToInt64(pk);
                     Tag tag = db.Tags.First(t => t.Id == tagId);
@@ -56,7 +60,7 @@ namespace KBVault.Web.Controllers
             result.Successful = false;
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     
                     Tag tag = db.Tags.First(t => t.Id == id);
@@ -64,7 +68,7 @@ namespace KBVault.Web.Controllers
                     {
                         tag.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                         db.Tags.Remove(tag);
-                        db.RemoveTagFromArticles(id);
+                        TagRepository.RemoveTagFromArticles(id);
                         db.SaveChanges();
                         result.Successful = true;
                         result.ErrorMessage = UIResources.TagListRemoveSuccessful;
@@ -90,7 +94,7 @@ namespace KBVault.Web.Controllers
             {
                 if (page < 1)
                     page = 1;
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     IList<Tag> Tags = db.Tags.OrderBy(t => t.Name).ToPagedList(page, PageSize);
                     return View(Tags);
@@ -110,7 +114,7 @@ namespace KBVault.Web.Controllers
             JsonOperationResponse result = new JsonOperationResponse();
             try
             {                
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     var suggestions = db.Tags.Where(t => t.Name.Contains(term)).Select(t => t.Name).Take(20).ToList<string>();
                     result.Successful = true;

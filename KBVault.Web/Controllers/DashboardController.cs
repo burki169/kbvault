@@ -16,7 +16,7 @@ namespace KBVault.Web.Controllers
 
         public ActionResult Index()
         {
-            using(KbVaultEntities db = new KbVaultEntities())
+            using(var db = new KbVaultContext())
             {
                 DashboardViewModel model = new DashboardViewModel();
                 model.TotalArticleCount = db.Articles.Count();

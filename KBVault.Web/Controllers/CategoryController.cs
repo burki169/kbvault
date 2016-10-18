@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
+using KBVault.Dal.Repository;
 using KBVault.Web.Models;
 using NLog;
 using MvcPaging;

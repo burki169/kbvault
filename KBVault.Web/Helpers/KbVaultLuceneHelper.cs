@@ -13,6 +13,7 @@ using Lucene.Net.Search;
 using Lucene.Net.QueryParsers;
 using KBVault.Web.Models.Public;
 using System.Text.RegularExpressions;
+using KBVault.Dal.Entities;
 
 namespace KBVault.Web.Helpers
 {

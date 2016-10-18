@@ -10,6 +10,7 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using KBVault.Dal;
+using KBVault.Dal.Repository;
 using KBVault.Web.Business.Articles;
 using KBVault.Web.Business.Categories;
 using Microsoft.AspNet.SignalR;
@@ -26,6 +27,7 @@ namespace KBVault.Web
         {
             var builder = new ContainerBuilder();            
             builder.RegisterType<CategoryFactory>().As<ICategoryFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            builder.RegisterType<TagRepository>().As<ITagRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<ArticleRepository>().As<IArticleRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<ArticleFactory>().As<IArticleFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();

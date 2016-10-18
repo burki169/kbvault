@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
 using KBVault.Web.Helpers;
 using KBVault.Web.Models;
 using NLog;
@@ -67,9 +68,9 @@ namespace KBVault.Web.Controllers
                     attachment.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                     result.Successful = true;
                     result.Data = new AttachmentViewModel(attachment);
-                    using (KbVaultEntities db = new KbVaultEntities())
+                    using (var db = new KbVaultContext())
                     {
-                        Setting sets = db.Settings.FirstOrDefault();
+                        Settings sets = db.Settings.FirstOrDefault();
                         if (sets != null)
                         {
                             string[] extensions = sets.IndexFileExtensions.Split(new string[]{","},StringSplitOptions.RemoveEmptyEntries);

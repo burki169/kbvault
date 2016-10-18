@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using KBVault.Dal;
 using Resources;
+using KbUser = KBVault.Dal.Entities.KbUser;
 
 
 namespace KBVault.Web.Models

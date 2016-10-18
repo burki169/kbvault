@@ -5,17 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using KBVault.Dal.Entities;
 
 namespace KBVault.Web.Controllers
 {
     public class KbVaultPublicController : Controller
     {
         protected Logger Log = LogManager.GetCurrentClassLogger();
-        protected Setting Settings;
+        protected Settings Settings;
         
         public KbVaultPublicController()
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 try
                 {

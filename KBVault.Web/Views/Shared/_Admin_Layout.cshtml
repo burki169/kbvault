@@ -1,5 +1,6 @@
-﻿@{
-    KBVault.Dal.KbUser CurrentUserInfo = KBVaultHelperFunctions.UserAsKbUser(Context.User);
+﻿@using KBVault.Dal.Entities
+@{
+    KbUser CurrentUserInfo = KBVaultHelperFunctions.UserAsKbUser(Context.User);
 }
 <!DOCTYPE html>
 <html>

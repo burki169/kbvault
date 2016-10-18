@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using KBVault.Dal.Entities;
 
 namespace KBVault.Web.Models
 {

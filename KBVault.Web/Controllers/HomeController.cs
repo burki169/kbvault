@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using KBVault.Core.MVC.Authorization;
 using KBVault.Web.Models.Public;
 using KBVault.Dal;
+using KBVault.Dal.Entities;
+using KBVault.Dal.Repository;
 using KBVault.Web.Models;
 using MvcPaging;
 using KBVault.Web.Helpers;
@@ -17,13 +19,16 @@ namespace KBVault.Web.Controllers
     {
         private int ArticleCountPerPage = 20;
 
+        public ITagRepository TagRepository { get; set; }
+        public IArticleRepository ArticleRepository { get; set; }
+
         [HttpPost]
         public JsonResult Like(int articleId)
         {
             JsonOperationResponse result = new JsonOperationResponse();
             if (Request.IsAjaxRequest() )
             {
-                using (var db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {                    
                     var article = db.Articles.FirstOrDefault(a => a.Id == articleId);
                     if (article == null)
@@ -48,7 +53,7 @@ namespace KBVault.Web.Controllers
         {
             try
             {                
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     Tag tag = db.Tags.First(c => c.Name == id);
                     if (tag == null)
@@ -71,7 +76,7 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     Category cat = db.Categories.Include("ChildCategories").Include("ParentCategory").First(c => c.SefName == id);
                     if (cat == null)
@@ -94,20 +99,14 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {                                        
                     Article article = db.PublishedArticles().FirstOrDefault(a => a.SefName == id);                                  
                     if (article != null)
                     {
                         article.Views++;                        
-                        db.SaveChanges();
-                        DateTime today = DateTime.Now.Date;
-                        ViewBag.SimilarArticles = db.GetSimilarArticles((int)article.Id)
-                                                    .Where( a => a.PublishStartDate <= today &&
-                                                                a.PublishEndDate >= today &&
-                                                                a.IsDraft == 0
-                                                                )
-                                                    .ToList();
+                        db.SaveChanges();                        
+                        ViewBag.SimilarArticles = ArticleRepository.GetVisibleSimilarArticles((int)article.Id, DateTime.Today.Date);
                         return View(article);
                     }
                     else
@@ -125,7 +124,7 @@ namespace KBVault.Web.Controllers
 
         public ActionResult Index()
         {
-            using(KbVaultEntities db = new KbVaultEntities())
+            using(var db = new KbVaultContext())
             {                
                 LandingPageViewModel model = new LandingPageViewModel();
                 model.HotCategories = db.Categories.Include("Articles").Where(c => c.IsHot).ToList();
@@ -141,10 +140,10 @@ namespace KBVault.Web.Controllers
                                             .Take(Settings.ArticleCountPerCategoryOnHomePage)
                                             .ToList();
                 /* Build tag cloud */
-                model.PopularTags = db.GetTopTags().OrderBy( c => Guid.NewGuid()).ToList();
+                model.PopularTags = TagRepository.GetTopTags().OrderBy( c => Guid.NewGuid()).ToList();
                 int ratioDiff = model.MaxTagRatio - model.MinTagRatio;
                 int minRatio = model.MinTagRatio;
-                foreach (TopTagItem item in model.PopularTags)
+                foreach (var item in model.PopularTags)
                 {
                     if (ratioDiff > 0)
                         item.FontSize = 80 + Convert.ToInt32(Math.Truncate((double)(item.Ratio - minRatio) * (100 / ratioDiff)));

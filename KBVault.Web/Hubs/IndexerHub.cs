@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KBVault.Dal;
+using KBVault.Dal.Repository;
 using KBVault.Web.Helpers;
 using Microsoft.AspNet.SignalR;
 

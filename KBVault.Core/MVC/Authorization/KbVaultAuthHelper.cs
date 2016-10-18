@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using KBVault.Dal;
 using KBVault.Core.Exceptions;
 using KBVault.Core.Outlib;
+using KBVault.Dal.Entities;
 using NLog;
 
 namespace KBVault.Core.MVC.Authorization
@@ -21,7 +22,7 @@ namespace KBVault.Core.MVC.Authorization
 
         public static KbUser GetKbUser(string userName)
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 return db.KbUsers.FirstOrDefault<KbUser>(ku => ku.UserName == userName);
             }
@@ -32,7 +33,7 @@ namespace KBVault.Core.MVC.Authorization
         {
             try
             {
-                using (KbVaultEntities db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     KbUser usr = new KbUser();
                     usr.Password = HashPassword(password, Guid.NewGuid().ToString().Replace("-", ""));
@@ -74,7 +75,7 @@ namespace KBVault.Core.MVC.Authorization
         { 
             try 
             {
-                using (var db = new KbVaultEntities())
+                using (var db = new KbVaultContext())
                 {
                     KbUser usr = GetKbUser(userName);
                     if (usr == null)
@@ -96,7 +97,7 @@ namespace KBVault.Core.MVC.Authorization
             {
                 if (ValidateUser(username, oldPassword))
                 {
-                    using (var db = new KbVaultEntities())
+                    using (var db = new KbVaultContext())
                     {
                         KbUser usr= db.KbUsers.FirstOrDefault(ku => ku.UserName == username);
                         if (usr != null)

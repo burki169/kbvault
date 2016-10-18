@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using KBVault.Dal.Entities;
 
-namespace KBVault.Dal
+namespace KBVault.Dal.Repository
 {
     public class CategoryRepository : ICategoryRepository
     {
         public int Add(Category category)
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var  db = new KbVaultContext())
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
@@ -19,7 +20,7 @@ namespace KBVault.Dal
 
         public void Update(Category category)
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 Category cat = db.Categories.FirstOrDefault(c => c.Id == category.Id);
                 if (cat != null)
@@ -40,7 +41,7 @@ namespace KBVault.Dal
 
         public Category Get(int categoryId)
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var  db = new KbVaultContext())
             {                
                 var category = db.Categories.FirstOrDefault(ca => ca.Id == categoryId);
                 if (category == null)
@@ -54,7 +55,7 @@ namespace KBVault.Dal
 
         public IList<Category> GetAllCategories()
         {
-            using (var db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 return db.Categories.OrderBy(c => c.Name).ToList();
             }
@@ -62,7 +63,7 @@ namespace KBVault.Dal
 
         public bool HasArticleInCategory(int categoryId)
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 return db.Articles.Any(a => a.CategoryId == categoryId);
             }
@@ -70,7 +71,7 @@ namespace KBVault.Dal
 
         public IList<Article> GetArticles(int categoryId)
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 return db.Articles.Include(a => a.KbUser).Include(a => a.Attachments).Where(a => a.CategoryId == categoryId).OrderBy(c => c.Title).ToList();
             }
@@ -78,7 +79,7 @@ namespace KBVault.Dal
 
         public bool Remove(Category category)
         {            
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 var cat = db.Categories.FirstOrDefault(c => c.Id == category.Id);
                 if (cat != null)
@@ -97,7 +98,7 @@ namespace KBVault.Dal
 
         public Category GetFirstCategory()
         {
-            using (KbVaultEntities db = new KbVaultEntities())
+            using (var db = new KbVaultContext())
             {
                 return db.Categories.FirstOrDefault();
             }
