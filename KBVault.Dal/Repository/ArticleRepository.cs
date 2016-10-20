@@ -69,5 +69,29 @@ namespace KBVault.Dal.Repository
                 db.Database.ExecuteSqlCommand("exec AssignTagsToArticle @ArticleId, @Tags", articleIdParameter, tagsParameter);
             }
         }
+
+        public int GetTotalArticleCount()
+        {
+            using (var db = new KbVaultContext())
+            {
+                return db.Articles.Count();
+            }
+        }
+
+        public Article GetMostLikedArticle()
+        {
+            using (var db = new KbVaultContext())
+            {
+                return db.Articles.OrderByDescending(a => a.Likes).FirstOrDefault();
+            }
+        }
+
+        public Article GetMostViewedArticle()
+        {
+            using (var db = new KbVaultContext())
+            {
+                return db.Articles.OrderByDescending(a => a.Views).FirstOrDefault();
+            }
+        }
     }
 }

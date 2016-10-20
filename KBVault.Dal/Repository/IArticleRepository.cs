@@ -12,5 +12,8 @@ namespace KBVault.Dal.Repository
         void Update(Article article, string tags);
         IList<SimilarArticle> GetVisibleSimilarArticles(int articleId,DateTime date);
         void AssignTagsToArticle(long articleId, string tags);
+        int GetTotalArticleCount();
+        Article GetMostLikedArticle();
+        Article GetMostViewedArticle();
     }
 }
