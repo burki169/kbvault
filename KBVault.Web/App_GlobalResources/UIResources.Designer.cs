@@ -952,6 +952,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We have published {0} articles..
+        /// </summary>
+        internal static string PublicTotalArticleCountMessage {
+            get {
+                return ResourceManager.GetString("PublicTotalArticleCountMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load more....
         /// </summary>
         internal static string SearchResultsPageLoadMore {
@@ -1119,6 +1128,15 @@ namespace Resources {
         internal static string SettingsPageTitle {
             get {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show total number of articles on front page.
+        /// </summary>
+        internal static string SettingsShowTotalArticleCountOnFrontPage {
+            get {
+                return ResourceManager.GetString("SettingsShowTotalArticleCountOnFrontPage", resourceCulture);
             }
         }
         

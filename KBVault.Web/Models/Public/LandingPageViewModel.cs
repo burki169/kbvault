@@ -15,6 +15,7 @@ namespace KBVault.Web.Models.Public
         public List<Article> LatestArticles { get; set; }
         public List<Article> PopularArticles { get; set; }
         public List<TopTagItem> PopularTags { get; set; }
+        public string TotalArticleCountMessage { get; set; }
         public int MaxTagRatio
         {
             get

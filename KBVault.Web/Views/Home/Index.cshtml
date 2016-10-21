@@ -46,6 +46,15 @@
             }                                
         </div>
         <div class="clearfix">&nbsp;</div>
+        @if (ViewBag.ShowTotalArticleCountOnFrontPage)
+        {
+            <div class="row">
+                <div class="container">
+                    @Model.TotalArticleCountMessage
+                </div>
+            </div>
+            <div class="clearfix">&nbsp;</div>
+        }
         <div class="row">
             <div class="col-lg-9">
                 <h4 class="section-title clearfix">

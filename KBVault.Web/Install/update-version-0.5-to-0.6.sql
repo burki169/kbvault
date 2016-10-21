@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Settings] ADD [ShowTotalArticleCountOnFrontPage] [bit] NOT NULL DEFAULT 0

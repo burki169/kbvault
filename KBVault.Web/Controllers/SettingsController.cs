@@ -44,6 +44,7 @@ namespace KBVault.Web.Controllers
                         set.AnalyticsAccount = model.AnalyticsAccount;
                         set.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;                        
                         set.BackupPath = model.BackupPath;
+                        set.ShowTotalArticleCountOnFrontPage = model.ShowTotalArticleCountOnFrontPage;
                         if (!string.IsNullOrEmpty(set.BackupPath))
                         {
                             if (!set.BackupPath.EndsWith("\\") && !set.BackupPath.StartsWith("~"))

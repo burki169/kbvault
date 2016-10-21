@@ -534,4 +534,10 @@
   <data name="IndexingRebuildPageTitle" xml:space="preserve">
     <value>Index Management</value>
   </data>
+  <data name="PublicTotalArticleCountMessage" xml:space="preserve">
+    <value>We have published {0} articles.</value>
+  </data>
+  <data name="SettingsShowTotalArticleCountOnFrontPage" xml:space="preserve">
+    <value>Show total number of articles on front page</value>
+  </data>
 </root>
