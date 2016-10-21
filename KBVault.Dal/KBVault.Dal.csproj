@@ -52,12 +52,16 @@
   <ItemGroup>
     <Compile Include="Entities\Activities.cs" />
     <Compile Include="Entities\Article.cs" />
+    <Compile Include="Migrations\201610212009307_InitialCreate.cs" />
+    <Compile Include="Migrations\201610212009307_InitialCreate.Designer.cs">
+      <DependentUpon>201610212009307_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610212009563_addTotalArticleCountToSettings.cs" />
+    <Compile Include="Migrations\201610212009563_addTotalArticleCountToSettings.Designer.cs">
+      <DependentUpon>201610212009563_addTotalArticleCountToSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Types\SimilarArticle.cs" />
     <Compile Include="Types\TopTagItem.cs" />
-    <Compile Include="Migrations\201610162001009_InitialDb.cs" />
-    <Compile Include="Migrations\201610162001009_InitialDb.Designer.cs">
-      <DependentUpon>201610162001009_InitialDb.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\ArticleRepository.cs" />
     <Compile Include="Entities\ArticleTag.cs" />
@@ -85,8 +89,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610162001009_InitialDb.resx">
-      <DependentUpon>201610162001009_InitialDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610212009307_InitialCreate.resx">
+      <DependentUpon>201610212009307_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610212009563_addTotalArticleCountToSettings.resx">
+      <DependentUpon>201610212009563_addTotalArticleCountToSettings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

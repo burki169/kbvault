@@ -531,4 +531,10 @@
   <data name="IndexingRebuildPageTitle" xml:space="preserve">
     <value>İndeks Yönetimi</value>
   </data>
+  <data name="PublicTotalArticleCountMessage" xml:space="preserve">
+    <value>{0} adet makale yayınlanmıştır.</value>
+  </data>
+  <data name="SettingsShowTotalArticleCountOnFrontPage" xml:space="preserve">
+    <value>Ana sayfada toplam makale sayısını göster</value>
+  </data>
 </root>

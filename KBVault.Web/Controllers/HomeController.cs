@@ -127,6 +127,10 @@ namespace KBVault.Web.Controllers
             using(var db = new KbVaultContext())
             {                
                 LandingPageViewModel model = new LandingPageViewModel();
+                if (Settings.ShowTotalArticleCountOnFrontPage)
+                {
+                    model.TotalArticleCountMessage = string.Format(UIResources.PublicTotalArticleCountMessage,db.PublishedArticles().Count());
+                }
                 model.HotCategories = db.Categories.Include("Articles").Where(c => c.IsHot).ToList();
                 DateTime dateRangeToday = DateTime.Now.Date;
                 ViewBag.Title = Settings.CompanyName;

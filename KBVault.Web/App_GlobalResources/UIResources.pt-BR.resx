@@ -522,4 +522,10 @@
   <data name="SettingsBackupPathWarning" xml:space="preserve">
     <value>Folder must be writable by MsSQL Service User</value>
   </data>
+  <data name="PublicTotalArticleCountMessage" xml:space="preserve">
+    <value>To be translated: {0}</value>
+  </data>
+  <data name="SettingsShowTotalArticleCountOnFrontPage" xml:space="preserve">
+    <value>To be translated </value>
+  </data>
 </root>

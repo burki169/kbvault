@@ -30,7 +30,7 @@ namespace KBVault.Web.Models
                 this.ArticlePrefix = set.ArticlePrefix;
                 this.AnalyticsAccount = set.AnalyticsAccount;
                 this.BackupPath = set.BackupPath;
-                
+                this.ShowTotalArticleCountOnFrontPage = set.ShowTotalArticleCountOnFrontPage;
             }
         }
 
@@ -47,5 +47,6 @@ namespace KBVault.Web.Models
         public string ArticlePrefix { get; set; }
         public string AnalyticsAccount { get; set; }
         public string BackupPath { get; set; }
+        public bool ShowTotalArticleCountOnFrontPage { get; set; }
     }
 }

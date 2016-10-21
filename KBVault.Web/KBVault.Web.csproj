@@ -884,6 +884,7 @@
     <Content Include="Global.asax" />
     <Content Include="Install\default_kbvault.sql" />
     <Content Include="Install\update-version-0.45-to-0.5.sql" />
+    <Content Include="Install\update-version-0.5-to-0.6.sql" />
     <Content Include="logs\readme.txt" />
     <Content Include="Lucene\Readme.txt" />
     <Content Include="NLog.config">
