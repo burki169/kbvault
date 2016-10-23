@@ -6,7 +6,7 @@ namespace KBVault.Web.Business.Categories
 {
     public class CategoryFactory : ICategoryFactory
     {
-        public Category CreateCategory(string name, bool isHot, string sefName, long author, int? parent)
+        public Category CreateCategory(string name, bool isHot, string sefName, string icon, long author, int? parent)
         {
             return new Category
             {
@@ -14,6 +14,7 @@ namespace KBVault.Web.Business.Categories
                 Author = author,
                 IsHot = isHot,
                 SefName = sefName,
+                Icon =  icon,
                 Parent = parent
             };
         }
@@ -26,6 +27,7 @@ namespace KBVault.Web.Business.Categories
                 IsHot = cat.IsHot,
                 ParentId = cat.Parent.HasValue ? (int) cat.Parent : -1,
                 Name = cat.Name,
+                Icon = cat.Icon,
                 SefName = cat.SefName
             };
             return categoryModel;

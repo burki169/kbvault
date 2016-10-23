@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201610212009563_addTotalArticleCountToSettings.Designer.cs">
       <DependentUpon>201610212009563_addTotalArticleCountToSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610231849434_AddeDIconForCategory.cs" />
+    <Compile Include="Migrations\201610231849434_AddeDIconForCategory.Designer.cs">
+      <DependentUpon>201610231849434_AddeDIconForCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Types\SimilarArticle.cs" />
     <Compile Include="Types\TopTagItem.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610212009563_addTotalArticleCountToSettings.resx">
       <DependentUpon>201610212009563_addTotalArticleCountToSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610231849434_AddeDIconForCategory.resx">
+      <DependentUpon>201610231849434_AddeDIconForCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -88,6 +88,7 @@ namespace KBVault.Web.Helpers
                         categoryItem.Id = cat.Id;
                         categoryItem.Name = cat.Name;
                         categoryItem.SefName = cat.SefName;
+                        categoryItem.Icon = string.IsNullOrEmpty(cat.Icon) ? "angle-double-right" : cat.Icon;
                         categoryItem.NameForDroplist = cat.Name.PadLeft(cat.Name.Length + depth, '-');
                         categoryItem.Children = GetCategories(cat.Id, depth + 2);
                         CategoryList.Add(categoryItem);

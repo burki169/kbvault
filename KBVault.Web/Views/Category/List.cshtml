@@ -36,7 +36,7 @@
 
 @section ContentHeader{
     <h1>
-        @ViewBag.Title
+        <i class="fa fa-1x fa-@Model.Icon"></i> @ViewBag.Title
         <small class="pull-right">
             <a href='@Url.Action("Create", "Article", new { id = @Model.CategoryId })' class="btn btn-default">
                 <i class="fa fa-plus"></i>&nbsp;@UIResources.CategoryArticlesListNewArticleTitle
