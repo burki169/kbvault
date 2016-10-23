@@ -538,6 +538,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Icon.
+        /// </summary>
+        internal static string CategoryCreateFormLabelIcon {
+            get {
+                return ResourceManager.GetString("CategoryCreateFormLabelIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hot Category.
         /// </summary>
         internal static string CategoryCreateFormLabelIsHot {

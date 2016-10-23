@@ -30,6 +30,7 @@ namespace KBVault.Dal.Repository
                     cat.SefName = category.SefName;
                     cat.Author = category.Author;
                     cat.Parent = category.Parent;
+                    cat.Icon = category.Icon;
                     db.SaveChanges();
                 }
                 else

@@ -30,6 +30,8 @@ namespace KBVault.Dal.Entities
 
         public long Author { get; set; }
 
+        public string Icon { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Articles { get; set; }
 

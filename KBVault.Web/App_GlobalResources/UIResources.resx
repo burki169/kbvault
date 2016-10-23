@@ -543,4 +543,7 @@
   <data name="SettingsTheme" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="CategoryCreateFormLabelIcon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
 </root>

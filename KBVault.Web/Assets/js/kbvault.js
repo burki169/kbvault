@@ -5,6 +5,14 @@
  * This file contains common event handlers for admin tasks
  !**/
 
+function BindCategoryIconPreview() {
+    $("#Icon")
+        .keyup(function() {
+            var val = $(this).val();
+            $("#categoryIconPreview").attr("class", "fa fa-2x fa-" + val);
+        });
+}
+
 //
 // Remove Attachment
 //
@@ -173,6 +181,7 @@ $(function () {
     BindRemoveUserEvents();
     BindRemoveTagEvents();
     BindBackupEvent();
+    BindCategoryIconPreview();
     //
     // Editable mode
     //

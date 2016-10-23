@@ -6,7 +6,7 @@ namespace KBVault.Web.Business.Categories
 {
     public interface ICategoryFactory
     {
-        Category CreateCategory(string name, bool isHot, string sefName, long author, int? parent);
+        Category CreateCategory(string name, bool isHot, string sefName, string icon, long author, int? parent);
         CategoryViewModel CreateCategoryViewModel(Category cat);
     }
 }

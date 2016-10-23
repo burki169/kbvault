@@ -32,6 +32,8 @@ namespace KBVault.Web.Models
         
         [Required(ErrorMessageResourceType=typeof(UIResources),ErrorMessageResourceName="CategorySefNameIsRequired")]
         public string SefName { get; set; }
+
+        public string Icon { get; set; }
         
         public List<CategoryViewModel> Children = new List<CategoryViewModel>();            
     }
