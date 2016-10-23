@@ -806,15 +806,15 @@
     <Content Include="Assets\img\user-bg.png" />
     <Content Include="Assets\img\vault.png" />
     <Content Include="Assets\js\AdminLTE\app.js" />
-    <Content Include="Assets\js\frontend.js" />
+    <Content Include="Assets\Themes\Default\js\frontend.js" />
     <Content Include="Assets\js\jquery\jquery-2-0-2.js" />
     <Content Include="Assets\js\jquery\jquery-ui-1-10-4.js" />
-    <Content Include="Assets\js\plugins\cookie\jquery.cookie.js" />
+    <Content Include="Assets\Themes\Default\js\cookie\jquery.cookie.js" />
     <Content Include="Assets\js\plugins\jqueryForm\jquery.form.js" />
     <Content Include="Assets\js\plugins\slug-it\jquery.slugit.js" />
-    <Content Include="Assets\js\smartmenus\jquery.smartmenus.bootstrap.js" />
-    <Content Include="Assets\js\smartmenus\jquery.smartmenus.js" />
-    <Content Include="Assets\js\smartmenus\jquery.smartmenus.keyboard.js" />
+    <Content Include="Assets\Themes\Default\js\smartmenus\jquery.smartmenus.bootstrap.js" />
+    <Content Include="Assets\Themes\Default\js\smartmenus\jquery.smartmenus.js" />
+    <Content Include="Assets\Themes\Default\js\smartmenus\jquery.smartmenus.keyboard.js" />
     <Content Include="Assets\js\kbvault.js" />
     <Content Include="Assets\js\plugins\uploader\jquery.uploadfile.js" />
     <Content Include="Assets\js\bootstrap\bootstrap.js" />
@@ -879,7 +879,7 @@
     <Content Include="Assets\js\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Assets\js\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Assets\js\plugins\tag-it\tag-it.js" />
-    <Content Include="Assets\css\site.css" />
+    <Content Include="Assets\Themes\Default\css\site.css" />
     <Content Include="Assets\js\plugins\x-editable\xeditable.js" />
     <Content Include="BackupArchives\index.html" />
     <Content Include="Global.asax" />
@@ -1008,17 +1008,13 @@
     <Content Include="Views\Home\Themes\Default\Categories.cshtml" />
     <Content Include="Views\Home\Themes\Default\Detail.cshtml" />
     <Content Include="Views\Home\Themes\Default\Index.cshtml" />
-    <Content Include="Views\Home\Themes\Blue\Tags.cshtml" />
-    <Content Include="Views\Home\Themes\Blue\ArticleNotFound.cshtml" />
-    <Content Include="Views\Home\Themes\Blue\Categories.cshtml" />
-    <Content Include="Views\Home\Themes\Blue\Detail.cshtml" />
-    <Content Include="Views\Home\Themes\Blue\Index.cshtml" />
     <Content Include="Views\Home\Themes\Default\_Layout.cshtml" />
-    <Content Include="Views\Home\Themes\Blue\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Themes\Blue\_Layout.cshtml" />
+    <Content Include="Views\Home\Themes\Default\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Themes\Default\fonts\" />
+    <Folder Include="Assets\Themes\Default\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

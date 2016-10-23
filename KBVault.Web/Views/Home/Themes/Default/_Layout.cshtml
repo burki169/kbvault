@@ -16,15 +16,21 @@
     <title>@ViewBag.Title</title>
      
     @{ Html.RenderPartial("GoogleFonts"); }
-    @Styles.Render("~/public/css")     
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/bootstrap.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/font-awesome.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/smartmenus/jquery.smartmenus.bootstrap.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/jquery-ui/jquery-ui-redmond.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/ionicons.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/site.css")" />
+
     @RenderSection("CssHeader", required: false)
-    
+
     <script type="text/javascript">
         var KB_SearchUrl = "@Url.Action("Ajax","Search")";
     </script>
-    
+
 </head>
-<body>          
+<body>
     <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,24 +41,24 @@
             </button>
             <a class="navbar-brand" href="@Url.Action("Index","Home")">@ViewBag.CompanyName</a>
         </div>
-        <div class="navbar-collapse collapse">   
-            <ul class="nav navbar-nav">  
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
                 @KBVaultHelperFunctions.CreateBootstrapCategoryMenu()
-             </ul>      
+             </ul>
         </div>
-    </div>        
+    </div>
     <div class="container">
         <div class="row">
             @*
-            <div class="col-lg-12 page-header">            
+            <div class="col-lg-12 page-header">
                 <h1>
                     @ViewBag.CompanyName
                     <small>@ViewBag.TagLine</small>
-                </h1>    
-                <p runat="server" id="htmlJumbotronText" class="lead">@ViewBag.JumbotronText</p>            
-            </div>        
+                </h1>
+                <p runat="server" id="htmlJumbotronText" class="lead">@ViewBag.JumbotronText</p>
+            </div>
             *@
-            
+
             @using (Html.BeginForm("Do", "Search", FormMethod.Post, new { id = "SearchForm" }))
             {
                 <div class="input-group">       
@@ -74,9 +80,17 @@
         Built by KbVault
     </div>
         
-    @Scripts.Render("~/public/js")
-    @RenderSection("scripts", required: false)
-    
+    <script src="@Url.Content("~/Assets/js/jquery/jquery-2-0-2.js")"></script>
+    <script src="@Url.Content("~/Assets/js/jquery/jquery-ui-1-10-4.js")"></script>
+    <script src="@Url.Content("~/Assets/js/bootstrap/bootstrap.js")"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/cookie/jquery.cookie.js")"></script>
+    <script src="@Url.Content("~/Assets/js/frontend.js")"></script>
+    <script src="@Url.Content("~/Assets/js/smartmenus/jquery.smartmenus.js")"></script>
+    <script src="@Url.Content("~/Assets/js/smartmenus/jquery.smartmenus.bootstrap.js")"></script>
+    <script src="@Url.Content("~/Assets/js/smartmenus/jquery.smartmenus.keyboard.js")"></script>
+
+@RenderSection("scripts", required: false)
+
     @if( !String.IsNullOrEmpty(ViewBag.AnalyticsAccount) )
     {
         <script>
@@ -91,6 +105,6 @@
             ga('send', 'pageview');
         </script>
     }
-    
+
 </body>
 </html>
