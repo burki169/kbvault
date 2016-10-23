@@ -1,0 +1,52 @@
+﻿@using MvcPaging
+
+@model IPagedList<KBVault.Dal.Entities.Article>
+
+@{
+    ViewBag.Title = String.Format(UIResources.PublicTagListPageTitle, ViewBag.Tag.Name);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-10">
+        <h2 class="section-title clearfix">
+            <span class="line"></span> @ViewBag.Title
+        </h2>
+    </div>
+    <div class="col-xs-10">
+        <ul class="fa-ul">
+            @foreach (var article in Model)
+            {
+                <li>
+                    <i class="fa-li fa fa-list-alt fa-fw text-muted"></i>
+                     <a href='@Url.Action("Detail","Home",new {id=article.SefName})'>@article.Title</a>
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>
+<div class="pager">
+    @if( Model.TotalItemCount > Model.PageSize )
+    {
+        <!-- -->
+                @Html.Raw(Html.Pager(
+                    new Options
+                    {
+                        PageSize = Model.PageSize,
+                        TotalItemCount = Model.TotalItemCount,
+                        CurrentPage = Model.PageNumber,
+                        ItemTexts = new ItemTexts() { Next = @CommonResources.PagingNext, Previous = @CommonResources.PagingPrevious },
+                        ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
+                        TooltipTitles = new TooltipTitles() {   Next = @CommonResources.PagingNextTooltip, 
+                                                                Previous = @CommonResources.PagingPreviousTooltip, 
+                                                                Page = @CommonResources.PagingGoToPageTooltip 
+                                                            },
+                        Size = Size.normal,
+                        Alignment = Alignment.centered,
+                        IsShowControls = true,
+                        IsShowFirstLast = true,
+                        IsShowPages = true
+                    }, new {})) 
+    }        
+</div>

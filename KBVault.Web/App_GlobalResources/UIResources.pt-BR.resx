@@ -528,4 +528,7 @@
   <data name="SettingsShowTotalArticleCountOnFrontPage" xml:space="preserve">
     <value>To be translated </value>
   </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>To be translated </value>
+  </data>
 </root>

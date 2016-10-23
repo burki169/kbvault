@@ -81,5 +81,9 @@
         <input type="text" class="form-control" name="BackupPath" value="@Model.BackupPath" />
         <p class="danger">@UIResources.SettingsBackupPathWarning</p>
     </div>
+    <div class="form-group">
+        <label for="SelectedTheme">@UIResources.SettingsTheme</label>
+        @Html.DropDownListFor(m => m.SelectedTheme, new SelectList(Model.Themes, Model.SelectedTheme))        
+    </div>
     <input type="submit" class="btn btn-default" value="@CommonResources.ButtonSave" />
 }
