@@ -1,6 +1,8 @@
 ﻿using NLog;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -52,12 +54,13 @@ namespace KBVault.Web.Controllers
                             if (!set.BackupPath.EndsWith("/") && set.BackupPath.StartsWith("~"))
                                 set.BackupPath += "/";
                         }
-
+                        ConfigurationManager.AppSettings["Theme"] = model.SelectedTheme;
                         db.Settings.Add(set);
                         db.SaveChanges();
                         ShowOperationMessage(UIResources.SettingsPageSaveSuccessfull);
                     }
                 }
+                model.Themes.AddRange(Directory.EnumerateDirectories(Server.MapPath("~/Views/Home/Themes")).Select(e => Path.GetFileName(e)).ToList());
                 return View(model);
             }
             catch (Exception ex)
@@ -76,7 +79,9 @@ namespace KBVault.Web.Controllers
                 {
                     ViewBag.UpdateSuccessfull = false;
                     Settings set = db.Settings.FirstOrDefault();
-                    SettingsViewModel model = new SettingsViewModel(set);                    
+                    SettingsViewModel model = new SettingsViewModel(set);
+                    model.SelectedTheme = ConfigurationManager.AppSettings["Theme"];
+                    model.Themes.AddRange(Directory.EnumerateDirectories(Server.MapPath("~/Views/Home/Themes")).Select(e => Path.GetFileName(e)).ToList());                    
                     return View(model);
                 }
             }

@@ -1,0 +1,77 @@
+﻿@using KBVault.Dal.Entities
+@using MvcPaging
+
+@model IPagedList<KBVault.Dal.Entities.Article>
+
+@{    
+    ViewBag.Title = String.Format(UIResources.PublicCategoryListPageTitle, ViewBag.Category.Name);
+    Layout = "~/Views/Home/Themes/Default/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-10">
+        <h2 class="section-title clearfix">
+            <span class="line"></span> @UIResources.CategoryListSubCategoryTitle
+            <small class="pull-right">
+                @if( ViewBag.Category.ParentCategory != null )
+                {
+                    <a class="text-muted" href="@Url.Action("Categories","Home",new { id = ViewBag.Category.ParentCategory.SefName})">@ViewBag.Category.ParentCategory.Name</a>
+                    <i class="fa fa-angle-double-up"></i>
+                }
+            </small>
+        </h2>
+    </div>
+    <div class="col-xs-12">
+        
+        @foreach (Category subCategory in ViewBag.Category.ChildCategories)
+        {
+            <div class="col-xs-4">
+                <i class="fa fa-folder-open-o fa-fw text-muted"></i><a href="@Url.Action("Categories", "Home", new { id = subCategory.SefName })">@subCategory.Name</a>
+            </div>
+        }
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-10">
+        <h2 class="section-title clearfix">
+            <span class="line"></span> @ViewBag.Title    
+        </h2>
+    </div>
+    <div class="col-xs-10">
+        <ul class="fa-ul">
+            @foreach (var article in Model)
+            {
+                <li>
+                    <i class="fa-li fa fa-list-alt fa-fw text-muted"></i>
+                     <a href='@Url.Action("Detail","Home",new {id=article.SefName})'>@article.Title</a>
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>
+<div class="pager">
+    @if( Model.TotalItemCount > Model.PageSize )
+    {
+        <!-- -->
+                @Html.Raw(Html.Pager(
+                    new Options
+                    {
+                        PageSize = Model.PageSize,
+                        TotalItemCount = Model.TotalItemCount,
+                        CurrentPage = Model.PageNumber,
+                        ItemTexts = new ItemTexts() { Next = @CommonResources.PagingNext, Previous = @CommonResources.PagingPrevious },
+                        ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
+                        TooltipTitles = new TooltipTitles() {   Next = @CommonResources.PagingNextTooltip, 
+                                                                Previous = @CommonResources.PagingPreviousTooltip, 
+                                                                Page = @CommonResources.PagingGoToPageTooltip 
+                                                            },
+                        Size = Size.normal,
+                        Alignment = Alignment.centered,
+                        IsShowControls = true,
+                        IsShowFirstLast = true,
+                        IsShowPages = true
+                    }, new {})) 
+    }        
+</div>

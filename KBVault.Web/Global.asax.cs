@@ -13,6 +13,7 @@ using KBVault.Dal;
 using KBVault.Dal.Repository;
 using KBVault.Web.Business.Articles;
 using KBVault.Web.Business.Categories;
+using KBVault.Web.ViewEngines;
 using Microsoft.AspNet.SignalR;
 using AutofacDependencyResolver = Autofac.Integration.Mvc.AutofacDependencyResolver;
 
@@ -35,6 +36,9 @@ namespace KBVault.Web
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();            
             var container = builder.Build();                  
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            System.Web.Mvc.ViewEngines.Engines.Clear();
+            System.Web.Mvc.ViewEngines.Engines.Add(new KbVaultViewEngine());
 
             AreaRegistration.RegisterAllAreas();
 

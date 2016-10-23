@@ -14,6 +14,7 @@ namespace KBVault.Web.Models
     {
         public SettingsViewModel()
         {
+            Themes = new List<string>();
         }
 
         public SettingsViewModel(Settings set)
@@ -31,6 +32,7 @@ namespace KBVault.Web.Models
                 this.AnalyticsAccount = set.AnalyticsAccount;
                 this.BackupPath = set.BackupPath;
                 this.ShowTotalArticleCountOnFrontPage = set.ShowTotalArticleCountOnFrontPage;
+                Themes = new List<string>();
             }
         }
 
@@ -48,5 +50,7 @@ namespace KBVault.Web.Models
         public string AnalyticsAccount { get; set; }
         public string BackupPath { get; set; }
         public bool ShowTotalArticleCountOnFrontPage { get; set; }
+        public string SelectedTheme { get; set; }
+        public List<string> Themes { get; set; }
     }
 }

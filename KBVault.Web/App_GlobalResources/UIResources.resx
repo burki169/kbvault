@@ -540,4 +540,7 @@
   <data name="SettingsShowTotalArticleCountOnFrontPage" xml:space="preserve">
     <value>Show total number of articles on front page</value>
   </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
 </root>

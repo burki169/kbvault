@@ -537,4 +537,7 @@
   <data name="SettingsShowTotalArticleCountOnFrontPage" xml:space="preserve">
     <value>Ana sayfada toplam makale sayısını göster</value>
   </data>
+  <data name="SettingsTheme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
 </root>
