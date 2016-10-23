@@ -543,4 +543,7 @@
   <data name="CategoryCreateFormLabelIcon" xml:space="preserve">
     <value>İkon</value>
   </data>
+  <data name="CategoryCreateFormLabelIconInfo" xml:space="preserve">
+    <value>Font awesome ikonlarından birini yazabilirsiniz.</value>
+  </data>
 </root>

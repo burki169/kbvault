@@ -534,4 +534,7 @@
   <data name="CategoryCreateFormLabelIcon" xml:space="preserve">
     <value>To be translated</value>
   </data>
+  <data name="CategoryCreateFormLabelIconInfo" xml:space="preserve">
+    <value>To be translated</value>
+  </data>
 </root>

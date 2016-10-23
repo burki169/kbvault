@@ -546,4 +546,7 @@
   <data name="CategoryCreateFormLabelIcon" xml:space="preserve">
     <value>Icon</value>
   </data>
+  <data name="CategoryCreateFormLabelIconInfo" xml:space="preserve">
+    <value>You can write name of any font-awesome icon. Try bomb or book to get started ;)</value>
+  </data>
 </root>

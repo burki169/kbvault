@@ -547,6 +547,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can write name of any font-awesome icon. Try bomb or book to get started ;).
+        /// </summary>
+        internal static string CategoryCreateFormLabelIconInfo {
+            get {
+                return ResourceManager.GetString("CategoryCreateFormLabelIconInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hot Category.
         /// </summary>
         internal static string CategoryCreateFormLabelIsHot {
