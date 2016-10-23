@@ -7,30 +7,7 @@ namespace KBVault.Web
     {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
-        {
-
-            BundleTable.EnableOptimizations = false;
-            
-            bundles.Add(new ScriptBundle("~/public/js").Include(
-                "~/Assets/js/jquery/jquery-2-0-2.js",
-                "~/Assets/js/jquery/jquery-ui-1-10-4.js",
-                "~/Assets/js/bootstrap/bootstrap.js",
-                "~/Assets/js/plugins/cookie/jquery.cookie.js",
-                "~/Assets/js/frontend.js",
-                "~/Assets/js/smartmenus/jquery.smartmenus.js", 
-                "~/Assets/js/smartmenus/jquery.smartmenus.bootstrap.js",                
-                "~/Assets/js/smartmenus/jquery.smartmenus.keyboard.js"
-            ));
-                       
-            bundles.Add( new StyleBundle("~/public/css").Include(
-                "~/Assets/css/plugins/bootstrap.css",
-                "~/Assets/css/plugins/font-awesome.css",
-                "~/Assets/css/plugins/smartmenus/jquery.smartmenus.bootstrap.css",
-                "~/Assets/css/jquery-ui/jquery-ui-redmond.css",
-                "~/Assets/css/plugins/ionicons.css",
-                "~/Assets/css/site.css"                
-                ));                                               
-
+        {                        
             bundles.Add(new ScriptBundle("~/admin/js").Include(
                 "~/Assets/js/jquery/jquery-2-0-2.js",
                 "~/Assets/js/jquery/jquery-ui-1-10-4.js",
@@ -61,15 +38,6 @@ namespace KBVault.Web
                 "~/Assets/datatables/css/jquery.datatables.bootstrap.css",
                 "~/Assets/css/AdminLTE.css"
                 ));
-
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            /*
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-            */
-            //bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-
             
         }
     }
