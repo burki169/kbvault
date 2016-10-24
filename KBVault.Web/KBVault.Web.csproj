@@ -784,7 +784,7 @@
     <Content Include="Assets\img\ajax-loader.gif" />
     <Content Include="Assets\img\ajax-loader1.gif" />
     <Content Include="Assets\img\bar-ajax-loader.gif" />
-    <Content Include="Assets\img\bg.png" />
+    <Content Include="Assets\Themes\Default\img\bg.png" />
     <Content Include="Assets\img\BigFile-Vault.png" />
     <Content Include="Assets\img\blur-background08.jpg" />
     <Content Include="Assets\img\blur-background09.jpg" />
@@ -1014,7 +1014,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Themes\Default\fonts\" />
-    <Folder Include="Assets\Themes\Default\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

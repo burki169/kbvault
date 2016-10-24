@@ -152,3 +152,7 @@ header.subhead h1 small{color:#EEE}
     margin:4px 0;
     font-size:90%;
 }
+
+.btn-tag {
+    margin-bottom: 0.5em;    
+}
