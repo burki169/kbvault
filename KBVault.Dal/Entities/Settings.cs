@@ -36,6 +36,8 @@ namespace KBVault.Dal.Entities
         [StringLength(2000)]
         public string BackupPath { get; set; }
 
+        public string SelectedTheme { get; set; }
+
         public bool ShowTotalArticleCountOnFrontPage { get; set; }
 
         public virtual Entities.KbUser KbUser { get; set; }

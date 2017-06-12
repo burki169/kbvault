@@ -409,7 +409,7 @@
     <value>Edit Article</value>
   </data>
   <data name="SettingsPageIndexFileExtensionsLabel" xml:space="preserve">
-    <value>File extensions to be included in indexing (pdf,dox,docx...)</value>
+    <value>File extensions to be included in indexing (.pdf,.dox,.docx...)</value>
   </data>
   <data name="ArticleLikeSuccess" xml:space="preserve">
     <value>Article liked.</value>

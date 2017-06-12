@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/smartmenus/jquery.smartmenus.bootstrap.css")"/>
     <link rel="stylesheet" href="@Url.Content("~/Assets/css/jquery-ui/jquery-ui-redmond.css")" />
     <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/ionicons.css")" />
-    <link rel="stylesheet" href="@Url.Content("~/Assets/css/site.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/Themes/"+ViewBag.Theme+"/css/site.css")" />
 
     @RenderSection("CssHeader", required: false)
 
@@ -83,11 +83,12 @@
     <script src="@Url.Content("~/Assets/js/jquery/jquery-2-0-2.js")"></script>
     <script src="@Url.Content("~/Assets/js/jquery/jquery-ui-1-10-4.js")"></script>
     <script src="@Url.Content("~/Assets/js/bootstrap/bootstrap.js")"></script>
-    <script src="@Url.Content("~/Assets/js/plugins/cookie/jquery.cookie.js")"></script>
-    <script src="@Url.Content("~/Assets/js/frontend.js")"></script>
-    <script src="@Url.Content("~/Assets/js/smartmenus/jquery.smartmenus.js")"></script>
-    <script src="@Url.Content("~/Assets/js/smartmenus/jquery.smartmenus.bootstrap.js")"></script>
-    <script src="@Url.Content("~/Assets/js/smartmenus/jquery.smartmenus.keyboard.js")"></script>
+
+    <script src="@Url.Content("~/Assets/Themes/"+ViewBag.Theme+"/js/cookie/jquery.cookie.js")"></script>
+    <script src="@Url.Content("~/Assets/Themes/"+ViewBag.Theme+"/js/frontend.js")"></script>
+    <script src="@Url.Content("~/Assets/Themes/"+ViewBag.Theme+"/js/smartmenus/jquery.smartmenus.js")"></script>
+    <script src="@Url.Content("~/Assets/Themes/"+ViewBag.Theme+"/js/smartmenus/jquery.smartmenus.bootstrap.js")"></script>
+    <script src="@Url.Content("~/Assets/Themes/"+ViewBag.Theme+"/js/smartmenus/jquery.smartmenus.keyboard.js")"></script>
 
 @RenderSection("scripts", required: false)
 

@@ -31,6 +31,7 @@ namespace KBVault.Web.Models
                 this.ArticlePrefix = set.ArticlePrefix;
                 this.AnalyticsAccount = set.AnalyticsAccount;
                 this.BackupPath = set.BackupPath;
+                this.SelectedTheme = set.SelectedTheme;
                 this.ShowTotalArticleCountOnFrontPage = set.ShowTotalArticleCountOnFrontPage;
                 Themes = new List<string>();
             }

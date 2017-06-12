@@ -1096,7 +1096,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File extensions to be included in indexing (pdf,dox,docx...).
+        ///   Looks up a localized string similar to File extensions to be included in indexing (.pdf,.dox,.docx...).
         /// </summary>
         internal static string SettingsPageIndexFileExtensionsLabel {
             get {
