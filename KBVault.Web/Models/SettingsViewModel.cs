@@ -52,5 +52,6 @@ namespace KBVault.Web.Models
         public bool ShowTotalArticleCountOnFrontPage { get; set; }
         public string SelectedTheme { get; set; }
         public List<string> Themes { get; set; }
+        public string ApplicationVersion{ get; set; }
     }
 }
