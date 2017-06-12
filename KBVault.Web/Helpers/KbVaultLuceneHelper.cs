@@ -231,7 +231,7 @@ namespace KBVault.Web.Helpers
                 if (File.Exists(localFilePath))
                 {
                     StreamReader reader = new StreamReader(new FileStream(Path.Combine(path, attachment.FileName), FileMode.Open));
-                    doc.Add(new Field("Id", "AT-" + attachment.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("Id", "AT-" + attachment.ArticleId.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
                     doc.Add(new Field("Title", attachment.FileName, Field.Store.YES, Field.Index.ANALYZED));
                     doc.Add(new Field("Content", reader, Field.TermVector.WITH_POSITIONS));
                     writer.AddDocument(doc);
