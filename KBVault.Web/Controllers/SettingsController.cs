@@ -11,6 +11,7 @@ using KBVault.Dal;
 using KBVault.Dal.Entities;
 using Resources;
 using KBVault.Web.Helpers;
+using System.Reflection;
 
 namespace KBVault.Web.Controllers
 {
@@ -81,6 +82,8 @@ namespace KBVault.Web.Controllers
                     Settings set = db.Settings.FirstOrDefault();
                     SettingsViewModel model = new SettingsViewModel(set);
                     model.SelectedTheme = ConfigurationManager.AppSettings["Theme"];
+                    var a = typeof(SettingsController).Assembly;
+                    model.ApplicationVersion = a.GetName().Version.Major + "." + a.GetName().Version.Minor;                    
                     model.Themes.AddRange(Directory.EnumerateDirectories(Server.MapPath("~/Views/Home/Themes")).Select(e => Path.GetFileName(e)).ToList());                    
                     return View(model);
                 }
