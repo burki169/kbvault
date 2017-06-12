@@ -75,7 +75,7 @@ namespace KBVault.Web.Controllers
                         {
                             string[] extensions = sets.IndexFileExtensions.Split(new string[]{","},StringSplitOptions.RemoveEmptyEntries);
 
-                            if (extensions.FirstOrDefault(a => a == attachment.Extension) != null )
+                            if (extensions.FirstOrDefault(a => a.ToLowerInvariant() == attachment.Extension.ToLowerInvariant()) != null )
                             {
                                 KbVaultLuceneHelper.AddAttachmentToIndex(attachment);
                             }

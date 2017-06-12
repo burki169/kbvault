@@ -43,6 +43,7 @@ namespace KBVault.Web.Controllers
                 ViewBag.ArticleDisplayCount = Settings.ArticleCountPerCategoryOnHomePage;
                 ViewBag.ArticlePrefix = Settings.ArticlePrefix;
                 ViewBag.AnalyticsAccount = Settings.AnalyticsAccount;
+                ViewBag.Theme = Settings.SelectedTheme;
                 ViewBag.ShowTotalArticleCountOnFrontPage = Settings.ShowTotalArticleCountOnFrontPage;
             }
             else
