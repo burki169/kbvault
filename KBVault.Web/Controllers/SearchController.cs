@@ -41,8 +41,7 @@ namespace KBVault.Web.Controllers
                             article = db.PublishedArticles().FirstOrDefault(a => a.Id == model.ArticleId);
                         }
                         if (article != null)
-                            return RedirectToRoute("Default",
-                                new {controller = "Home", action = "Detail", id = article.SefName});
+                            return RedirectToRoute("Default", new {controller = "Home", action = "Detail", id = article.SefName});
                     }                    
                 }
                 if (model.CurrentPage == 0)
