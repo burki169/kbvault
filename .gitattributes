@@ -1,6 +1,1 @@
-KBVault.Web/Assets/js/datatables/*  linguist-vendored
-KBVault.Web/Assets/js/ckeditor/*  linguist-vendored
-KBVault.Web/Assets/js/bootstrap/*  linguist-vendored
-KBVault.Web/Assets/js/jquery/*  linguist-vendored
-KBVault.Web/Assets/js/plugins/*  linguist-vendored
-KBVault.Web/Assets/js/AdminLTE/*  linguist-vendored
+KBVault.Web/Assets/js/*  linguist-vendored
