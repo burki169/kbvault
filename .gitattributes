@@ -1,3 +1,5 @@
 KBVault.Web/Assets/datatables/*  linguist-vendored
 KBVault.Web/Assets/ckeditor/*  linguist-vendored
 KBVault.Web/Assets/js/*  linguist-vendored
+KBVault.Web/Assets/css/*  linguist-vendored
+KBVault.Web/Assets/css/site.css linguist-vendored=false
