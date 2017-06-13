@@ -1,5 +1,7 @@
 ## KBVault - Free Knowledge Base Application 
 
+[![Build status](https://ci.appveyor.com/api/projects/status/m2qm8h1685o1lv18/branch/master?svg=true)](https://ci.appveyor.com/project/2b-proje-evi/kbvault/branch/master)
+
 *KBVault* is a free , simple yet efficient and easy to use knowledge base application. 
 
 Feel free to provide feedback for bugs and features. Help me to make something useful and yet be simple.
