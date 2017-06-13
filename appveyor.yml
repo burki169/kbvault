@@ -1,0 +1,7 @@
+version: 0.6.{build}
+nuget:
+  project_feed: true
+before_build:
+- cmd: nuget restore
+build:
+  verbosity: minimal
