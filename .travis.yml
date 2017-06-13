@@ -1,4 +1,0 @@
-language: csharp
-solution: KBVault.Web.sln
-install:
-  - nuget restore KBVault.Web.sln
