@@ -46,8 +46,7 @@ namespace KBVault.Web.Controllers
                         set.ArticlePrefix = model.ArticlePrefix;
                         set.AnalyticsAccount = model.AnalyticsAccount;
                         set.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;                        
-                        set.BackupPath = model.BackupPath;
-                        set.SelectedTheme = model.SelectedTheme;
+                        set.BackupPath = model.BackupPath;                        
                         set.ShowTotalArticleCountOnFrontPage = model.ShowTotalArticleCountOnFrontPage;
                         if (!string.IsNullOrEmpty(set.BackupPath))
                         {

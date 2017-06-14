@@ -784,6 +784,10 @@
     <Content Include="Assets\img\ajax-loader.gif" />
     <Content Include="Assets\img\ajax-loader1.gif" />
     <Content Include="Assets\img\bar-ajax-loader.gif" />
+    <Content Include="Assets\js\plugins\cookie\jquery.cookie.js" />
+    <Content Include="Assets\js\plugins\smartmenus\jquery.smartmenus.bootstrap.js" />
+    <Content Include="Assets\js\plugins\smartmenus\jquery.smartmenus.js" />
+    <Content Include="Assets\js\plugins\smartmenus\jquery.smartmenus.keyboard.js" />
     <Content Include="Assets\Themes\Default\img\bg.png" />
     <Content Include="Assets\img\BigFile-Vault.png" />
     <Content Include="Assets\img\blur-background08.jpg" />
@@ -809,12 +813,8 @@
     <Content Include="Assets\Themes\Default\js\frontend.js" />
     <Content Include="Assets\js\jquery\jquery-2-0-2.js" />
     <Content Include="Assets\js\jquery\jquery-ui-1-10-4.js" />
-    <Content Include="Assets\Themes\Default\js\cookie\jquery.cookie.js" />
     <Content Include="Assets\js\plugins\jqueryForm\jquery.form.js" />
     <Content Include="Assets\js\plugins\slug-it\jquery.slugit.js" />
-    <Content Include="Assets\Themes\Default\js\smartmenus\jquery.smartmenus.bootstrap.js" />
-    <Content Include="Assets\Themes\Default\js\smartmenus\jquery.smartmenus.js" />
-    <Content Include="Assets\Themes\Default\js\smartmenus\jquery.smartmenus.keyboard.js" />
     <Content Include="Assets\js\kbvault.js" />
     <Content Include="Assets\js\plugins\uploader\jquery.uploadfile.js" />
     <Content Include="Assets\js\bootstrap\bootstrap.js" />
@@ -996,20 +996,20 @@
     <Content Include="Views\Account\Create.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Account\MyProfile.cshtml" />
-    <Content Include="Views\Search\Do.cshtml" />
+    <Content Include="Views\Themes\Default\Search\Do.cshtml" />
     <None Include="Properties\PublishProfiles\LocalIIS-Deployment.pubxml" />
     <Content Include="Views\Activity\Index.cshtml" />
     <Content Include="Views\Shared\GoogleFonts.cshtml" />
     <Content Include="Views\Backup\Index.cshtml" />
     <Content Include="Views\Indexing\Index.cshtml" />
     <None Include="Properties\PublishProfiles\ReleasePackage.pubxml" />
-    <Content Include="Views\Home\Themes\Default\Tags.cshtml" />
-    <Content Include="Views\Home\Themes\Default\ArticleNotFound.cshtml" />
-    <Content Include="Views\Home\Themes\Default\Categories.cshtml" />
-    <Content Include="Views\Home\Themes\Default\Detail.cshtml" />
-    <Content Include="Views\Home\Themes\Default\Index.cshtml" />
-    <Content Include="Views\Home\Themes\Default\_Layout.cshtml" />
-    <Content Include="Views\Home\Themes\Default\_ViewStart.cshtml" />
+    <Content Include="Views\Themes\Default\Home\Tags.cshtml" />
+    <Content Include="Views\Themes\Default\Home\ArticleNotFound.cshtml" />
+    <Content Include="Views\Themes\Default\Home\Categories.cshtml" />
+    <Content Include="Views\Themes\Default\Home\Detail.cshtml" />
+    <Content Include="Views\Themes\Default\Home\Index.cshtml" />
+    <Content Include="Views\Themes\Default\_Layout.cshtml" />
+    <Content Include="Views\Themes\Default\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

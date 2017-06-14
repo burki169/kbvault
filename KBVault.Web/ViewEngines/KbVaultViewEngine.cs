@@ -13,7 +13,7 @@ namespace KBVault.Web.ViewEngines
         {            
             var viewLocations = new[] {
             "~/Views/{1}/{0}.cshtml",
-            "~/Views/{1}/Themes/%THEME%/{0}.cshtml",
+            "~/Views/Themes/%THEME%/{1}/{0}.cshtml",
             "~/Views/Shared/{0}.cshtml"                       
             // etc
              };
