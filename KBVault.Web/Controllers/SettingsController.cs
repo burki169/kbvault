@@ -61,7 +61,7 @@ namespace KBVault.Web.Controllers
                         ShowOperationMessage(UIResources.SettingsPageSaveSuccessfull);
                     }
                 }
-                model.Themes.AddRange(Directory.EnumerateDirectories(Server.MapPath("~/Views/Home/Themes")).Select(e => Path.GetFileName(e)).ToList());
+                model.Themes.AddRange(Directory.EnumerateDirectories(Server.MapPath("~/Views/Themes")).Select(e => Path.GetFileName(e)).ToList());
                 return View(model);
             }
             catch (Exception ex)

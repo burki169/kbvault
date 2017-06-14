@@ -623,6 +623,7 @@
     <Content Include="Assets\ckeditor\skins\bootstrapck\sample\js\jquery-1.11.0.min.js" />
     <Content Include="Assets\ckeditor\styles.js" />
     <Content Include="Assets\css\AdminLTE.css" />
+    <Content Include="Assets\css\plugins\font-awesome.css" />
     <Content Include="Assets\css\iCheck\all.css" />
     <Content Include="Assets\css\iCheck\flat\aero%402x.png" />
     <Content Include="Assets\css\iCheck\flat\aero.css" />
@@ -756,7 +757,6 @@
     <Content Include="Assets\css\jquery-ui\jquery-ui-redmond.css" />
     <Content Include="Assets\css\plugins\tagit\jquery.tagit.css" />
     <Content Include="Assets\css\plugins\bootstrap.css" />
-    <Content Include="Assets\css\plugins\font-awesome.css" />
     <Content Include="Assets\css\plugins\smartmenus\jquery.smartmenus.bootstrap.css" />
     <Content Include="Assets\css\plugins\tagit\tagit.ui-zendesk.css" />
     <Content Include="Assets\css\uploadfile.css" />
@@ -894,10 +894,6 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
-    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
-    <Content Include="Assets\fonts\FontAwesome.otf" />
     <Content Include="Assets\fonts\ionicons.eot" />
     <Content Include="Assets\fonts\ionicons.ttf" />
     <Content Include="Assets\fonts\ionicons.woff" />
@@ -960,7 +956,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="AppConfig\AppSettings.config" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
