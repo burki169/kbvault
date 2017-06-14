@@ -2,8 +2,7 @@
 
 @{
     ViewBag.SearchTerm = Model.SearchKeyword;
-    ViewBag.Title = String.Format(UIResources.SearchResultTitle,  Model.SearchKeyword);
-    Layout = "~/Views/Home/Themes/" + ViewBag.Theme + "/_Layout.cshtml";
+    ViewBag.Title = String.Format(UIResources.SearchResultTitle,  Model.SearchKeyword); 
 }
 
 <h2>@ViewBag.Title</h2>

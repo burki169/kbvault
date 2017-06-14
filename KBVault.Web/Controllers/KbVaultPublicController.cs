@@ -2,6 +2,7 @@
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -43,7 +44,7 @@ namespace KBVault.Web.Controllers
                 ViewBag.ArticleDisplayCount = Settings.ArticleCountPerCategoryOnHomePage;
                 ViewBag.ArticlePrefix = Settings.ArticlePrefix;
                 ViewBag.AnalyticsAccount = Settings.AnalyticsAccount;
-                ViewBag.Theme = Settings.SelectedTheme;
+                ViewBag.Theme = ConfigurationManager.AppSettings["Theme"];
                 ViewBag.ShowTotalArticleCountOnFrontPage = Settings.ShowTotalArticleCountOnFrontPage;
             }
             else

@@ -64,10 +64,6 @@
     <Compile Include="Migrations\201610231849434_AddeDIconForCategory.Designer.cs">
       <DependentUpon>201610231849434_AddeDIconForCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706121332037_AddSelectedTheme.cs" />
-    <Compile Include="Migrations\201706121332037_AddSelectedTheme.Designer.cs">
-      <DependentUpon>201706121332037_AddSelectedTheme.cs</DependentUpon>
-    </Compile>
     <Compile Include="Types\SimilarArticle.cs" />
     <Compile Include="Types\TopTagItem.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -105,9 +101,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610231849434_AddeDIconForCategory.resx">
       <DependentUpon>201610231849434_AddeDIconForCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706121332037_AddSelectedTheme.resx">
-      <DependentUpon>201706121332037_AddSelectedTheme.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

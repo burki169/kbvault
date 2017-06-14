@@ -30,8 +30,7 @@ namespace KBVault.Web.Models
                 this.IndexFileExtensions = set.IndexFileExtensions;
                 this.ArticlePrefix = set.ArticlePrefix;
                 this.AnalyticsAccount = set.AnalyticsAccount;
-                this.BackupPath = set.BackupPath;
-                this.SelectedTheme = set.SelectedTheme;
+                this.BackupPath = set.BackupPath;                
                 this.ShowTotalArticleCountOnFrontPage = set.ShowTotalArticleCountOnFrontPage;
                 Themes = new List<string>();
             }

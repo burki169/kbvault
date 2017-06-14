@@ -49,7 +49,7 @@ namespace KBVault.Web.Controllers
                 //TODO: Make result count configurable
                 model.Results = KbVaultLuceneHelper.DoSearch(model.SearchKeyword, model.CurrentPage,10);
                 
-                return View(model);
+                return View( model);
             }catch(Exception ex)
             {
                 Log.Error(ex);
