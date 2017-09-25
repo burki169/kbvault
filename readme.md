@@ -31,22 +31,22 @@ Feel free to provide feedback for bugs and features. Help me to make something u
 
 *Installation*
 
-Check [Documentation](https://github.com/2b-proje-evi/kbvault/wiki) for installation instructions
+Check [Documentation](https://github.com/burki169/kbvault/wiki) for installation instructions
 
 *Screenshots*
 
 Homepage
 
- ![](https://2b-proje-evi.github.io/kbvault/docs/images/autocomplete.png)
+ ![](https://burki169.github.io/kbvault/docs/images/autocomplete.png)
 
 Frontend For Nested Categories
 
- ![](https://2b-proje-evi.github.io/kbvault/docs/images/multimenu.png)
+ ![](https://burki169.github.io/kbvault/docs/images/multimenu.png)
 
 Edit Article
 
- ![](https://2b-proje-evi.github.io/kbvault/docs/images/edit_article.png)
+ ![](https://burki169.github.io/kbvault/docs/images/edit_article.png)
 
 Dashboard
 
- ![](https://2b-proje-evi.github.io/kbvault/docs/images/dashboard.png)
+ ![](https://burki169.github.io/kbvault/docs/images/dashboard.png)
