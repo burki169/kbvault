@@ -9,7 +9,7 @@ Feel free to provide feedback for bugs and features. Help me to make something u
 *Features*
 
 * Bootstrap framework both for backend and frontend visual stuff.
-* Uses MSSQL
+* Uses MSSQL (SQL Express Edition| Developer Edition|....)
 * Easy to use HTML Editor (CKEditor)
 * Scheduled publishing ( Specify article publication date and expiry date )
 * Save articles as draft
