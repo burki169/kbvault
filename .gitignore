@@ -20,3 +20,4 @@ KBVault.Backup/bin/*
 .vs/config/applicationhost.config
 KBVault.Backup/bin/
 deploy/
+.vs/
