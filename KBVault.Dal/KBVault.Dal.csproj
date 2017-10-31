@@ -65,6 +65,8 @@
     <Compile Include="Migrations\201610231849434_AddeDIconForCategory.Designer.cs">
       <DependentUpon>201610231849434_AddeDIconForCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repository\ISettingsRepository.cs" />
+    <Compile Include="Repository\SettingsRepository.cs" />
     <Compile Include="Types\SimilarArticle.cs" />
     <Compile Include="Types\TopTagItem.cs" />
     <Compile Include="Migrations\Configuration.cs" />

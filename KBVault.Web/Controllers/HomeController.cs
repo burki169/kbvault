@@ -126,24 +126,25 @@ namespace KBVault.Web.Controllers
 
         public ActionResult Index()
         {
-            using(var db = new KbVaultContext())
+            var settings = SettingsService.GetSettings();
+            using (var db = new KbVaultContext())
             {                
                 LandingPageViewModel model = new LandingPageViewModel();
-                if (Settings.ShowTotalArticleCountOnFrontPage)
+                if (settings.ShowTotalArticleCountOnFrontPage)
                 {
                     model.TotalArticleCountMessage = string.Format(UIResources.PublicTotalArticleCountMessage,db.PublishedArticles().Count());
                 }
                 model.HotCategories = db.Categories.Include("Articles").Where(c => c.IsHot).ToList();
                 DateTime dateRangeToday = DateTime.Now.Date;
-                ViewBag.Title = Settings.CompanyName;
+                ViewBag.Title = settings.CompanyName;
                 model.FirstLevelCategories = db.Categories.Include("Articles").Where(c => c.Parent == null).OrderBy(c => c.Name).ToList();
                 model.LatestArticles = db.PublishedArticles()                                       
                                         .OrderByDescending(a => a.Edited)
-                                        .Take(Settings.ArticleCountPerCategoryOnHomePage)
+                                        .Take(settings.ArticleCountPerCategoryOnHomePage)
                                         .ToList();
                 model.PopularArticles= db.PublishedArticles()                                            
                                             .OrderByDescending(a => a.Likes)
-                                            .Take(Settings.ArticleCountPerCategoryOnHomePage)
+                                            .Take(settings.ArticleCountPerCategoryOnHomePage)
                                             .ToList();
                 /* Build tag cloud */
                 model.PopularTags = TagRepository.GetTopTags().OrderBy( c => Guid.NewGuid()).ToList();

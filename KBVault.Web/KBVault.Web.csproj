@@ -240,10 +240,14 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Binders\DatetimeModelBinder.cs" />
+    <Compile Include="Business\ApplicationSettings\ISettingsFactory.cs" />
+    <Compile Include="Business\ApplicationSettings\SettingsFactory.cs" />
+    <Compile Include="Business\ApplicationSettings\SettingsService.cs" />
     <Compile Include="Business\Articles\ArticleFactory.cs" />
     <Compile Include="Business\Categories\CategoryFactory.cs" />
     <Compile Include="Business\Articles\IArticleFactory.cs" />
     <Compile Include="Business\Categories\ICategoryFactory.cs" />
+    <Compile Include="Business\ApplicationSettings\ISettingsService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -1068,6 +1072,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UIResources.tr.Designer.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\codecracker.CSharp.1.0.3\analyzers\dotnet\cs\CodeCracker.Common.dll" />
+    <Analyzer Include="..\packages\codecracker.CSharp.1.0.3\analyzers\dotnet\cs\CodeCracker.CSharp.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

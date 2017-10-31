@@ -7,33 +7,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal.Entities;
+using KBVault.Web.Business.ApplicationSettings;
 
 namespace KBVault.Web.Controllers
 {
     public class KbVaultPublicController : Controller
     {
-        protected Logger Log = LogManager.GetCurrentClassLogger();
-        protected Settings Settings;
-        
-        public KbVaultPublicController()
-        {
-            using (var db = new KbVaultContext())
-            {
-                try
-                {
-                    db.Configuration.ProxyCreationEnabled = false;
-                    db.Configuration.LazyLoadingEnabled = false;
-                    Settings = db.Settings.FirstOrDefault( s => true);
-                }
-                catch (Exception ex)
-                {
-                    Log.Error(ex);
-                }
-            }
-        }
+        protected Logger Log = LogManager.GetCurrentClassLogger();        
+        public ISettingsService SettingsService { get; set; }
+                
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
+            var Settings = SettingsService.GetSettings();
             if (Settings != null)
             {
                 ViewBag.CompanyName = Settings.CompanyName;

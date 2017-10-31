@@ -12,12 +12,17 @@ using KBVault.Dal.Entities;
 using Resources;
 using KBVault.Web.Helpers;
 using System.Reflection;
+using KBVault.Web.Business.ApplicationSettings;
+using KBVault.Dal.Repository;
 
 namespace KBVault.Web.Controllers
 {
     [Authorize]
     public class SettingsController : KbVaultAdminController
     {
+        public ISettingsFactory SettingsFactory { get; set; }
+        public ISettingsService SettingsService { get; set; }
+        public ISettingsRepository SettingsRepository { get; set; }
         //private Logger Log = LogManager.GetCurrentClassLogger();
         //
         // GET: /Settings/
@@ -27,39 +32,15 @@ namespace KBVault.Web.Controllers
             try
             {
                 if (ModelState.IsValid)
-                {
-                    using (var db = new KbVaultContext())
+                {                    
+                    var set = SettingsFactory.CreateModel(model);
+                    if (set != null)
                     {
-                        Settings set = db.Settings.FirstOrDefault();
-                        if (set != null)
-                        {
-                            db.Settings.Remove(set);
-                        }
-                        set = new Settings();   
-                        set.CompanyName = model.CompanyName;
-                        set.ArticleCountPerCategoryOnHomePage = model.ArticleCountPerCategoryOnHomePage;
-                        set.DisqusShortName = model.DisqusShortName;
-                        set.JumbotronText = model.JumbotronText;
-                        set.ShareThisPublicKey = model.ShareThisPublicKey;
-                        set.TagLine = model.TagLine;
-                        set.IndexFileExtensions = model.IndexFileExtensions;
-                        set.ArticlePrefix = model.ArticlePrefix;
-                        set.AnalyticsAccount = model.AnalyticsAccount;
-                        set.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;                        
-                        set.BackupPath = model.BackupPath;                        
-                        set.ShowTotalArticleCountOnFrontPage = model.ShowTotalArticleCountOnFrontPage;
-                        if (!string.IsNullOrEmpty(set.BackupPath))
-                        {
-                            if (!set.BackupPath.EndsWith("\\") && !set.BackupPath.StartsWith("~"))
-                                set.BackupPath += "\\";
-                            if (!set.BackupPath.EndsWith("/") && set.BackupPath.StartsWith("~"))
-                                set.BackupPath += "/";
-                        }
+                        SettingsRepository.Save(set);                        
                         ConfigurationManager.AppSettings["Theme"] = model.SelectedTheme;
-                        db.Settings.Add(set);
-                        db.SaveChanges();
+                        SettingsService.ReloadSettings();
                         ShowOperationMessage(UIResources.SettingsPageSaveSuccessfull);
-                    }
+                    }                    
                 }
                 model.Themes.AddRange(Directory.EnumerateDirectories(Server.MapPath("~/Views/Themes")).Select(e => Path.GetFileName(e)).ToList());
                 return View(model);
@@ -74,26 +55,9 @@ namespace KBVault.Web.Controllers
 
         public ActionResult Index()
         {
-            try
-            {
-                using(var db = new KbVaultContext())
-                {
-                    ViewBag.UpdateSuccessfull = false;
-                    Settings set = db.Settings.FirstOrDefault();
-                    SettingsViewModel model = new SettingsViewModel(set);
-                    model.SelectedTheme = ConfigurationManager.AppSettings["Theme"];
-                    var a = typeof(SettingsController).Assembly;
-                    model.ApplicationVersion = a.GetName().Version.Major + "." + a.GetName().Version.Minor;                    
-                    model.Themes.AddRange(Directory.EnumerateDirectories(Server.MapPath("~/Views/Home/Themes")).Select(e => Path.GetFileName(e)).ToList());                    
-                    return View(model);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex);
-                ShowErrorMessage(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
+            ViewBag.UpdateSuccessfull = false;
+            var model = SettingsFactory.CreateViewModel(SettingsService.GetSettings());
+            return View(model);             
         }
 
     }
