@@ -11,6 +11,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using KBVault.Dal;
 using KBVault.Dal.Repository;
+using KBVault.Web.Business.ApplicationSettings;
 using KBVault.Web.Business.Articles;
 using KBVault.Web.Business.Categories;
 using KBVault.Web.ViewEngines;
@@ -33,6 +34,9 @@ namespace KBVault.Web
             builder.RegisterType<ArticleRepository>().As<IArticleRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<ArticleFactory>().As<IArticleFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<UserRepository>().As<IUserRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            builder.RegisterType<SettingsRepository>().As<ISettingsRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            builder.RegisterType<SettingsFactory>().As<ISettingsFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            builder.RegisterType<SettingsService>().As<ISettingsService>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();            
             var container = builder.Build();                  
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

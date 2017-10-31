@@ -22,7 +22,7 @@ namespace KBVault.Web.Controllers
                 {
                     return RedirectToAction("Index","Home");
                 }
-                string articlePrefix = Settings.ArticlePrefix;
+                string articlePrefix = SettingsService.GetSettings().ArticlePrefix;
                 if (!string.IsNullOrEmpty(articlePrefix))
                 {
 
