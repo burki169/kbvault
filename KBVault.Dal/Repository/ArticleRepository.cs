@@ -78,6 +78,14 @@ namespace KBVault.Dal.Repository
             }
         }
 
+        public int GetTotalPublishedArticleCount()
+        {
+            using (var db = new KbVaultContext())
+            {
+                return db.PublishedArticles().Count();
+            }
+        }
+
         public Article GetMostLikedArticle()
         {
             using (var db = new KbVaultContext())
@@ -91,6 +99,28 @@ namespace KBVault.Dal.Repository
             using (var db = new KbVaultContext())
             {
                 return db.Articles.OrderByDescending(a => a.Views).FirstOrDefault();
+            }
+        }
+
+        public List<Article> GetLatestArticles(int maxItemCount)
+        {
+            using (var db = new KbVaultContext())
+            {
+                return db.PublishedArticles()
+                    .OrderByDescending(a => a.Edited)
+                    .Take(maxItemCount)
+                    .ToList();
+            }
+        }
+
+        public List<Article> GetPopularArticles(int maxItemCount)
+        {
+            using(var db = new KbVaultContext())
+            {
+                return db.PublishedArticles()
+                    .OrderByDescending(a => a.Likes)
+                    .Take(maxItemCount)
+                    .ToList();
             }
         }
     }

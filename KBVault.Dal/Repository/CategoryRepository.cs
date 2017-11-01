@@ -104,5 +104,21 @@ namespace KBVault.Dal.Repository
                 return db.Categories.FirstOrDefault();
             }
         }
+
+        public IList<Category> GetHotCategories()
+        {
+            using(var db = new KbVaultContext())
+            {
+                return db.Categories.Include("Articles").Where(c => c.IsHot).ToList();
+            }
+        }
+
+        public IList<Category> GetFirstLevelCategories()
+        {
+            using(var db = new KbVaultContext())
+            {
+                return db.Categories.Include("Articles").Where(c => c.Parent == null).OrderBy(c => c.Name).ToList();
+            }
+        }
     }
 }

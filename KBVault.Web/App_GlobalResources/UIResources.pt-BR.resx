@@ -526,15 +526,21 @@
     <value>To be translated: {0}</value>
   </data>
   <data name="SettingsShowTotalArticleCountOnFrontPage" xml:space="preserve">
-    <value>To be translated </value>
+    <value>SettingsShowTotalArticleCountOnFrontPage</value>
   </data>
   <data name="SettingsTheme" xml:space="preserve">
-    <value>To be translated </value>
+    <value>SettingsTheme</value>
   </data>
   <data name="CategoryCreateFormLabelIcon" xml:space="preserve">
     <value>To be translated</value>
   </data>
   <data name="CategoryCreateFormLabelIconInfo" xml:space="preserve">
     <value>To be translated</value>
+  </data>
+  <data name="ArticleCreatePageRemoveAttachment" xml:space="preserve">
+    <value>ArticleCreatePageRemoveAttachment</value>
+  </data>
+  <data name="ArticleCreatePageDownloadAttachment" xml:space="preserve">
+    <value>ArticleCreatePageDownloadAttachment</value>
   </data>
 </root>

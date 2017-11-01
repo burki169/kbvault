@@ -295,6 +295,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download attachment.
+        /// </summary>
+        internal static string ArticleCreatePageDownloadAttachment {
+            get {
+                return ResourceManager.GetString("ArticleCreatePageDownloadAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Article updated successfully..
         /// </summary>
         internal static string ArticleCreatePageEditSuccessMessage {
@@ -354,6 +363,15 @@ namespace Resources {
         internal static string ArticleCreatePagePublishStartRequiredMessage {
             get {
                 return ResourceManager.GetString("ArticleCreatePagePublishStartRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes attachment..
+        /// </summary>
+        internal static string ArticleCreatePageRemoveAttachment {
+            get {
+                return ResourceManager.GetString("ArticleCreatePageRemoveAttachment", resourceCulture);
             }
         }
         

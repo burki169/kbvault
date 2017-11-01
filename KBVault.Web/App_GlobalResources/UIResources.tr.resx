@@ -546,4 +546,10 @@
   <data name="CategoryCreateFormLabelIconInfo" xml:space="preserve">
     <value>Font awesome ikonlarından birini yazabilirsiniz.</value>
   </data>
+  <data name="ArticleCreatePageDownloadAttachment" xml:space="preserve">
+    <value>Ekli Dosyayı indir.</value>
+  </data>
+  <data name="ArticleCreatePageRemoveAttachment" xml:space="preserve">
+    <value>Ekli dosyayı siler.</value>
+  </data>
 </root>

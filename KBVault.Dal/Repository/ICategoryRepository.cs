@@ -14,6 +14,8 @@ namespace KBVault.Dal.Repository
 
         Category GetFirstCategory();
         IList<Category> GetAllCategories();
+        IList<Category> GetHotCategories();
+        IList<Category> GetFirstLevelCategories();
         bool HasArticleInCategory(int categoryId);
         IList<Article> GetArticles(int categoryId);
     }

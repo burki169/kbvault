@@ -7,6 +7,7 @@ namespace KBVault.Dal.Repository
     public interface ITagRepository
     {
         void RemoveTagFromArticles(int tagId);
-        IList<TopTagItem> GetTopTags();        
+        IList<TopTagItem> GetTopTags();
+        IList<TopTagItem> GetTagCloud();
     }
 }
