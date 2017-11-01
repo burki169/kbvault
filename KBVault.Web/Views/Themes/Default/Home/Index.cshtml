@@ -144,17 +144,7 @@
 
                 @if (Model.PopularTags.Count > 0)
                 {
-                    <h4 class="section-title">@UIResources.LandingSidebarTagCloudListTitle</h4>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            @foreach (var tag in Model.PopularTags)
-                            {
-                                <a class="btn-xs btn btn-default btn-tag" href='@Url.Action("Tags", "Home", new { id = tag.Name })'>
-                                    @tag.Name
-                                </a>
-                            }
-                        </div>
-                    </div>
+                    @Html.Partial("TagCloud", Model.PopularTags)
                 }
             </div>
         </div>

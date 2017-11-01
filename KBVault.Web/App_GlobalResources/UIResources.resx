@@ -549,4 +549,10 @@
   <data name="CategoryCreateFormLabelIconInfo" xml:space="preserve">
     <value>You can write name of any font-awesome icon. Try bomb or book to get started ;)</value>
   </data>
+  <data name="ArticleCreatePageDownloadAttachment" xml:space="preserve">
+    <value>Download attachment</value>
+  </data>
+  <data name="ArticleCreatePageRemoveAttachment" xml:space="preserve">
+    <value>Deletes attachment.</value>
+  </data>
 </root>

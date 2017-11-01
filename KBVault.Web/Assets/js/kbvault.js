@@ -222,4 +222,6 @@ $(function () {
             }
         }); //tagit
     });//each
+
+    $('[data-toggle="tooltip"]').tooltip(); 
 });

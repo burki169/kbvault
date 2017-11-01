@@ -285,6 +285,7 @@
     <Compile Include="Models\Public\KbSearchResultItemViewModel.cs" />
     <Compile Include="Models\Public\LandingPageViewModel.cs" />
     <Compile Include="Models\Public\SearchFormViewModel.cs" />
+    <Compile Include="Models\Public\TagCloudItem.cs" />
     <Compile Include="Models\SettingsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_GlobalResources\UIResources.tr.Designer.cs">
@@ -1012,6 +1013,7 @@
     <Content Include="Views\Themes\Default\Home\Index.cshtml" />
     <Content Include="Views\Themes\Default\_Layout.cshtml" />
     <Content Include="Views\Themes\Default\_ViewStart.cshtml" />
+    <Content Include="Views\Themes\Default\Partials\TagCloud.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

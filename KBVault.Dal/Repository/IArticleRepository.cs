@@ -13,7 +13,10 @@ namespace KBVault.Dal.Repository
         IList<SimilarArticle> GetVisibleSimilarArticles(int articleId,DateTime date);
         void AssignTagsToArticle(long articleId, string tags);
         int GetTotalArticleCount();
+        int GetTotalPublishedArticleCount();
         Article GetMostLikedArticle();
         Article GetMostViewedArticle();
+        List<Article> GetLatestArticles(int maxItemCount);
+        List<Article> GetPopularArticles(int maxItemCount);        
     }
 }

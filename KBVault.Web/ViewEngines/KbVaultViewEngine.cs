@@ -13,7 +13,8 @@ namespace KBVault.Web.ViewEngines
         {            
             var viewLocations = new[] {
             "~/Views/{1}/{0}.cshtml",
-            "~/Views/Themes/%THEME%/{1}/{0}.cshtml",
+            "~/Views/Themes/"+Theme+"/{1}/{0}.cshtml",
+            "~/Views/Themes/"+Theme+"/Partials/{0}.cshtml",
             "~/Views/Shared/{0}.cshtml"                       
             // etc
              };
@@ -23,7 +24,7 @@ namespace KBVault.Web.ViewEngines
         }
 
         private string Theme => ConfigurationManager.AppSettings["Theme"];                    
-
+        /*
         protected override IView CreatePartialView(ControllerContext controllerContext, string partialPath)
 	    {	        
 	        return base.CreatePartialView(controllerContext, partialPath.Replace("%THEME%", Theme));
@@ -38,5 +39,6 @@ namespace KBVault.Web.ViewEngines
 	    {	        
 	        return base.FileExists(controllerContext, virtualPath.Replace("%THEME%", Theme));
 	    }
+        */
     }
 }

@@ -22,7 +22,8 @@ namespace KBVault.Web.Controllers
 
         public ITagRepository TagRepository { get; set; }
         public IArticleRepository ArticleRepository { get; set; }
-        
+        public ICategoryRepository CategoryRepository { get; set; }
+
 
         [HttpPost]
         public JsonResult Like(int articleId)
@@ -126,39 +127,20 @@ namespace KBVault.Web.Controllers
 
         public ActionResult Index()
         {
-            var settings = SettingsService.GetSettings();
-            using (var db = new KbVaultContext())
-            {                
-                LandingPageViewModel model = new LandingPageViewModel();
-                if (settings.ShowTotalArticleCountOnFrontPage)
-                {
-                    model.TotalArticleCountMessage = string.Format(UIResources.PublicTotalArticleCountMessage,db.PublishedArticles().Count());
-                }
-                model.HotCategories = db.Categories.Include("Articles").Where(c => c.IsHot).ToList();
-                DateTime dateRangeToday = DateTime.Now.Date;
-                ViewBag.Title = settings.CompanyName;
-                model.FirstLevelCategories = db.Categories.Include("Articles").Where(c => c.Parent == null).OrderBy(c => c.Name).ToList();
-                model.LatestArticles = db.PublishedArticles()                                       
-                                        .OrderByDescending(a => a.Edited)
-                                        .Take(settings.ArticleCountPerCategoryOnHomePage)
-                                        .ToList();
-                model.PopularArticles= db.PublishedArticles()                                            
-                                            .OrderByDescending(a => a.Likes)
-                                            .Take(settings.ArticleCountPerCategoryOnHomePage)
-                                            .ToList();
-                /* Build tag cloud */
-                model.PopularTags = TagRepository.GetTopTags().OrderBy( c => Guid.NewGuid()).ToList();
-                int ratioDiff = model.MaxTagRatio - model.MinTagRatio;
-                int minRatio = model.MinTagRatio;
-                foreach (var item in model.PopularTags)
-                {
-                    if (ratioDiff > 0)
-                        item.FontSize = 80 + Convert.ToInt32(Math.Truncate((double)(item.Ratio - minRatio) * (100 / ratioDiff)));
-                    else
-                        item.FontSize = 80;
-                }
-                return View(model);
+            var settings = SettingsService.GetSettings();            
+            var model = new LandingPageViewModel();
+            if (settings.ShowTotalArticleCountOnFrontPage)
+            {
+                model.TotalArticleCountMessage = string.Format(UIResources.PublicTotalArticleCountMessage,ArticleRepository.GetTotalArticleCount());
             }
+            model.HotCategories = CategoryRepository.GetHotCategories().ToList();
+            var dateRangeToday = DateTime.Now.Date;
+            ViewBag.Title = settings.CompanyName;
+            model.FirstLevelCategories = CategoryRepository.GetFirstLevelCategories().ToList();
+            model.LatestArticles = ArticleRepository.GetLatestArticles(settings.ArticleCountPerCategoryOnHomePage);
+            model.PopularArticles = ArticleRepository.GetPopularArticles(settings.ArticleCountPerCategoryOnHomePage);
+            model.PopularTags = TagRepository.GetTagCloud().Select(tag => new TagCloudItem(tag)).ToList();
+            return View(model);            
             
         }
 
