@@ -169,6 +169,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Publish end date must be later than start date.
+        /// </summary>
+        internal static string PublishEndDateMustBeGreater {
+            get {
+                return ResourceManager.GetString("PublishEndDateMustBeGreater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tag Not Found!.
         /// </summary>
         internal static string TagNotFound {

@@ -90,33 +90,38 @@ namespace KBVault.Web.Controllers
                 ModelState.Remove("Category.Name");
                 ModelState.Remove("Category.SefName");
                 if (ModelState.IsValid)
-                {                                                
-                    Article article = ArticleRepository.Get(model.Id);
-                    article.CategoryId = model.Category.Id;
-                    article.IsDraft = model.IsDraft ? 1 : 0;
-                    article.PublishEndDate = model.PublishEndDate;
-                    article.PublishStartDate = model.PublishStartDate;                        
-                    article.Edited = DateTime.Now;
-                    article.Title = model.Title;
-                    article.Content = model.Content;
-                    article.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                    article.SefName = model.SefName;
-                    ArticleRepository.Update(article,model.Tags);                        
-                    if (article.IsDraft == 0)
-                        KbVaultLuceneHelper.AddArticleToIndex(article);
-                    else
-                        KbVaultLuceneHelper.RemoveArticleFromIndex(article);                    
-                    ShowOperationMessage(UIResources.ArticleCreatePageEditSuccessMessage);                    
-                }
-                return View("Create",model);
+                {
+                    if (model.PublishEndDate < model.PublishStartDate)
+                    {
+                        ModelState.AddModelError("PublishDate",ErrorMessages.PublishEndDateMustBeGreater);
+                    }
+                    else {
+                        Article article = ArticleRepository.Get(model.Id);
+                        article.CategoryId = model.Category.Id;
+                        article.IsDraft = model.IsDraft ? 1 : 0;
+                        article.PublishEndDate = model.PublishEndDate;
+                        article.PublishStartDate = model.PublishStartDate;
+                        article.Edited = DateTime.Now;
+                        article.Title = model.Title;
+                        article.Content = model.Content;
+                        article.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                        article.SefName = model.SefName;
+                        ArticleRepository.Update(article, model.Tags);
+                        if (article.IsDraft == 0)
+                            KbVaultLuceneHelper.AddArticleToIndex(article);
+                        else
+                            KbVaultLuceneHelper.RemoveArticleFromIndex(article);
+                        ShowOperationMessage(UIResources.ArticleCreatePageEditSuccessMessage);
+                    }
+                    
+                }                
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
-                ModelState.AddModelError("Exception", ex.Message);
-                return View("Create", model);
-                
+                ModelState.AddModelError("Exception", ex.Message);                
             }
+            return View("Create", model);
         }
 
         public ActionResult Edit(int id)

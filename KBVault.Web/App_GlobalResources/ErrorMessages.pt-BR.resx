@@ -147,6 +147,9 @@
   <data name="PasswordsDoNotMatch" xml:space="preserve">
     <value>Nova senha deve ser igual</value>
   </data>
+  <data name="PublishEndDateMustBeGreater" xml:space="preserve">
+    <value>PublishEndDateMustBeGreater</value>
+  </data>
   <data name="TagNotFound" xml:space="preserve">
     <value>Tag não encontrada!</value>
   </data>

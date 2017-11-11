@@ -153,6 +153,9 @@
   <data name="PasswordsDoNotMatch" xml:space="preserve">
     <value>New Passwords must be equal</value>
   </data>
+  <data name="PublishEndDateMustBeGreater" xml:space="preserve">
+    <value>Publish end date must be later than start date</value>
+  </data>
   <data name="TagNotFound" xml:space="preserve">
     <value>Tag Not Found!</value>
   </data>

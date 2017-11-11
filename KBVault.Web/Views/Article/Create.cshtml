@@ -35,6 +35,8 @@
     
     $.datepicker.setDefaults({        
         showAnim: "clip",        
+        changeMonth: true,
+        changeYear: true,
         dateFormat: "@Html.ConvertDateFormat()"
     });
     $(".datepicker").each(function(i,e){ $(e).datepicker(); });
