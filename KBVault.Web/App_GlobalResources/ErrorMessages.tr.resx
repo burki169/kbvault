@@ -153,6 +153,9 @@
   <data name="PasswordsDoNotMatch" xml:space="preserve">
     <value>Yeni parolalar aynı olmalıdır.</value>
   </data>
+  <data name="PublishEndDateMustBeGreater" xml:space="preserve">
+    <value>Yayinlama bitis tarihi baslangic tarihinden sonra olmalidir.</value>
+  </data>
   <data name="TagNotFound" xml:space="preserve">
     <value>Etiket bulunamadı</value>
   </data>

@@ -26,8 +26,7 @@ namespace KBVault.Web
             
             bundles.Add(new StyleBundle("~/admin/css").Include(
                 "~/Assets/css/plugins/bootstrap.css",
-                "~/Assets/css/plugins/font-awesome.css",
-                "~/Assets/css/jquery-ui/jquery-ui-redmond.css",
+                "~/Assets/css/plugins/font-awesome.css",                
                 "~/Assets/css/plugins/ionicons.css",
                 "~/Assets/css/plugins/xeditable/xeditable.css",
                 "~/Assets/css/plugins/tagit/jquery.tagit.css",
@@ -36,6 +35,7 @@ namespace KBVault.Web
                 "~/Assets/datatables/css/jquery.dataTables.css",
                 "~/Assets/datatables/css/jquery.dataTables_themeroller.css",
                 "~/Assets/datatables/css/jquery.datatables.bootstrap.css",
+                "~/Assets/css/jquery-ui/jquery-ui-redmond.css",
                 "~/Assets/css/AdminLTE.css"
                 ));
             
