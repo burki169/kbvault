@@ -12,6 +12,6 @@ namespace KBVault.Dal.Types
         public DateTime PublishEndDate { get; set; }
         public DateTime PublishStartDate { get; set; }
         public int IsDraft { get; set; }
-        public int Relevance{ get; set; }
+        public int Relevance { get; set; }
     }
 }

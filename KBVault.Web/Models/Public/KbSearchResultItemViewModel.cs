@@ -14,7 +14,7 @@ namespace KBVault.Web.Models.Public
         public string ArticleTitle { get; set; }
 
         public string ArticleSefName
-        { 
+        {
             get
             {
                 using (var db = new KbVaultContext())
@@ -24,6 +24,7 @@ namespace KBVault.Web.Models.Public
                     {
                         return article.SefName;
                     }
+
                     return string.Empty;
                 }
             }

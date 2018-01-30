@@ -9,7 +9,7 @@ namespace KBVault.Dal.Repository
     {
         int Add(Category category);
         void Update(Category category);
-        Category Get(int categoryId);        
+        Category Get(int categoryId);
         bool Remove(Category category);
 
         Category GetFirstCategory();

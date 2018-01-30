@@ -19,8 +19,8 @@ namespace KBVault.Dal.Repository
             {
                 var model = db.Articles
                     .Include(c => c.Category)
-                    .Include(t => t.ArticleTags.Select(a => a.Tag))                    
-                    .Include(a => a.Attachments)                    
+                    .Include(t => t.ArticleTags.Select(a => a.Tag))
+                    .Include(a => a.Attachments)
                     .FirstOrDefault(a => a.Id == id);
                 return model;
             }
@@ -32,8 +32,11 @@ namespace KBVault.Dal.Repository
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
-                if (!String.IsNullOrEmpty(tags))
+                if (!string.IsNullOrEmpty(tags))
+                {
                     AssignTagsToArticle(article.Id, tags);
+                }
+
                 db.SaveChanges();
                 return article.Id;
             }
@@ -45,9 +48,12 @@ namespace KBVault.Dal.Repository
             {
                 db.Articles.AddOrUpdate(article);
                 db.SaveChanges();
-                if (!String.IsNullOrEmpty(tags))
+                if (!string.IsNullOrEmpty(tags))
+                {
                     AssignTagsToArticle(article.Id, tags);
-                db.SaveChanges();                
+                }
+
+                db.SaveChanges();
             }
         }
 
@@ -57,7 +63,7 @@ namespace KBVault.Dal.Repository
             {
                 var articleIdParam = new SqlParameter("ArticleId", articleId);
                 return db.Database.SqlQuery<SimilarArticle>("exec GetSimilarArticles @ArticleId", articleIdParam).Where(a => a.PublishStartDate <= date && a.PublishEndDate >= date && a.IsDraft == 0).ToList();
-            }            
+            }
         }
 
         public void AssignTagsToArticle(long articleId, string tags)
@@ -115,7 +121,7 @@ namespace KBVault.Dal.Repository
 
         public List<Article> GetPopularArticles(int maxItemCount)
         {
-            using(var db = new KbVaultContext())
+            using (var db = new KbVaultContext())
             {
                 return db.PublishedArticles()
                     .OrderByDescending(a => a.Likes)

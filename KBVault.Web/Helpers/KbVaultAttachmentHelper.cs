@@ -12,13 +12,13 @@ namespace KBVault.Web.Helpers
 {
     public class KbVaultAttachmentHelper
     {
-        private static Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static void RemoveLocalAttachmentFile(Attachment at)
         {
             try
             {
-              string localPath = Path.Combine(HttpContext.Current.Server.MapPath(at.Path), at.FileName);
+              var localPath = Path.Combine(HttpContext.Current.Server.MapPath(at.Path), at.FileName);
               System.IO.File.Delete(localPath);
             }
             catch (Exception ex)
@@ -32,17 +32,20 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                using( var db = new KbVaultContext())
-                {                                        
-                    Attachment attachment = db.Attachments.First(a => a.Hash == hash);
+                using (var db = new KbVaultContext())
+                {
+                    var attachment = db.Attachments.First(a => a.Hash == hash);
                     if (attachment == null)
+                    {
                         throw new ArgumentNullException(ErrorMessages.AttachmentNotFound);
-                    string localPath = Path.Combine( HttpContext.Current.Server.MapPath(attachment.Path), attachment.FileName);
+                    }
+
+                    var localPath = Path.Combine( HttpContext.Current.Server.MapPath(attachment.Path), attachment.FileName);
                     attachment.Author = currentUserId;
                     db.Attachments.Remove(attachment);
                     db.SaveChanges();
                     System.IO.File.Delete(localPath);
-                                        
+
                 }
             }
             catch (Exception ex)
@@ -60,36 +63,36 @@ namespace KBVault.Web.Helpers
                 {
                     db.Configuration.ProxyCreationEnabled = false;
                     db.Configuration.LazyLoadingEnabled = false;
-                    Article article = db.Articles.First(a => a.Id == articleId);
+                    var article = db.Articles.First(a => a.Id == articleId);
                     if (article != null)
                     {
-                        
-                        Attachment attachment = new Attachment();
-                        // think of organizing in year/month folders
-                        string localPath = HttpContext.Current.Server.MapPath("~/Uploads");
+                        var attachment = new Attachment();
+                        var localPath = HttpContext.Current.Server.MapPath("~/Uploads");
                         attachment.Path = "~/Uploads/";
                         attachment.FileName = Path.GetFileName(attachedFile.FileName);
                         attachment.Extension = Path.GetExtension(attachedFile.FileName);
                         attachment.ArticleId = articleId;
                         attachment.MimeType = attachedFile.ContentType;
-                        attachment.Hash = Guid.NewGuid().ToString().Replace("-", "");
+                        attachment.Hash = Guid.NewGuid().ToString().Replace("-", string.Empty);
                         attachment.Author = userId;
                         db.Attachments.Add(attachment);
                         article.Attachments.Add(attachment);
 
-                        string path = Path.Combine(localPath, attachment.FileName);
+                        var path = Path.Combine(localPath, attachment.FileName);
                         while (System.IO.File.Exists(path))
                         {
                             attachment.FileName = Path.GetFileNameWithoutExtension(attachment.FileName) +
-                                                   Guid.NewGuid().ToString().Replace("-", "").Substring(1, 5) +
+                                                   Guid.NewGuid().ToString().Replace("-", string.Empty).Substring(1, 5) +
                                                    Path.GetExtension(attachment.FileName);
                             path = Path.Combine(localPath, attachment.FileName);
                         }
+
                         attachedFile.SaveAs(path);
                         db.SaveChanges();
-                        return attachment;    
-                    }                    
-                    throw new ArgumentNullException(ErrorMessages.FileUploadArticleNotFound);                    
+                        return attachment;
+                    }
+
+                    throw new ArgumentNullException(ErrorMessages.FileUploadArticleNotFound);
                 }
             }
             catch (Exception ex)

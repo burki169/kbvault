@@ -22,11 +22,11 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                if( HttpContext.Current.Request.IsAuthenticated )
+                if (HttpContext.Current.Request.IsAuthenticated)
                 {
-                    
                     return KbVaultAuthHelper.GetKbUser(user.Identity.Name);
                 }
+
                 throw new ArgumentNullException("Identity is null");
             }
             catch (Exception ex)
@@ -36,15 +36,15 @@ namespace KBVault.Web.Helpers
             }
         }
 
-      
+
         private static string GetCategoryMenu( long parentCategoryId = -1/*, long activeCategory = -1*/)
         {
             try
             {
-                string html ="";
+                string html = string.Empty;
                 UrlHelper linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-                List<CategoryViewModel> categoryTree = GetCategories(parentCategoryId,0,false);                
-                var activeClass = "active";                
+                List<CategoryViewModel> categoryTree = GetCategories(parentCategoryId,0,false);
+                var activeClass = "active";
                 html = "<ul class='treeview-menu " + activeClass + "'>";
 
                 foreach (CategoryViewModel model in categoryTree)
@@ -64,7 +64,7 @@ namespace KBVault.Web.Helpers
                     html += "</li>" + Environment.NewLine.ToString();
                 }
                 html += "</ul>";
-                
+
                 return html;
             }
             catch (Exception ex)
@@ -119,35 +119,33 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                string html = string.Empty;
-                UrlHelper linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-                List<CategoryViewModel> categoryTree = GetCategories(parentCategoryId, 0, false);                
-                /*
-                if( parentCategoryId == -1 )
-                    html = "<ul class=\"dropdown-menu multi-level\" role=\"menu\" aria-labelledby=\"dropdownMenu\">";
-                */
+                var html = string.Empty;
+                var linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+                var categoryTree = GetCategories(parentCategoryId, 0, false);
+
                 foreach (CategoryViewModel model in categoryTree)
                 {
-                    if( model.Children.Count > 0 )
+                    if (model.Children.Count > 0)
+                    {
                         html += "<li class=\"dropdown-submenu pull-left\">" + Environment.NewLine.ToString();
-                    else                          
-                        html += "<li>"+ Environment.NewLine.ToString();
+                    }
+                    else
+                    {
+                        html += "<li>" + Environment.NewLine.ToString();
+                    }
 
-                    string categoryListLink = linkHelper.Action("Categories", "Home", new { id = model.SefName});
-                    html += String.Format("<a href='{0}'>{1}</a>", categoryListLink,model.Name);
-                    html += Environment.NewLine.ToString();                                        
+                    var categoryListLink = linkHelper.Action("Categories", "Home", new { id = model.SefName});
+                    html += string.Format("<a href='{0}'>{1}</a>", categoryListLink,model.Name);
+                    html += Environment.NewLine;
                     if (model.Children.Count > 0)
                     {
                         html += "<ul class=\"dropdown-menu\">";
                         html += GetBootstrapCategoryMenu(model.Id);
                         html += "</ul>";
                     }
-                    html += "</li>" + Environment.NewLine.ToString();
+
+                    html += "</li>" + Environment.NewLine;
                 }
-                /*
-                if( parentCategoryId == -1 )
-                    html += "</ul>";
-                */
 
                 return html;
             }
@@ -157,8 +155,6 @@ namespace KBVault.Web.Helpers
                 throw;
             }
         }
-
-       
 
         public static SelectList CategoryTreeForSelectList(long selectedCategoryId,bool displayRoot = true)
         {
@@ -172,6 +168,7 @@ namespace KBVault.Web.Helpers
                     root.NameForDroplist = " ";
                     cats.Add(root);
                 }
+
                 cats.AddRange( GetCategories(-1) );
                 return new SelectList(cats, "Id", "NameForDroplist", selectedCategoryId);
             }
@@ -186,10 +183,12 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                List<object> objs = new List<object>();
-                objs.Add(new { Value = KbVaultAuthHelper.ROLE_ADMIN, Text = KbVaultAuthHelper.ROLE_ADMIN });
-                objs.Add(new { Value = KbVaultAuthHelper.ROLE_MANAGER, Text = KbVaultAuthHelper.ROLE_MANAGER});
-                objs.Add(new { Value = KbVaultAuthHelper.ROLE_EDITOR, Text = KbVaultAuthHelper.ROLE_EDITOR});
+                var objs = new List<object>
+                {
+                    new { Value = KbVaultAuthHelper.RoleAdmin, Text = KbVaultAuthHelper.RoleAdmin },
+                    new { Value = KbVaultAuthHelper.RoleManager, Text = KbVaultAuthHelper.RoleManager },
+                    new { Value = KbVaultAuthHelper.RoleEditor, Text = KbVaultAuthHelper.RoleEditor }
+                };
 
                 return new SelectList(objs, "Value", "Text", selectedRole);
             }
@@ -204,8 +203,8 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                KbUser usr = UserAsKbUser(user);
-                return usr.Role == KbVaultAuthHelper.ROLE_ADMIN;
+                var usr = UserAsKbUser(user);
+                return usr.Role == KbVaultAuthHelper.RoleAdmin;
             }
             catch (Exception ex)
             {
@@ -218,8 +217,8 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                KbUser usr = UserAsKbUser(user);
-                return usr.Role == KbVaultAuthHelper.ROLE_MANAGER;
+                var usr = UserAsKbUser(user);
+                return usr.Role == KbVaultAuthHelper.RoleManager;
             }
             catch (Exception ex)
             {
@@ -227,6 +226,5 @@ namespace KBVault.Web.Helpers
                 throw;
             }
         }
-             
     }
 }

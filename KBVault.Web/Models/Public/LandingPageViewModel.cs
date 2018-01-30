@@ -16,6 +16,5 @@ namespace KBVault.Web.Models.Public
         public List<Article> PopularArticles { get; set; }
         public List<TagCloudItem> PopularTags { get; set; }
         public string TotalArticleCountMessage { get; set; }
-        
     }
 }

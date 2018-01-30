@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using KBVault.Core.MVC.Authorization;
-using KBVault.Web.Models;
-
-using NLog;
 using KBVault.Dal;
-using System.Collections;
-using Resources;
 using KBVault.Web.Helpers;
+using KBVault.Web.Models;
+using Resources;
 using KbUser = KBVault.Dal.Entities.KbUser;
 
 namespace KBVault.Web.Controllers
@@ -19,32 +15,27 @@ namespace KBVault.Web.Controllers
     [Authorize]
     public class AccountController : KbVaultAdminController
     {
-        //
-        // GET: /Account/
-
-        //private Logger Log = LogManager.GetCurrentClassLogger();
-
         [AllowAnonymous]
         public ActionResult Login()
         {
-            LoginViewModel model = new LoginViewModel();
+            var model = new LoginViewModel();
             return View(model);
         }
 
         [Authorize]
-        public ActionResult Logout() 
+        public ActionResult Logout()
         {
             if (Request.IsAuthenticated)
             {
                 FormsAuthentication.SignOut();
             }
 
-            return RedirectToAction("Index", "Home"); 
+            return RedirectToAction("Index", "Home");
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult Login(LoginViewModel model )
+        public ActionResult Login(LoginViewModel model)
         {
             try
             {
@@ -54,17 +45,19 @@ namespace KBVault.Web.Controllers
                     if (kmp.ValidateUser(model.UserName, model.Password))
                     {
                         FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                        if (String.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
+                        if (string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
+                        {
                             return RedirectToAction("Index", "Dashboard");
-                        else
-                            return Redirect(Request.QueryString["ReturnUrl"]);
+                        }
+
+                        return Redirect(Request.QueryString["ReturnUrl"]);
                     }
                     else
                     {
                         ModelState.AddModelError("LoginError", ErrorMessages.LoginFailed);
                     }
-                    
                 }
+
                 return View(model);
             }
             catch (Exception ex)
@@ -80,27 +73,29 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                                
+
                 if (ModelState.IsValid)
                 {
                     using (var db = new KbVaultContext())
                     {
-                        string username = ControllerContext.RequestContext.HttpContext.User.Identity.Name;
-                        KbUser usr = db.KbUsers.FirstOrDefault(u => u.UserName == username);
+                        var username = ControllerContext.RequestContext.HttpContext.User.Identity.Name;
+                        var usr = db.KbUsers.FirstOrDefault(u => u.UserName == username);
                         if (usr == null)
                         {
                             ModelState.AddModelError("UserNotFound", ErrorMessages.UserNotFound);
                             return View(model);
                         }
+
                         if (KbVaultAuthHelper.ValidateUser(username, model.OldPassword))
                         {
                             usr.Name = model.Name;
                             usr.LastName = model.LastName;
                             usr.Email = model.Email;
-                            if (!String.IsNullOrEmpty(model.NewPassword) && model.NewPassword == model.NewPasswordAgain)
+                            if (!string.IsNullOrEmpty(model.NewPassword) && model.NewPassword == model.NewPasswordAgain)
                             {
                                 KbVaultAuthHelper.ChangePassword(model.UserName, model.OldPassword, model.NewPassword);
                             }
+
                             db.SaveChanges();
                             ShowOperationMessage(UIResources.UserProfileUpdateSuccessful);
                             return RedirectToAction("Index", "Dashboard");
@@ -111,6 +106,7 @@ namespace KBVault.Web.Controllers
                         }
                     }
                 }
+
                 return View(model);
             }
             catch (Exception ex)
@@ -118,7 +114,7 @@ namespace KBVault.Web.Controllers
                 Log.Error(ex);
                 ShowOperationMessage(ex.Message);
                 return RedirectToAction("Index", "Error");
-            }          
+            }
         }
 
         [Authorize]
@@ -128,14 +124,16 @@ namespace KBVault.Web.Controllers
             {
                 using (var db = new KbVaultContext())
                 {
-                    string username = ControllerContext.RequestContext.HttpContext.User.Identity.Name;
-                    KbUser usr = db.KbUsers.FirstOrDefault(u => u.UserName == username);
+                    var username = ControllerContext.RequestContext.HttpContext.User.Identity.Name;
+                    var usr = db.KbUsers.FirstOrDefault(u => u.UserName == username);
                     if (usr == null)
+                    {
                         throw new ArgumentNullException(ErrorMessages.UserNotFound);
-                    KbUserViewModel model = new KbUserViewModel(usr);
+                    }
+
+                    var model = new KbUserViewModel(usr);
                     return View(model);
                 }
-                
             }
             catch (Exception ex)
             {
@@ -154,18 +152,19 @@ namespace KBVault.Web.Controllers
         [Authorize(Roles = "Admin")]
         public JsonResult Remove(int id = -1 )
         {
-            JsonOperationResponse result = new JsonOperationResponse()
+            var result = new JsonOperationResponse()
             {
                 Successful = false
             };
             try
             {
-                using(var db = new KbVaultContext())
+                using (var db = new KbVaultContext())
                 {
                     db.KbUsers.Remove(db.KbUsers.First(u => u.Id == id));
                     db.SaveChanges();
                     result.Successful = true;
                 }
+
                 return Json(result);
             }
             catch (Exception ex)
@@ -186,28 +185,31 @@ namespace KBVault.Web.Controllers
                 {
                     using (var db = new KbVaultContext())
                     {
-                        KbUser usr = db.KbUsers.FirstOrDefault(u => u.Id == model.Id);
+                        var usr = db.KbUsers.FirstOrDefault(u => u.Id == model.Id);
                         if (usr == null)
                         {
                             ModelState.AddModelError("UserNotFound", ErrorMessages.UserNotFound);
                             return View(model);
                         }
-                        if( KbVaultAuthHelper.ValidateUser(model.UserName,model.OldPassword) )
+
+                        if (KbVaultAuthHelper.ValidateUser(model.UserName, model.OldPassword))
                         {
                             usr.Name = model.Name;
                             usr.LastName = model.LastName;
                             usr.Role = model.Role;
-                            usr.Email = model.Email;                            
-                            if (!String.IsNullOrEmpty(model.NewPassword) && model.NewPassword == model.NewPasswordAgain)
+                            usr.Email = model.Email;
+                            if (!string.IsNullOrEmpty(model.NewPassword) && model.NewPassword == model.NewPasswordAgain)
                             {
                                 KbVaultAuthHelper.ChangePassword(model.UserName, model.OldPassword, model.NewPassword);
                             }
+
                             db.SaveChanges();
                             ShowOperationMessage(UIResources.UserListUserEditSuccessful);
                             return RedirectToAction("Users");
-                        }                                                
+                        }
                     }
                 }
+
                 return View(model);
             }
             catch (Exception ex)
@@ -225,12 +227,13 @@ namespace KBVault.Web.Controllers
             {
                 using (var db = new KbVaultContext())
                 {
-                    KbUser usr = db.KbUsers.FirstOrDefault(u => u.Id == id);
+                    var usr = db.KbUsers.FirstOrDefault(u => u.Id == id);
                     if (usr == null)
                     {
                         throw new Exception(ErrorMessages.UserNotFound);
                     }
-                    KbUserViewModel model = new KbUserViewModel(usr);
+
+                    var model = new KbUserViewModel(usr);
                     return View(model);
                 }
             }
@@ -241,7 +244,7 @@ namespace KBVault.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
-        
+
         [Authorize(Roles="Admin")]
         public ActionResult Users()
         {
@@ -249,7 +252,7 @@ namespace KBVault.Web.Controllers
             {
                 using (var db = new KbVaultContext())
                 {
-                    List<KbUser> Users = db.KbUsers.OrderBy(u => u.UserName).ToList();
+                    var Users = db.KbUsers.OrderBy(u => u.UserName).ToList();
                     return View(Users);
                 }
             }
@@ -260,6 +263,7 @@ namespace KBVault.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+
         /*
         [AllowAnonymous]
         public void CreateAdmin()
@@ -287,7 +291,7 @@ namespace KBVault.Web.Controllers
                 {
                     using (var db = new KbVaultContext())
                     {
-                        KbUser usr = KbVaultAuthHelper.CreateUser(model.UserName, model.OldPassword, model.Email, model.Role,KBVaultHelperFunctions.UserAsKbUser(User).Id);
+                        var usr = KbVaultAuthHelper.CreateUser(model.UserName, model.OldPassword, model.Email, model.Role,KBVaultHelperFunctions.UserAsKbUser(User).Id);
                         usr = db.KbUsers.FirstOrDefault(u => u.Id == usr.Id);
                         if (usr != null)
                         {
@@ -295,9 +299,11 @@ namespace KBVault.Web.Controllers
                             usr.Name = model.Name;
                             db.SaveChanges();
                         }
+
                         return RedirectToAction("Users");
                     }
                 }
+
                 return View(model);
             }
             catch (Exception ex)
@@ -313,6 +319,5 @@ namespace KBVault.Web.Controllers
         {
             return View();
         }
-    
     }
 }

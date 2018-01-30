@@ -34,7 +34,7 @@ namespace KBVault.Dal.Entities
         public long Author { get; set; }
 
         [StringLength(2000)]
-        public string BackupPath { get; set; }        
+        public string BackupPath { get; set; }
 
         public bool ShowTotalArticleCountOnFrontPage { get; set; }
 

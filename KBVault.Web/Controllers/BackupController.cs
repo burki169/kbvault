@@ -16,11 +16,10 @@ using Resources;
 namespace KBVault.Web.Controllers
 {
     public class BackupController : KbVaultAdminController
-    {        
-
+    {
         public ActionResult Index()
         {
-            string BackupDirectory = "";
+            string BackupDirectory = string.Empty;
             if (!string.IsNullOrEmpty(Settings.BackupPath) && Settings.BackupPath.StartsWith("~"))
             {
                 BackupDirectory = Server.MapPath(Settings.BackupPath);
@@ -29,8 +28,9 @@ namespace KBVault.Web.Controllers
             {
                 BackupDirectory = Settings.BackupPath;
             }
-            List<BackupListViewModel> model = new List<BackupListViewModel>();            
-            int i = 0;
+
+            List<BackupListViewModel> model = new List<BackupListViewModel>();
+            var i = 0;
             if (!string.IsNullOrEmpty(BackupDirectory))
             {
                 foreach (var filePath in Directory.GetFiles(BackupDirectory, "*.bak"))
@@ -45,6 +45,7 @@ namespace KBVault.Web.Controllers
                     i++;
                 }
             }
+
             return View(model.OrderByDescending( f => f.FileDate));
         }
 
@@ -57,7 +58,7 @@ namespace KBVault.Web.Controllers
                 JsonOperationResponse result = new JsonOperationResponse();
                 try
                 {
-                    string backupFile = "";
+                    string backupFile = string.Empty;
                     if (Settings.BackupPath.StartsWith("~"))
                     {
                         backupFile = Server.MapPath(Settings.BackupPath + file);
@@ -133,7 +134,7 @@ namespace KBVault.Web.Controllers
                         }
                     }
                 }
-                
+
                 return Json(result, JsonRequestBehavior.DenyGet);
             }
             catch (Exception ex)
