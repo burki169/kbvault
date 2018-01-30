@@ -19,7 +19,7 @@ namespace KBVault.Web.Business.ApplicationSettings
                 ReloadSettings();
             }
 
-            return HttpContext.Current.Session[SettingsSessionKey] as Settings;           
+            return HttpContext.Current.Session[SettingsSessionKey] as Settings;
 
         }
 

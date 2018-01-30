@@ -9,24 +9,24 @@ using KBVault.Backup.Interface;
 
 namespace KBVault.Backup.Classes
 {
-    public class VaultMsSqlBackup: IVaultBackup
+    public class VaultMsSqlBackup : IVaultBackup
     {
-        private string ConnectionString;
+        private string connectionString;
 
         public void Connect(string connectionString)
         {
-            ConnectionString = connectionString;
+            this.connectionString = connectionString;
         }
 
         public bool Backup(string databaseName, string physicalPath)
         {
-            using (var conn = new SqlConnection(ConnectionString))
+            using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 SqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("BACKUP DATABASE " + databaseName+" ");
+                sb.AppendLine("BACKUP DATABASE " + databaseName + " ");
                 sb.AppendLine("TO DISK='" + physicalPath + "'");
                 cmd.CommandText = sb.ToString();
                 cmd.ExecuteNonQuery();
@@ -37,12 +37,12 @@ namespace KBVault.Backup.Classes
 
         public bool Restore(string databaseName, string physicalPath)
         {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandType = CommandType.Text;                
-                StringBuilder sb = new StringBuilder();
+                var cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                var sb = new StringBuilder();
                 sb.AppendLine("USE [master]");
                 sb.AppendLine("ALTER DATABASE " + databaseName + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
                 sb.AppendLine("RESTORE DATABASE " + databaseName + " FROM DISK='" + physicalPath + "'");
@@ -51,6 +51,7 @@ namespace KBVault.Backup.Classes
                 cmd.CommandText = sb.ToString();
                 cmd.ExecuteNonQuery();
             }
+
             return true;
         }
     }

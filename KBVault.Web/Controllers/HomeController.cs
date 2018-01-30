@@ -32,7 +32,7 @@ namespace KBVault.Web.Controllers
             if (Request.IsAjaxRequest() )
             {
                 using (var db = new KbVaultContext())
-                {                    
+                {
                     var article = db.Articles.FirstOrDefault(a => a.Id == articleId);
                     if (article == null)
                     {
@@ -50,12 +50,12 @@ namespace KBVault.Web.Controllers
             return Json(result);
         }
 
-       
+
 
         public ActionResult Tags(string id, int page = 1)
         {
             try
-            {                
+            {
                 using (var db = new KbVaultContext())
                 {
                     Tag tag = db.Tags.First(c => c.Name == id);
@@ -75,7 +75,7 @@ namespace KBVault.Web.Controllers
             }
         }
 
-        public ActionResult Categories(string id, int page=1)
+        public ActionResult Categories(string id, int page = 1)
         {
             try
             {
@@ -86,7 +86,8 @@ namespace KBVault.Web.Controllers
                     {
                         return View("CategoryNotFound");
                     }
-                    ViewBag.Category = cat;                    
+
+                    ViewBag.Category = cat;
                     IList<Article> articles = db.PublishedArticles().Where(a => a.Category.SefName == id).OrderBy(a => a.Title).ToPagedList(page, ArticleCountPerPage);
                     return View(articles);
                 }
@@ -103,19 +104,17 @@ namespace KBVault.Web.Controllers
             try
             {
                 using (var db = new KbVaultContext())
-                {                                        
-                    Article article = db.PublishedArticles().FirstOrDefault(a => a.SefName == id);                                  
+                {
+                    var article = db.PublishedArticles().FirstOrDefault(a => a.SefName == id);
                     if (article != null)
                     {
-                        article.Views++;                        
-                        db.SaveChanges();                        
+                        article.Views++;
+                        db.SaveChanges();
                         ViewBag.SimilarArticles = ArticleRepository.GetVisibleSimilarArticles((int)article.Id, DateTime.Today.Date);
                         return View(article);
                     }
-                    else
-                    {
-                        return View("ArticleNotFound");
-                    }
+
+                    return View("ArticleNotFound");
                 }
             }
             catch (Exception ex)
@@ -127,22 +126,20 @@ namespace KBVault.Web.Controllers
 
         public ActionResult Index()
         {
-            var settings = SettingsService.GetSettings();            
+            var settings = SettingsService.GetSettings();
             var model = new LandingPageViewModel();
             if (settings.ShowTotalArticleCountOnFrontPage)
             {
                 model.TotalArticleCountMessage = string.Format(UIResources.PublicTotalArticleCountMessage,ArticleRepository.GetTotalArticleCount());
             }
+
             model.HotCategories = CategoryRepository.GetHotCategories().ToList();
-            var dateRangeToday = DateTime.Now.Date;
             ViewBag.Title = settings.CompanyName;
             model.FirstLevelCategories = CategoryRepository.GetFirstLevelCategories().ToList();
             model.LatestArticles = ArticleRepository.GetLatestArticles(settings.ArticleCountPerCategoryOnHomePage);
             model.PopularArticles = ArticleRepository.GetPopularArticles(settings.ArticleCountPerCategoryOnHomePage);
             model.PopularTags = TagRepository.GetTagCloud().Select(tag => new TagCloudItem(tag)).ToList();
-            return View(model);            
-            
+            return View(model);
         }
-
     }
 }

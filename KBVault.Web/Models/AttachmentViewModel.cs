@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
-using KBVault.Dal;
 using KBVault.Dal.Entities;
 using Resources;
 
@@ -15,6 +10,7 @@ namespace KBVault.Web.Models
         public AttachmentViewModel()
         {
         }
+
         public AttachmentViewModel(Attachment attachment)
         {
             this.ArticleId = attachment.ArticleId;
@@ -34,29 +30,25 @@ namespace KBVault.Web.Models
         public long Downloads { get; set; }
         public string Hash { get; set; }
 
-        public string RemoveConfirmMessage
-        {
-            get
-            {
-                return UIResources.ArticleAttachmentRemoveConfirmation;
-            }
-        }
+        public string RemoveConfirmMessage => UIResources.ArticleAttachmentRemoveConfirmation;
+
         public string RemoveLink
         {
             get
             {
-                UrlHelper linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-                return linkHelper.Action("Remove", "File", new { id = $"{this.Hash}|{this.Id}"});                
+                var linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+                return linkHelper.Action("Remove", "File", new { id = $"{this.Hash}|{this.Id}"});
             }
         }
+
         public string DownloadLink
         {
             get
             {
-                UrlHelper linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+                var linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
                 return linkHelper.Content(Path + FileName);
             }
         }
-        
+
     }
 }

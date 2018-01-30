@@ -16,8 +16,7 @@ namespace KBVault.Web.Controllers
     [Authorize]
     public class FileController : Controller
     {
-
-        private Logger Log = LogManager.GetCurrentClassLogger();
+        private Logger log = LogManager.GetCurrentClassLogger();
 
         [HttpPost]
         public JsonResult Remove(string id)
@@ -39,11 +38,12 @@ namespace KBVault.Web.Controllers
                     result.Successful = true;
                     return Json(result);
                 }
+
                 throw new ArgumentOutOfRangeException("Invalid file hash");
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                log.Error(ex);
                 result.ErrorMessage = ex.Message;
                 return Json(result);
             }
@@ -59,7 +59,7 @@ namespace KBVault.Web.Controllers
                 if (Request.Params["ArticleId"] == null)
                 {
                     result.ErrorMessage = ErrorMessages.FileUploadArticleNotFound;
-                }                                
+                }
                 else if (Request.Files.Count == 1)
                 {
                     long articleId = Convert.ToInt64(Request.Params["ArticleId"]);
@@ -73,29 +73,28 @@ namespace KBVault.Web.Controllers
                         Settings sets = db.Settings.FirstOrDefault();
                         if (sets != null)
                         {
-                            string[] extensions = sets.IndexFileExtensions.Split(new string[]{","},StringSplitOptions.RemoveEmptyEntries);
+                            string[] extensions = sets.IndexFileExtensions.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
                             if (extensions.FirstOrDefault(a => a.ToLowerInvariant() == attachment.Extension.ToLowerInvariant()) != null )
                             {
                                 KbVaultLuceneHelper.AddAttachmentToIndex(attachment);
                             }
                         }
-                        
                     }
                 }
                 else
                 {
                     result.ErrorMessage = ErrorMessages.FileUploadTooManyFiles;
                 }
+
                 return Json(result);
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                log.Error(ex);
                 result.ErrorMessage = ex.Message;
                 return Json(result);
             }
         }
-
     }
 }

@@ -37,12 +37,9 @@ namespace KBVault.Web.Controllers
 
         protected Exception GetGlobalException()
         {
-            if (TempData[ExceptionObjectKey] != null)
-            {
-                return (TempData[ExceptionObjectKey] as Exception);
-            }
-            return null;
+            return TempData[ExceptionObjectKey] as Exception;
         }
+
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             ViewBag.ShowOperationMessage = false;
@@ -52,26 +49,26 @@ namespace KBVault.Web.Controllers
                 ViewBag.OperationMessage = ControllerContext.HttpContext.Session[OperationMessageKey].ToString();
                 ControllerContext.HttpContext.Session.Remove(OperationMessageKey);
             }
+
             if (ControllerContext.HttpContext.Session[ErrorMessageKey] != null)
             {
                 ViewBag.ShowErrorMessage = true;
                 ViewBag.ErrorMessage = ControllerContext.HttpContext.Session[ErrorMessageKey].ToString();
                 ControllerContext.HttpContext.Session.Remove(ErrorMessageKey);
             }
+
             ViewBag.ThreadShortDateFormat = Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern;
             base.OnActionExecuted(filterContext);
         }
 
         protected void ShowOperationMessage(string msg)
         {
-            ControllerContext.HttpContext.Session[OperationMessageKey] += msg;            
+            ControllerContext.HttpContext.Session[OperationMessageKey] += msg;
         }
 
         protected void ShowErrorMessage(string msg)
         {
             ControllerContext.HttpContext.Session[ErrorMessageKey] += msg;
         }
-        
-
     }
 }

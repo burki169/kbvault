@@ -20,7 +20,7 @@ namespace KBVault.Web.Helpers
     public class KbVaultLuceneHelper
     {
         private static Logger Log = LogManager.GetCurrentClassLogger();
-        
+
         private static string LuceneIndexDirectory
         {
             get
@@ -28,10 +28,9 @@ namespace KBVault.Web.Helpers
                 return HttpContext.Current.Server.MapPath("~/Lucene");
             }
         }
-        //
+
         // Taken from
         // http://www.dotnetperls.com/remove-html-tags
-        //
         private static string StripTagsCharArray(string source)
         {
             char[] array = new char[source.Length];
@@ -46,22 +45,25 @@ namespace KBVault.Web.Helpers
                     inside = true;
                     continue;
                 }
+
                 if (let == '>')
                 {
                     inside = false;
                     continue;
                 }
+
                 if (!inside)
                 {
                     array[arrayIndex] = let;
                     arrayIndex++;
                 }
             }
+
             return new string(array, 0, arrayIndex);
         }
 
         private static Query ParseQuery(string searchQuery, QueryParser parser)
-        {            
+        {
             Query q;
             try
             {
@@ -72,15 +74,17 @@ namespace KBVault.Web.Helpers
                 Log.Error("Query parser exception", e);
                 q = null;
             }
-            if (q == null || string.IsNullOrEmpty(q.ToString()))
+
+            if (string.IsNullOrEmpty(q?.ToString()))
             {
-                string cooked = Regex.Replace(searchQuery, @"[^\w\.@-]", " ");
+                var cooked = Regex.Replace(searchQuery, @"[^\w\.@-]", " ");
                 q = parser.Parse(cooked);
-            }            
+            }
+
             return q;
         }
 
-        public static List<KbSearchResultItemViewModel> DoSearch(string text, int page=1,int resultCount = 20)
+        public static List<KbSearchResultItemViewModel> DoSearch(string text, int page = 1, int resultCount = 20)
         {
             try
             {
@@ -88,30 +92,35 @@ namespace KBVault.Web.Helpers
                 {
                     throw new ArgumentException("Page");
                 }
+
                 if (string.IsNullOrEmpty(text))
                 {
                     throw new ArgumentNullException("Search Text");
                 }
-                List<KbSearchResultItemViewModel> results = new List<KbSearchResultItemViewModel>();
-                StandardAnalyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
-                IndexSearcher searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));
-                string[] fields = new string[]{ "Title", "Content" };
+
+                var results = new List<KbSearchResultItemViewModel>();
+                var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+                var searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));
+                var fields = new string[]{ "Title", "Content" };
                 var parser = new MultiFieldQueryParser(Lucene.Net.Util.Version.LUCENE_30, fields, analyzer);
-                Query q = ParseQuery(text, parser);
-                TopDocs hits = searcher.Search(q, page*resultCount);                
-                if (hits.ScoreDocs.Count() > 0)
-                {                                    
-                    for (int i = ((page-1)*resultCount); i < hits.ScoreDocs.Count(); i++)
+                var q = ParseQuery(text, parser);
+                var hits = searcher.Search(q, page*resultCount);
+                if (hits.ScoreDocs.Any())
+                {
+                    for (int i = (page - 1) * resultCount; i < hits.ScoreDocs.Count(); i++)
                     {
-                        Document doc = searcher.Doc(hits.ScoreDocs[i].Doc);
-                        KbSearchResultItemViewModel item = new KbSearchResultItemViewModel();
-                        item.ArticleId = Convert.ToInt32(doc.Get("Id").ToString().Replace("KB-", "").Replace("AT-", ""));
-                        item.IsArticle= doc.Get("Id").ToString().StartsWith("KB-");
-                        item.IsAttachment = doc.Get("Id").ToString().StartsWith("AT-");
-                        item.ArticleTitle = doc.Get("Title").ToString();                        
+                        var doc = searcher.Doc(hits.ScoreDocs[i].Doc);
+                        var item = new KbSearchResultItemViewModel
+                        {
+                            ArticleId = Convert.ToInt32(doc.Get("Id").ToString().Replace("KB-", string.Empty).Replace("AT-", string.Empty)),
+                            IsArticle = doc.Get("Id").StartsWith("KB-"),
+                            IsAttachment = doc.Get("Id").StartsWith("AT-"),
+                            ArticleTitle = doc.Get("Title")
+                        };
                         results.Add(item);
                     }
-                }                
+                }
+
                 searcher.Dispose();
                 return results;
             }
@@ -126,35 +135,28 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                StandardAnalyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+                var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
                 IndexWriter writer;
 
                 try
                 {
-                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false,
-                        IndexWriter.MaxFieldLength.UNLIMITED);
+                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
                 }
                 catch (System.IO.FileNotFoundException)
                 {
-                    //Lucene directory is not there so create ie 
-                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, true,
-                        IndexWriter.MaxFieldLength.UNLIMITED);
+                    writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, true, IndexWriter.MaxFieldLength.UNLIMITED);
                 }
-                IndexSearcher searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));
-                Term term = new Term("Id", "KB-" + article.Id.ToString());
-                TermQuery q = new TermQuery(term);
-                TopDocs docs = searcher.Search(q, 10);
-                /*
-                if (docs.ScoreDocs.Count() == 1)
-                {
-                    
-                }*/
+
+                var searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));
+                var term = new Term("Id", "KB-" + article.Id.ToString());
+                var q = new TermQuery(term);
+                var docs = searcher.Search(q, 10);
+
                 writer.DeleteDocuments(term);
                 writer.Optimize();
                 writer.Commit();
                 writer.Dispose();
             }
-
             catch (Exception ex)
             {
                 Log.Error(ex);
@@ -171,11 +173,10 @@ namespace KBVault.Web.Helpers
             try
             {
                 RemoveArticleFromIndex(article);
-                StandardAnalyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
-                IndexWriter writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false,
-                    IndexWriter.MaxFieldLength.UNLIMITED);
-                Document doc = new Document();
-                string decodedHtml = HttpUtility.HtmlDecode(article.Content);
+                var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+                var writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
+                var doc = new Document();
+                var decodedHtml = HttpUtility.HtmlDecode(article.Content);
                 doc.Add(new Field("Id", "KB-" + article.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
                 doc.Add(new Field("Title", article.Title, Field.Store.YES, Field.Index.ANALYZED));
                 doc.Add(new Field("Content", StripTagsCharArray(decodedHtml), Field.Store.YES, Field.Index.ANALYZED));
@@ -200,9 +201,9 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                StandardAnalyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
-                IndexWriter writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
-                Term term = new Term("Id", "AT-" + attachment.Id.ToString());
+                var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+                var writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
+                var term = new Term("Id", "AT-" + attachment.Id.ToString());
                 writer.DeleteDocuments(term);
                 writer.Optimize();
                 writer.Commit();
@@ -223,19 +224,20 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                StandardAnalyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
-                IndexWriter writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
-                Document doc = new Document();
-                string path = HttpContext.Current.Server.MapPath(attachment.Path);
+                var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+                var writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, false, IndexWriter.MaxFieldLength.UNLIMITED);
+                var doc = new Document();
+                var path = HttpContext.Current.Server.MapPath(attachment.Path);
                 var localFilePath = Path.Combine(path, attachment.FileName);
                 if (File.Exists(localFilePath))
                 {
-                    StreamReader reader = new StreamReader(new FileStream(Path.Combine(path, attachment.FileName), FileMode.Open));
+                    var reader = new StreamReader(new FileStream(Path.Combine(path, attachment.FileName), FileMode.Open));
                     doc.Add(new Field("Id", "AT-" + attachment.ArticleId.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
                     doc.Add(new Field("Title", attachment.FileName, Field.Store.YES, Field.Index.ANALYZED));
                     doc.Add(new Field("Content", reader, Field.TermVector.WITH_POSITIONS));
                     writer.AddDocument(doc);
-                }                
+                }
+
                 writer.Optimize();
                 writer.Commit();
                 writer.Dispose();
@@ -250,7 +252,5 @@ namespace KBVault.Web.Helpers
                 IndexWriter.Unlock(FSDirectory.Open(LuceneIndexDirectory));
             }
         }
-
-       
     }
 }

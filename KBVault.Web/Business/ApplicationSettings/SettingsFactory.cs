@@ -35,7 +35,7 @@ namespace KBVault.Web.Business.ApplicationSettings
                     set.BackupPath += "\\";
                 if (!set.BackupPath.EndsWith("/") && set.BackupPath.StartsWith("~"))
                     set.BackupPath += "/";
-            }            
+            }
 
             return set;
         }

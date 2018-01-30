@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using KBVault.Dal;
 using KBVault.Dal.Repository;
 using KBVault.Web.Helpers;
 using Microsoft.AspNet.SignalR;
@@ -35,14 +32,16 @@ namespace KBVault.Web.Hubs
                         }
                         catch (Exception ex)
                         {
-                            //Eat it :d
                         }
-                    }                    
-                    KbVaultLuceneHelper.AddArticleToIndex(article);                    
+                    }
+
+                    KbVaultLuceneHelper.AddArticleToIndex(article);
                 }
+
                 indexingCategory++;
             }
-            Clients.All.updateProgress("", "", "", "Finished indexing");
+
+            Clients.All.updateProgress(string.Empty, string.Empty, string.Empty, "Finished indexing");
         }
     }
 }

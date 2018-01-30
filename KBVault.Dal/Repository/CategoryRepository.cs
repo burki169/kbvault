@@ -10,7 +10,7 @@ namespace KBVault.Dal.Repository
     {
         public int Add(Category category)
         {
-            using (var  db = new KbVaultContext())
+            using (var db = new KbVaultContext())
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
@@ -22,7 +22,7 @@ namespace KBVault.Dal.Repository
         {
             using (var db = new KbVaultContext())
             {
-                Category cat = db.Categories.FirstOrDefault(c => c.Id == category.Id);
+                var cat = db.Categories.FirstOrDefault(c => c.Id == category.Id);
                 if (cat != null)
                 {
                     cat.Name = category.Name;
@@ -35,15 +35,15 @@ namespace KBVault.Dal.Repository
                 }
                 else
                 {
-                    throw new ArgumentNullException();                    
+                    throw new ArgumentNullException();
                 }
             }
         }
 
         public Category Get(int categoryId)
         {
-            using (var  db = new KbVaultContext())
-            {                
+            using (var db = new KbVaultContext())
+            {
                 var category = db.Categories.FirstOrDefault(ca => ca.Id == categoryId);
                 if (category == null)
                 {
@@ -79,7 +79,7 @@ namespace KBVault.Dal.Repository
         }
 
         public bool Remove(Category category)
-        {            
+        {
             using (var db = new KbVaultContext())
             {
                 var cat = db.Categories.FirstOrDefault(c => c.Id == category.Id);
@@ -94,7 +94,7 @@ namespace KBVault.Dal.Repository
                 {
                     return false;
                 }
-            }            
+            }
         }
 
         public Category GetFirstCategory()
@@ -107,7 +107,7 @@ namespace KBVault.Dal.Repository
 
         public IList<Category> GetHotCategories()
         {
-            using(var db = new KbVaultContext())
+            using (var db = new KbVaultContext())
             {
                 return db.Categories.Include("Articles").Where(c => c.IsHot).ToList();
             }
@@ -115,7 +115,7 @@ namespace KBVault.Dal.Repository
 
         public IList<Category> GetFirstLevelCategories()
         {
-            using(var db = new KbVaultContext())
+            using (var db = new KbVaultContext())
             {
                 return db.Categories.Include("Articles").Where(c => c.Parent == null).OrderBy(c => c.Name).ToList();
             }

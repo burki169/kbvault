@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using KBVault.Dal;
 using KBVault.Core.Exceptions;
 using KBVault.Core.Outlib;
+using KBVault.Dal;
 using KBVault.Dal.Entities;
 using NLog;
 
@@ -11,12 +11,12 @@ namespace KBVault.Core.MVC.Authorization
 {
     public class KbVaultAuthHelper
     {
-        private static Logger Log = LogManager.GetCurrentClassLogger();
-        private static string HashAlgoritm = "SHA1";
+        public const string HashAlgoritm = "SHA1";
+        public static readonly string RoleAdmin = "Admin";
+        public static readonly string RoleManager = "Manager";
+        public static readonly string RoleEditor = "Editor";
 
-        public static string ROLE_ADMIN = "Admin";
-        public static string ROLE_MANAGER = "Manager";
-        public static string ROLE_EDITOR = "Editor";
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static KbUser GetKbUser(string userName)
         {
@@ -26,14 +26,14 @@ namespace KBVault.Core.MVC.Authorization
             }
         }
 
-        public static KbUser CreateUser(string username, string password, string email,string role, long author)
+        public static KbUser CreateUser(string username, string password, string email, string role, long author)
         {
             try
             {
                 using (var db = new KbVaultContext())
                 {
                     KbUser usr = new KbUser();
-                    usr.Password = HashPassword(password, Guid.NewGuid().ToString().Replace("-", ""));
+                    usr.Password = HashPassword(password, Guid.NewGuid().ToString().Replace("-", string.Empty));
                     usr.UserName = username;
                     usr.Email = email;
                     usr.Role = role;
@@ -61,11 +61,6 @@ namespace KBVault.Core.MVC.Authorization
                 Log.Error(ex);
                 throw;
             }
-        }
-
-        private static bool VerifyHash(string password, string passwordHash)
-        {
-            return ObviexSimpleHash.VerifyHash(password, HashAlgoritm, passwordHash);
         }
 
         public static bool ValidateUser(string userName, string password)
@@ -120,6 +115,11 @@ namespace KBVault.Core.MVC.Authorization
                 Log.Error(ex);
                 throw;
             }
+        }
+
+        private static bool VerifyHash(string password, string passwordHash)
+        {
+            return ObviexSimpleHash.VerifyHash(password, HashAlgoritm, passwordHash);
         }
     }
 }

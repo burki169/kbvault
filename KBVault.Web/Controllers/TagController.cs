@@ -18,7 +18,7 @@ namespace KBVault.Web.Controllers
     [Authorize(Roles="Admin,Manager")]
     public class TagController : KbVaultAdminController
     {
-        
+
         private int PageSize = 45;
 
         public ITagRepository TagRepository { get; set; }
@@ -56,14 +56,15 @@ namespace KBVault.Web.Controllers
         [HttpPost]
         public JsonResult Remove(int id = -1)
         {
-            JsonOperationResponse result = new JsonOperationResponse();
-            result.Successful = false;
+            var result = new JsonOperationResponse
+            {
+                Successful = false
+            };
             try
             {
                 using (var db = new KbVaultContext())
                 {
-                    
-                    Tag tag = db.Tags.First(t => t.Id == id);
+                    var tag = db.Tags.First(t => t.Id == id);
                     if (tag != null)
                     {
                         tag.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
@@ -78,11 +79,12 @@ namespace KBVault.Web.Controllers
                         result.ErrorMessage = ErrorMessages.TagNotFound;
                     }
                 }
+
                 return Json(result);
             }
             catch (Exception ex)
             {
-                Log.Error(ex);                
+                Log.Error(ex);
                 result.ErrorMessage = ex.Message;
                 return Json(result);
             }
@@ -93,34 +95,36 @@ namespace KBVault.Web.Controllers
             try
             {
                 if (page < 1)
+                {
                     page = 1;
+                }
+
                 using (var db = new KbVaultContext())
                 {
-                    IList<Tag> Tags = db.Tags.OrderBy(t => t.Name).ToPagedList(page, PageSize);
+                    var Tags = db.Tags.OrderBy(t => t.Name).ToPagedList(page, PageSize);
                     return View(Tags);
-                }                
+                }
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
                 return RedirectToAction("Index", "Error");
             }
-            
         }
 
         [Authorize(Roles="Admin,Manager,Editor")]
         public JsonResult Suggest(string term)
         {
-            JsonOperationResponse result = new JsonOperationResponse();
+            var result = new JsonOperationResponse();
             try
-            {                
+            {
                 using (var db = new KbVaultContext())
                 {
                     var suggestions = db.Tags.Where(t => t.Name.Contains(term)).Select(t => t.Name).Take(20).ToList<string>();
                     result.Successful = true;
                     result.Data = suggestions.ToArray();
                     return Json(result);
-                }                                
+                }
             }
             catch (Exception ex)
             {

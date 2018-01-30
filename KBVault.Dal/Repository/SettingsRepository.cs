@@ -8,7 +8,7 @@ namespace KBVault.Dal.Repository
     {
         public Settings Get()
         {
-            using(var db = new KbVaultContext())
+            using (var db = new KbVaultContext())
             {
                 return db.Settings.FirstOrDefault();
             }
@@ -19,10 +19,11 @@ namespace KBVault.Dal.Repository
             using (var db = new KbVaultContext())
             {
                 var set = db.Settings.FirstOrDefault();
-                if(set != null)
+                if (set != null)
                 {
                     db.Settings.Remove(set);
                 }
+
                 db.Settings.Add(settings);
                 db.SaveChanges();
             }

@@ -14,18 +14,18 @@ namespace KBVault.Web.Business.Categories
                 Author = author,
                 IsHot = isHot,
                 SefName = sefName,
-                Icon =  icon,
+                Icon = icon,
                 Parent = parent
             };
         }
 
         public CategoryViewModel CreateCategoryViewModel(Category cat)
         {
-            CategoryViewModel categoryModel = new CategoryViewModel
+            var categoryModel = new CategoryViewModel
             {
                 Id = cat.Id,
                 IsHot = cat.IsHot,
-                ParentId = cat.Parent.HasValue ? (int) cat.Parent : -1,
+                ParentId = cat.Parent ?? -1,
                 Name = cat.Name,
                 Icon = cat.Icon,
                 SefName = cat.SefName

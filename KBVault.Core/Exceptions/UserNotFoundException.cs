@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KBVault.Core.Exceptions
 {
-    public class UserNotFoundException:Exception
+    public class UserNotFoundException : Exception
     {
         public UserNotFoundException()
             : base("Kullanıcı bulunamadı.")

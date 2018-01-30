@@ -1,38 +1,22 @@
-﻿using NLog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Web.Security;
-using KBVault.Dal;
+using NLog;
 using KbUser = KBVault.Dal.Entities.KbUser;
 
 namespace KBVault.Core.MVC.Authorization
 {
     public class KbVaultRoleProvider : RoleProvider
     {
-        private Logger Log = LogManager.GetCurrentClassLogger();
-        private string AppName;
+        private readonly Logger log = LogManager.GetCurrentClassLogger();
 
-        public override void AddUsersToRoles(string[] usernames, string[] roleNames)
+        public override string ApplicationName { get; set; }
+
+        public override void CreateRole(string roleName)
         {
             throw new NotImplementedException();
         }
 
-        public override string ApplicationName
-        {
-            get
-            {
-                return AppName;
-            }
-
-            set
-            {
-                AppName = value;
-            }
-        }
-
-        public override void CreateRole(string roleName)
+        public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
             throw new NotImplementedException();
         }
@@ -52,7 +36,8 @@ namespace KBVault.Core.MVC.Authorization
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username) {
+        public override string[] GetRolesForUser(string username)
+        {
             try
             {
                 KbUser usr = KbVaultAuthHelper.GetKbUser(username);
@@ -62,9 +47,10 @@ namespace KBVault.Core.MVC.Authorization
                 }
 
                 return new string[] { usr.Role };
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                Log.Error(ex);
+                log.Error(ex);
                 throw;
             }
         }
@@ -88,7 +74,7 @@ namespace KBVault.Core.MVC.Authorization
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                log.Error(ex);
                 throw;
             }
         }
