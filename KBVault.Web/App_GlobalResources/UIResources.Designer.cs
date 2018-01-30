@@ -1042,7 +1042,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Folder must be writable by MsSQL Service User.
+        ///   Looks up a localized string similar to Folder must be writable by MsSQL Service User.  if you want to use a folder under website use ~/Backupfolder syntax..
         /// </summary>
         internal static string SettingsBackupPathWarning {
             get {
