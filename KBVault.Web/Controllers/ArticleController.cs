@@ -21,11 +21,11 @@ namespace KBVault.Web.Controllers
 {
     [Authorize]
     public class ArticleController : KbVaultAdminController
-    {        
+    {
         public IArticleRepository ArticleRepository { get; set; }
         public IArticleFactory ArticleFactory { get; set; }
         public ICategoryRepository CategoryRepository{ get; set; }
-      
+
         [HttpPost]
         public JsonResult Remove(int id)
         {
@@ -34,35 +34,35 @@ namespace KBVault.Web.Controllers
             {
                 using (var db = new KbVaultContext())
                 {
-                    //Remove article and attachments                    
+                    //Remove article and attachments
                     long CurrentUserId = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                     SqlParameter[] queryParams = new SqlParameter[] { new SqlParameter("ArticleId", id) };
                     db.Database.ExecuteSqlCommand("Delete from ArticleTag Where ArticleId = @ArticleId", queryParams);
                     Article article = db.Articles.Single(a => a.Id == id);
                     if (article == null)
                         throw new Exception(ErrorMessages.ArticleNotFound);
-                    
-                    while( article.Attachments.Count > 0 ) 
+
+                    while( article.Attachments.Count > 0 )
                     {
                         Attachment a = article.Attachments.First();
                         KbVaultAttachmentHelper.RemoveLocalAttachmentFile(a);
                         KbVaultLuceneHelper.RemoveAttachmentFromIndex(a);
                         article.Attachments.Remove(a);
-                        /* 
+                        /*
                          * Also remove the attachment from db.attachments collection
-                         * 
-                         * http://stackoverflow.com/questions/17723626/entity-framework-remove-vs-deleteobject                        
-                         * 
-                         * If the relationship is required (the FK doesn't allow NULL values) and the relationship is not 
-                         * identifying (which means that the foreign key is not part of the child's (composite) primary key) 
-                         * you have to either add the child to another parent or you have to explicitly delete the child 
-                         * (with DeleteObject then). If you don't do any of these a referential constraint is 
-                         * violated and EF will throw an exception when you call SaveChanges - 
-                         * the infamous "The relationship could not be changed because one or more of the foreign-key properties 
+                         *
+                         * http://stackoverflow.com/questions/17723626/entity-framework-remove-vs-deleteobject
+                         *
+                         * If the relationship is required (the FK doesn't allow NULL values) and the relationship is not
+                         * identifying (which means that the foreign key is not part of the child's (composite) primary key)
+                         * you have to either add the child to another parent or you have to explicitly delete the child
+                         * (with DeleteObject then). If you don't do any of these a referential constraint is
+                         * violated and EF will throw an exception when you call SaveChanges -
+                         * the infamous "The relationship could not be changed because one or more of the foreign-key properties
                          * is non-nullable" exception or similar.
                          */
                         db.Attachments.Remove(a);
-                    }                      
+                    }
                     article.Author = CurrentUserId;
                     KbVaultLuceneHelper.RemoveArticleFromIndex(article);
                     db.Articles.Remove(article);
@@ -71,7 +71,6 @@ namespace KBVault.Web.Controllers
                     result.Successful = true;
                     return Json(result);
                 }
-                
             }
             catch (Exception ex)
             {
@@ -81,12 +80,12 @@ namespace KBVault.Web.Controllers
                 return Json(result);
             }
         }
-        
+
         [HttpPost]
         public ActionResult Edit([Bind(Exclude = "Category.Name,Category.SefName")]ArticleViewModel model)
         {
             try
-            {                
+            {
                 ModelState.Remove("Category.Name");
                 ModelState.Remove("Category.SefName");
                 if (ModelState.IsValid)
@@ -113,13 +112,13 @@ namespace KBVault.Web.Controllers
                             KbVaultLuceneHelper.RemoveArticleFromIndex(article);
                         ShowOperationMessage(UIResources.ArticleCreatePageEditSuccessMessage);
                     }
-                    
-                }                
+
+                }
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
-                ModelState.AddModelError("Exception", ex.Message);                
+                ModelState.AddModelError("Exception", ex.Message);
             }
             return View("Create", model);
         }
@@ -145,23 +144,28 @@ namespace KBVault.Web.Controllers
                 ModelState.Remove("Category.Name");
                 ModelState.Remove("Category.SefName");
                 if (ModelState.IsValid)
-                {                    
-                    Article article = ArticleFactory.CreateArticleFromViewModel(model, KBVaultHelperFunctions.UserAsKbUser(User).Id);
-                    var id = ArticleRepository.Add(article, model.Tags);                        
-                    if( article.IsDraft == 0 )
+                {
+                    var article = ArticleFactory.CreateArticleFromViewModel(model, KBVaultHelperFunctions.UserAsKbUser(User).Id);
+                    var id = ArticleRepository.Add(article, model.Tags);
+                    if (article.IsDraft == 0)
+                    {
                         KbVaultLuceneHelper.AddArticleToIndex(article);
+                    }
+
                     ShowOperationMessage(UIResources.ArticleCreatePageCreateSuccessMessage);
-                    return RedirectToAction("Edit", "Article", new { id = article.Id});                    
-                }                
+                    return RedirectToAction("Edit", "Article", new { id = article.Id});
+                }
+
                 return View(model);
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
-                ModelState.AddModelError("Exception",ex.Message);
+                ModelState.AddModelError("Exception", ex.Message);
                 return View(model);
             }
         }
+
         public ActionResult Create(int id= -1)
         {
             try
@@ -172,8 +176,9 @@ namespace KBVault.Web.Controllers
                     category = CategoryRepository.Get(id);
                 }
                 catch (ArgumentNullException)
-                {                    
+                {
                 }
+
                 var model = ArticleFactory.CreateArticleViewModelWithDefValues(category);
                 return View(model);
             }
@@ -182,7 +187,6 @@ namespace KBVault.Web.Controllers
                 Log.Error(ex);
                 return RedirectToAction("Index", "Error");
             }
-            
         }
 
     }

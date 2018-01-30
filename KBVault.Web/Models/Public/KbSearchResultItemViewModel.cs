@@ -12,14 +12,19 @@ namespace KBVault.Web.Models.Public
         public bool IsAttachment { get; set; }
         public int ArticleId { get; set; }
         public string ArticleTitle { get; set; }
-        public string ArticleSefName { 
-            get{
+
+        public string ArticleSefName
+        { 
+            get
+            {
                 using (var db = new KbVaultContext())
                 {
                     var article = db.Articles.FirstOrDefault(a => a.Id == ArticleId);
                     if (article != null)
+                    {
                         return article.SefName;
-                    return String.Empty;
+                    }
+                    return string.Empty;
                 }
             }
         }

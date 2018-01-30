@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using KBVault.Dal;
 using KBVault.Core.Exceptions;
 using KBVault.Core.Outlib;
@@ -26,7 +24,6 @@ namespace KBVault.Core.MVC.Authorization
             {
                 return db.KbUsers.FirstOrDefault<KbUser>(ku => ku.UserName == userName);
             }
-
         }
 
         public static KbUser CreateUser(string username, string password, string email,string role, long author)
@@ -65,30 +62,32 @@ namespace KBVault.Core.MVC.Authorization
                 throw;
             }
         }
-        
-        private static bool VerifyHash(string password, string passwordHash) 
-        { 
-            return ObviexSimpleHash.VerifyHash(password, HashAlgoritm, passwordHash); 
+
+        private static bool VerifyHash(string password, string passwordHash)
+        {
+            return ObviexSimpleHash.VerifyHash(password, HashAlgoritm, passwordHash);
         }
 
-        public static bool ValidateUser(string userName, string password) 
-        { 
-            try 
+        public static bool ValidateUser(string userName, string password)
+        {
+            try
             {
                 using (var db = new KbVaultContext())
                 {
                     KbUser usr = GetKbUser(userName);
                     if (usr == null)
+                    {
                         return false;
-                    return VerifyHash(password, usr.Password); 
+                    }
+
+                    return VerifyHash(password, usr.Password);
                 }
-                
-            } 
-            catch (Exception ex) 
-            { 
-                Log.Error(ex); 
-                throw; 
-            } 
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
         }
 
         public static void ChangePassword(string username, string oldPassword, string newPassword)
@@ -99,20 +98,22 @@ namespace KBVault.Core.MVC.Authorization
                 {
                     using (var db = new KbVaultContext())
                     {
-                        KbUser usr= db.KbUsers.FirstOrDefault(ku => ku.UserName == username);
+                        KbUser usr = db.KbUsers.FirstOrDefault(ku => ku.UserName == username);
                         if (usr != null)
                         {
-                            usr.Password = HashPassword(newPassword, Guid.NewGuid().ToString().Replace("-", ""));
+                            usr.Password = HashPassword(newPassword, Guid.NewGuid().ToString().Replace("-", string.Empty));
                             db.SaveChanges();
                         }
-                        else throw new UserNotFoundException();
-                    }                   
+                        else
+                        {
+                            throw new UserNotFoundException();
+                        }
+                    }
                 }
                 else
                 {
                     throw new InvalidPasswordException();
                 }
-                
             }
             catch (Exception ex)
             {

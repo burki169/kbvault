@@ -8,15 +8,12 @@
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-// 
+//
 // Copyright (C) 2002 Obviex(TM). All rights reserved.
 //
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace KBVault.Core.Outlib
 {
@@ -45,9 +42,7 @@ namespace KBVault.Core.Outlib
         /// <returns>
         /// Hash value formatted as a base64-encoded string.
         /// </returns>
-        public static string ComputeHash(string plainText,
-                                         string hashAlgorithm,
-                                         byte[] saltBytes)
+        public static string ComputeHash(string plainText, string hashAlgorithm, byte[] saltBytes)
         {
             // If salt is not specified, generate it on the fly.
             if (saltBytes == null)
@@ -79,11 +74,15 @@ namespace KBVault.Core.Outlib
 
             // Copy plain text bytes into resulting array.
             for (int i = 0; i < plainTextBytes.Length; i++)
+            {
                 plainTextWithSaltBytes[i] = plainTextBytes[i];
+            }
 
             // Append salt bytes to the resulting array.
             for (int i = 0; i < saltBytes.Length; i++)
+            {
                 plainTextWithSaltBytes[plainTextBytes.Length + i] = saltBytes[i];
+            }
 
             // Because we support multiple hashing algorithms, we must define
             // hash object as a common (abstract) base class. We will specify the
@@ -92,7 +91,9 @@ namespace KBVault.Core.Outlib
 
             // Make sure hashing algorithm name is specified.
             if (hashAlgorithm == null)
-                hashAlgorithm = "";
+            {
+                hashAlgorithm = string.Empty;
+            }
 
             // Initialize appropriate hashing algorithm class.
             switch (hashAlgorithm.ToUpper())
@@ -127,11 +128,15 @@ namespace KBVault.Core.Outlib
 
             // Copy hash bytes into resulting array.
             for (int i = 0; i < hashBytes.Length; i++)
+            {
                 hashWithSaltBytes[i] = hashBytes[i];
+            }
 
             // Append salt bytes to the result.
             for (int i = 0; i < saltBytes.Length; i++)
+            {
                 hashWithSaltBytes[hashBytes.Length + i] = saltBytes[i];
+            }
 
             // Convert result into a base64-encoded string.
             string hashValue = Convert.ToBase64String(hashWithSaltBytes);
@@ -150,7 +155,7 @@ namespace KBVault.Core.Outlib
         /// does not check whether this parameter is null.
         /// </param>
         /// <param name="hashAlgorithm">
-        /// Name of the hash algorithm. Allowed values are: "MD5", "SHA1", 
+        /// Name of the hash algorithm. Allowed values are: "MD5", "SHA1",
         /// "SHA256", "SHA384", and "SHA512" (if any other value is specified,
         /// MD5 hashing algorithm will be used). This value is case-insensitive.
         /// </param>
@@ -162,9 +167,7 @@ namespace KBVault.Core.Outlib
         /// If computed hash mathes the specified hash the function the return
         /// value is true; otherwise, the function returns false.
         /// </returns>
-        public static bool VerifyHash(string plainText,
-                                      string hashAlgorithm,
-                                      string hashValue)
+        public static bool VerifyHash(string plainText, string hashAlgorithm, string hashValue)
         {
             // Convert base64-encoded hash value into a byte array.
             byte[] hashWithSaltBytes = Convert.FromBase64String(hashValue);
@@ -174,7 +177,9 @@ namespace KBVault.Core.Outlib
 
             // Make sure that hashing algorithm name is specified.
             if (hashAlgorithm == null)
-                hashAlgorithm = "";
+            {
+                hashAlgorithm = string.Empty;
+            }
 
             // Size of hash is based on the specified algorithm.
             switch (hashAlgorithm.ToUpper())
@@ -205,7 +210,9 @@ namespace KBVault.Core.Outlib
 
             // Make sure that the specified hash value is long enough.
             if (hashWithSaltBytes.Length < hashSizeInBytes)
+            {
                 return false;
+            }
 
             // Allocate array to hold original salt bytes retrieved from hash.
             byte[] saltBytes = new byte[hashWithSaltBytes.Length -
@@ -213,15 +220,16 @@ namespace KBVault.Core.Outlib
 
             // Copy salt from the end of the hash to the new array.
             for (int i = 0; i < saltBytes.Length; i++)
+            {
                 saltBytes[i] = hashWithSaltBytes[hashSizeInBytes + i];
+            }
 
             // Compute a new hash string.
-            string expectedHashString =
-                        ComputeHash(plainText, hashAlgorithm, saltBytes);
+            string expectedHashString = ComputeHash(plainText, hashAlgorithm, saltBytes);
 
             // If the computed hash matches the specified hash,
             // the plain text value must be correct.
-            return (hashValue == expectedHashString);
+            return hashValue == expectedHashString;
         }
     }
 }

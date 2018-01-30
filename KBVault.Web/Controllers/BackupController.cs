@@ -126,7 +126,7 @@ namespace KBVault.Web.Controllers
                     bool b = backup.Backup(builder.InitialCatalog, backupFile);
                     if (b)
                     {
-                        if (!String.IsNullOrEmpty(backupFile))
+                        if (!string.IsNullOrEmpty(backupFile))
                         {
                             result.Data = backupFile;
                             result.Successful = true;
