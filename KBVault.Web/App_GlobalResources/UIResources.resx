@@ -520,7 +520,7 @@
     <value>Backup Path</value>
   </data>
   <data name="SettingsBackupPathWarning" xml:space="preserve">
-    <value>Folder must be writable by MsSQL Service User</value>
+    <value>Folder must be writable by MsSQL Service User.  if you want to use a folder under website use ~/Backupfolder syntax.</value>
   </data>
   <data name="IndexingLeftMenuTitle" xml:space="preserve">
     <value>Index Management</value>

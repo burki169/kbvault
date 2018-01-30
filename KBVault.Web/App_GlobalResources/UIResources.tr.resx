@@ -517,7 +517,7 @@
     <value>Yedekleme Dizini</value>
   </data>
   <data name="SettingsBackupPathWarning" xml:space="preserve">
-    <value>Dizine MSSQL servis kullanıcısının yazma hakkı olmalıdır.</value>
+    <value>Dizine MSSQL servis kullanıcısının yazma hakkı olmalıdır. Website altında bir klasör kullanmak için ~/bakupklasoru şekliden yazın</value>
   </data>
   <data name="IndexingRebuildIndexTitle" xml:space="preserve">
     <value>Lucene indekslerini yeniden oluştur.</value>
