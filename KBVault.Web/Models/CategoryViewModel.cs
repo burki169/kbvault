@@ -19,7 +19,7 @@ namespace KBVault.Web.Models
             this.Id = cat.Id;
             this.IsHot = cat.IsHot;
             this.Name = cat.Name;
-            this.ParentId = cat.Parent??-1;            
+            this.ParentId = cat.Parent ?? -1;            
         }
         public int Id { get; set; }
 

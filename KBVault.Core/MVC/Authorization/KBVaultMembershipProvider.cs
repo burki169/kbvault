@@ -1,33 +1,15 @@
-﻿
-
-using NLog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Web.Security;
 using KBVault.Core.Exceptions;
-
+using NLog;
 
 namespace KBVault.Core.MVC.Authorization
 {
     public class KBVaultMembershipProvider : MembershipProvider
     {
-        private Logger Log = LogManager.GetCurrentClassLogger();
-        private string _ApplicationName;
-     
-             
-        public override string ApplicationName
-        {
-            get
-            {
-                return _ApplicationName;
-            }
-            set
-            {
-                _ApplicationName = value;
-            }
-        }
+        private Logger log = LogManager.GetCurrentClassLogger();
+
+        public override string ApplicationName { get; set; }
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
@@ -42,7 +24,7 @@ namespace KBVault.Core.MVC.Authorization
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                log.Error(ex);
                 throw;
             }
         }
@@ -51,15 +33,15 @@ namespace KBVault.Core.MVC.Authorization
         {
             try
             {
-
                 return KbVaultAuthHelper.ValidateUser(username, password);
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                log.Error(ex);
                 throw;
             }
         }
+
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
             throw new NotImplementedException();
@@ -73,7 +55,7 @@ namespace KBVault.Core.MVC.Authorization
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                log.Error(ex);
                 throw;
             }
         }
@@ -187,8 +169,5 @@ namespace KBVault.Core.MVC.Authorization
         {
             throw new NotImplementedException();
         }
-
-        
-        
     }
 }

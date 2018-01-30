@@ -11,16 +11,16 @@ namespace KBVault.Backup.Classes
 {
     public class VaultMsSqlBackup: IVaultBackup
     {
-        private string ConnectionString;          
+        private string ConnectionString;
 
         public void Connect(string connectionString)
         {
             ConnectionString = connectionString;
-        }        
+        }
 
         public bool Backup(string databaseName, string physicalPath)
         {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (var conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
                 SqlCommand cmd = conn.CreateCommand();
@@ -28,10 +28,10 @@ namespace KBVault.Backup.Classes
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("BACKUP DATABASE " + databaseName+" ");
                 sb.AppendLine("TO DISK='" + physicalPath + "'");
-                //sb.AppendLine("GO");
                 cmd.CommandText = sb.ToString();
                 cmd.ExecuteNonQuery();
-            }                
+            }
+
             return true;
         }
 
@@ -45,13 +45,9 @@ namespace KBVault.Backup.Classes
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("USE [master]");
                 sb.AppendLine("ALTER DATABASE " + databaseName + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
-                //sb.AppendLine("GO");
                 sb.AppendLine("RESTORE DATABASE " + databaseName + " FROM DISK='" + physicalPath + "'");
-                //sb.AppendLine("GO");                
                 sb.AppendLine("WAITFOR DELAY '00:00:02'");
-                //sb.AppendLine("GO");
                 sb.AppendLine("ALTER DATABASE " + databaseName + " SET MULTI_USER");
-                //sb.AppendLine("GO");
                 cmd.CommandText = sb.ToString();
                 cmd.ExecuteNonQuery();
             }

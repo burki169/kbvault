@@ -119,7 +119,7 @@ namespace KBVault.Web.Helpers
         {
             try
             {
-                string html = "";
+                string html = string.Empty;
                 UrlHelper linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
                 List<CategoryViewModel> categoryTree = GetCategories(parentCategoryId, 0, false);                
                 /*

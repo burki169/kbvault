@@ -33,9 +33,12 @@ namespace KBVault.Web.Controllers
 
         [Authorize]
         public ActionResult Logout() 
-        { 
-            if (Request.IsAuthenticated) 
-                FormsAuthentication.SignOut(); 
+        {
+            if (Request.IsAuthenticated)
+            {
+                FormsAuthentication.SignOut();
+            }
+
             return RedirectToAction("Index", "Home"); 
         }
 

@@ -46,7 +46,7 @@ namespace KBVault.Web.Models
             get
             {
                 UrlHelper linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-                return linkHelper.Action("Remove", "File", new { id = this.Hash+"|"+this.Id });                
+                return linkHelper.Action("Remove", "File", new { id = $"{this.Hash}|{this.Id}"});                
             }
         }
         public string DownloadLink
