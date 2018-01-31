@@ -28,7 +28,7 @@ namespace KBVault.Web.Helpers
             }
         }
 
-        public static void RemoveAttachment(string hash,long currentUserId)
+        public static void RemoveAttachment(string hash, long currentUserId)
         {
             try
             {
@@ -40,12 +40,11 @@ namespace KBVault.Web.Helpers
                         throw new ArgumentNullException(ErrorMessages.AttachmentNotFound);
                     }
 
-                    var localPath = Path.Combine( HttpContext.Current.Server.MapPath(attachment.Path), attachment.FileName);
+                    var localPath = Path.Combine(HttpContext.Current.Server.MapPath(attachment.Path), attachment.FileName);
                     attachment.Author = currentUserId;
                     db.Attachments.Remove(attachment);
                     db.SaveChanges();
-                    System.IO.File.Delete(localPath);
-
+                    File.Delete(localPath);
                 }
             }
             catch (Exception ex)

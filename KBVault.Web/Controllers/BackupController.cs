@@ -19,24 +19,24 @@ namespace KBVault.Web.Controllers
     {
         public ActionResult Index()
         {
-            string BackupDirectory = string.Empty;
+            var backupDirectory = string.Empty;
             if (!string.IsNullOrEmpty(Settings.BackupPath) && Settings.BackupPath.StartsWith("~"))
             {
-                BackupDirectory = Server.MapPath(Settings.BackupPath);
+                backupDirectory = Server.MapPath(Settings.BackupPath);
             }
             else
             {
-                BackupDirectory = Settings.BackupPath;
+                backupDirectory = Settings.BackupPath;
             }
 
-            List<BackupListViewModel> model = new List<BackupListViewModel>();
+            var model = new List<BackupListViewModel>();
             var i = 0;
-            if (!string.IsNullOrEmpty(BackupDirectory))
+            if (!string.IsNullOrEmpty(backupDirectory))
             {
-                foreach (var filePath in Directory.GetFiles(BackupDirectory, "*.bak"))
+                foreach (var filePath in Directory.GetFiles(backupDirectory, "*.bak"))
                 {
-                    FileInfo fo = new FileInfo(filePath);
-                    model.Add(new BackupListViewModel()
+                    var fo = new FileInfo(filePath);
+                    model.Add(new BackupListViewModel
                     {
                         Id = i,
                         FileName = Path.GetFileName(filePath),
@@ -46,19 +46,18 @@ namespace KBVault.Web.Controllers
                 }
             }
 
-            return View(model.OrderByDescending( f => f.FileDate));
+            return View(model.OrderByDescending(f => f.FileDate));
         }
-
 
         [HttpPost]
         public JsonResult Restore(string file)
         {
             try
             {
-                JsonOperationResponse result = new JsonOperationResponse();
+                var result = new JsonOperationResponse();
                 try
                 {
-                    string backupFile = string.Empty;
+                    var backupFile = string.Empty;
                     if (Settings.BackupPath.StartsWith("~"))
                     {
                         backupFile = Server.MapPath(Settings.BackupPath + file);
@@ -67,17 +66,20 @@ namespace KBVault.Web.Controllers
                     {
                         backupFile = Settings.BackupPath + file;
                     }
+
                     if (System.IO.File.Exists(backupFile))
                     {
-                        string connectionString = ConfigurationManager.ConnectionStrings["KbVaultEntities"].ConnectionString;
-                        EntityConnectionStringBuilder entityConnectionString = new EntityConnectionStringBuilder(connectionString);
-                        System.Data.SqlClient.SqlConnectionStringBuilder builder = new System.Data.SqlClient.SqlConnectionStringBuilder(entityConnectionString.ProviderConnectionString);
+                        var connectionString = ConfigurationManager.ConnectionStrings["KbVaultEntities"].ConnectionString;
+                        var entityConnectionString = new EntityConnectionStringBuilder(connectionString);
+                        var builder = new System.Data.SqlClient.SqlConnectionStringBuilder(entityConnectionString.ProviderConnectionString);
 
                         IVaultBackup backup = new VaultMsSqlBackup();
                         backup.Connect(entityConnectionString.ProviderConnectionString);
                         result.Successful = backup.Restore(builder.InitialCatalog, backupFile);
                         if (result.Successful)
+                        {
                             result.ErrorMessage = UIResources.BackupRestoreSuccessfull;
+                        }
                     }
                     else
                     {
@@ -89,6 +91,7 @@ namespace KBVault.Web.Controllers
                     Log.Error(ex);
                     result.ErrorMessage = ex.Message;
                 }
+
                 return Json(result, JsonRequestBehavior.DenyGet);
             }
             catch (Exception ex)
@@ -103,7 +106,7 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                JsonOperationResponse result = new JsonOperationResponse();
+                var result = new JsonOperationResponse();
                 if (string.IsNullOrEmpty(Settings.BackupPath))
                 {
                     result.Successful = false;
@@ -111,11 +114,11 @@ namespace KBVault.Web.Controllers
                 }
                 else
                 {
-                    string connectionString = ConfigurationManager.ConnectionStrings["KbVaultContext"].ConnectionString;
-                    System.Data.SqlClient.SqlConnectionStringBuilder builder = new System.Data.SqlClient.SqlConnectionStringBuilder(connectionString);
+                    var connectionString = ConfigurationManager.ConnectionStrings["KbVaultContext"].ConnectionString;
+                    var builder = new System.Data.SqlClient.SqlConnectionStringBuilder(connectionString);
                     IVaultBackup backup = new VaultMsSqlBackup();
                     backup.Connect(connectionString);
-                    string backupFile = string.Format("{0:yyyyMddhhmm}.bak", DateTime.Now);
+                    var backupFile = string.Format("{0:yyyyMddhhmm}.bak", DateTime.Now);
                     if (!string.IsNullOrEmpty(Settings.BackupPath) && Settings.BackupPath.StartsWith("~"))
                     {
                         backupFile = Server.MapPath(Settings.BackupPath + backupFile);
@@ -124,8 +127,9 @@ namespace KBVault.Web.Controllers
                     {
                         backupFile = Settings.BackupPath + backupFile;
                     }
-                    bool b = backup.Backup(builder.InitialCatalog, backupFile);
-                    if (b)
+
+                    var backupSuccessful = backup.Backup(builder.InitialCatalog, backupFile);
+                    if (backupSuccessful)
                     {
                         if (!string.IsNullOrEmpty(backupFile))
                         {
@@ -143,6 +147,5 @@ namespace KBVault.Web.Controllers
                 throw;
             }
         }
-
     }
 }

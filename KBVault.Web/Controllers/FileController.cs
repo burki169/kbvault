@@ -21,18 +21,24 @@ namespace KBVault.Web.Controllers
         [HttpPost]
         public JsonResult Remove(string id)
         {
-            JsonOperationResponse result = new JsonOperationResponse();
-            result.Successful = false;
+            var result = new JsonOperationResponse
+            {
+                Successful = false
+            };
             try
             {
-                var parts = id.Split(new[] {"|"}, StringSplitOptions.RemoveEmptyEntries);
+                var parts = id.Split(new[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length == 2)
                 {
                     var attachmentHash = parts[0];
                     var attachmentId = parts[1];
 
-                    Attachment at = new Attachment() { Id = Convert.ToInt64(attachmentId) };
-                    at.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                    var at = new Attachment
+                    {
+                        Id = Convert.ToInt64(attachmentId),
+                        Author = KBVaultHelperFunctions.UserAsKbUser(User).Id
+                    };
+
                     KbVaultAttachmentHelper.RemoveAttachment(attachmentHash, KBVaultHelperFunctions.UserAsKbUser(User).Id);
                     KbVaultLuceneHelper.RemoveAttachmentFromIndex(at);
                     result.Successful = true;
@@ -52,8 +58,10 @@ namespace KBVault.Web.Controllers
         [HttpPost]
         public JsonResult Upload()
         {
-            JsonOperationResponse result = new JsonOperationResponse();
-            result.Successful = false;
+            var result = new JsonOperationResponse
+            {
+                Successful = false
+            };
             try
             {
                 if (Request.Params["ArticleId"] == null)
@@ -62,20 +70,20 @@ namespace KBVault.Web.Controllers
                 }
                 else if (Request.Files.Count == 1)
                 {
-                    long articleId = Convert.ToInt64(Request.Params["ArticleId"]);
-                    HttpPostedFileBase attachedFile = Request.Files[0];
-                    Attachment attachment = KbVaultAttachmentHelper.SaveAttachment(articleId, attachedFile, KBVaultHelperFunctions.UserAsKbUser(User).Id);
+                    var articleId = Convert.ToInt64(Request.Params["ArticleId"]);
+                    var attachedFile = Request.Files[0];
+                    var attachment = KbVaultAttachmentHelper.SaveAttachment(articleId, attachedFile, KBVaultHelperFunctions.UserAsKbUser(User).Id);
                     attachment.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                     result.Successful = true;
                     result.Data = new AttachmentViewModel(attachment);
                     using (var db = new KbVaultContext())
                     {
-                        Settings sets = db.Settings.FirstOrDefault();
+                        var sets = db.Settings.FirstOrDefault();
                         if (sets != null)
                         {
-                            string[] extensions = sets.IndexFileExtensions.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                            var extensions = sets.IndexFileExtensions.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
-                            if (extensions.FirstOrDefault(a => a.ToLowerInvariant() == attachment.Extension.ToLowerInvariant()) != null )
+                            if (extensions.FirstOrDefault(a => a.ToLowerInvariant() == attachment.Extension.ToLowerInvariant()) != null)
                             {
                                 KbVaultLuceneHelper.AddAttachmentToIndex(attachment);
                             }

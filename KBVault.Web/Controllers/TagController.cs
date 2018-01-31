@@ -1,38 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using KBVault.Dal;
-using KBVault.Dal.Entities;
 using KBVault.Dal.Repository;
-using NLog;
-using MvcPaging;
-using KBVault.Web.Models;
-
-using Resources;
 using KBVault.Web.Helpers;
+using KBVault.Web.Models;
+using MvcPaging;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {
     [Authorize(Roles="Admin,Manager")]
     public class TagController : KbVaultAdminController
     {
-
-        private int PageSize = 45;
+        private const int PageSize = 45;
 
         public ITagRepository TagRepository { get; set; }
 
         [HttpPost]
-        public JsonResult Edit(string name, string pk, string value)
+        public JsonResult Edit(string pk, string value)
         {
-            JsonOperationResponse result = new JsonOperationResponse();
+            var result = new JsonOperationResponse();
             try
             {
                 using (var db = new KbVaultContext())
                 {
-                    long tagId = Convert.ToInt64(pk);
-                    Tag tag = db.Tags.First(t => t.Id == tagId);
+                    var tagId = Convert.ToInt64(pk);
+                    var tag = db.Tags.First(t => t.Id == tagId);
                     if (tag != null)
                     {
                         tag.Author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
@@ -42,6 +36,7 @@ namespace KBVault.Web.Controllers
                         return Json(result);
                     }
                 }
+
                 return null;
             }
             catch (Exception ex)
@@ -101,8 +96,7 @@ namespace KBVault.Web.Controllers
 
                 using (var db = new KbVaultContext())
                 {
-                    var Tags = db.Tags.OrderBy(t => t.Name).ToPagedList(page, PageSize);
-                    return View(Tags);
+                    return View(db.Tags.OrderBy(t => t.Name).ToPagedList(page, PageSize));
                 }
             }
             catch (Exception ex)

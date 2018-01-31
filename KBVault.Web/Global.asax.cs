@@ -20,14 +20,11 @@ using AutofacDependencyResolver = Autofac.Integration.Mvc.AutofacDependencyResol
 
 namespace KBVault.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
-            var builder = new ContainerBuilder();            
+            var builder = new ContainerBuilder();
             builder.RegisterType<CategoryFactory>().As<ICategoryFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<TagRepository>().As<ITagRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
@@ -37,8 +34,8 @@ namespace KBVault.Web
             builder.RegisterType<SettingsRepository>().As<ISettingsRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<SettingsFactory>().As<ISettingsFactory>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<SettingsService>().As<ISettingsService>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();            
-            var container = builder.Build();                  
+            builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
+            var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             System.Web.Mvc.ViewEngines.Engines.Clear();
@@ -50,7 +47,6 @@ namespace KBVault.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
         }
     }
 }

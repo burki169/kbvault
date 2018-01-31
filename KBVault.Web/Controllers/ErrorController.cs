@@ -8,17 +8,15 @@ namespace KBVault.Web.Controllers
 {
     public class ErrorController : KbVaultAdminController
     {
-        //
-        // GET: /Error/
-
         public ActionResult Index()
         {
             ViewBag.ErrorMessage = "...";
-            Exception ex = GetGlobalException();
-            if( ex != null )
-            {                
+            var ex = GetGlobalException();
+            if (ex != null)
+            {
                 ViewBag.ErrorMessage = ex.Message;
-            }            
+            }
+
             return View();
         }
 
@@ -26,6 +24,5 @@ namespace KBVault.Web.Controllers
         {
             return View();
         }
-
     }
 }

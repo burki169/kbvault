@@ -14,8 +14,8 @@ namespace KBVault.Web.Hubs
         public void RebuildIndexes()
         {
             var categories = CategoryRepository.GetAllCategories();
-            int totalCategories = categories.Count();
-            int indexingCategory = 1;
+            var totalCategories = categories.Count();
+            var indexingCategory = 1;
             foreach (var cat in categories)
             {
                 Clients.All.updateProgress(indexingCategory, totalCategories, cat.Name, "-");
@@ -30,7 +30,7 @@ namespace KBVault.Web.Hubs
                             KbVaultLuceneHelper.RemoveAttachmentFromIndex(attachment);
                             KbVaultLuceneHelper.AddAttachmentToIndex(attachment);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                         }
                     }

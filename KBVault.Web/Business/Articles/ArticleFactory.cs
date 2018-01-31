@@ -2,15 +2,15 @@
 using System.Linq;
 using KBVault.Dal.Entities;
 using KBVault.Dal.Repository;
-using KBVault.Web.Models;
 using KBVault.Web.Business.Categories;
+using KBVault.Web.Models;
 
 namespace KBVault.Web.Business.Articles
 {
     public class ArticleFactory : IArticleFactory
-    {        
+    {
         public IUserRepository UserRepository { get; set; }
-        public ICategoryFactory CategoryFactory{ get; set; }
+        public ICategoryFactory CategoryFactory { get; set; }
 
         public ArticleViewModel CreateArticleViewModel(Article article)
         {
@@ -28,7 +28,7 @@ namespace KBVault.Web.Business.Articles
                 model.PublishEndDate = article.PublishEndDate ?? DateTime.Now;
                 model.PublishStartDate = article.PublishStartDate ?? DateTime.Now.AddYears(5);
                 model.Title = article.Title;
-                model.Tags = String.Join(",", article.ArticleTags.Select(at => at.Tag.Name).ToArray());
+                model.Tags = string.Join(",", article.ArticleTags.Select(at => at.Tag.Name).ToArray());
                 model.Attachments = article.Attachments.Select(t => new AttachmentViewModel(t)).ToList();
                 model.SefName = article.SefName;
             }
@@ -38,7 +38,7 @@ namespace KBVault.Web.Business.Articles
 
         public Article CreateArticleFromViewModel(ArticleViewModel articleViewModel, long userId)
         {
-            Article article = new Article
+            var article = new Article
             {
                 CategoryId = articleViewModel.Category.Id,
                 IsDraft = articleViewModel.IsDraft ? 1 : 0,
@@ -51,7 +51,7 @@ namespace KBVault.Web.Business.Articles
                 SefName = articleViewModel.SefName,
                 Author = userId
             };
-            return article;            
+            return article;
         }
 
         public ArticleViewModel CreateArticleViewModelWithDefValues(Category cat)

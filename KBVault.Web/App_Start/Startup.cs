@@ -19,13 +19,12 @@ namespace KBVault.Web
             builder.RegisterType<TagRepository>().As<ITagRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
             builder.RegisterType<ArticleRepository>().As<IArticleRepository>().AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
-            var config = new HubConfiguration();            
+            var config = new HubConfiguration();
             builder.RegisterHubs(typeof(Startup).Assembly).PropertiesAutowired();
             var container = builder.Build();
             config.Resolver = new AutofacDependencyResolver(container);
-            //builder.RegisterLifetimeHubManager();
             app.UseAutofacMiddleware(container);
-            app.MapSignalR("/signalr",config);
+            app.MapSignalR("/signalr", config);
         }
     }
 }

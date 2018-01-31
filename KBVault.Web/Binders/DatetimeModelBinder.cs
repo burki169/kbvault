@@ -10,17 +10,17 @@ namespace KBVault.Web.Binders
     // Not used at the moment
     public class DateTimeModelBinder : DefaultModelBinder
     {
-        private string _customFormat;
+        private readonly string customFormat;
 
         public DateTimeModelBinder(string customFormat)
         {
-            _customFormat = customFormat;
+            this.customFormat = customFormat;
         }
 
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
-            return DateTime.ParseExact(value.AttemptedValue, _customFormat, CultureInfo.InvariantCulture);
+            return DateTime.ParseExact(value.AttemptedValue, customFormat, CultureInfo.InvariantCulture);
         }
     }
 }

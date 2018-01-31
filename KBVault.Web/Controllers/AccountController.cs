@@ -73,7 +73,6 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-
                 if (ModelState.IsValid)
                 {
                     using (var db = new KbVaultContext())
@@ -150,9 +149,9 @@ namespace KBVault.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public JsonResult Remove(int id = -1 )
+        public JsonResult Remove(int id = -1)
         {
-            var result = new JsonOperationResponse()
+            var result = new JsonOperationResponse
             {
                 Successful = false
             };
@@ -252,8 +251,8 @@ namespace KBVault.Web.Controllers
             {
                 using (var db = new KbVaultContext())
                 {
-                    var Users = db.KbUsers.OrderBy(u => u.UserName).ToList();
-                    return View(Users);
+                    var users = db.KbUsers.OrderBy(u => u.UserName).ToList();
+                    return View(users);
                 }
             }
             catch (Exception ex)
@@ -291,7 +290,7 @@ namespace KBVault.Web.Controllers
                 {
                     using (var db = new KbVaultContext())
                     {
-                        var usr = KbVaultAuthHelper.CreateUser(model.UserName, model.OldPassword, model.Email, model.Role,KBVaultHelperFunctions.UserAsKbUser(User).Id);
+                        var usr = KbVaultAuthHelper.CreateUser(model.UserName, model.OldPassword, model.Email, model.Role, KBVaultHelperFunctions.UserAsKbUser(User).Id);
                         usr = db.KbUsers.FirstOrDefault(u => u.Id == usr.Id);
                         if (usr != null)
                         {

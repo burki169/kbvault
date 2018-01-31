@@ -1,10 +1,5 @@
-﻿using KBVault.Dal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using KBVault.Dal.Entities;
-using KBVault.Dal.Types;
 
 namespace KBVault.Web.Models.Public
 {
