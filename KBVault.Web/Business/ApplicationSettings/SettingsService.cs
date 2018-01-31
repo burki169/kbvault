@@ -7,20 +7,18 @@ namespace KBVault.Web.Business.ApplicationSettings
 {
     public class SettingsService : ISettingsService
     {
-
-        private string SettingsSessionKey = "SettingsSessionKey";
+        private const string SettingsSessionKey = "SettingsSessionKey";
 
         public ISettingsRepository SettingsRepository { get; set; }
 
         public Settings GetSettings()
         {
-            if(HttpContext.Current.Session[SettingsSessionKey] == null)
+            if (HttpContext.Current.Session[SettingsSessionKey] == null)
             {
                 ReloadSettings();
             }
 
             return HttpContext.Current.Session[SettingsSessionKey] as Settings;
-
         }
 
         public void ReloadSettings()

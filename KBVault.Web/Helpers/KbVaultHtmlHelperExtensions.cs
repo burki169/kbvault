@@ -9,19 +9,15 @@ namespace KBVault.Web.Helpers
 {
     public static class KbVaultHtmlHelperExtensions
     {
-        
-        //
         // Jquery helpers functions
         // taken from:
         // http://www.codeproject.com/Articles/62031/JQueryUI-Datepicker-in-ASP-NET-MVC
-        //
-        //
         public static string ConvertDateFormat(this HtmlHelper html)
         {
-            return ConvertDateFormat(html, Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern);
+            return ConvertDateFormat(Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern);
         }
 
-        public static string ConvertDateFormat(this HtmlHelper html, string format)
+        public static string ConvertDateFormat(string format)
         {
             /*
                 *  Date used in this comment : 5th - Nov - 2009 (Thursday)
@@ -40,7 +36,7 @@ namespace KBVault.Web.Helpers
                 *  yyyy    yy              2009        Year(four digit)             *
                 */
 
-            string currentFormat = format;
+            var currentFormat = format;
 
             // Convert the date
             currentFormat = currentFormat.Replace("dddd", "DD");
@@ -69,6 +65,6 @@ namespace KBVault.Web.Helpers
             currentFormat.Replace("yyyy", "yy") : currentFormat.Replace("yy", "y");
 
             return currentFormat;
-        }  
+        }
     }
 }

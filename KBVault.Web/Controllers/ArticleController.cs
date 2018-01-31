@@ -24,27 +24,28 @@ namespace KBVault.Web.Controllers
     {
         public IArticleRepository ArticleRepository { get; set; }
         public IArticleFactory ArticleFactory { get; set; }
-        public ICategoryRepository CategoryRepository{ get; set; }
+        public ICategoryRepository CategoryRepository { get; set; }
 
         [HttpPost]
         public JsonResult Remove(int id)
         {
-            JsonOperationResponse result = new JsonOperationResponse();
+            var result = new JsonOperationResponse();
             try
             {
                 using (var db = new KbVaultContext())
                 {
-                    //Remove article and attachments
-                    long CurrentUserId = KBVaultHelperFunctions.UserAsKbUser(User).Id;
-                    SqlParameter[] queryParams = new SqlParameter[] { new SqlParameter("ArticleId", id) };
+                    var currentUserId = KBVaultHelperFunctions.UserAsKbUser(User).Id;
+                    var queryParams = new SqlParameter[] { new SqlParameter("ArticleId", id) };
                     db.Database.ExecuteSqlCommand("Delete from ArticleTag Where ArticleId = @ArticleId", queryParams);
-                    Article article = db.Articles.Single(a => a.Id == id);
+                    var article = db.Articles.Single(a => a.Id == id);
                     if (article == null)
-                        throw new Exception(ErrorMessages.ArticleNotFound);
-
-                    while( article.Attachments.Count > 0 )
                     {
-                        Attachment a = article.Attachments.First();
+                        throw new Exception(ErrorMessages.ArticleNotFound);
+                    }
+
+                    while (article.Attachments.Count > 0)
+                    {
+                        var a = article.Attachments.First();
                         KbVaultAttachmentHelper.RemoveLocalAttachmentFile(a);
                         KbVaultLuceneHelper.RemoveAttachmentFromIndex(a);
                         article.Attachments.Remove(a);
@@ -63,7 +64,8 @@ namespace KBVault.Web.Controllers
                          */
                         db.Attachments.Remove(a);
                     }
-                    article.Author = CurrentUserId;
+
+                    article.Author = currentUserId;
                     KbVaultLuceneHelper.RemoveArticleFromIndex(article);
                     db.Articles.Remove(article);
                     db.SaveChanges();
@@ -92,10 +94,11 @@ namespace KBVault.Web.Controllers
                 {
                     if (model.PublishEndDate < model.PublishStartDate)
                     {
-                        ModelState.AddModelError("PublishDate",ErrorMessages.PublishEndDateMustBeGreater);
+                        ModelState.AddModelError("PublishDate", ErrorMessages.PublishEndDateMustBeGreater);
                     }
-                    else {
-                        Article article = ArticleRepository.Get(model.Id);
+                    else
+                    {
+                        var article = ArticleRepository.Get(model.Id);
                         article.CategoryId = model.Category.Id;
                         article.IsDraft = model.IsDraft ? 1 : 0;
                         article.PublishEndDate = model.PublishEndDate;
@@ -107,12 +110,16 @@ namespace KBVault.Web.Controllers
                         article.SefName = model.SefName;
                         ArticleRepository.Update(article, model.Tags);
                         if (article.IsDraft == 0)
+                        {
                             KbVaultLuceneHelper.AddArticleToIndex(article);
+                        }
                         else
+                        {
                             KbVaultLuceneHelper.RemoveArticleFromIndex(article);
+                        }
+
                         ShowOperationMessage(UIResources.ArticleCreatePageEditSuccessMessage);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -120,6 +127,7 @@ namespace KBVault.Web.Controllers
                 Log.Error(ex);
                 ModelState.AddModelError("Exception", ex.Message);
             }
+
             return View("Create", model);
         }
 
@@ -153,7 +161,7 @@ namespace KBVault.Web.Controllers
                     }
 
                     ShowOperationMessage(UIResources.ArticleCreatePageCreateSuccessMessage);
-                    return RedirectToAction("Edit", "Article", new { id = article.Id});
+                    return RedirectToAction("Edit", "Article", new { id = article.Id });
                 }
 
                 return View(model);
@@ -166,7 +174,7 @@ namespace KBVault.Web.Controllers
             }
         }
 
-        public ActionResult Create(int id= -1)
+        public ActionResult Create(int id = -1)
         {
             try
             {
@@ -188,6 +196,5 @@ namespace KBVault.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
-
     }
 }

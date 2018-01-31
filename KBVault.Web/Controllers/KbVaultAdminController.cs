@@ -13,15 +13,13 @@ namespace KBVault.Web.Controllers
     [Authorize]
     public class KbVaultAdminController : Controller
     {
-        protected Logger Log = LogManager.GetCurrentClassLogger();
         private const string ExceptionObjectKey = "TEMPDATA_EXCEPTION_KEY";
-        private string OperationMessageKey = "KBVAULT_OPERATION_MSG_KEY";
-        private string ErrorMessageKey = "KBVAULT_ERROR_MSG_KEY";
-
-        protected Settings Settings;
+        private const string OperationMessageKey = "KBVAULT_OPERATION_MSG_KEY";
+        private const string ErrorMessageKey = "KBVAULT_ERROR_MSG_KEY";
 
         public KbVaultAdminController()
         {
+            Log = LogManager.GetCurrentClassLogger();
             using (var db = new KbVaultContext())
             {
                 db.Configuration.ProxyCreationEnabled = false;
@@ -30,7 +28,10 @@ namespace KBVault.Web.Controllers
             }
         }
 
-        protected void AddGlobalException( Exception ex)
+        public Logger Log { get; set; }
+        public Settings Settings { get; set; }
+
+        protected void AddGlobalException(Exception ex)
         {
             TempData[ExceptionObjectKey] = ex;
         }

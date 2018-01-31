@@ -9,12 +9,13 @@ namespace KBVault.Web.ViewEngines
 {
     public class KbVaultViewEngine : RazorViewEngine
     {
-        public KbVaultViewEngine() : base()
+        public KbVaultViewEngine()
         {
-            var viewLocations = new[] {
+            var viewLocations = new[]
+            {
             "~/Views/{1}/{0}.cshtml",
-            "~/Views/Themes/"+Theme+"/{1}/{0}.cshtml",
-            "~/Views/Themes/"+Theme+"/Partials/{0}.cshtml",
+            "~/Views/Themes/" + Theme + "/{1}/{0}.cshtml",
+            "~/Views/Themes/" + Theme + "/Partials/{0}.cshtml",
             "~/Views/Shared/{0}.cshtml"
              };
 

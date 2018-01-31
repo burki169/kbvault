@@ -37,7 +37,7 @@ namespace KBVault.Web.Models
             get
             {
                 var linkHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-                return linkHelper.Action("Remove", "File", new { id = $"{this.Hash}|{this.Id}"});
+                return linkHelper.Action("Remove", "File", new { id = $"{this.Hash}|{this.Id}" });
             }
         }
 
@@ -49,6 +49,5 @@ namespace KBVault.Web.Models
                 return linkHelper.Content(Path + FileName);
             }
         }
-
     }
 }

@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using KBVault.Dal;
 using KBVault.Dal.Entities;
 using KBVault.Dal.Repository;
+using KBVault.Web.Helpers;
 using KBVault.Web.Models;
-using NLog;
 using MvcPaging;
 using Resources;
-using KBVault.Web.Helpers;
 using ICategoryFactory = KBVault.Web.Business.Categories.ICategoryFactory;
 
 namespace KBVault.Web.Controllers
 {
     [Authorize]
     public class CategoryController : KbVaultAdminController
-    {        
+    {
         public ICategoryRepository CategoryRepository { get; set; }
         public IArticleRepository ArticleRepository { get; set; }
         public ICategoryFactory CategoryFactory { get; set; }
@@ -35,11 +31,11 @@ namespace KBVault.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var parentId = model.ParentId > 0 ? model.ParentId : (int?) null;
+                    var parentId = model.ParentId > 0 ? model.ParentId : (int?)null;
                     var category = CategoryFactory.CreateCategory(model.Name, model.IsHot, model.SefName, model.Icon, KBVaultHelperFunctions.UserAsKbUser(User).Id, parentId);
                     var catId = CategoryRepository.Add(category);
                     ShowOperationMessage(@UIResources.CategoryPageCreateSuccessMessage);
-                    return RedirectToAction("List", new { id = catId, page = 1 });                                        
+                    return RedirectToAction("List", new { id = catId, page = 1 });
                 }
 
                 return View(model);
@@ -50,20 +46,19 @@ namespace KBVault.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
-        
 
         [HttpPost]
         [Authorize(Roles = "Admin,Manager")]
         public JsonResult Remove(int id)
         {
-            JsonOperationResponse result = new JsonOperationResponse();
+            var result = new JsonOperationResponse();
             try
             {
                 if (CategoryRepository.Get(id) != null)
                 {
                     if (!CategoryRepository.HasArticleInCategory(id))
                     {
-                        var cat = new Category()
+                        var cat = new Category
                         {
                             Author = KBVaultHelperFunctions.UserAsKbUser(User).Id,
                             Id = id
@@ -71,13 +66,13 @@ namespace KBVault.Web.Controllers
                         if (CategoryRepository.Remove(cat))
                         {
                             result.Successful = true;
-                            result.ErrorMessage = String.Format(ErrorMessages.CategoryRemovedSuccessfully, cat.Name);
+                            result.ErrorMessage = string.Format(ErrorMessages.CategoryRemovedSuccessfully, cat.Name);
 
-                            UrlHelper url = new UrlHelper(Request.RequestContext);
+                            var url = new UrlHelper(Request.RequestContext);
                             cat = CategoryRepository.GetFirstCategory();
                             result.Data = cat == null
                                 ? url.Action("Index", "Dashboard")
-                                : url.Action("List", "Category", new {id = cat.Id, page = 1});
+                                : url.Action("List", "Category", new { id = cat.Id, page = 1 });
                         }
                     }
                     else
@@ -87,11 +82,10 @@ namespace KBVault.Web.Controllers
                     }
                 }
                 else
-                {                    
+                {
                     result.Successful = false;
                     result.ErrorMessage = ErrorMessages.CategoryNotFound;
                 }
-
 
                 return Json(result);
             }
@@ -129,13 +123,13 @@ namespace KBVault.Web.Controllers
                 {
                     try
                     {
-                        var parentId = model.ParentId > 0 ? model.ParentId : (int?) null;
+                        var parentId = model.ParentId > 0 ? model.ParentId : (int?)null;
                         var author = KBVaultHelperFunctions.UserAsKbUser(User).Id;
                         var category = CategoryFactory.CreateCategory(model.Name, model.IsHot, model.SefName, model.Icon, author, parentId);
                         category.Id = model.Id;
                         CategoryRepository.Update(category);
                         ShowOperationMessage(UIResources.CategoryPageEditSuccessMessage);
-                        return RedirectToAction("List", new {id = model.Id, page = 1});
+                        return RedirectToAction("List", new { id = model.Id, page = 1 });
                     }
                     catch (ArgumentNullException)
                     {
@@ -148,41 +142,36 @@ namespace KBVault.Web.Controllers
             catch (Exception ex)
             {
                 Log.Error(ex);
-                ModelState.AddModelError("Exception",ex.Message);
+                ModelState.AddModelError("Exception", ex.Message);
                 return View(model);
             }
         }
-        
-        //List articles in category
-        public ActionResult List(int id,int page)
+
+        public ActionResult List(int id, int page)
         {
             try
             {
-                
-                Category cat = CategoryRepository.Get(id);
+                var cat = CategoryRepository.Get(id);
                 if (cat != null)
                 {
-                    var model = new CategoryListViewModel()
+                    var model = new CategoryListViewModel
                     {
                         CategoryName = cat.Name,
                         CategoryId = cat.Id,
-                        Icon = cat.Icon
+                        Icon = cat.Icon,
+                        Articles = CategoryRepository.GetArticles(id).ToPagedList(page, 20)
                     };
-                    model.Articles = CategoryRepository.GetArticles(id).ToPagedList(page, 20);
                     return View(model);
                 }
 
                 ShowOperationMessage(ErrorMessages.CategoryNotFound);
-                return RedirectToAction("Index", "Error");                
-                
+                return RedirectToAction("Index", "Error");
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
                 return RedirectToAction("Index", "Error");
             }
-            
         }
-
     }
 }

@@ -32,9 +32,14 @@ namespace KBVault.Web.Business.ApplicationSettings
             if (!string.IsNullOrEmpty(set.BackupPath))
             {
                 if (!set.BackupPath.EndsWith("\\") && !set.BackupPath.StartsWith("~"))
+                {
                     set.BackupPath += "\\";
+                }
+
                 if (!set.BackupPath.EndsWith("/") && set.BackupPath.StartsWith("~"))
+                {
                     set.BackupPath += "/";
+                }
             }
 
             return set;
@@ -42,7 +47,6 @@ namespace KBVault.Web.Business.ApplicationSettings
 
         public SettingsViewModel CreateViewModel(Settings settings)
         {
-
             var model = new SettingsViewModel(settings)
             {
                 SelectedTheme = ConfigurationManager.AppSettings["Theme"]
@@ -50,7 +54,7 @@ namespace KBVault.Web.Business.ApplicationSettings
 
             var a = typeof(SettingsFactory).Assembly;
             model.ApplicationVersion = a.GetName().Version.Major + "." + a.GetName().Version.Minor;
-            model.Themes.AddRange(Directory.EnumerateDirectories( HttpContext.Current.Server.MapPath("~/Views/Themes")).Select(e => Path.GetFileName(e)).ToList());
+            model.Themes.AddRange(Directory.EnumerateDirectories(HttpContext.Current.Server.MapPath("~/Views/Themes")).Select(Path.GetFileName).ToList());
 
             return model;
         }

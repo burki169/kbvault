@@ -1,35 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using KBVault.Core.MVC.Authorization;
-using KBVault.Web.Models.Public;
 using KBVault.Dal;
 using KBVault.Dal.Entities;
 using KBVault.Dal.Repository;
 using KBVault.Web.Models;
+using KBVault.Web.Models.Public;
 using MvcPaging;
-using KBVault.Web.Helpers;
 using Resources;
 
 namespace KBVault.Web.Controllers
 {
     public class HomeController : KbVaultPublicController
     {
-        private int ArticleCountPerPage = 20;
+        private const int ArticleCountPerPage = 20;
 
         public ITagRepository TagRepository { get; set; }
         public IArticleRepository ArticleRepository { get; set; }
         public ICategoryRepository CategoryRepository { get; set; }
 
-
         [HttpPost]
         public JsonResult Like(int articleId)
         {
-            JsonOperationResponse result = new JsonOperationResponse();
-            if (Request.IsAjaxRequest() )
+            var result = new JsonOperationResponse();
+            if (Request.IsAjaxRequest())
             {
                 using (var db = new KbVaultContext())
                 {
@@ -47,10 +42,9 @@ namespace KBVault.Web.Controllers
                     }
                 }
             }
+
             return Json(result);
         }
-
-
 
         public ActionResult Tags(string id, int page = 1)
         {
@@ -58,13 +52,14 @@ namespace KBVault.Web.Controllers
             {
                 using (var db = new KbVaultContext())
                 {
-                    Tag tag = db.Tags.First(c => c.Name == id);
+                    var tag = db.Tags.First(c => c.Name == id);
                     if (tag == null)
                     {
                         return View("TagNotFound");
                     }
+
                     ViewBag.Tag = tag;
-                    IList<Article> articles = db.PublishedArticles().Where(a => a.ArticleTags.Any(t => t.Tag.Name == id) ).OrderBy(a => a.Title).ToPagedList(page, ArticleCountPerPage);
+                    IList<Article> articles = db.PublishedArticles().Where(a => a.ArticleTags.Any(t => t.Tag.Name == id)).OrderBy(a => a.Title).ToPagedList(page, ArticleCountPerPage);
                     return View(articles);
                 }
             }
@@ -81,7 +76,7 @@ namespace KBVault.Web.Controllers
             {
                 using (var db = new KbVaultContext())
                 {
-                    Category cat = db.Categories.Include("ChildCategories").Include("ParentCategory").First(c => c.SefName == id);
+                    var cat = db.Categories.Include("ChildCategories").Include("ParentCategory").First(c => c.SefName == id);
                     if (cat == null)
                     {
                         return View("CategoryNotFound");
@@ -130,7 +125,7 @@ namespace KBVault.Web.Controllers
             var model = new LandingPageViewModel();
             if (settings.ShowTotalArticleCountOnFrontPage)
             {
-                model.TotalArticleCountMessage = string.Format(UIResources.PublicTotalArticleCountMessage,ArticleRepository.GetTotalArticleCount());
+                model.TotalArticleCountMessage = string.Format(UIResources.PublicTotalArticleCountMessage, ArticleRepository.GetTotalArticleCount());
             }
 
             model.HotCategories = CategoryRepository.GetHotCategories().ToList();

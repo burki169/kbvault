@@ -13,6 +13,7 @@ namespace KBVault.Web.Models
     {
         public CategoryViewModel()
         {
+            Children = new List<CategoryViewModel>();
         }
 
         public CategoryViewModel(Category cat)
@@ -23,6 +24,8 @@ namespace KBVault.Web.Models
             this.ParentId = cat.Parent ?? -1;
         }
 
+        public List<CategoryViewModel> Children { get; set; }
+
         public int Id { get; set; }
 
         [Required(ErrorMessageResourceType=typeof(Resources.ErrorMessages), ErrorMessageResourceName="CategoryNameIsRequired")]
@@ -32,11 +35,9 @@ namespace KBVault.Web.Models
         public int ParentId { get; set; }
         public string NameForDroplist { get; set; }
 
-        [Required(ErrorMessageResourceType=typeof(UIResources),ErrorMessageResourceName="CategorySefNameIsRequired")]
+        [Required(ErrorMessageResourceType=typeof(UIResources), ErrorMessageResourceName="CategorySefNameIsRequired")]
         public string SefName { get; set; }
 
         public string Icon { get; set; }
-
-        public List<CategoryViewModel> Children = new List<CategoryViewModel>();
     }
 }

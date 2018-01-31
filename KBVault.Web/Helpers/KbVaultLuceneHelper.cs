@@ -1,87 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using NLog;
-using Lucene.Net.Index;
-using Lucene.Net.Documents;
-using Lucene.Net.Store;
-using Lucene.Net.Analysis.Standard;
-using KBVault.Dal;
 using System.IO;
-using Lucene.Net.Search;
-using Lucene.Net.QueryParsers;
-using KBVault.Web.Models.Public;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
 using KBVault.Dal.Entities;
+using KBVault.Web.Models.Public;
+using Lucene.Net.Analysis.Standard;
+using Lucene.Net.Documents;
+using Lucene.Net.Index;
+using Lucene.Net.QueryParsers;
+using Lucene.Net.Search;
+using Lucene.Net.Store;
+using NLog;
 
 namespace KBVault.Web.Helpers
 {
     public class KbVaultLuceneHelper
     {
-        private static Logger Log = LogManager.GetCurrentClassLogger();
-
         private static string LuceneIndexDirectory
         {
             get
             {
                 return HttpContext.Current.Server.MapPath("~/Lucene");
             }
-        }
-
-        // Taken from
-        // http://www.dotnetperls.com/remove-html-tags
-        private static string StripTagsCharArray(string source)
-        {
-            char[] array = new char[source.Length];
-            int arrayIndex = 0;
-            bool inside = false;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                char let = source[i];
-                if (let == '<')
-                {
-                    inside = true;
-                    continue;
-                }
-
-                if (let == '>')
-                {
-                    inside = false;
-                    continue;
-                }
-
-                if (!inside)
-                {
-                    array[arrayIndex] = let;
-                    arrayIndex++;
-                }
-            }
-
-            return new string(array, 0, arrayIndex);
-        }
-
-        private static Query ParseQuery(string searchQuery, QueryParser parser)
-        {
-            Query q;
-            try
-            {
-                q = parser.Parse(searchQuery.Trim()+"*");
-            }
-            catch (ParseException e)
-            {
-                Log.Error("Query parser exception", e);
-                q = null;
-            }
-
-            if (string.IsNullOrEmpty(q?.ToString()))
-            {
-                var cooked = Regex.Replace(searchQuery, @"[^\w\.@-]", " ");
-                q = parser.Parse(cooked);
-            }
-
-            return q;
         }
 
         public static List<KbSearchResultItemViewModel> DoSearch(string text, int page = 1, int resultCount = 20)
@@ -101,10 +43,10 @@ namespace KBVault.Web.Helpers
                 var results = new List<KbSearchResultItemViewModel>();
                 var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
                 var searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));
-                var fields = new string[]{ "Title", "Content" };
+                var fields = new string[] { "Title", "Content" };
                 var parser = new MultiFieldQueryParser(Lucene.Net.Util.Version.LUCENE_30, fields, analyzer);
                 var q = ParseQuery(text, parser);
-                var hits = searcher.Search(q, page*resultCount);
+                var hits = searcher.Search(q, page * resultCount);
                 if (hits.ScoreDocs.Any())
                 {
                     for (int i = (page - 1) * resultCount; i < hits.ScoreDocs.Count(); i++)
@@ -126,7 +68,7 @@ namespace KBVault.Web.Helpers
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                LogManager.GetCurrentClassLogger().Error(ex);
                 throw;
             }
         }
@@ -147,19 +89,21 @@ namespace KBVault.Web.Helpers
                     writer = new IndexWriter(FSDirectory.Open(LuceneIndexDirectory), analyzer, true, IndexWriter.MaxFieldLength.UNLIMITED);
                 }
 
-                var searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory));
-                var term = new Term("Id", "KB-" + article.Id.ToString());
-                var q = new TermQuery(term);
-                var docs = searcher.Search(q, 10);
+                using (var searcher = new IndexSearcher(FSDirectory.Open(LuceneIndexDirectory)))
+                {
+                    var term = new Term("Id", "KB-" + article.Id.ToString());
+                    var q = new TermQuery(term);
+                    var docs = searcher.Search(q, 10);
 
-                writer.DeleteDocuments(term);
-                writer.Optimize();
-                writer.Commit();
-                writer.Dispose();
+                    writer.DeleteDocuments(term);
+                    writer.Optimize();
+                    writer.Commit();
+                    writer.Dispose();
+                }
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                LogManager.GetCurrentClassLogger().Error(ex);
                 throw;
             }
             finally
@@ -188,7 +132,7 @@ namespace KBVault.Web.Helpers
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                LogManager.GetCurrentClassLogger().Error(ex);
                 throw;
             }
             finally
@@ -211,7 +155,7 @@ namespace KBVault.Web.Helpers
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                LogManager.GetCurrentClassLogger().Error(ex);
                 throw;
             }
             finally
@@ -244,13 +188,68 @@ namespace KBVault.Web.Helpers
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                LogManager.GetCurrentClassLogger().Error(ex);
                 throw;
             }
             finally
             {
                 IndexWriter.Unlock(FSDirectory.Open(LuceneIndexDirectory));
             }
+        }
+
+        private static Query ParseQuery(string searchQuery, QueryParser parser)
+        {
+            Query q;
+            try
+            {
+                q = parser.Parse(searchQuery.Trim() + "*");
+            }
+            catch (ParseException e)
+            {
+                LogManager.GetCurrentClassLogger().Error("Query parser exception", e);
+                q = null;
+            }
+
+            if (string.IsNullOrEmpty(q?.ToString()))
+            {
+                var cooked = Regex.Replace(searchQuery, @"[^\w\.@-]", " ");
+                q = parser.Parse(cooked);
+            }
+
+            return q;
+        }
+
+        // Taken from
+        // http://www.dotnetperls.com/remove-html-tags
+        private static string StripTagsCharArray(string source)
+        {
+            var array = new char[source.Length];
+            var arrayIndex = 0;
+            var inside = false;
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                var let = source[i];
+                if (let == '<')
+                {
+                    inside = true;
+                    continue;
+                }
+
+                if (let == '>')
+                {
+                    inside = false;
+                    continue;
+                }
+
+                if (!inside)
+                {
+                    array[arrayIndex] = let;
+                    arrayIndex++;
+                }
+            }
+
+            return new string(array, 0, arrayIndex);
         }
     }
 }

@@ -11,8 +11,6 @@ namespace KBVault.Web.Controllers
     [Authorize]
     public class ActivityController : KbVaultAdminController
     {
-        //
-        // GET: /Activity/
         [Authorize(Roles = "Admin,Manager")]
         public ActionResult Index()
         {
@@ -25,28 +23,27 @@ namespace KBVault.Web.Controllers
         {
             try
             {
-                int length = model.length;
-                int page = model.start / length;                                
-                JsonOperationResponse result = new JsonOperationResponse();
-                int recordCount = 0;
+                var length = model.length;
+                var page = model.start / length;
+                var result = new JsonOperationResponse();
                 using (var db = new KbVaultContext())
                 {
-                    recordCount = db.Activities.Count();
+                    var recordCount = db.Activities.Count();
                     db.Configuration.LazyLoadingEnabled = false;
                     var activities = db.Activities.Include("KbUser")
                                     .OrderByDescending(a => a.ActivityDate)
-                                    .Skip((page) * length)
+                                    .Skip(page * length)
                                     .Take(length).AsEnumerable()
                                     .Select(a => new ActivityViewModel
                                     {
                                         ActivityDate = a.ActivityDate.ToString("dd/MM/yyyy H:mm"),
                                         Operation = a.Operation,
-                                        Text =  a.Information,
-                                        User = a.KbUser.Name + " " + a.KbUser.LastName                                        
-                                    }).ToList();                                    
+                                        Text = a.Information,
+                                        User = a.KbUser.Name + " " + a.KbUser.LastName
+                                    }).ToList();
                     result.Successful = true;
                     result.Data = activities;
-                    return Json(new { recordsFiltered = recordCount,recordsTotal = recordCount, Successfull = result.Successful, ErrorMessage = result.ErrorMessage, data = ((List<ActivityViewModel>)result.Data).Select(aw => new[] { aw.ActivityDate, aw.Operation, aw.Text, aw.User }) }, JsonRequestBehavior.DenyGet);
+                    return Json(new { recordsFiltered = recordCount, recordsTotal = recordCount, Successfull = result.Successful, ErrorMessage = result.ErrorMessage, data = ((List<ActivityViewModel>)result.Data).Select(aw => new[] { aw.ActivityDate, aw.Operation, aw.Text, aw.User }) }, JsonRequestBehavior.DenyGet);
                 }
             }
             catch (Exception ex)
@@ -55,6 +52,5 @@ namespace KBVault.Web.Controllers
                 throw;
             }
         }
-
     }
 }

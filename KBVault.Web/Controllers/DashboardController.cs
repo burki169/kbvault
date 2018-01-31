@@ -1,11 +1,6 @@
-﻿using KBVault.Dal;
-using KBVault.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using KBVault.Dal.Repository;
+using KBVault.Web.Models;
 
 namespace KBVault.Web.Controllers
 {
@@ -13,8 +8,6 @@ namespace KBVault.Web.Controllers
     public class DashboardController : Controller
     {
         public IArticleRepository ArticleRepository { get; set; }
-        //
-        // GET: /Dashboard/
 
         public ActionResult Index()
         {
@@ -25,8 +18,6 @@ namespace KBVault.Web.Controllers
                 MostViewedArticle = ArticleRepository.GetMostViewedArticle()
             };
             return View(model);
-            
         }
-
     }
 }

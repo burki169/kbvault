@@ -60,6 +60,6 @@ namespace KBVault.Web.Models
 
         public List<string> Themes { get; set; }
 
-        public string ApplicationVersion{ get; set; }
+        public string ApplicationVersion { get; set; }
     }
 }

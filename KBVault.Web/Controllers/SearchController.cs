@@ -24,7 +24,6 @@ namespace KBVault.Web.Controllers
                 var articlePrefix = SettingsService.GetSettings().ArticlePrefix;
                 if (!string.IsNullOrEmpty(articlePrefix))
                 {
-
                     if (model.SearchKeyword.Length > articlePrefix.Length + 1 &&
                         model.SearchKeyword.Substring(0, articlePrefix.Length + 1) == articlePrefix + "-")
                     {
@@ -42,7 +41,7 @@ namespace KBVault.Web.Controllers
 
                         if (article != null)
                         {
-                            return RedirectToRoute("Default", new {controller = "Home", action = "Detail", id = article.SefName});
+                            return RedirectToRoute("Default", new { controller = "Home", action = "Detail", id = article.SefName });
                         }
                     }
                 }
@@ -52,7 +51,7 @@ namespace KBVault.Web.Controllers
                     model.CurrentPage++;
                 }
 
-                model.Results = KbVaultLuceneHelper.DoSearch(model.SearchKeyword, model.CurrentPage,10);
+                model.Results = KbVaultLuceneHelper.DoSearch(model.SearchKeyword, model.CurrentPage, 10);
 
                 return View(model);
             }

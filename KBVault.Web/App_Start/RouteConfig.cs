@@ -16,20 +16,17 @@ namespace KBVault.Web
             routes.MapRoute(
               name: "PageListById",
               url: "{controller}/{action}/{id}/{page}",
-              defaults: new { controller = "Home" }
-            );
+              defaults: new { controller = "Home" });
 
             routes.MapRoute(
                 name: "PageList",
                 url: "{controller}/List/{page}",
-                defaults: new { controller = "Home",action="List" }
-            );
-          
+                defaults: new { controller = "Home", action="List" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
     }
 }

@@ -1,19 +1,12 @@
-﻿using NLog;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using KBVault.Web.Models;
-using KBVault.Dal;
-using KBVault.Dal.Entities;
-using Resources;
-using KBVault.Web.Helpers;
-using System.Reflection;
-using KBVault.Web.Business.ApplicationSettings;
 using KBVault.Dal.Repository;
+using KBVault.Web.Business.ApplicationSettings;
+using KBVault.Web.Models;
+using Resources;
 
 namespace KBVault.Web.Controllers
 {
@@ -58,6 +51,5 @@ namespace KBVault.Web.Controllers
             var model = SettingsFactory.CreateViewModel(SettingsService.GetSettings());
             return View(model);
         }
-
     }
 }
