@@ -35,6 +35,10 @@ Feel free to provide feedback for bugs and features. Help me to make something u
 
 Check [Documentation](https://github.com/burki169/kbvault/wiki) for installation instructions
 
+Alex Ceron had published a great video for installation. 
+
+[![](http://img.youtube.com/vi/HPnc3UFhIMI/0.jpg)](http://www.youtube.com/watch?v=HPnc3UFhIMI)
+
 *Screenshots*
 
 Homepage
