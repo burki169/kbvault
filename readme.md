@@ -4,7 +4,7 @@
 
 *KBVault* is a free , simple yet efficient and easy to use knowledge base application. 
 
-*Should we tag Kbvault as v1.0? Please vote :) http://www.poll-maker.com/poll1297x6aFB4f8A-53*
+[Should we tag Kbvault as v1.0? Please vote :)](http://www.poll-maker.com/poll1297x6aFB4f8A-53)
 
 Feel free to provide feedback for bugs and features. Help me to make something useful and yet be simple.
 
