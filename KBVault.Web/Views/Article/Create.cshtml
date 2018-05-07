@@ -32,66 +32,66 @@
 }
 
 @section Scripts{
-    
-    $.datepicker.setDefaults({        
-        showAnim: "clip",        
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: "@Html.ConvertDateFormat()"
+
+    $.datepicker.setDefaults({
+    showAnim: "clip",
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: "@Html.ConvertDateFormat()"
     });
     $(".datepicker").each(function(i,e){ $(e).datepicker(); });
     $(".datepicker-trigger").click( function(){
-        var parent = $(this).parent("div").parent("div");
-        var datepicker = $(parent).children(".datepicker").first();
-        $(datepicker).datepicker("show");
+    var parent = $(this).parent("div").parent("div");
+    var datepicker = $(parent).children(".datepicker").first();
+    $(datepicker).datepicker("show");
     });
 
-    
-        
-        $("#FileUploader").uploadFile({
-            url:'@Url.Action("Upload","File")',
-            fileName:"AttachmentFile",        
-            formData: {"ArticleId":@Model.Id},
-            returnType : 'json',
-            dragDropStr: '@UIResources.ArticleCreatePageAttachmentDragDropText',
-            abortStr : '@UIResources.ArticleCreatePageAttachmentAbortText',
-            cancelStr: '@UIResources.ArticleCreatePageAttachmentCancelText',
-            deletelStr: '@UIResources.ArticleCreatePageAttachmentDeleteText',
-            doneStr: '@UIResources.ArticleCreatePageAttachmentDoneText',
-            multiple:false,
-            allowedTypes:"png,gif,jpg,jpeg,pdf,zip,rar,bmp,doc,docx"     ,
-            onSuccess:function(files,data,xhr)
-            {
-                if( data.Successful )
-                {
-                    var parentDiv = $("#article-attachment").children(".box").first().children(".box-body").first();                            
-                    var fileBox = '<span class="btn btn-app">';
-                    fileBox += '<span class="badge bg-aqua">';
-                    fileBox += '<a href="javascript:void(0)" class="remove-attachment"';
-                    fileBox += 'data-confirm-message="'+data.Data.RemoveConfirmMessage+'" ';
-                    fileBox += 'data-url="'+data.Data.RemoveLink+'">';
-                    fileBox += '<i class="fa fa-times"></i>';
-                    fileBox += '</a>';
-                    fileBox += '</span>';
-                    fileBox += '<i class="fa fa-download"></i>';
-                    fileBox += '<a target="_blank" href="'+data.Data.DownloadLink+'">'+data.Data.FileName+'</a></span>';
-                    $(parentDiv).append(fileBox);
-                    BindRemoveAttachmentEvents();
-                }    
-                else{
-                    alert(data.ErrorMessage);
-                }	                    
-            }       
-        });
 
-                        $("#Title").slugIt({output:"#SefName",events:"blur"});
-    
+
+    $("#FileUploader").uploadFile({
+    url:'@Url.Action("Upload", "File")',
+    fileName:"AttachmentFile",
+    formData: {"ArticleId":@Model.Id},
+    returnType : 'json',
+    dragDropStr: '@UIResources.ArticleCreatePageAttachmentDragDropText',
+    abortStr : '@UIResources.ArticleCreatePageAttachmentAbortText',
+    cancelStr: '@UIResources.ArticleCreatePageAttachmentCancelText',
+    deletelStr: '@UIResources.ArticleCreatePageAttachmentDeleteText',
+    doneStr: '@UIResources.ArticleCreatePageAttachmentDoneText',
+    multiple:false,
+    allowedTypes:"png,gif,jpg,jpeg,pdf,zip,rar,bmp,doc,docx" ,
+    onSuccess:function(files,data,xhr)
+    {
+    if( data.Successful )
+    {
+    var parentDiv = $("#article-attachment").children(".box").first().children(".box-body").first();
+    var fileBox = '<span class="btn btn-app">';
+        fileBox += '<span class="badge bg-aqua">';
+            fileBox += '<a href="javascript:void(0)" class="remove-attachment"';
+                           fileBox +='data-confirm-message="'+data.Data.RemoveConfirmMessage+'" ';
+                           fileBox +='data-url="'+data.Data.RemoveLink+'">';
+                fileBox += '<i class="fa fa-times"></i>';
+                fileBox += '</a>';
+            fileBox += '</span>';
+        fileBox += '<i class="fa fa-download"></i>';
+        fileBox += '<a target="_blank" href="'+data.Data.DownloadLink+'">'+data.Data.FileName+'</a></span>';
+    $(parentDiv).append(fileBox);
+    BindRemoveAttachmentEvents();
+    }
+    else{
+    alert(data.ErrorMessage);
+    }
+    }
+    });
+
+    $("#Title").slugIt({output:"#SefName",events:"blur", map :{"'":"-"} });
+
 
     /* CKEDITOR.replace("Content");*/
 
-    
-    
-        
+
+
+
 }
 
 <div class="nav-tabs-custom">

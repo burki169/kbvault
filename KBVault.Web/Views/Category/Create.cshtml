@@ -6,13 +6,13 @@
 }
 
 @section Scripts{
-    $("#Name").slugIt({output:"#SefName",events:"blur"});
+    $("#Name").slugIt({output:"#SefName",events:"blur", map :{"'":"-"}});
 }
 @section ContentHeader{
     <h1>
         @UIResources.CategoryCreateFormPageTitle
         <!-- <small>Control panel</small> -->
-    </h1>   
+    </h1>
 }
 
 
@@ -28,15 +28,15 @@
         <label for="SefName">@UIResources.CategoryCreateFormSefNameLabel</label>
         <input type="text" class="form-control" name="SefName" id="SefName" />
     </div>
-    <div class="form-group">        
-        <label for="SefName">@UIResources.CategoryCreateFormLabelIcon</label>        
-        <input type="text" class="form-control" name="Icon" id="Icon"/>
+    <div class="form-group">
+        <label for="SefName">@UIResources.CategoryCreateFormLabelIcon</label>
+        <input type="text" class="form-control" name="Icon" id="Icon" />
         <p class="danger"><i class="fa fa-info-circle"></i>&nbsp;@UIResources.CategoryCreateFormLabelIconInfo</p>
     </div>
     <div class="form-group">
         <span><i id="categoryIconPreview"></i></span>
     </div>
-    <div class="form-group">        
+    <div class="form-group">
         <div class="checkbox">
             <label>
                 <input type="checkbox" name="IsHot" value="true" />@UIResources.CategoryCreateFormLabelIsHot
@@ -50,5 +50,5 @@
     <div class="form-group">
         <input type="submit" class="btn btn-default" value="@CommonResources.ButtonSave" />
     </div>
-    
+
 }
