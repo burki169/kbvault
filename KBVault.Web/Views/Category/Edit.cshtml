@@ -6,7 +6,7 @@
 }
 
 @section Scripts{
-    $("#Name").slugIt({output:"#SefName",events:"blur"});
+    $("#Name").slugIt({output:"#SefName",events:"blur", map :{"'":"-"}});
 }
 
 @section ContentHeader{
@@ -14,7 +14,7 @@
         @ViewBag.Title
         <!-- <small>Control panel</small> -->
     </h1>
-   
+
 }
 
 
@@ -39,7 +39,7 @@
     <div class="form-group">
         <span><i id="categoryIconPreview" class="fa fa-2x fa-@Model.Icon"></i></span>
     </div>
-    <div class="form-group">        
+    <div class="form-group">
         <div class="checkbox">
             <label>
                 <input type="checkbox" name="IsHot" value="true" checked="@Model.IsHot" />@UIResources.CategoryCreateFormLabelIsHot
@@ -53,5 +53,5 @@
     <div class="form-group">
         <input type="submit" class="btn btn-default" value="@CommonResources.ButtonSave" />
     </div>
-    
+
 }
